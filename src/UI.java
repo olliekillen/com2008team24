@@ -71,6 +71,10 @@ public abstract class UI {
 		goToHomePageButtonPanel.add(createCustomJButton(goToHomePageButton));
 	}
 
+	/**
+	 * Adds listeners to the shared buttons (Home, Sign Up and Login). Also defined
+	 * their respective functions for when they are clicked.
+	 */
 	protected void addListenersToPageChangingButtons() {
 		goToSignUpPageButton.addActionListener(e -> {
 			SignUpUI signUpPage = new SignUpUI();

@@ -1,3 +1,4 @@
+package Product;
 import javax.swing.*;
 import javax.imageio.*;
 import java.awt.*;

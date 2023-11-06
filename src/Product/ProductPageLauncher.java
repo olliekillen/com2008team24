@@ -1,7 +1,8 @@
+package Product;
 import javax.swing.*;
 import java.awt.*;
 
-public class Main {
+public class ProductPageLauncher {
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable(){
             @Override
