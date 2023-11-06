@@ -9,7 +9,7 @@ import java.util.Stack;
 
 //break class down into smaller parts (it should not be 600 lines).
 
-public class ProductPage extends JFrame {
+public class ProductPageUI extends JFrame {
 
     Toolkit tk = Toolkit.getDefaultToolkit();
     int xSize = ((int) tk.getScreenSize().getWidth());

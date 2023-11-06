@@ -1,12 +1,12 @@
 import javax.swing.*;
 import java.awt.*;
 
-public class Main {
+public class ProductPageLauncher {
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable(){
             @Override
             public void run() {
-                final ProductPage window = new ProductPage();
+                final ProductPageUI window = new ProductPageUI();
                 window.initPanel();
                 window.initFrame();
             }
