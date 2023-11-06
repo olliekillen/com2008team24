@@ -3,8 +3,6 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -16,7 +14,7 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
-public abstract class UI implements ActionListener {
+public abstract class UI {
 
 	private GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 	private GraphicsDevice gd = ge.getDefaultScreenDevice();
@@ -43,6 +41,7 @@ public abstract class UI implements ActionListener {
 		generalFrame.setMinimumSize(new Dimension(screenWidth / 3, (int) (screenHeight / 1.5)));
 		generalFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		generalFrame.setLocationRelativeTo(null);
+		generalFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		generalFrame.setVisible(true);
 	}
 
@@ -73,9 +72,29 @@ public abstract class UI implements ActionListener {
 	}
 
 	protected void addListenersToPageChangingButtons() {
-		goToSignUpPageButton.addActionListener(this);
-		goToLoginPageButton.addActionListener(this);
-		goToHomePageButton.addActionListener(this);
+		goToSignUpPageButton.addActionListener(e -> {
+			SignUpUI signUpPage = new SignUpUI();
+			generalFrame.getContentPane().removeAll();
+			signUpPage.generatePage();
+			generalFrame.setContentPane(signUpPage.getSignUpPagePanel());
+			generalFrame.revalidate();
+		});
+
+		goToLoginPageButton.addActionListener(e -> {
+			LoginUI loginPage = new LoginUI();
+			generalFrame.getContentPane().removeAll();
+			loginPage.generatePage();
+			generalFrame.setContentPane(loginPage.getLoginPagePanel());
+			generalFrame.revalidate();
+		});
+
+		goToHomePageButton.addActionListener(e -> {
+			HomePageUI homePage = new HomePageUI();
+			generalFrame.getContentPane().removeAll();
+			homePage.generatePage();
+			generalFrame.setContentPane(homePage.getHomePagePanel());
+			generalFrame.revalidate();
+		});
 	}
 
 	/**
@@ -126,33 +145,5 @@ public abstract class UI implements ActionListener {
 		panel.setMaximumSize(new Dimension(500, 40));
 
 		panel.add(field);
-	}
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == goToSignUpPageButton) {
-			SignUpUI signUpPage = new SignUpUI();
-			generalFrame.getContentPane().removeAll();
-			signUpPage.generatePage();
-			generalFrame.setContentPane(signUpPage.getSignUpPagePanel());
-			generalFrame.revalidate();
-		}
-
-		else if (e.getSource() == goToLoginPageButton) {
-			LoginUI loginPage = new LoginUI();
-			generalFrame.getContentPane().removeAll();
-			loginPage.generatePage();
-			generalFrame.setContentPane(loginPage.getLoginPagePanel());
-			generalFrame.revalidate();
-		}
-
-		else if (e.getSource() == goToHomePageButton) {
-			HomePageUI homePage = new HomePageUI();
-			generalFrame.getContentPane().removeAll();
-			homePage.generatePage();
-			generalFrame.setContentPane(homePage.getHomePagePanel());
-			generalFrame.revalidate();
-		}
-
 	}
 }
