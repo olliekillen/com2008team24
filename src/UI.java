@@ -41,6 +41,7 @@ public abstract class UI {
 		generalFrame.setMinimumSize(new Dimension(screenWidth / 3, (int) (screenHeight / 1.5)));
 		generalFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		generalFrame.setLocationRelativeTo(null);
+		generalFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		generalFrame.setVisible(true);
 	}
 
