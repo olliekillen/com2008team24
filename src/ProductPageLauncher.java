@@ -1,4 +1,3 @@
-package Product;
 import javax.swing.*;
 import java.awt.*;
 
