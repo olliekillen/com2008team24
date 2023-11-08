@@ -252,7 +252,9 @@ public class AccountPage extends JFrame {
 
 	public void accountButton_Click()
 	{
-		System.out.println("accountButton_Click() has been pressed ");
+		final ProductPageUI productPage = new ProductPageUI();
+		productPage.initPanel();
+		productPage.initFrame();
 	}
 	public void basketButton_Click()
 	{
