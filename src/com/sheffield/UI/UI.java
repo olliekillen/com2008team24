@@ -1,4 +1,4 @@
-package com.sheffield;
+package com.sheffield.UI;
 
 import java.awt.Color;
 import java.awt.Dimension;

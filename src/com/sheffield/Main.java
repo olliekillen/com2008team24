@@ -13,7 +13,7 @@ public class Main {
                     DatabaseConnectionHandler dch = new DatabaseConnectionHandler();
                     DatabaseOperations dop = new DatabaseOperations();
                     dch.openConnection();
-                    final ProductPage window = new ProductPage();
+                    final ProductPageUI window = new ProductPageUI();
                     window.initPanel();
                     window.initFrame();
                     TrainSet trainSet = new TrainSet("M58392", "Peco",

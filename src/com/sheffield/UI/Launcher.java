@@ -1,4 +1,6 @@
-package com.sheffield;
+package com.sheffield.UI;
+
+import com.sheffield.UI.HomePageUI;
 
 public class Launcher {
 

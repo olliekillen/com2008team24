@@ -8,7 +8,7 @@ import java.awt.event.*;
 
 public class TablePane extends JPanel {
 
-    public TablePane(ArrayList<Order> com.sheffield.orders) {
+    public TablePane(ArrayList<Order> orders) {
         DefaultTableModel model = new DefaultTableModel(); 
         JTable table = new JTable(model); 
 
