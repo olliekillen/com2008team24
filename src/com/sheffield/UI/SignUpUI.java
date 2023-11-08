@@ -186,7 +186,7 @@ public class SignUpUI extends UI {
         JLabel roadNameFieldLabel = new JLabel("Road Name");
         JTextField roadNameField = new JTextField();
         JPanel roadNameFieldPanel = new JPanel();
-        roadNameFieldPanel.setLayout(new BoxLayout(roadNameField, BoxLayout.Y_AXIS));
+        roadNameFieldPanel.setLayout(new BoxLayout(roadNameFieldPanel, BoxLayout.Y_AXIS));
         createCustomFieldJLabel(roadNameFieldLabel);
         roadNameFieldPanel.add(roadNameFieldLabel);
         createCustomFields(roadNameField, roadNameFieldPanel);
