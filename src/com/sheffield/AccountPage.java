@@ -216,7 +216,10 @@ public class AccountPage extends JFrame {
 		accountEditButton.setForeground( new Color(0,191,255) );
 		accountEditButton.setFont(new Font("Merriweather", Font.BOLD, 40));
 		accountEditButton.addActionListener(e->editButton_Click());
-		//accountEditButton.setBackground( new Color(0,191,255) );
+		accountEditButton.setOpaque(false);
+		accountEditButton.setContentAreaFilled(false);
+		accountEditButton.setFocusPainted(false);
+		accountEditButton.setOpaque(false);
 		accountEditButton.setText("edit");
 		accountEditButton.setOpaque(false);
 		accountEditButton.setBorderPainted(false); 
