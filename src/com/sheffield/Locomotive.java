@@ -1,3 +1,7 @@
+package com.sheffield;
+
+import com.sheffield.Products.Product;
+
 import java.math.BigDecimal;
 
 public class Locomotive extends Product {

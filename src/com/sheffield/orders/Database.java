@@ -1,4 +1,4 @@
-package orders;
+package com.sheffield.orders;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -116,7 +116,7 @@ public class Database {
             try {
                 stmt = con.createStatement();
                 int count = stmt.executeUpdate(
-                “UPDATE orders SET statusField = "fulfilled""
+                “UPDATE com.sheffield.orders SET statusField = "fulfilled""
                 + “ WHERE orderNumber = order.orderNumber”);
             }
             catch (SQLException ex) {
@@ -148,7 +148,7 @@ public class Database {
             try {
                 stmt = con.createStatement();
                 int count = stmt.executeUpdate(
-                "DELETE FROM orders"
+                "DELETE FROM com.sheffield.orders"
                 + “ WHERE orderNumber = order.orderNumber”);
             }
             catch (SQLException ex) {

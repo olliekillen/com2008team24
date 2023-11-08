@@ -1,4 +1,4 @@
-package orders;
+package com.sheffield.orders;
 
 import java.util.ArrayList;
 import javax.swing.*;
@@ -8,7 +8,7 @@ import java.awt.event.*;
 
 public class TablePane extends JPanel {
 
-    public TablePane(ArrayList<Order> orders) { 
+    public TablePane(ArrayList<Order> com.sheffield.orders) {
         DefaultTableModel model = new DefaultTableModel(); 
         JTable table = new JTable(model); 
 
@@ -49,13 +49,13 @@ public class TablePane extends JPanel {
 
     public TablePane(Order order) {
         User user = Database.GetUser(order.userId);
-        ArrayList<OrderLine> orderLines = Database.GetOrderLine("src\\orders\\orderLines.txt", order);
+        ArrayList<OrderLine> orderLines = Database.GetOrderLine("src\\com.sheffield.orders\\orderLines.txt", order);
         DefaultTableModel model = new DefaultTableModel(); 
         JTable table = new JTable(model); 
 
         // Create a couple of columns 
         model.addColumn("Line Number"); 
-        model.addColumn("Product Code"); 
+        model.addColumn("com.sheffield.Products.Product Code");
 
         // Append a row 
         for (OrderLine orderLine : orderLines) {

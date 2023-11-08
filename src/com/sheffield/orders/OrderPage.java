@@ -1,4 +1,4 @@
-package orders;
+package com.sheffield.orders;
 
 import java.util.ArrayList;
 import java.awt.*;
@@ -38,7 +38,7 @@ public class OrderPage extends JFrame {
     }
 
     public static void main(String[] args) {
-        ArrayList<Order> orders = Database.GetOrders("src\\orders\\orders.txt");
+        ArrayList<Order> orders = Database.GetOrders("src\\com.sheffield.orders\\com.sheffield.orders.txt");
         new OrderPage("Orders", orders);
     }
 }

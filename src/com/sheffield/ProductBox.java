@@ -1,3 +1,5 @@
+package com.sheffield;
+
 import javax.swing.*;
 import javax.imageio.*;
 import java.awt.*;
@@ -7,7 +9,7 @@ import java.math.BigDecimal;
 
 public class ProductBox extends JPanel {
 
-//    public ProductBox(LayoutManager layout) {
+//    public com.sheffield.ProductBox(LayoutManager layout) {
 //        super(layout);
 //    }
 
@@ -43,7 +45,7 @@ public class ProductBox extends JPanel {
         productTrainSetsCode.setLocation((int) (Math.round(xSize * 0.005)), 260);
         productTrainSetsCode.setSize((int) (Math.round(xSize * 0.22)), 40);
         productTrainSetsCode.setFont(new Font("Merriweather", Font.BOLD, 16));
-        productTrainSetsCode.setText("Product Code: M58392");
+        productTrainSetsCode.setText("com.sheffield.Products.Product Code: M58392");
         this.add(productTrainSetsCode);
 
         productTrainSetsBrand.setLocation((int) (Math.round(xSize * 0.005)), 280);

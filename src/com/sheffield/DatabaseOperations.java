@@ -1,14 +1,14 @@
+package com.sheffield;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.ResultSet;
-import java.sql.*;
 import java.sql.SQLException;
 
 public class DatabaseOperations {
     public void insertTrainSet(TrainSet trainSet, Connection connection) throws SQLException {
         try {
-            String insertSQL = "INSERT INTO Product (productCode, brandName, productName,"+
+            String insertSQL = "INSERT INTO com.sheffield.Products.Product (productCode, brandName, productName,"+
             "retailPrice, modellingScale, stockCount) VALUES (?, ?, ?, ?, ?, ?)";
 
             PreparedStatement preparedStatement = connection .prepareStatement(insertSQL);
@@ -34,7 +34,7 @@ public class DatabaseOperations {
 
     public void getTrainSets(Connection connection, TrainSet[] trainSetList) throws SQLException {
         try {
-            String selectSQL = "SELECT * FROM Train_Set NATURAL JOIN Product";
+            String selectSQL = "SELECT * FROM Train_Set NATURAL JOIN com.sheffield.Products.Product";
 
             PreparedStatement preparedStatement = connection.prepareStatement(selectSQL);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -55,7 +55,7 @@ public class DatabaseOperations {
 
     public void insertLocomotive(Locomotive locomotive, Connection connection) throws SQLException {
         try {
-            String insertSQL = "INSERT INTO Product (productCode, brandName, productName,"+
+            String insertSQL = "INSERT INTO com.sheffield.Products.Product (productCode, brandName, productName,"+
             "retailPrice, modellingScale, stockCount) VALUES (?, ?, ?, ?, ?, ?)";
 
             PreparedStatement preparedStatement = connection .prepareStatement(insertSQL);
@@ -67,7 +67,7 @@ public class DatabaseOperations {
             preparedStatement.setInt(6, locomotive.getStockCount());
             int rowsAffected = preparedStatement.executeUpdate();
 
-            String insertSQL2 = "INSERT INTO Locomotive (productCode, historicalEra, priceBracket) VALUES " +
+            String insertSQL2 = "INSERT INTO com.sheffield.Locomotive (productCode, historicalEra, priceBracket) VALUES " +
             "(?, ?, ?)";
 
             PreparedStatement preparedStatement2 = connection .prepareStatement(insertSQL2);
@@ -84,7 +84,7 @@ public class DatabaseOperations {
 
     public void getLocomotives(Connection connection, Locomotive[] locomotiveList) throws SQLException {
         try {
-            String selectSQL = "SELECT * FROM Locomotive NATURAL JOIN Product";
+            String selectSQL = "SELECT * FROM com.sheffield.Locomotive NATURAL JOIN com.sheffield.Products.Product";
 
             PreparedStatement preparedStatement = connection.prepareStatement(selectSQL);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -106,7 +106,7 @@ public class DatabaseOperations {
 
     public void insertController(Controller controller, Connection connection) throws SQLException {
         try {
-            String insertSQL = "INSERT INTO Product (productCode, brandName, productName,"+
+            String insertSQL = "INSERT INTO com.sheffield.Products.Product (productCode, brandName, productName,"+
                     "retailPrice, modellingScale, stockCount) VALUES (?, ?, ?, ?, ?, ?)";
 
             PreparedStatement preparedStatement = connection .prepareStatement(insertSQL);
@@ -118,7 +118,7 @@ public class DatabaseOperations {
             preparedStatement.setInt(6, controller.getStockCount());
             int rowsAffected = preparedStatement.executeUpdate();
 
-            String insertSQL2 = "INSERT INTO Controller (productCode, isDigital) VALUES (?, ?)";
+            String insertSQL2 = "INSERT INTO com.sheffield.Controller (productCode, isDigital) VALUES (?, ?)";
 
             PreparedStatement preparedStatement2 = connection .prepareStatement(insertSQL2);
             preparedStatement2.setString(1, controller.getProductCode());
@@ -133,7 +133,7 @@ public class DatabaseOperations {
 
     public void getControllers(Connection connection, Controller[] controllerList) throws SQLException {
         try {
-            String selectSQL = "SELECT * FROM Controller NATURAL JOIN Product";
+            String selectSQL = "SELECT * FROM com.sheffield.Controller NATURAL JOIN com.sheffield.Products.Product";
 
             PreparedStatement preparedStatement = connection.prepareStatement(selectSQL);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -154,7 +154,7 @@ public class DatabaseOperations {
 
     public void insertTrackPack(TrackPack trackPack, Connection connection) throws SQLException {
         try {
-            String insertSQL = "INSERT INTO Product (productCode, brandName, productName,"+
+            String insertSQL = "INSERT INTO com.sheffield.Products.Product (productCode, brandName, productName,"+
             "retailPrice, modellingScale, stockCount) VALUES (?, ?, ?, ?, ?, ?)";
 
             PreparedStatement preparedStatement = connection .prepareStatement(insertSQL);
@@ -180,7 +180,7 @@ public class DatabaseOperations {
 
     public void getTrackPack(Connection connection, TrackPack[] trackPackList) throws SQLException {
         try {
-            String selectSQL = "SELECT * FROM Track_Pack NATURAL JOIN Product";
+            String selectSQL = "SELECT * FROM Track_Pack NATURAL JOIN com.sheffield.Products.Product";
 
             PreparedStatement preparedStatement = connection.prepareStatement(selectSQL);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -201,7 +201,7 @@ public class DatabaseOperations {
 
     public void insertTrack(Track track, Connection connection) throws SQLException {
         try {
-            String insertSQL = "INSERT INTO Product (productCode, brandName, productName,"+
+            String insertSQL = "INSERT INTO com.sheffield.Products.Product (productCode, brandName, productName,"+
             "retailPrice, modellingScale, stockCount) VALUES (?, ?, ?, ?, ?, ?)";
 
             PreparedStatement preparedStatement = connection .prepareStatement(insertSQL);
@@ -213,7 +213,7 @@ public class DatabaseOperations {
             preparedStatement.setInt(6, track.getStockCount());
             int rowsAffected = preparedStatement.executeUpdate();
 
-            String insertSQL2 = "INSERT INTO Track (productCode) VALUES (?)";
+            String insertSQL2 = "INSERT INTO com.sheffield.Track (productCode) VALUES (?)";
 
             PreparedStatement preparedStatement2 = connection .prepareStatement(insertSQL2);
             preparedStatement2.setString(1, track.getProductCode());
@@ -227,7 +227,7 @@ public class DatabaseOperations {
 
     public void getTrack(Connection connection, Track[] trackList) throws SQLException {
         try {
-            String selectSQL = "SELECT * FROM Track NATURAL JOIN Product";
+            String selectSQL = "SELECT * FROM com.sheffield.Track NATURAL JOIN com.sheffield.Products.Product";
 
             PreparedStatement preparedStatement = connection.prepareStatement(selectSQL);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -248,7 +248,7 @@ public class DatabaseOperations {
 
     public void insertRollingStock(RollingStock rollingStock, Connection connection) throws SQLException {
         try {
-            String insertSQL = "INSERT INTO Product (productCode, brandName, productName,"+
+            String insertSQL = "INSERT INTO com.sheffield.Products.Product (productCode, brandName, productName,"+
             "retailPrice, modellingScale, stockCount) VALUES (?, ?, ?, ?, ?, ?)";
 
             PreparedStatement preparedStatement = connection .prepareStatement(insertSQL);
@@ -275,7 +275,7 @@ public class DatabaseOperations {
 
     public void getRollingStock(Connection connection, RollingStock[] rollingStockList) throws SQLException {
         try {
-            String selectSQL = "SELECT * FROM Rolling_Stock NATURAL JOIN Product";
+            String selectSQL = "SELECT * FROM Rolling_Stock NATURAL JOIN com.sheffield.Products.Product";
 
             PreparedStatement preparedStatement = connection.prepareStatement(selectSQL);
             ResultSet resultSet = preparedStatement.executeQuery();

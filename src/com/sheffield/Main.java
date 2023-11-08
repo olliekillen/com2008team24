@@ -1,7 +1,7 @@
+package com.sheffield;
+
 import javax.swing.*;
-import java.awt.*;
 import java.math.BigDecimal;
-import java.sql.Connection;
 import java.sql.SQLException;
 
 public class Main {
@@ -19,7 +19,7 @@ public class Main {
                     TrainSet trainSet = new TrainSet("M58392", "Peco",
                     "Eurostar Train Set", new BigDecimal(0.25),
                     "N Gauge", 12);
-//                    TrainSet trainSet = new TrainSet("M444", "Hornby",
+//                    com.sheffield.TrainSet trainSet = new com.sheffield.TrainSet("M444", "Hornby",
 //                    "Mallard Record Breaker Train Set", new BigDecimal(225.00),
 //                    "OO Gauge", 25);
                     //dop.insertTrainSet(trainSet, dch.getConnection());

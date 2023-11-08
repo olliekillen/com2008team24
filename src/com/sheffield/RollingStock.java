@@ -1,3 +1,5 @@
+package com.sheffield;
+
 import java.math.BigDecimal;
 
 public class RollingStock extends Product {

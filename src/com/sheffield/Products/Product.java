@@ -1,3 +1,5 @@
+package com.sheffield.Products;
+
 import java.math.BigDecimal;
 
 public class Product {
@@ -33,7 +35,7 @@ public class Product {
         if (isValidProductCode(productCode)) {
             this.productCode = productCode;
         } else {
-            throw new IllegalArgumentException("Product code is not valid.");
+            throw new IllegalArgumentException("com.sheffield.Products.Product code is not valid.");
         }
     }
 
@@ -57,7 +59,7 @@ public class Product {
         if (isValidProductName(productName)) {
             this.productName = productName;
         } else {
-            throw new IllegalArgumentException("Product name is not valid.");
+            throw new IllegalArgumentException("com.sheffield.Products.Product name is not valid.");
         }
     }
 

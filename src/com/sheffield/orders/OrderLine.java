@@ -1,4 +1,4 @@
-package orders;
+package com.sheffield.orders;
 
 public class OrderLine {
     String productCode;

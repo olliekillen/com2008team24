@@ -1,11 +1,10 @@
+package com.sheffield;
+
 import javax.swing.*;
 import javax.imageio.*;
 import java.awt.*;
 import java.awt.image.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.File;
-import java.util.Stack;
 
 //break class down into smaller parts (it should not be 600 lines).
 
@@ -213,12 +212,19 @@ public class AccountPage extends JFrame {
 
 
 		accountEditButton.setLocation((int) (Math.round(xSize * 0.375)),400);
-		accountEditButton.setSize((int) (Math.round(xSize * 0.06)),70);
-		accountEditButton.setForeground( new Color(-1) );
+		accountEditButton.setSize((int) (Math.round(xSize * 0.15)),70);
+		accountEditButton.setForeground( new Color(0,191,255) );
 		accountEditButton.setFont(new Font("Merriweather", Font.BOLD, 40));
 		accountEditButton.addActionListener(e->editButton_Click());
-		accountEditButton.setBackground( new Color(0,191,255) );
+		accountEditButton.setOpaque(false);
+		accountEditButton.setContentAreaFilled(false);
+		accountEditButton.setFocusPainted(false);
+		accountEditButton.setOpaque(false);
 		accountEditButton.setText("edit");
+		accountEditButton.setOpaque(false);
+		accountEditButton.setBorderPainted(false); 
+        accountEditButton.setContentAreaFilled(false); 
+        accountEditButton.setFocusPainted(false); 
 		productPagePanel.add(accountEditButton);
 
 		accountDetailArea.setLocation((int) (Math.round(xSize * 0.20)),230);

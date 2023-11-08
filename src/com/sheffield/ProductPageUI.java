@@ -1,14 +1,13 @@
+package com.sheffield;
+
 import javax.swing.*;
 import javax.imageio.*;
 import java.awt.*;
 import java.awt.image.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.File;
 import java.sql.SQLException;
-import java.util.Stack;
 
-public class ProductPage extends JFrame {
+public class ProductPageUI extends JFrame {
 
     Toolkit tk = Toolkit.getDefaultToolkit();
     int xSize = ((int) tk.getScreenSize().getWidth());
@@ -27,7 +26,7 @@ public class ProductPage extends JFrame {
     JButton productStaffPageButton = new JButton();
     JLabel productSidebar = new JLabel();
     JLabel productTypeFilterLabel = new JLabel();
-    String[] productTypeFilterComboData = {"Train Sets", "Track Packs", "Locomotives", "Rolling Stock", "Tracks",
+    String[] productTypeFilterComboData = {"Train Sets", "com.sheffield.Track Packs", "Locomotives", "Rolling Stock", "Tracks",
     "Controllers"};
     JComboBox<String> productTypeFilterCombo = new JComboBox<>(productTypeFilterComboData);
     JLabel productBrandFilterLabel = new JLabel();
@@ -160,7 +159,7 @@ public class ProductPage extends JFrame {
         testComponent.setFont(new Font("Merriweather", Font.BOLD, 14));
         testComponent.setBackground( new Color(0xFFD62246) );
         testComponent.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));
-        testComponent.setText("Filter by Product Type");
+        testComponent.setText("Filter by com.sheffield.Products.Product Type");
         productPagePanel.add(testComponent);
 
         productBasketButton.setLocation(0,157);
@@ -198,7 +197,7 @@ public class ProductPage extends JFrame {
         productTypeFilterLabel.setFont(new Font("Merriweather", Font.BOLD, 14));
         productTypeFilterLabel.setBackground( new Color(0xFFD62246) );
         productTypeFilterLabel.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));
-        productTypeFilterLabel.setText("Filter by Product Type");
+        productTypeFilterLabel.setText("Filter by com.sheffield.Products.Product Type");
         productPagePanel.add(productTypeFilterLabel);
 
         productTypeFilterCombo.setLocation((int) (Math.round(xSize * 0.16)),114);
@@ -297,9 +296,12 @@ public class ProductPage extends JFrame {
 
         productBoxConstructor((int) (Math.round(xSize * 0.20)), 230, (int) (Math.round(xSize * 0.24)), 195,
         0);
-        productBoxConstructor((int) (Math.round(xSize * 0.445)), 230, (int) (Math.round(xSize * 0.24)), 195);
-        productBoxConstructor((int) (Math.round(xSize * 0.69)), 230, (int) (Math.round(xSize * 0.24)), 195);
-        productBoxConstructor((int) (Math.round(xSize * 0.20)), 435, (int) (Math.round(xSize * 0.24)), 195);
+        productBoxConstructor((int) (Math.round(xSize * 0.445)), 230, (int) (Math.round(xSize * 0.24)), 195
+        ,1);
+        productBoxConstructor((int) (Math.round(xSize * 0.69)), 230, (int) (Math.round(xSize * 0.24)), 195
+        ,2);
+        productBoxConstructor((int) (Math.round(xSize * 0.20)), 435, (int) (Math.round(xSize * 0.24)), 195
+        ,3);
 
         productTrainSetsBorder.setLocation((int) (Math.round(xSize * 0.19)),175);
         productTrainSetsBorder.setSize((int) (Math.round(xSize * 0.75)),464);
@@ -330,8 +332,8 @@ public class ProductPage extends JFrame {
             productBox.setSize(width, height);
             productBox.setOpaque(true);
             productBox.setBackground(new Color(-1));
-            productBox.initBox(trainSet.productCode, trainSet.brandName, trainSet.productName, trainSet.retailPrice,
-            trainSet.modellingScale, trainSet.stockCount);
+            productBox.initBox(trainSet.getProductCode(), trainSet.getBrandName(), trainSet.getProductName(), trainSet.getRetailPrice(),
+            trainSet.getModellingScale(), trainSet.getStockCount());
             productPagePanel.add(productBox);
             dch.closeConnection();
         } catch (SQLException e) {
