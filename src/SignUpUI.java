@@ -15,14 +15,12 @@ import javax.swing.JTextField;
 
 public class SignUpUI extends UI {
 
-	// If certain components are only used in one method move them into it! In all
-	// classes.
-
-	// Consider running methods that customise static methods in main. (New made
-	// methods)
-
 	private JPanel signUpPagePanel = new JPanel(new BorderLayout());
 
+	/**
+	 * Formats the nav bar. Calls setNavBarLayout to set the layout. Adds the home
+	 * and login button and formats them.
+	 */
 	@Override
 	protected void formatNavBar(JPanel navBar) {
 		setNavBarLayout(navBar);
@@ -33,6 +31,10 @@ public class SignUpUI extends UI {
 
 	}
 
+	/**
+	 * This is called to format the new page. Formats the nav bar for the page and
+	 * the form.
+	 */
 	@Override
 	protected void generatePage() {
 		JPanel signUpPageNavBar = new JPanel();
@@ -45,30 +47,49 @@ public class SignUpUI extends UI {
 
 	}
 
-// Reconsider layout
-	private void generateSignUpPageForm(JPanel signUpFormPanel) {
-		JPanel signUpButtonPanel = new JPanel();
+	private void addListener(JButton signUpButton, JTextField fornameField, JTextField surnameField,
+			JTextField emailField, JPasswordField passwordField, JPasswordField confirmPassword,
+			JTextField postcodeField, JTextField houseNumberField, JTextField roadNameField, JTextField cityNameField) {
+		signUpButton.addActionListener(e -> {
+			areInputsValid(fornameField, surnameField, emailField, passwordField, confirmPassword, postcodeField,
+					houseNumberField, roadNameField, cityNameField);
+		});
+	}
 
+	private boolean areInputsValid(JTextField fornameField, JTextField surnameField, JTextField emailField,
+			JPasswordField passwordField, JPasswordField confirmPassword, JTextField postcodeField,
+			JTextField houseNumberField, JTextField roadNameField, JTextField cityNameField) {
+		String password = new String();
+
+		return false;
+	}
+
+	/**
+	 * Sorts the layout for the sign up form. Declares and formats all the labels,
+	 * forms and buttons for the form.
+	 * 
+	 * @param signUpFormPanel The panel that holds the form to sign up.
+	 */
+	private void generateSignUpPageForm(JPanel signUpFormPanel) {
 		signUpFormPanel.setLayout(new GridBagLayout());
 		GridBagConstraints constraints = new GridBagConstraints();
-		signUpButtonPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
-
+		// Spaces the form vertically so it is centred.
 		signUpFormPanel.add(Box.createVerticalGlue());
-
+		// Adds padding to the grid boxes.
 		constraints.insets = new Insets(0, 10, 0, 10);
+		// Positions component in the GridBagLayout.
 		constraints.gridx = 0;
 		constraints.gridy = 0;
 		constraints.gridwidth = 2;
-
+		// Creates sign up label.
 		JLabel signUpLabel = new JLabel("Sign Up");
 		createCustomFormTitleLabel(signUpLabel);
 		signUpFormPanel.add(signUpLabel, constraints);
-
+		// Positions component in the GridBagLayout.
 		constraints.gridx = 0;
 		constraints.gridy = 1;
 		constraints.gridwidth = 1;
-
-		// Maybe make this a general function as well
+		// Creates forename label and field.
 		JLabel forenameFieldLabel = new JLabel("Forename");
 		JTextField forenameField = new JTextField();
 		JPanel forenameFieldPanel = new JPanel();
@@ -77,11 +98,11 @@ public class SignUpUI extends UI {
 		forenameFieldPanel.add(forenameFieldLabel);
 		createCustomFields(forenameField, forenameFieldPanel);
 		signUpFormPanel.add(forenameFieldPanel, constraints);
-
+		// Positions component in the GridBagLayout.
 		constraints.gridx = 0;
 		constraints.gridy = 2;
 		constraints.gridwidth = 1;
-
+		// Creates surname label and field.
 		JLabel surnameFieldLabel = new JLabel("Surname");
 		JTextField surnameField = new JTextField();
 		JPanel surnameFieldPanel = new JPanel();
@@ -90,11 +111,11 @@ public class SignUpUI extends UI {
 		surnameFieldPanel.add(surnameFieldLabel);
 		createCustomFields(surnameField, surnameFieldPanel);
 		signUpFormPanel.add(surnameFieldPanel, constraints);
-
+		// Positions component in the GridBagLayout.
 		constraints.gridx = 0;
 		constraints.gridy = 3;
 		constraints.gridwidth = 1;
-
+		// Creates email label and field.
 		JLabel signUpEmailFieldLabel = new JLabel("Email");
 		JTextField signUpEmailField = new JTextField();
 		JPanel signUpEmailFieldPanel = new JPanel();
@@ -103,11 +124,11 @@ public class SignUpUI extends UI {
 		signUpEmailFieldPanel.add(signUpEmailFieldLabel);
 		createCustomFields(signUpEmailField, signUpEmailFieldPanel);
 		signUpFormPanel.add(signUpEmailFieldPanel, constraints);
-
+		// Positions component in the GridBagLayout.
 		constraints.gridx = 0;
 		constraints.gridy = 4;
 		constraints.gridwidth = 1;
-
+		// Creates password label and field.
 		JLabel signUpPasswordFieldLabel = new JLabel("Password");
 		JTextField signUpPasswordField = new JTextField();
 		JPanel signUpPasswordFieldPanel = new JPanel();
@@ -116,11 +137,11 @@ public class SignUpUI extends UI {
 		signUpPasswordFieldPanel.add(signUpPasswordFieldLabel);
 		createCustomFields(signUpPasswordField, signUpPasswordFieldPanel);
 		signUpFormPanel.add(signUpPasswordFieldPanel, constraints);
-
+		// Positions component in the GridBagLayout.
 		constraints.gridx = 0;
 		constraints.gridy = 5;
 		constraints.gridwidth = 1;
-
+		// Creates confirm password label and field.
 		JPasswordField confirmPasswordField = new JPasswordField();
 		JLabel confirmPasswordFieldLabel = new JLabel("Confirm Password");
 		JPanel confirmPasswordFieldPanel = new JPanel();
@@ -129,11 +150,11 @@ public class SignUpUI extends UI {
 		confirmPasswordFieldPanel.add(confirmPasswordFieldLabel);
 		createCustomFields(confirmPasswordField, confirmPasswordFieldPanel);
 		signUpFormPanel.add(confirmPasswordFieldPanel, constraints);
-
+		// Positions component in the GridBagLayout.
 		constraints.gridx = 1;
 		constraints.gridy = 1;
 		constraints.gridwidth = 1;
-
+		// Creates post code label and field.
 		JLabel postcodeFieldLabel = new JLabel("Postcode");
 		JTextField postcodeField = new JTextField();
 		JPanel postodeFieldPanel = new JPanel();
@@ -142,11 +163,11 @@ public class SignUpUI extends UI {
 		postodeFieldPanel.add(postcodeFieldLabel);
 		createCustomFields(postcodeField, postodeFieldPanel);
 		signUpFormPanel.add(postodeFieldPanel, constraints);
-
+		// Positions component in the GridBagLayout.
 		constraints.gridx = 1;
 		constraints.gridy = 2;
 		constraints.gridwidth = 1;
-
+		// Creates house number label and field.
 		JLabel houseNumberFieldLabel = new JLabel("House Number");
 		JTextField houseNumberField = new JTextField();
 		JPanel houseNumberFieldPanel = new JPanel();
@@ -155,47 +176,56 @@ public class SignUpUI extends UI {
 		houseNumberFieldPanel.add(houseNumberFieldLabel);
 		createCustomFields(houseNumberField, houseNumberFieldPanel);
 		signUpFormPanel.add(houseNumberFieldPanel, constraints);
-
+		// Positions component in the GridBagLayout.
 		constraints.gridx = 1;
 		constraints.gridy = 3;
 		constraints.gridwidth = 1;
-
+		// Creates road name label and field.
 		JLabel roadNameFieldLabel = new JLabel("Road Name");
-		JTextField roadNameNumberField = new JTextField();
-		JPanel roadNameNumberFieldPanel = new JPanel();
-		roadNameNumberFieldPanel.setLayout(new BoxLayout(roadNameNumberFieldPanel, BoxLayout.Y_AXIS));
+		JTextField roadNameField = new JTextField();
+		JPanel roadNameFieldPanel = new JPanel();
+		roadNameFieldPanel.setLayout(new BoxLayout(roadNameField, BoxLayout.Y_AXIS));
 		createCustomFieldJLabel(roadNameFieldLabel);
-		roadNameNumberFieldPanel.add(roadNameFieldLabel);
-		createCustomFields(roadNameNumberField, roadNameNumberFieldPanel);
-		signUpFormPanel.add(roadNameNumberFieldPanel, constraints);
-
+		roadNameFieldPanel.add(roadNameFieldLabel);
+		createCustomFields(roadNameField, roadNameFieldPanel);
+		signUpFormPanel.add(roadNameFieldPanel, constraints);
+		// Positions component in the GridBagLayout.
 		constraints.gridx = 1;
 		constraints.gridy = 4;
 		constraints.gridwidth = 1;
-
+		// Creates city name label and field.
 		JLabel cityNameFieldLabel = new JLabel("City Name");
-		JTextField cityNameNumberField = new JTextField();
-		JPanel cityNameNumberFieldPanel = new JPanel();
-		cityNameNumberFieldPanel.setLayout(new BoxLayout(cityNameNumberFieldPanel, BoxLayout.Y_AXIS));
+		JTextField cityNameField = new JTextField();
+		JPanel cityNameFieldPanel = new JPanel();
+		cityNameFieldPanel.setLayout(new BoxLayout(cityNameFieldPanel, BoxLayout.Y_AXIS));
 		createCustomFieldJLabel(cityNameFieldLabel);
-		cityNameNumberFieldPanel.add(cityNameFieldLabel);
-		createCustomFields(cityNameNumberField, cityNameNumberFieldPanel);
-		signUpFormPanel.add(cityNameNumberFieldPanel, constraints);
-
+		cityNameFieldPanel.add(cityNameFieldLabel);
+		createCustomFields(cityNameField, cityNameFieldPanel);
+		signUpFormPanel.add(cityNameFieldPanel, constraints);
+		// Positions component in the GridBagLayout.
 		constraints.insets = new Insets(10, 0, 0, 0);
 		constraints.gridx = 0;
 		constraints.gridy = 6;
 		constraints.gridwidth = 2;
-
+		// Creates and places button at bottom of form.
 		JButton signUpButton = new JButton("Sign Up");
+		addListener(signUpButton, forenameField, surnameField, signUpEmailField, signUpPasswordField,
+				confirmPasswordField, postcodeField, houseNumberField, roadNameField, cityNameField);
+		JPanel signUpButtonPanel = new JPanel();
+		signUpButtonPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
 		createCustomJButton(signUpButton);
 		signUpButtonPanel.add(signUpButton);
 		signUpFormPanel.add(signUpButtonPanel, constraints);
-
+		// Spaces the form vertically so it is centred.
 		signUpFormPanel.add(Box.createVerticalGlue());
 
 	}
 
+	/**
+	 * Gets the panel for the sign up page.
+	 * 
+	 * @return signUpPagePanel The panel for the sign up page.
+	 */
 	public JPanel getSignUpPagePanel() {
 		return signUpPagePanel;
 	}
