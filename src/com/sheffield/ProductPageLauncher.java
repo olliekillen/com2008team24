@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.math.BigDecimal;
 import java.sql.SQLException;
 
-public class Main {
+public class ProductPageLauncher {
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable(){
             @Override
@@ -13,7 +13,7 @@ public class Main {
                     DatabaseConnectionHandler dch = new DatabaseConnectionHandler();
                     DatabaseOperations dop = new DatabaseOperations();
                     dch.openConnection();
-                    final ProductPageUI window = new ProductPageUI();
+                    ProductPageUI window = new ProductPageUI();
                     window.initPanel();
                     window.initFrame();
                     TrainSet trainSet = new TrainSet("M58392", "Peco",

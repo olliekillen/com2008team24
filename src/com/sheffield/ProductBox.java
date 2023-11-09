@@ -33,31 +33,31 @@ public class ProductBox extends JPanel {
         productTrainSetsName.setLocation((int) (Math.round(xSize * 0.005)), 220);
         productTrainSetsName.setSize((int) (Math.round(xSize * 0.22)), 40);
         productTrainSetsName.setFont(new Font("Merriweather", Font.BOLD, 16));
-        productTrainSetsName.setText("Eurostar Train Set");
+        productTrainSetsName.setText(productName);
         this.add(productTrainSetsName);
 
         productTrainSetsPrice.setLocation((int) (Math.round(xSize * 0.005)), 240);
         productTrainSetsPrice.setSize((int) (Math.round(xSize * 0.22)), 40);
         productTrainSetsPrice.setFont(new Font("Merriweather", Font.BOLD, 16));
-        productTrainSetsPrice.setText("£250.00");
+        productTrainSetsPrice.setText("£" + retailPrice);
         this.add(productTrainSetsPrice);
 
         productTrainSetsCode.setLocation((int) (Math.round(xSize * 0.005)), 260);
         productTrainSetsCode.setSize((int) (Math.round(xSize * 0.22)), 40);
         productTrainSetsCode.setFont(new Font("Merriweather", Font.BOLD, 16));
-        productTrainSetsCode.setText("com.sheffield.Products.Product Code: M58392");
+        productTrainSetsCode.setText("Product Code: " + productCode);
         this.add(productTrainSetsCode);
 
         productTrainSetsBrand.setLocation((int) (Math.round(xSize * 0.005)), 280);
         productTrainSetsBrand.setSize((int) (Math.round(xSize * 0.22)), 40);
         productTrainSetsBrand.setFont(new Font("Merriweather", Font.BOLD, 16));
-        productTrainSetsBrand.setText("Brand: Peco");
+        productTrainSetsBrand.setText("Brand: " + brandName);
         this.add(productTrainSetsBrand);
 
         productTrainSetsScale.setLocation((int) (Math.round(xSize * 0.005)), 300);
         productTrainSetsScale.setSize((int) (Math.round(xSize * 0.22)), 40);
         productTrainSetsScale.setFont(new Font("Merriweather", Font.BOLD, 16));
-        productTrainSetsScale.setText("Modelling Scale: N Gauge");
+        productTrainSetsScale.setText("Modelling Scale: " + modellingScale);
         this.add(productTrainSetsScale);
 
         productTrainSetsInfo.setLocation((int) (Math.round(xSize * 0.025)), 340);

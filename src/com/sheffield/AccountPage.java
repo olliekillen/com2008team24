@@ -16,10 +16,10 @@ public class AccountPage extends JFrame {
 	JScrollPane accountPageScrollPanel = new JScrollPane(null);
 
 	JLabel pageTitle = new JLabel();
-	JButton productButton = new JButton();
-	JButton productBasketButton = new JButton();
+	JButton accountButton = new JButton();
+	JButton accountBasketButton = new JButton();
 	JButton staffButton = new JButton();
-	JLabel pageSideBar = new JLabel();
+	JLabel accountSidebar = new JLabel();
 	JLabel accountDetailTitleText = new JLabel();
 	JLabel accountDetailArea = new JLabel();
 	JLabel accountNameText = new JLabel();
@@ -99,28 +99,26 @@ public class AccountPage extends JFrame {
 		pageTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		accountPagePanel.add(pageTitle);
 
-		productButton.setLocation(0,70);
-		productButton.setSize((int) (Math.round(xSize * 0.16)),87);
-		productButton.setForeground( new Color(-1) );
-		productButton.setFont(new Font("Merriweather", Font.BOLD, 21));
-		productButton.addActionListener(e->productButton_Click());
-		productButton.setBackground( new Color(-2743738) );
-		productButton.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));
-		productButton.setText("   Product Page");
-		productButton.setHorizontalAlignment(SwingConstants.LEFT);
+		accountButton.setLocation(0,70);
+		accountButton.setSize((int) (Math.round(xSize * 0.16)),87);
+		accountButton.setForeground( new Color(-1) );
+		accountButton.setFont(new Font("Merriweather", Font.BOLD, 21));
+		accountButton.addActionListener(e->accountButton_Click());
+		accountButton.setBackground( new Color(-2743738) );
+		accountButton.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));
+		accountButton.setText("   Account");
+		accountButton.setHorizontalAlignment(SwingConstants.LEFT);
 
-		accountPagePanel.add(productButton);
-
-		productBasketButton.setLocation(0,157);
-		productBasketButton.setSize((int) (Math.round(xSize * 0.16)),87);
-		productBasketButton.setForeground( new Color(-1) );
-		productBasketButton.setFont(new Font("Merriweather", Font.BOLD, 21));
-		productBasketButton.addActionListener(e->basketButton_Click());
-		productBasketButton.setBackground( new Color(-2743738) );
-		productBasketButton.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));
-		productBasketButton.setText("   Basket");
-		productBasketButton.setHorizontalAlignment(SwingConstants.LEFT);
-		accountPagePanel.add(productBasketButton);
+		accountBasketButton.setLocation(0,157);
+		accountBasketButton.setSize((int) (Math.round(xSize * 0.16)),87);
+		accountBasketButton.setForeground( new Color(-1) );
+		accountBasketButton.setFont(new Font("Merriweather", Font.BOLD, 21));
+		accountBasketButton.addActionListener(e->basketButton_Click());
+		accountBasketButton.setBackground( new Color(-2743738) );
+		accountBasketButton.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));
+		accountBasketButton.setText("   Basket");
+		accountBasketButton.setHorizontalAlignment(SwingConstants.LEFT);
+		accountPagePanel.add(accountBasketButton);
 
 		staffButton.setLocation(0,244);
 		staffButton.setSize((int) (Math.round(xSize * 0.16)),87);
@@ -133,11 +131,11 @@ public class AccountPage extends JFrame {
 		staffButton.setHorizontalAlignment(SwingConstants.LEFT);
 		accountPagePanel.add(staffButton);
 
-		pageSideBar.setLocation(0,70);
-		pageSideBar.setSize((int) (Math.round(xSize * 0.16)),1930);
-		pageSideBar.setOpaque(true);
-		pageSideBar.setBackground( new Color(-11854529) );
-		accountPagePanel.add(pageSideBar);
+		accountSidebar.setLocation(0,70);
+		accountSidebar.setSize((int) (Math.round(xSize * 0.16)),1930);
+		accountSidebar.setOpaque(true);
+		accountSidebar.setBackground( new Color(-11854529) );
+		accountPagePanel.add(accountSidebar);
 
 
 		accountDetailTitleText.setLocation((int) (Math.round(xSize * 0.20)),179);
@@ -282,9 +280,9 @@ public class AccountPage extends JFrame {
 		accountPagePanel.setVisible(true);
 	}
 
-	public void productButton_Click()
+	public void accountButton_Click()
 	{
-		final ProductPageUI productPage = new ProductPageUI();
+		ProductPageUI productPage = new ProductPageUI();
 		productPage.initPanel();
 		productPage.initFrame();
 	}

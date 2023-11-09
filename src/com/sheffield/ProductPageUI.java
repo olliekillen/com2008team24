@@ -26,15 +26,19 @@ public class ProductPageUI extends JFrame {
     JButton productStaffPageButton = new JButton();
     JLabel productSidebar = new JLabel();
     JLabel productTypeFilterLabel = new JLabel();
-    String[] productTypeFilterComboData = {"Train Sets", "com.sheffield.Track Packs", "Locomotives", "Rolling Stock", "Tracks",
+    String[] productTypeFilterComboData = {"Train Sets", "Track Packs", "Locomotives", "Rolling Stock", "Tracks",
     "Controllers"};
     JComboBox<String> productTypeFilterCombo = new JComboBox<>(productTypeFilterComboData);
     JLabel productBrandFilterLabel = new JLabel();
-    JComboBox<String> productBrandFilterCombo = new JComboBox<>();
+    String[] productBrandFilterComboData = {"Hornby", "Peco", "Dapol", "Graham Farish", "Bachmann"};
+    JComboBox<String> productBrandFilterCombo = new JComboBox<>(productBrandFilterComboData);
     JLabel productPriceFilterLabel = new JLabel();
-    JComboBox<String> productPriceFilterCombo = new JComboBox<>();
+    String[] productPriceFilterComboData = {"...£10", "£11...£25", "£26...£50", "£51...£100", "£101...£150",
+    "£151...£200", "£201...£300", "£301..."};
+    JComboBox<String> productPriceFilterCombo = new JComboBox<>(productPriceFilterComboData);
     JLabel productScaleFilterLabel = new JLabel();
-    JComboBox<String> productScaleFilterCombo = new JComboBox<>();
+    String[] productScaleFilterComboData = {"N Gauge", "TT Gauge", "OO Gauge"};
+    JComboBox<String> productScaleFilterCombo = new JComboBox<>(productScaleFilterComboData);
     JTextField productSearch = new JTextField();
     JLabel productFilterBar =  new JLabel();
     JLabel productTrainSetsText = new JLabel();
@@ -94,7 +98,8 @@ public class ProductPageUI extends JFrame {
         scrollPane.getViewport().setBackground(Color.WHITE);
 
         try {
-            BufferedImage leftArrowImg = ImageIO.read(new File("leftArrowInactive.png"));
+            BufferedImage leftArrowImg = ImageIO.read(new File
+            ("src/com/sheffield/Images/leftArrowInactive.png"));
             Image leftArrowImgResized = leftArrowImg.getScaledInstance(30, 30, Image.SCALE_DEFAULT);
             leftArrow.setIcon(new ImageIcon(leftArrowImgResized));
         } catch (Exception e) {
@@ -106,7 +111,8 @@ public class ProductPageUI extends JFrame {
         productPagePanel.add(leftArrow);
 
         try {
-            BufferedImage rightArrowImg = ImageIO.read(new File("rightArrowActive.png"));
+            BufferedImage rightArrowImg = ImageIO.read(new File
+            ("src/com/sheffield/Images/rightArrowActive.png"));
             Image rightArrowImgResized = rightArrowImg.getScaledInstance(30, 30, Image.SCALE_DEFAULT);
             rightArrow.setIcon(new ImageIcon(rightArrowImgResized));
         } catch (Exception e) {
@@ -138,7 +144,8 @@ public class ProductPageUI extends JFrame {
         productAccountButton.setText("   Account");
         productAccountButton.setHorizontalAlignment(SwingConstants.LEFT);
         try {
-            BufferedImage profilePictureImg = ImageIO.read(new File("profilePicture.png"));
+            BufferedImage profilePictureImg = ImageIO.read(new File
+            ("src/com/sheffield/Images/profilePicture.png"));
             Image profilePictureImgResized = profilePictureImg.getScaledInstance
             (70, 70, Image.SCALE_DEFAULT);
             profilePicture.setIcon(new ImageIcon(profilePictureImgResized));
@@ -159,7 +166,7 @@ public class ProductPageUI extends JFrame {
         testComponent.setFont(new Font("Merriweather", Font.BOLD, 14));
         testComponent.setBackground( new Color(0xFFD62246) );
         testComponent.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));
-        testComponent.setText("Filter by com.sheffield.Products.Product Type");
+        testComponent.setText("Filter by Product Type");
         productPagePanel.add(testComponent);
 
         productBasketButton.setLocation(0,157);
@@ -197,13 +204,14 @@ public class ProductPageUI extends JFrame {
         productTypeFilterLabel.setFont(new Font("Merriweather", Font.BOLD, 14));
         productTypeFilterLabel.setBackground( new Color(0xFFD62246) );
         productTypeFilterLabel.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));
-        productTypeFilterLabel.setText("Filter by com.sheffield.Products.Product Type");
+        productTypeFilterLabel.setText("Filter by Product Type");
         productPagePanel.add(productTypeFilterLabel);
 
         productTypeFilterCombo.setLocation((int) (Math.round(xSize * 0.16)),114);
         productTypeFilterCombo.setSize((int) (Math.round(xSize * 0.14)),43);
         productTypeFilterCombo.setForeground( new Color(-1) );
         productTypeFilterCombo.setFont(new Font("Merriweather", Font.BOLD, 14));
+        productTypeFilterCombo.addItemListener(e->productTypeFilterCombo_Click());
         productTypeFilterCombo.setBackground( new Color(-2743738) );
         productTypeFilterCombo.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));
         productPagePanel.add(productTypeFilterCombo);
@@ -222,6 +230,7 @@ public class ProductPageUI extends JFrame {
         productBrandFilterCombo.setSize((int) (Math.round(xSize * 0.14)),43);
         productBrandFilterCombo.setForeground( new Color(-1) );
         productBrandFilterCombo.setFont(new Font("Merriweather", Font.BOLD, 14));
+        productBrandFilterCombo.addItemListener(e->productBrandFilterCombo_Click());
         productBrandFilterCombo.setBackground( new Color(-2743738) );
         productBrandFilterCombo.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));
         productPagePanel.add(productBrandFilterCombo);
@@ -240,6 +249,7 @@ public class ProductPageUI extends JFrame {
         productPriceFilterCombo.setSize((int) (Math.round(xSize * 0.14)),43);
         productPriceFilterCombo.setForeground( new Color(-1) );
         productPriceFilterCombo.setFont(new Font("Merriweather", Font.BOLD, 14));
+        productPriceFilterCombo.addItemListener(e->productPriceFilterCombo_Click());
         productPriceFilterCombo.setBackground( new Color(-2743738) );
         productPriceFilterCombo.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));
         productPagePanel.add(productPriceFilterCombo);
@@ -258,6 +268,7 @@ public class ProductPageUI extends JFrame {
         productScaleFilterCombo.setSize((int) (Math.round(xSize * 0.14)),43);
         productScaleFilterCombo.setForeground( new Color(-1) );
         productScaleFilterCombo.setFont(new Font("Merriweather", Font.BOLD, 14));
+        productScaleFilterCombo.addItemListener(e->productScaleFilterCombo_Click());
         productScaleFilterCombo.setBackground( new Color(-2743738) );
         productScaleFilterCombo.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));
         productPagePanel.add(productScaleFilterCombo);
@@ -294,14 +305,34 @@ public class ProductPageUI extends JFrame {
         productTrainSetsPageCount.setText("1/1");
         productPagePanel.add(productTrainSetsPageCount);
 
-        productBoxConstructor((int) (Math.round(xSize * 0.20)), 230, (int) (Math.round(xSize * 0.24)), 195,
-        0);
-        productBoxConstructor((int) (Math.round(xSize * 0.445)), 230, (int) (Math.round(xSize * 0.24)), 195
-        ,1);
-        productBoxConstructor((int) (Math.round(xSize * 0.69)), 230, (int) (Math.round(xSize * 0.24)), 195
-        ,2);
-        productBoxConstructor((int) (Math.round(xSize * 0.20)), 435, (int) (Math.round(xSize * 0.24)), 195
-        ,3);
+        try {
+            DatabaseConnectionHandler dch = new DatabaseConnectionHandler();
+            DatabaseOperations dop = new DatabaseOperations();
+            dch.openConnection();
+            TrainSet[] trainSetList = new TrainSet[100];
+            dop.getTrainSets(dch.getConnection(), trainSetList);
+            if (trainSetList[0] != null) {
+            productBoxConstructor((int) (Math.round(xSize * 0.20)), 230, (int) (Math.round(xSize * 0.24)), 195,
+            trainSetList[0]); }
+            if (trainSetList[1] != null) {
+            productBoxConstructor((int) (Math.round(xSize * 0.445)), 230, (int) (Math.round(xSize * 0.24)), 195
+            ,trainSetList[1]); }
+            if (trainSetList[2] != null) {
+            productBoxConstructor((int) (Math.round(xSize * 0.69)), 230, (int) (Math.round(xSize * 0.24)), 195
+            ,trainSetList[2]); }
+            if (trainSetList[3] != null) {
+            productBoxConstructor((int) (Math.round(xSize * 0.20)), 435, (int) (Math.round(xSize * 0.24)), 195
+            ,trainSetList[3]); }
+            if (trainSetList[4] != null) {
+            productBoxConstructor((int) (Math.round(xSize * 0.445)), 435, (int) (Math.round(xSize * 0.24)), 195
+            ,trainSetList[4]); }
+            if (trainSetList[5] != null) {
+            productBoxConstructor((int) (Math.round(xSize * 0.69)), 435, (int) (Math.round(xSize * 0.24)), 195
+            ,trainSetList[5]); }
+            dch.closeConnection();
+        } catch (SQLException e) {
+        e.printStackTrace();
+        }
 
         productTrainSetsBorder.setLocation((int) (Math.round(xSize * 0.19)),175);
         productTrainSetsBorder.setSize((int) (Math.round(xSize * 0.75)),464);
@@ -319,14 +350,7 @@ public class ProductPageUI extends JFrame {
         productPagePanel.setVisible(true);
     }
 
-    public void productBoxConstructor(int x, int y, int width, int height, int recordNum) {
-        try {
-            DatabaseConnectionHandler dch = new DatabaseConnectionHandler();
-            DatabaseOperations dop = new DatabaseOperations();
-            dch.openConnection();
-            TrainSet[] trainSetList = new TrainSet[100];
-            dop.getTrainSets(dch.getConnection(), trainSetList);
-            TrainSet trainSet = trainSetList[recordNum];
+    public void productBoxConstructor(int x, int y, int width, int height, TrainSet trainSet) {
             ProductBox productBox = new ProductBox();
             productBox.setLocation(x, y);
             productBox.setSize(width, height);
@@ -335,10 +359,6 @@ public class ProductPageUI extends JFrame {
             productBox.initBox(trainSet.getProductCode(), trainSet.getBrandName(), trainSet.getProductName(), trainSet.getRetailPrice(),
             trainSet.getModellingScale(), trainSet.getStockCount());
             productPagePanel.add(productBox);
-            dch.closeConnection();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
     }
 
     public void productAccountButton_Click()
@@ -348,9 +368,20 @@ public class ProductPageUI extends JFrame {
         accountPage.initFrame();
     }
     public void productBasketButton_Click()
-    {
-        System.out.println("productBasketButton_Click() has been pressed ");
-    }
+    { System.out.println("productBasketButton_Click() has been pressed "); }
     public void productStaffPageButton_Click() { System.out.println("Placeholder"); }
+
+    public void productTypeFilterCombo_Click() {
+
+    }
+    public void productBrandFilterCombo_Click() {
+
+    }
+    public void productPriceFilterCombo_Click() {
+
+    }
+    public void productScaleFilterCombo_Click() {
+
+    }
 
 }
