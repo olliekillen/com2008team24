@@ -1,7 +1,5 @@
 package com.sheffield.UI;
 
-import com.sheffield.UI.HomePageUI;
-
 public class Launcher {
 
 	public static void main(String[] args) {
