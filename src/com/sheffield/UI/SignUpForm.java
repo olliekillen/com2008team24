@@ -1,0 +1,124 @@
+package com.sheffield.UI;
+
+import javax.swing.*;
+import java.awt.*;
+
+public class SignUpForm extends JPanel {
+
+    public SignUpForm(MyFrame myFrame){
+        setLayout(new GridBagLayout());
+        GridBagConstraints constraints = new GridBagConstraints();
+        // Spaces the form vertically so it is centred.
+        add(Box.createVerticalGlue());
+        // Adds padding to the grid boxes.
+        constraints.insets = new Insets(0, 10, 0, 10);
+        // Positions component in the GridBagLayout.
+        constraints.gridx = 0;
+        constraints.gridy = 0;
+        constraints.gridwidth = 2;
+        // Creates sign up label.
+        add(new CustomLabel("Sign Up",30, 0, 0, 30, 0), constraints);
+        // Positions component in the GridBagLayout.
+        constraints.gridx = 0;
+        constraints.gridy = 1;
+        constraints.gridwidth = 1;
+        // Creates forename label and field.
+        CustomTextField forenameField = new CustomTextField(20, 5);
+        add(new CustomLabel("Forename", 15), constraints);
+        constraints.gridy = 2;
+        add(forenameField.getFieldInPanel(new JPanel()), constraints);
+        // Positions component in the GridBagLayout.
+        constraints.gridx = 0;
+        constraints.gridy = 3;
+        constraints.gridwidth = 1;
+        // Creates surname label and field.
+        CustomTextField surnameField = new CustomTextField(20, 5);
+        add(new CustomLabel("Surname", 15), constraints);
+        constraints.gridy = 4;
+        add(surnameField.getFieldInPanel(new JPanel()), constraints);;
+        // Positions component in the GridBagLayout.
+        constraints.gridx = 0;
+        constraints.gridy = 5;
+        constraints.gridwidth = 1;
+        // Creates email label and field.
+        CustomTextField emailField = new CustomTextField(20, 5);
+        add(new CustomLabel("Email", 15), constraints);
+        constraints.gridy = 6;
+        add(emailField.getFieldInPanel(new JPanel()), constraints);
+        // Positions component in the GridBagLayout.
+        constraints.gridx = 0;
+        constraints.gridy = 7;
+        constraints.gridwidth = 1;
+        // Creates password label and field.
+        CustomTextField passwordField = new CustomTextField(20, 5);
+        add(new CustomLabel("Password", 15), constraints);
+        constraints.gridy = 8;
+        add(passwordField.getFieldInPanel(new JPanel()), constraints);
+        // Positions component in the GridBagLayout.
+        constraints.gridx = 0;
+        constraints.gridy = 9;
+        constraints.gridwidth = 1;
+        // Creates confirm password label and field.
+        CustomTextField confirmPasswordField = new CustomTextField(20, 5);
+        add(new CustomLabel("Confirm Password", 15), constraints);
+        constraints.gridy = 10;
+        add(confirmPasswordField.getFieldInPanel(new JPanel()), constraints);
+        // Positions component in the GridBagLayout.
+        constraints.gridx = 1;
+        constraints.gridy = 1;
+        constraints.gridwidth = 1;
+        // Creates post code label and field.
+        CustomTextField postcodeField = new CustomTextField(20, 5);
+        add(new CustomLabel("Postcode", 15), constraints);
+        constraints.gridy = 2;
+        add(postcodeField.getFieldInPanel(new JPanel()), constraints);
+        // Positions component in the GridBagLayout.
+        constraints.gridx = 1;
+        constraints.gridy = 3;
+        constraints.gridwidth = 1;
+        // Creates house number label and field.
+        CustomTextField houseNumberField = new CustomTextField(20, 5);
+        add(new CustomLabel("House Number", 15), constraints);
+        constraints.gridy = 4;
+        add(houseNumberField.getFieldInPanel(new JPanel()), constraints);
+        // Positions component in the GridBagLayout.
+        constraints.gridx = 1;
+        constraints.gridy = 5;
+        constraints.gridwidth = 1;
+        // Creates road name label and field.
+        CustomTextField roadNameField = new CustomTextField(20, 5);
+        add(new CustomLabel("Road Name", 15), constraints);
+        constraints.gridy = 6;
+        add(roadNameField.getFieldInPanel(new JPanel()), constraints);
+        // Positions component in the GridBagLayout.
+        constraints.gridx = 1;
+        constraints.gridy = 7;
+        constraints.gridwidth = 1;
+        // Creates city name label and field.
+        CustomTextField cityNameField = new CustomTextField(20, 5);
+        add(new CustomLabel("City Name", 15), constraints);
+        constraints.gridy = 8;
+        add(cityNameField.getFieldInPanel(new JPanel()), constraints);
+        // Positions component in the GridBagLayout.
+        constraints.insets = new Insets(10, 0, 0, 0);
+        constraints.gridx = 0;
+        constraints.gridy = 11;
+        constraints.gridwidth = 2;
+        // Creates and places button at bottom of form.
+        CustomButton signUpButton = new CustomButton("Sign Up", 10, 30, 10, 30);
+        addListener(signUpButton, forenameField, surnameField, emailField, passwordField,
+                confirmPasswordField, postcodeField, houseNumberField, roadNameField, cityNameField);
+        add(signUpButton.getButtonInPanel(new JPanel()), constraints);
+        // Spaces the form vertically so it is centred.
+        add(Box.createVerticalGlue());
+
+    }
+
+    private void addListener(JButton signUpButton, JTextField fornameField, JTextField surnameField,
+                             JTextField emailField, JTextField passwordField, JTextField confirmPassword,
+                             JTextField postcodeField, JTextField houseNumberField, JTextField roadNameField, JTextField cityNameField) {
+        signUpButton.addActionListener(e -> {
+
+        });
+    }
+}
