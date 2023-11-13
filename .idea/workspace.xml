@@ -6,19 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="d8c3e42c-1391-466e-bdbd-038550dee454" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/UI/MyFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/UI/MyFrame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/UI/NavBar.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/UI/NavBar.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sheffield/UI/CharacterLimitDocument.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/UI/CharacterLimitDocument.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sheffield/UI/CustomButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/UI/CustomButton.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sheffield/UI/CustomLabel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/UI/CustomLabel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sheffield/UI/CustomTextField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/UI/CustomTextField.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sheffield/UI/HomePageUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/UI/HomePageUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/sheffield/UI/LoginForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/UI/LoginForm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sheffield/UI/LoginUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/UI/LoginUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sheffield/UI/MyFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/UI/MyFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sheffield/UI/NavBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/UI/NavBar.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/sheffield/UI/SignUpForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/UI/SignUpForm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sheffield/UI/SignUpUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/UI/SignUpUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,20 +36,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors.Java",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -76,7 +66,8 @@
       <workItem from="1699711199555" duration="2000" />
       <workItem from="1699727214334" duration="3013000" />
       <workItem from="1699802521924" duration="758000" />
-      <workItem from="1699831076779" duration="3351000" />
+      <workItem from="1699831076779" duration="3455000" />
+      <workItem from="1699878780488" duration="8339000" />
     </task>
     <servers />
   </component>

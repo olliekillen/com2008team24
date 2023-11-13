@@ -27,7 +27,7 @@ public class LoginForm extends JPanel {
         add(new CustomLabel("Email", 15));
         add(loginEmailField.getFieldInPanel(new JPanel()));
 
-        CustomTextField loginPasswordField = new CustomTextField(20, 5);
+        CustomPasswordField loginPasswordField = new CustomPasswordField(20, 5);
         add(new CustomLabel("Password", 15));
         add(loginPasswordField.getFieldInPanel(new JPanel()));
 

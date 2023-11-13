@@ -60,7 +60,7 @@ public class SignUpForm extends JPanel {
         constraints.gridy = 7;
         constraints.gridwidth = 1;
         // Creates password label and field.
-        CustomTextField passwordField = new CustomTextField(20, 5);
+        CustomPasswordField passwordField = new CustomPasswordField(20, 5);
         add(new CustomLabel("Password", 15), constraints);
         constraints.gridy = 8;
         add(passwordField.getFieldInPanel(new JPanel()), constraints);
@@ -69,7 +69,7 @@ public class SignUpForm extends JPanel {
         constraints.gridy = 9;
         constraints.gridwidth = 1;
         // Creates confirm password label and field.
-        CustomTextField confirmPasswordField = new CustomTextField(20, 5);
+        CustomPasswordField confirmPasswordField = new CustomPasswordField(20, 5);
         add(new CustomLabel("Confirm Password", 15), constraints);
         constraints.gridy = 10;
         add(confirmPasswordField.getFieldInPanel(new JPanel()), constraints);
@@ -129,7 +129,7 @@ public class SignUpForm extends JPanel {
      * validation and database entry.
      *
      * @param signUpButton The button for the listener to be added to.
-     * @param fornameField Field for the forename
+     * @param forenameField Field for the forename
      * @param surnameField Field for the surname
      * @param emailField Field for the email
      * @param passwordField Field for the password
@@ -139,12 +139,15 @@ public class SignUpForm extends JPanel {
      * @param roadNameField Field for the road name
      * @param cityNameField Field for the city name
      */
-    private void addListener(JButton signUpButton, JTextField fornameField, JTextField surnameField,
-                             JTextField emailField, JTextField passwordField, JTextField confirmPassword,
+    private void addListener(JButton signUpButton, JTextField forenameField, JTextField surnameField,
+                             JTextField emailField, JPasswordField passwordField, JPasswordField confirmPassword,
                              JTextField postcodeField, JTextField houseNumberField, JTextField roadNameField,
                              JTextField cityNameField) {
         signUpButton.addActionListener(e -> {
-
+            ValidateUserInputs userSignUpInfo = new ValidateUserInputs( forenameField.getText(), surnameField.getText(),
+                    emailField.getText(), passwordField.getPassword(), confirmPassword.getPassword(),
+                    postcodeField.getText(), houseNumberField.getText(), roadNameField.getText(),
+                    cityNameField.getText());
         });
     }
 }
