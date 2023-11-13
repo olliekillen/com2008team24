@@ -3,9 +3,19 @@ package com.sheffield.UI;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * A Class that extends JPanel to create the panel for the sign-up form.
+ * This Class also manages action events for the sign-up button.
+ *
+ * @author Daniel Vousden
+ */
+
 public class SignUpForm extends JPanel {
 
-    public SignUpForm(MyFrame myFrame){
+    /**
+     * Creates the layout of the sign-up form using a grid bag layout.
+     */
+    public SignUpForm(){
         setLayout(new GridBagLayout());
         GridBagConstraints constraints = new GridBagConstraints();
         // Spaces the form vertically so it is centred.
@@ -114,9 +124,25 @@ public class SignUpForm extends JPanel {
 
     }
 
+    /**
+     * Adds a listener to the sign-up button. Passing all fields where information must be retrieved from for later
+     * validation and database entry.
+     *
+     * @param signUpButton The button for the listener to be added to.
+     * @param fornameField Field for the forename
+     * @param surnameField Field for the surname
+     * @param emailField Field for the email
+     * @param passwordField Field for the password
+     * @param confirmPassword Field to confirm the password
+     * @param postcodeField Field for the postcode
+     * @param houseNumberField Field for the house number
+     * @param roadNameField Field for the road name
+     * @param cityNameField Field for the city name
+     */
     private void addListener(JButton signUpButton, JTextField fornameField, JTextField surnameField,
                              JTextField emailField, JTextField passwordField, JTextField confirmPassword,
-                             JTextField postcodeField, JTextField houseNumberField, JTextField roadNameField, JTextField cityNameField) {
+                             JTextField postcodeField, JTextField houseNumberField, JTextField roadNameField,
+                             JTextField cityNameField) {
         signUpButton.addActionListener(e -> {
 
         });

@@ -5,13 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d8c3e42c-1391-466e-bdbd-038550dee454" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/com/sheffield/UI/NavBar.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/UI/MyFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/UI/MyFrame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/UI/NavBar.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/UI/NavBar.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sheffield/UI/CharacterLimitDocument.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/UI/CharacterLimitDocument.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sheffield/UI/CustomButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/UI/CustomButton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sheffield/UI/CustomLabel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/UI/CustomLabel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sheffield/UI/CustomTextField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/UI/CustomTextField.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/sheffield/UI/HomePageUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/UI/HomePageUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sheffield/UI/Launcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/UI/MyFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sheffield/UI/LoginForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/UI/LoginForm.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/sheffield/UI/LoginUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/UI/LoginUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sheffield/UI/MyFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/UI/MyFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sheffield/UI/NavBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/UI/NavBar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sheffield/UI/SignUpForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/UI/SignUpForm.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/sheffield/UI/SignUpUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/UI/SignUpUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sheffield/UI/UI.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,7 +74,9 @@
       <workItem from="1699662016204" duration="11360000" />
       <workItem from="1699707248974" duration="2129000" />
       <workItem from="1699711199555" duration="2000" />
-      <workItem from="1699727214334" duration="1935000" />
+      <workItem from="1699727214334" duration="3013000" />
+      <workItem from="1699802521924" duration="758000" />
+      <workItem from="1699831076779" duration="3351000" />
     </task>
     <servers />
   </component>

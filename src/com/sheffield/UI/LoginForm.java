@@ -4,9 +4,18 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
+/**
+ * A Class that extends JPanel to create the panel for the login form.
+ * This Class also manages action events for this panel.
+ *
+ * @author Daniel Vousden
+ */
 public class LoginForm extends JPanel {
 
-    public LoginForm(MyFrame myFrame){
+    /**
+     * Creates the layout of the sign-up form using a box layout oriented on the y-axis.
+     */
+    public LoginForm(){
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
         add(Box.createVerticalGlue());
