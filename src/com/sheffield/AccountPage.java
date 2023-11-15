@@ -1,9 +1,7 @@
 package com.sheffield;
 
 import javax.swing.*;
-import javax.imageio.*;
 import java.awt.*;
-import java.awt.image.*;
 import java.io.File;
 
 //break class down into smaller parts (it should not be 600 lines).
@@ -29,7 +27,6 @@ public class AccountPage extends JFrame {
 	JLabel accountEmailText = new JLabel();
 	JLabel accountAddressText = new JLabel();
 	JLabel accountBankDetails = new JLabel();
-	JButton accountDetailAreaInfo = new JButton();
 	JButton nameEditButton = new JButton();
 	JButton passwordEditButton = new JButton();
 	JButton emailEditButton = new JButton();
