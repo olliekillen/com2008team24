@@ -14,48 +14,29 @@ public class AccountPage extends JFrame {
 	int xSize = ((int) tk.getScreenSize().getWidth());
 	int ySize = ((int) tk.getScreenSize().getHeight());
 
-	JPanel productPagePanel = new JPanel(null);
-	JScrollPane productPageScrollPane = new JScrollPane(null);
+	JPanel accountPagePanel = new JPanel(null);
+	JScrollPane accountPageScrollPanel = new JScrollPane(null);
 
-	JLabel profilePicture = new JLabel();
 	JLabel pageTitle = new JLabel();
-	JButton accountButton = new JButton();
+	JButton productButton = new JButton();
 	JButton productBasketButton = new JButton();
 	JButton staffButton = new JButton();
-	JLabel productSidebar = new JLabel();
+	JLabel pageSideBar = new JLabel();
 	JLabel accountDetailTitleText = new JLabel();
 	JLabel accountDetailArea = new JLabel();
 	JLabel accountNameText = new JLabel();
 	JLabel accountPasswordText = new JLabel();
 	JLabel accountEmailText = new JLabel();
-	JLabel accountDetailAreaBrand = new JLabel();
+	JLabel accountAddressText = new JLabel();
 	JLabel accountBankDetails = new JLabel();
 	JButton accountDetailAreaInfo = new JButton();
-	JButton accountEditButton = new JButton();
-	JLabel productTrainSets2 = new JLabel();
-	JLabel productTrainSets2Name = new JLabel();
-	JLabel productTrainSets2Price = new JLabel();
-	JLabel productTrainSets2Code = new JLabel();
-	JLabel productTrainSets2Brand = new JLabel();
-	JLabel productTrainSets2Scale = new JLabel();
-	JButton productTrainSets2Info = new JButton();
-	JButton productTrainSets2Cart = new JButton();
-	JLabel productTrainSets3 = new JLabel();
-	JLabel productTrainSets3Name = new JLabel();
-	JLabel productTrainSets3Price = new JLabel();
-	JLabel productTrainSets3Code = new JLabel();
-	JLabel productTrainSets3Brand = new JLabel();
-	JLabel productTrainSets3Scale = new JLabel();
-	JButton productTrainSets3Info = new JButton();
-	JButton productTrainSets3Cart = new JButton();
-	JLabel productTrainSets4 = new JLabel();
-	JLabel productTrainSets4Name = new JLabel();
-	JLabel productTrainSets4Price = new JLabel();
-	JLabel productTrainSets4Code = new JLabel();
-	JLabel productTrainSets4Brand = new JLabel();
-	JLabel productTrainSets4Scale = new JLabel();
-	JButton productTrainSets4Info = new JButton();
-	JButton productTrainSets4Cart = new JButton();
+	JButton nameEditButton = new JButton();
+	JButton passwordEditButton = new JButton();
+	JButton emailEditButton = new JButton();
+
+	JButton addressEditButton = new JButton();
+
+	JButton bankEditButton = new JButton();
 	JLabel accountDetailBackGround = new JLabel();
 	JLabel acountPageBackground = new JLabel();
 
@@ -71,12 +52,12 @@ public class AccountPage extends JFrame {
 
 		initPanel();
 
-		productPageScrollPane.setViewportView(productPagePanel);
-		productPageScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-		productPageScrollPane.setSize((Math.round(xSize)), (Math.round(ySize)));
-		//JScrollBar verticalScrollBar = productPageScrollPane.createVerticalScrollBar();
+		accountPageScrollPanel.setViewportView(accountPagePanel);
+		accountPageScrollPanel.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		accountPageScrollPanel.setSize((Math.round(xSize)), (Math.round(ySize)));
+		//JScrollBar verticalScrollBar = accountPageScrollPanel.createVerticalScrollBar();
 		//verticalScrollBar.setSize((int) (Math.round(xSize * 0.001)),2000);
-		this.add(productPageScrollPane, "align right");
+		this.add(accountPageScrollPanel, "align right");
 		//this.add(verticalScrollBar);
 		this.setVisible(true);
 	}
@@ -119,29 +100,19 @@ public class AccountPage extends JFrame {
 		pageTitle.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));
 		pageTitle.setText("Trains of Sheffield");
 		pageTitle.setHorizontalAlignment(SwingConstants.CENTER);
-		productPagePanel.add(pageTitle);
+		accountPagePanel.add(pageTitle);
 
-		accountButton.setLocation(0,70);
-		accountButton.setSize((int) (Math.round(xSize * 0.16)),87);
-		accountButton.setForeground( new Color(-1) );
-		accountButton.setFont(new Font("Merriweather", Font.BOLD, 21));
-		accountButton.addActionListener(e->accountButton_Click());
-		accountButton.setBackground( new Color(-2743738) );
-		accountButton.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));
-		accountButton.setText("   Account");
-		accountButton.setHorizontalAlignment(SwingConstants.LEFT);
-		try {
-			BufferedImage profilePictureImg = ImageIO.read(new File("profilePicture.png"));
-			Image profilePictureImgResized = profilePictureImg.getScaledInstance(70, 70, Image.SCALE_DEFAULT);
-			profilePicture.setIcon(new ImageIcon(profilePictureImgResized));
-		} catch (Exception e) {
-			System.out.println("The file was not found.");
-			e.printStackTrace();
-		}
-		//profilePicture.setLocation((int) (Math.round(xSize * 0.12)),70);
-		profilePicture.setSize(70,70);
-		accountButton.add(profilePicture);
-		productPagePanel.add(accountButton);
+		productButton.setLocation(0,70);
+		productButton.setSize((int) (Math.round(xSize * 0.16)),87);
+		productButton.setForeground( new Color(-1) );
+		productButton.setFont(new Font("Merriweather", Font.BOLD, 21));
+		productButton.addActionListener(e->productButton_Click());
+		productButton.setBackground( new Color(-2743738) );
+		productButton.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));
+		productButton.setText("   Product Page");
+		productButton.setHorizontalAlignment(SwingConstants.LEFT);
+
+		accountPagePanel.add(productButton);
 
 		productBasketButton.setLocation(0,157);
 		productBasketButton.setSize((int) (Math.round(xSize * 0.16)),87);
@@ -152,7 +123,7 @@ public class AccountPage extends JFrame {
 		productBasketButton.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));
 		productBasketButton.setText("   Basket");
 		productBasketButton.setHorizontalAlignment(SwingConstants.LEFT);
-		productPagePanel.add(productBasketButton);
+		accountPagePanel.add(productBasketButton);
 
 		staffButton.setLocation(0,244);
 		staffButton.setSize((int) (Math.round(xSize * 0.16)),87);
@@ -163,13 +134,13 @@ public class AccountPage extends JFrame {
 		staffButton.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));
 		staffButton.setText("   To Staff Page");
 		staffButton.setHorizontalAlignment(SwingConstants.LEFT);
-		productPagePanel.add(staffButton);
+		accountPagePanel.add(staffButton);
 
-		productSidebar.setLocation(0,70);
-		productSidebar.setSize((int) (Math.round(xSize * 0.16)),1930);
-		productSidebar.setOpaque(true);
-		productSidebar.setBackground( new Color(-11854529) );
-		productPagePanel.add(productSidebar);
+		pageSideBar.setLocation(0,70);
+		pageSideBar.setSize((int) (Math.round(xSize * 0.16)),1930);
+		pageSideBar.setOpaque(true);
+		pageSideBar.setBackground( new Color(-11854529) );
+		accountPagePanel.add(pageSideBar);
 
 
 		accountDetailTitleText.setLocation((int) (Math.round(xSize * 0.20)),179);
@@ -178,60 +149,124 @@ public class AccountPage extends JFrame {
 		accountDetailTitleText.setFont(new Font("Merriweather", Font.BOLD, 35));
 		accountDetailTitleText.setBackground( new Color(-14995422) );
 		accountDetailTitleText.setText("Acount Details ");
-		productPagePanel.add(accountDetailTitleText);
+		accountPagePanel.add(accountDetailTitleText);
 
-		accountNameText.setLocation((int) (Math.round(xSize * 0.205)),230);
+		accountNameText.setLocation((int) (Math.round(xSize * 0.205)),240);
 		accountNameText.setSize((int) (Math.round(xSize * 0.22)),40);
 		accountNameText.setFont(new Font("Merriweather", Font.BOLD, 32));
 		accountNameText.setText("Name:");
-		productPagePanel.add(accountNameText);
+		accountPagePanel.add(accountNameText);
 
-		accountPasswordText.setLocation((int) (Math.round(xSize * 0.205)),265);
+		accountPasswordText.setLocation((int) (Math.round(xSize * 0.205)),285);
 		accountPasswordText.setSize((int) (Math.round(xSize * 0.22)),40);
 		accountPasswordText.setFont(new Font("Merriweather", Font.BOLD, 32));
 		accountPasswordText.setText("Password:");
-		productPagePanel.add(accountPasswordText);
+		accountPagePanel.add(accountPasswordText);
 
-		accountEmailText.setLocation((int) (Math.round(xSize * 0.205)),300);
+		accountEmailText.setLocation((int) (Math.round(xSize * 0.205)),340);
 		accountEmailText.setSize((int) (Math.round(xSize * 0.22)),40);
 		accountEmailText.setFont(new Font("Merriweather", Font.BOLD, 32));
 		accountEmailText.setText("Email:");
-		productPagePanel.add(accountEmailText);
+		accountPagePanel.add(accountEmailText);
 
-		accountDetailAreaBrand.setLocation((int) (Math.round(xSize * 0.205)),340);
-		accountDetailAreaBrand.setSize((int) (Math.round(xSize * 0.22)),40);
-		accountDetailAreaBrand.setFont(new Font("Merriweather", Font.BOLD, 32));
-		accountDetailAreaBrand.setText("Address:");
-		productPagePanel.add(accountDetailAreaBrand);
+		accountAddressText.setLocation((int) (Math.round(xSize * 0.205)),400);
+		accountAddressText.setSize((int) (Math.round(xSize * 0.22)),40);
+		accountAddressText.setFont(new Font("Merriweather", Font.BOLD, 32));
+		accountAddressText.setText("Address:");
+		accountPagePanel.add(accountAddressText);
 
-		accountBankDetails.setLocation((int) (Math.round(xSize * 0.205)),380);
+		accountBankDetails.setLocation((int) (Math.round(xSize * 0.205)),600);
 		accountBankDetails.setSize((int) (Math.round(xSize * 0.22)),40);
 		accountBankDetails.setFont(new Font("Merriweather", Font.BOLD, 32));
 		accountBankDetails.setText("Bank Details:");
-		productPagePanel.add(accountBankDetails);
+		accountPagePanel.add(accountBankDetails);
 
 
-		accountEditButton.setLocation((int) (Math.round(xSize * 0.375)),400);
-		accountEditButton.setSize((int) (Math.round(xSize * 0.15)),70);
-		accountEditButton.setForeground( new Color(0,191,255) );
-		accountEditButton.setFont(new Font("Merriweather", Font.BOLD, 40));
-		accountEditButton.addActionListener(e->editButton_Click());
-		accountEditButton.setOpaque(false);
-		accountEditButton.setContentAreaFilled(false);
-		accountEditButton.setFocusPainted(false);
-		accountEditButton.setOpaque(false);
-		accountEditButton.setText("edit");
-		accountEditButton.setOpaque(false);
-		accountEditButton.setBorderPainted(false); 
-        accountEditButton.setContentAreaFilled(false); 
-        accountEditButton.setFocusPainted(false); 
-		productPagePanel.add(accountEditButton);
+		nameEditButton.setLocation((int) (Math.round(xSize * 0.5)),220);
+		nameEditButton.setSize((int) (Math.round(xSize * 0.15)),70);
+		nameEditButton.setForeground( new Color(0,128,255) );
+		nameEditButton.setFont(new Font("Merriweather", Font.BOLD, 40));
+		nameEditButton.addActionListener(e->editButton_Click());
+		nameEditButton.setOpaque(false);
+		nameEditButton.setContentAreaFilled(false);
+		nameEditButton.setFocusPainted(false);
+		nameEditButton.setOpaque(false);
+		nameEditButton.setText("edit");
+		nameEditButton.setOpaque(false);
+		nameEditButton.setBorderPainted(false);
+        nameEditButton.setContentAreaFilled(false);
+        nameEditButton.setFocusPainted(false);
+		accountPagePanel.add(nameEditButton);
+
+		passwordEditButton.setLocation((int) (Math.round(xSize * 0.5)),265);
+		passwordEditButton.setSize((int) (Math.round(xSize * 0.15)),70);
+		passwordEditButton.setForeground( new Color(0,128,255) );
+		passwordEditButton.setFont(new Font("Merriweather", Font.BOLD, 40));
+		passwordEditButton.addActionListener(e->editButton_Click());
+		passwordEditButton.setOpaque(false);
+		passwordEditButton.setContentAreaFilled(false);
+		passwordEditButton.setFocusPainted(false);
+		passwordEditButton.setOpaque(false);
+		passwordEditButton.setText("edit");
+		passwordEditButton.setOpaque(false);
+		passwordEditButton.setBorderPainted(false);
+		passwordEditButton.setContentAreaFilled(false);
+		passwordEditButton.setFocusPainted(false);
+		accountPagePanel.add(passwordEditButton);
+
+		emailEditButton.setLocation((int) (Math.round(xSize * 0.5)),320);
+		emailEditButton.setSize((int) (Math.round(xSize * 0.15)),70);
+		emailEditButton.setForeground( new Color(0,128,255) );
+		emailEditButton.setFont(new Font("Merriweather", Font.BOLD, 40));
+		emailEditButton.addActionListener(e->editButton_Click());
+		emailEditButton.setOpaque(false);
+		emailEditButton.setContentAreaFilled(false);
+		emailEditButton.setFocusPainted(false);
+		emailEditButton.setOpaque(false);
+		emailEditButton.setText("edit");
+		emailEditButton.setOpaque(false);
+		emailEditButton.setBorderPainted(false);
+		emailEditButton.setContentAreaFilled(false);
+		emailEditButton.setFocusPainted(false);
+		accountPagePanel.add(emailEditButton);
+
+		addressEditButton.setLocation((int) (Math.round(xSize * 0.5)),380);
+		addressEditButton.setSize((int) (Math.round(xSize * 0.15)),70);
+		addressEditButton.setForeground( new Color(0,128,255) );
+		addressEditButton.setFont(new Font("Merriweather", Font.BOLD, 40));
+		addressEditButton.addActionListener(e->editButton_Click());
+		addressEditButton.setOpaque(false);
+		addressEditButton.setContentAreaFilled(false);
+		addressEditButton.setFocusPainted(false);
+		addressEditButton.setOpaque(false);
+		addressEditButton.setText("edit");
+		addressEditButton.setOpaque(false);
+		addressEditButton.setBorderPainted(false);
+		addressEditButton.setContentAreaFilled(false);
+		addressEditButton.setFocusPainted(false);
+		accountPagePanel.add(addressEditButton);
+
+		bankEditButton.setLocation((int) (Math.round(xSize * 0.5)),580);
+		bankEditButton.setSize((int) (Math.round(xSize * 0.15)),70);
+		bankEditButton.setForeground( new Color(0,128,255) );
+		bankEditButton.setFont(new Font("Merriweather", Font.BOLD, 40));
+		bankEditButton.addActionListener(e->editButton_Click());
+		bankEditButton.setOpaque(false);
+		bankEditButton.setContentAreaFilled(false);
+		bankEditButton.setFocusPainted(false);
+		bankEditButton.setOpaque(false);
+		bankEditButton.setText("edit");
+		bankEditButton.setOpaque(false);
+		bankEditButton.setBorderPainted(false);
+		bankEditButton.setContentAreaFilled(false);
+		bankEditButton.setFocusPainted(false);
+		accountPagePanel.add(bankEditButton);
 
 		accountDetailArea.setLocation((int) (Math.round(xSize * 0.20)),230);
 		accountDetailArea.setSize((int) (Math.round(xSize * 0.72)),750); // Account Detail inner background
 		accountDetailArea.setOpaque(true);
 		accountDetailArea.setBackground( new Color(-1) );
-		productPagePanel.add(accountDetailArea);
+		accountPagePanel.add(accountDetailArea);
 
 
 		accountDetailBackGround.setLocation((int) (Math.round(xSize * 0.19)),175);
@@ -239,18 +274,18 @@ public class AccountPage extends JFrame {
 		accountDetailBackGround.setForeground( new Color(-1) );
 		accountDetailBackGround.setOpaque(true);
 		accountDetailBackGround.setBackground( new Color(-14995422) );
-		productPagePanel.add(accountDetailBackGround);
+		accountPagePanel.add(accountDetailBackGround);
 
 		acountPageBackground.setLocation(0,0);
 		acountPageBackground.setSize((Math.round(xSize)),9000);
 		acountPageBackground.setOpaque(true);
 		acountPageBackground.setBackground( new Color(-8741250) );
-		productPagePanel.add(acountPageBackground);
+		accountPagePanel.add(acountPageBackground);
 
-		productPagePanel.setVisible(true);
+		accountPagePanel.setVisible(true);
 	}
 
-	public void accountButton_Click()
+	public void productButton_Click()
 	{
 		final ProductPageUI productPage = new ProductPageUI();
 		productPage.initPanel();
@@ -266,7 +301,7 @@ public class AccountPage extends JFrame {
 	}
 	public void editButton_Click()
 	{
-		System.out.println("Placeholder");
+		System.out.println("Edit button has been pressed");
 	}
 
 
