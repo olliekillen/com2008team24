@@ -13,7 +13,6 @@ public class AccountPage extends JFrame {
 	int ySize = ((int) tk.getScreenSize().getHeight());
 
 	JPanel accountPagePanel = new JPanel(null);
-	JScrollPane accountPageScrollPanel = new JScrollPane(null);
 
 	JLabel pageTitle = new JLabel();
 	JButton accountButton = new JButton();
@@ -48,15 +47,6 @@ public class AccountPage extends JFrame {
 		this.setSize((Math.round(xSize)),9000);
 
 		initPanel();
-
-		accountPageScrollPanel.setViewportView(accountPagePanel);
-		accountPageScrollPanel.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-		accountPageScrollPanel.setSize((Math.round(xSize)), (Math.round(ySize)));
-		//JScrollBar verticalScrollBar = accountPageScrollPanel.createVerticalScrollBar();
-		//verticalScrollBar.setSize((int) (Math.round(xSize * 0.001)),2000);
-		this.add(accountPageScrollPanel, "align right");
-		//this.add(verticalScrollBar);
-		this.setVisible(true);
 	}
 
 	public void initPanel()

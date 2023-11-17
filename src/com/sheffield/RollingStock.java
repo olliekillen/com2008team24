@@ -31,7 +31,7 @@ public class RollingStock extends Product {
     }
 
     private boolean isValidHistoricalEra(String historicalEra) {
-        return historicalEra != null && historicalEra.length() <= 7;
+        return historicalEra != null && historicalEra.length() <= 8;
     }
 
 }

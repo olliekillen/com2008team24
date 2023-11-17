@@ -1,24 +1,26 @@
 package com.sheffield;
 
+import com.sheffield.Products.Product;
 import javax.swing.*;
 import javax.imageio.*;
 import java.awt.*;
 import java.awt.image.*;
 import java.io.File;
-import java.sql.SQLException;
+import java.util.List;
 
 public class ProductPageUI extends JFrame {
 
     Toolkit tk = Toolkit.getDefaultToolkit();
     int xSize = ((int) tk.getScreenSize().getWidth());
     int ySize = ((int) tk.getScreenSize().getHeight());
+    int n = 0;
 
     JPanel productPagePanel = new JPanel(null);
     JScrollPane productPageScrollPane = new JScrollPane(null);
 
     JLabel testComponent = new JLabel();
-    JLabel leftArrow = new JLabel();
-    JLabel rightArrow = new JLabel();
+    JButton leftArrow = new JButton();
+    JButton rightArrow = new JButton();
     JLabel profilePicture = new JLabel();
     JLabel productHeader = new JLabel();
     JButton productAccountButton = new JButton();
@@ -41,13 +43,7 @@ public class ProductPageUI extends JFrame {
     JComboBox<String> productScaleFilterCombo = new JComboBox<>(productScaleFilterComboData);
     JTextField productSearch = new JTextField();
     JLabel productFilterBar =  new JLabel();
-    JLabel productTrainSetsText = new JLabel();
-    JLabel productTrainSetsPageCount = new JLabel();
-    ProductBox productBox1 = new ProductBox();
-    ProductBox productBox2 = new ProductBox();
-    ProductBox productBox3 = new ProductBox();
-    ProductBox productBox4 = new ProductBox();
-    JLabel productTrainSetsBorder = new JLabel();
+    JPanel productAreaBorder = new JPanel(null);
     JLabel productBackground = new JLabel();
 
     JLabel padding = new JLabel("");
@@ -108,6 +104,11 @@ public class ProductPageUI extends JFrame {
         }
         leftArrow.setLocation((int) (Math.round(xSize * 0.18)),413);
         leftArrow.setSize(30,30);
+        leftArrow.addActionListener(e->leftArrow_Click());
+        leftArrow.setBorderPainted(false);
+        leftArrow.setContentAreaFilled(false);
+        leftArrow.setFocusPainted(false);
+        leftArrow.setOpaque(false);
         productPagePanel.add(leftArrow);
 
         try {
@@ -121,6 +122,11 @@ public class ProductPageUI extends JFrame {
         }
         rightArrow.setLocation((int) (Math.round(xSize * 0.925)),413);
         rightArrow.setSize(30,30);
+        rightArrow.addActionListener(e->rightArrow_Click());
+        rightArrow.setBorderPainted(false);
+        rightArrow.setContentAreaFilled(false);
+        rightArrow.setFocusPainted(false);
+        rightArrow.setOpaque(false);
         productPagePanel.add(rightArrow);
 
         productHeader.setLocation(0,0);
@@ -289,57 +295,17 @@ public class ProductPageUI extends JFrame {
         productFilterBar.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));
         productPagePanel.add(productFilterBar);
 
-        productTrainSetsText.setLocation((int) (Math.round(xSize * 0.20)),179);
-        productTrainSetsText.setSize((int) (Math.round(xSize * 0.22)),44);
-        productTrainSetsText.setForeground( new Color(-1) );
-        productTrainSetsText.setFont(new Font("Merriweather", Font.BOLD, 35));
-        productTrainSetsText.setBackground( new Color(-14995422) );
-        productTrainSetsText.setText("Train Sets");
-        productPagePanel.add(productTrainSetsText);
+        generateProductAreaComponents();
 
-        productTrainSetsPageCount.setLocation((int) (Math.round(xSize * 0.87)),179);
-        productTrainSetsPageCount.setSize((int) (Math.round(xSize * 0.06)),40);
-        productTrainSetsPageCount.setForeground( new Color(-1) );
-        productTrainSetsPageCount.setFont(new Font("Merriweather", Font.BOLD, 35));
-        productTrainSetsPageCount.setBackground( new Color(-14995422) );
-        productTrainSetsPageCount.setText("1/1");
-        productPagePanel.add(productTrainSetsPageCount);
+        ProductBoxData productBoxData = new ProductBoxData();
+        productBoxData.initProductBoxData(this, productTypeFilterCombo, 0);
 
-        try {
-            DatabaseConnectionHandler dch = new DatabaseConnectionHandler();
-            DatabaseOperations dop = new DatabaseOperations();
-            dch.openConnection();
-            TrainSet[] trainSetList = new TrainSet[100];
-            dop.getTrainSets(dch.getConnection(), trainSetList);
-            if (trainSetList[0] != null) {
-            productBoxConstructor((int) (Math.round(xSize * 0.20)), 230, (int) (Math.round(xSize * 0.24)), 195,
-            trainSetList[0]); }
-            if (trainSetList[1] != null) {
-            productBoxConstructor((int) (Math.round(xSize * 0.445)), 230, (int) (Math.round(xSize * 0.24)), 195
-            ,trainSetList[1]); }
-            if (trainSetList[2] != null) {
-            productBoxConstructor((int) (Math.round(xSize * 0.69)), 230, (int) (Math.round(xSize * 0.24)), 195
-            ,trainSetList[2]); }
-            if (trainSetList[3] != null) {
-            productBoxConstructor((int) (Math.round(xSize * 0.20)), 435, (int) (Math.round(xSize * 0.24)), 195
-            ,trainSetList[3]); }
-            if (trainSetList[4] != null) {
-            productBoxConstructor((int) (Math.round(xSize * 0.445)), 435, (int) (Math.round(xSize * 0.24)), 195
-            ,trainSetList[4]); }
-            if (trainSetList[5] != null) {
-            productBoxConstructor((int) (Math.round(xSize * 0.69)), 435, (int) (Math.round(xSize * 0.24)), 195
-            ,trainSetList[5]); }
-            dch.closeConnection();
-        } catch (SQLException e) {
-        e.printStackTrace();
-        }
-
-        productTrainSetsBorder.setLocation((int) (Math.round(xSize * 0.19)),175);
-        productTrainSetsBorder.setSize((int) (Math.round(xSize * 0.75)),464);
-        productTrainSetsBorder.setForeground( new Color(-1) );
-        productTrainSetsBorder.setOpaque(true);
-        productTrainSetsBorder.setBackground( new Color(-14995422) );
-        productPagePanel.add(productTrainSetsBorder);
+        productAreaBorder.setLocation((int) (Math.round(xSize * 0.19)),175);
+        productAreaBorder.setSize((int) (Math.round(xSize * 0.75)),464);
+        productAreaBorder.setForeground( new Color(-1) );
+        productAreaBorder.setOpaque(true);
+        productAreaBorder.setBackground( new Color(-14995422) );
+        productPagePanel.add(productAreaBorder);
 
         productBackground.setLocation(0,0);
         productBackground.setSize((Math.round(xSize)),9000);
@@ -350,19 +316,23 @@ public class ProductPageUI extends JFrame {
         productPagePanel.setVisible(true);
     }
 
-    public void productBoxConstructor(int x, int y, int width, int height, TrainSet trainSet) {
+    public void productBoxConstructor(int x, int y, int width, int height, Product product) {
+            //a product box is added in the position specified only if there is a valid product to be represented inside
             ProductBox productBox = new ProductBox();
             productBox.setLocation(x, y);
             productBox.setSize(width, height);
             productBox.setOpaque(true);
             productBox.setBackground(new Color(-1));
-            productBox.initBox(trainSet.getProductCode(), trainSet.getBrandName(), trainSet.getProductName(), trainSet.getRetailPrice(),
-            trainSet.getModellingScale(), trainSet.getStockCount());
-            productPagePanel.add(productBox);
+            productBox.initBox(product.getProductCode(), product.getBrandName(), product.getProductName(),
+            product.getRetailPrice(), product.getModellingScale());
+            productBox.validate();
+            productBox.repaint();
+            productAreaBorder.add(productBox);
     }
 
     public void productAccountButton_Click()
     {
+        //takes the user to the account page
         AccountPage accountPage = new AccountPage();
         accountPage.initPanel();
         accountPage.initFrame();
@@ -371,17 +341,107 @@ public class ProductPageUI extends JFrame {
     { System.out.println("productBasketButton_Click() has been pressed "); }
     public void productStaffPageButton_Click() { System.out.println("Placeholder"); }
 
-    public void productTypeFilterCombo_Click() {
+    public void generateProductAreaComponents() {
+        JLabel productAreaText = new JLabel();
+        productAreaText.setLocation((int) (Math.round(xSize * 0.01)),4);
+        productAreaText.setSize((int) (Math.round(xSize * 0.22)),44);
+        productAreaText.setForeground( new Color(-1) );
+        productAreaText.setFont(new Font("Merriweather", Font.BOLD, 35));
+        productAreaText.setBackground( new Color(-14995422) );
+        productAreaText.setText(productTypeFilterCombo.getSelectedItem().toString());
+        productAreaBorder.add(productAreaText);
 
+        JLabel productAreaPageCount = new JLabel();
+        productAreaPageCount.setLocation((int) (Math.round(xSize * 0.68)),4);
+        productAreaPageCount.setSize((int) (Math.round(xSize * 0.06)),40);
+        productAreaPageCount.setForeground( new Color(-1) );
+        productAreaPageCount.setFont(new Font("Merriweather", Font.BOLD, 35));
+        productAreaPageCount.setBackground( new Color(-14995422) );
+        setPageCount(productAreaPageCount);
+        productAreaBorder.add(productAreaPageCount);
+    }
+
+    public void setPageCount(JLabel productAreaPageCount) {
+        ProductRetriever productRetriever = new ProductRetriever();
+        List<Product> productList = productRetriever.getProductsFromDatabase(productTypeFilterCombo);
+        int first = n + 1;
+        int second = 1 + productList.size() / 6;
+        productAreaPageCount.setText(first + " / " + second);
+    }
+
+    public void productTypeFilterCombo_Click() {
+        //refreshes product area with boxes related to the product type picked
+        n = 0;
+        productAreaBorder.removeAll();
+        ProductBoxData productBoxData = new ProductBoxData();
+        productBoxData.initProductBoxData(this, productTypeFilterCombo, n);
+        generateProductAreaComponents();
+        productAreaBorder.validate();
+        productAreaBorder.repaint();
     }
     public void productBrandFilterCombo_Click() {
-
+        //refreshes product area with boxes related to the brand picked
     }
     public void productPriceFilterCombo_Click() {
-
+        //refreshes product area with boxes related to the retail price picked
     }
     public void productScaleFilterCombo_Click() {
+        //refreshes product area with boxes related to the modelling scale picked
+    }
+    public void leftArrow_Click() {
+        System.out.println("n is " + n);
+        ProductRetriever productRetriever = new ProductRetriever();
+        List<Product> productList = productRetriever.getProductsFromDatabase(productTypeFilterCombo);
+        //the first if statement only activates if the page number isn't the first page (nothing happens if so)
+        if (n >= 1) {
+            if (n <= productList.size() / 6) {
+                setButtonImg(rightArrow, "src/com/sheffield/Images/rightArrowActive.png"); }
+            //the second if statement changes the left button to grey when the first page is reached
+            if (n >= 2) {
+                setButtonImg(leftArrow, "src/com/sheffield/Images/leftArrowActive.png");
+            } else { setButtonImg(leftArrow, "src/com/sheffield/Images/leftArrowInactive.png"); }
+            n = n - 1;
+            productAreaBorder.removeAll();
+            ProductBoxData productBoxData = new ProductBoxData();
+            productBoxData.initProductBoxData(this, productTypeFilterCombo, n);
+            generateProductAreaComponents();
+            productPagePanel.validate();
+            productPagePanel.repaint();
+            System.out.println("n is " + n);
+        }
+    }
+    public void rightArrow_Click() {
+        System.out.println("n is " + n);
+        ProductRetriever productRetriever = new ProductRetriever();
+        List<Product> productList = productRetriever.getProductsFromDatabase(productTypeFilterCombo);
+        //the first if statement only activates if the page number isn't the final page (nothing happens if so)
+        if (n <= productList.size() / 6 - 1) {
+            if (n >= 0) { setButtonImg(leftArrow, "src/com/sheffield/Images/leftArrowActive.png"); }
+            //the second if statement changes the right button to grey when the last page is reached
+            if (n <= productList.size() / 6 - 2) {
+                setButtonImg(rightArrow, "src/com/sheffield/Images/rightArrowActive.png");
+            } else { setButtonImg(rightArrow, "src/com/sheffield/Images/rightArrowInactive.png"); }
+            n = n + 1;
+            productAreaBorder.removeAll();
+            ProductBoxData productBoxData = new ProductBoxData();
+            productBoxData.initProductBoxData(this, productTypeFilterCombo, n);
+            generateProductAreaComponents();
+            productPagePanel.validate();
+            productPagePanel.repaint();
+            System.out.println("n is " + n);
+        }
+    }
 
+    public void setButtonImg(JButton jButton, String imgPath) {
+        try {
+            BufferedImage rightArrowImg = ImageIO.read(new File
+            (imgPath));
+            Image rightArrowImgResized = rightArrowImg.getScaledInstance(30, 30, Image.SCALE_DEFAULT);
+            jButton.setIcon(new ImageIcon(rightArrowImgResized));
+        } catch (Exception e) {
+            System.out.println("The file was not found.");
+            e.printStackTrace();
+        }
     }
 
 }
