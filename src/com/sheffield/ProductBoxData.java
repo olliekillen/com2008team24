@@ -1,15 +1,10 @@
 package com.sheffield;
 
-import com.sheffield.DatabaseConnectionHandler;
-import com.sheffield.DatabaseOperations;
-import com.sheffield.ProductPageUI;
 import com.sheffield.Products.Product;
 
 import javax.swing.*;
 import java.awt.*;
-import java.sql.SQLException;
 import java.util.List;
-import java.util.ArrayList;
 
 public class ProductBoxData {
 

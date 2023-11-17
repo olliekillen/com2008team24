@@ -11,7 +11,7 @@ public class ProductRetriever {
         try {
             String filter = productTypeFilterCombo.getSelectedItem().toString();
             DatabaseConnectionHandler dch = new DatabaseConnectionHandler();
-            DatabaseOperations dop = new DatabaseOperations();
+            ProductDatabaseOperations dop = new ProductDatabaseOperations();
             dch.openConnection();
             List<Product> productList = new ArrayList<Product>();
             switch (filter) {

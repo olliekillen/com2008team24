@@ -1,14 +1,8 @@
 package com.sheffield;
 
-import com.sheffield.Products.Product;
-
 import javax.swing.*;
-import javax.imageio.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.math.BigDecimal;
-import java.sql.SQLException;
 
 public class ProductBox extends JPanel {
 
@@ -86,12 +80,6 @@ public class ProductBox extends JPanel {
         productTrainSets.setOpaque(true);
         productTrainSets.setBackground(new Color(-1));
         this.add(productTrainSets);
-
-//        productTrainSets.setLocation((int) (Math.round(xSize * 0.20)), 230);
-//        productTrainSets.setSize((int) (Math.round(xSize * 0.24)), 195);
-//        productTrainSets.setOpaque(true);
-//        productTrainSets.setBackground(new Color(-1));
-//        this.add(productTrainSets);
     }
 
     public void productTrainSetsInfo_Click()

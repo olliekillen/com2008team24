@@ -4,8 +4,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 
-//break class down into smaller parts (it should not be 600 lines).
-
 public class AccountPage extends JFrame {
 
 	Toolkit tk = Toolkit.getDefaultToolkit();
@@ -37,7 +35,6 @@ public class AccountPage extends JFrame {
 	JLabel acountPageBackground = new JLabel();
 
 	JLabel padding = new JLabel("");
-	JScrollPane scrollPane = new JScrollPane();
 	JTextArea textArea = new JTextArea(100, 100);
 
 	public void initFrame()
@@ -47,6 +44,8 @@ public class AccountPage extends JFrame {
 		this.setSize((Math.round(xSize)),9000);
 
 		initPanel();
+		this.add(accountPagePanel);
+		this.setVisible(true);
 	}
 
 	public void initPanel()
@@ -62,21 +61,11 @@ public class AccountPage extends JFrame {
 		 * Transparent?: 15658734
 		 */
 
-		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
-		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		// Row indentation
 		textArea.setFont(new Font("SansSerif", Font.PLAIN, 12) );
 		textArea.setEditable(false);
 		textArea.setLineWrap(false);
 		textArea.append("test");
-		scrollPane.setRowHeaderView(padding);
-		scrollPane.setViewportView(textArea);
-		scrollPane.getRowHeader().setBackground(Color.WHITE);
-		scrollPane.getViewport().setBackground(Color.WHITE);
-
-
-
-
 
 		pageTitle.setLocation(0,0);
 		pageTitle.setSize((Math.round(xSize)),70);

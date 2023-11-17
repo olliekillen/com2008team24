@@ -6,6 +6,7 @@ import javax.imageio.*;
 import java.awt.*;
 import java.awt.image.*;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ProductPageUI extends JFrame {
@@ -15,8 +16,10 @@ public class ProductPageUI extends JFrame {
     int ySize = ((int) tk.getScreenSize().getHeight());
     int n = 0;
 
-    JPanel productPagePanel = new JPanel(null);
     JScrollPane productPageScrollPane = new JScrollPane(null);
+    JPanel productPagePanel = new JPanel(null);
+    ProductRetriever productRetriever = new ProductRetriever();
+    List<Product> productList = new ArrayList<Product>();
 
     JLabel testComponent = new JLabel();
     JButton leftArrow = new JButton();
@@ -55,16 +58,8 @@ public class ProductPageUI extends JFrame {
         this.setLayout(new GridLayout(1,1));
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize((Math.round(xSize)),9000);
-
         initPanel();
-
-        productPageScrollPane.setViewportView(productPagePanel);
-        productPageScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-        productPageScrollPane.setSize((Math.round(xSize)), (Math.round(ySize)));
-        //JScrollBar verticalScrollBar = productPageScrollPane.createVerticalScrollBar();
-        //verticalScrollBar.setSize((int) (Math.round(xSize * 0.001)),2000);
-        this.add(productPageScrollPane, "align right");
-        //this.add(verticalScrollBar);
+        this.add(productPagePanel);
         this.setVisible(true);
     }
 
@@ -93,15 +88,7 @@ public class ProductPageUI extends JFrame {
         scrollPane.getRowHeader().setBackground(Color.WHITE);
         scrollPane.getViewport().setBackground(Color.WHITE);
 
-        try {
-            BufferedImage leftArrowImg = ImageIO.read(new File
-            ("src/com/sheffield/Images/leftArrowInactive.png"));
-            Image leftArrowImgResized = leftArrowImg.getScaledInstance(30, 30, Image.SCALE_DEFAULT);
-            leftArrow.setIcon(new ImageIcon(leftArrowImgResized));
-        } catch (Exception e) {
-            System.out.println("The file was not found.");
-            e.printStackTrace();
-        }
+        setButtonImg(leftArrow, "src/com/sheffield/Images/leftArrowInactive.png");
         leftArrow.setLocation((int) (Math.round(xSize * 0.18)),413);
         leftArrow.setSize(30,30);
         leftArrow.addActionListener(e->leftArrow_Click());
@@ -111,6 +98,9 @@ public class ProductPageUI extends JFrame {
         leftArrow.setOpaque(false);
         productPagePanel.add(leftArrow);
 
+        List<Product> productList = productRetriever.getProductsFromDatabase(productTypeFilterCombo);
+        if (productList.size() / 6 > 0) { setButtonImg(rightArrow, "src/com/sheffield/Images/rightArrowActive.png"); }
+        else { setButtonImg(rightArrow, "src/com/sheffield/Images/rightArrowInactive.png"); }
         try {
             BufferedImage rightArrowImg = ImageIO.read(new File
             ("src/com/sheffield/Images/rightArrowActive.png"));
@@ -362,11 +352,21 @@ public class ProductPageUI extends JFrame {
     }
 
     public void setPageCount(JLabel productAreaPageCount) {
-        ProductRetriever productRetriever = new ProductRetriever();
-        List<Product> productList = productRetriever.getProductsFromDatabase(productTypeFilterCombo);
         int first = n + 1;
         int second = 1 + productList.size() / 6;
         productAreaPageCount.setText(first + " / " + second);
+    }
+
+    public void setButtonImg(JButton jButton, String imgPath) {
+        try {
+            BufferedImage rightArrowImg = ImageIO.read(new File
+            (imgPath));
+            Image rightArrowImgResized = rightArrowImg.getScaledInstance(30, 30, Image.SCALE_DEFAULT);
+            jButton.setIcon(new ImageIcon(rightArrowImgResized));
+        } catch (Exception e) {
+            System.out.println("The file was not found.");
+            e.printStackTrace();
+        }
     }
 
     public void productTypeFilterCombo_Click() {
@@ -390,8 +390,6 @@ public class ProductPageUI extends JFrame {
     }
     public void leftArrow_Click() {
         System.out.println("n is " + n);
-        ProductRetriever productRetriever = new ProductRetriever();
-        List<Product> productList = productRetriever.getProductsFromDatabase(productTypeFilterCombo);
         //the first if statement only activates if the page number isn't the first page (nothing happens if so)
         if (n >= 1) {
             if (n <= productList.size() / 6) {
@@ -412,8 +410,6 @@ public class ProductPageUI extends JFrame {
     }
     public void rightArrow_Click() {
         System.out.println("n is " + n);
-        ProductRetriever productRetriever = new ProductRetriever();
-        List<Product> productList = productRetriever.getProductsFromDatabase(productTypeFilterCombo);
         //the first if statement only activates if the page number isn't the final page (nothing happens if so)
         if (n <= productList.size() / 6 - 1) {
             if (n >= 0) { setButtonImg(leftArrow, "src/com/sheffield/Images/leftArrowActive.png"); }
@@ -429,18 +425,6 @@ public class ProductPageUI extends JFrame {
             productPagePanel.validate();
             productPagePanel.repaint();
             System.out.println("n is " + n);
-        }
-    }
-
-    public void setButtonImg(JButton jButton, String imgPath) {
-        try {
-            BufferedImage rightArrowImg = ImageIO.read(new File
-            (imgPath));
-            Image rightArrowImgResized = rightArrowImg.getScaledInstance(30, 30, Image.SCALE_DEFAULT);
-            jButton.setIcon(new ImageIcon(rightArrowImgResized));
-        } catch (Exception e) {
-            System.out.println("The file was not found.");
-            e.printStackTrace();
         }
     }
 

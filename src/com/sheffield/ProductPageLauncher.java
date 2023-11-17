@@ -1,7 +1,6 @@
 package com.sheffield;
 
 import javax.swing.*;
-import java.math.BigDecimal;
 import java.sql.SQLException;
 
 public class ProductPageLauncher {
@@ -12,7 +11,7 @@ public class ProductPageLauncher {
                 try {
                     //the database connection can be removed as long as no more data needs to be added
                     DatabaseConnectionHandler dch = new DatabaseConnectionHandler();
-                    DatabaseOperations dop = new DatabaseOperations();
+                    ProductDatabaseOperations dop = new ProductDatabaseOperations();
                     dch.openConnection();
                     ProductPageUI window = new ProductPageUI();
                     window.initFrame();

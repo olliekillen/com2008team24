@@ -8,7 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-public class DatabaseOperations {
+public class ProductDatabaseOperations {
     public void insertTrainSet(TrainSet trainSet, Connection connection) throws SQLException {
         try {
             String insertSQL = "INSERT INTO Product (productCode, brandName, productName,"+
