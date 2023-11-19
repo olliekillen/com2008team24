@@ -13,7 +13,7 @@ public class AccountPage extends JFrame {
 	JPanel accountPagePanel = new JPanel(null);
 
 	JLabel pageTitle = new JLabel();
-	JButton accountButton = new JButton();
+	JButton ProductButton = new JButton();
 	JButton accountBasketButton = new JButton();
 	JButton staffButton = new JButton();
 	JLabel accountSidebar = new JLabel();
@@ -78,15 +78,16 @@ public class AccountPage extends JFrame {
 		pageTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		accountPagePanel.add(pageTitle);
 
-		accountButton.setLocation(0,70);
-		accountButton.setSize((int) (Math.round(xSize * 0.16)),87);
-		accountButton.setForeground( new Color(-1) );
-		accountButton.setFont(new Font("Merriweather", Font.BOLD, 21));
-		accountButton.addActionListener(e->accountButton_Click());
-		accountButton.setBackground( new Color(-2743738) );
-		accountButton.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));
-		accountButton.setText("   Account");
-		accountButton.setHorizontalAlignment(SwingConstants.LEFT);
+		ProductButton.setLocation(0,70);
+		ProductButton.setSize((int) (Math.round(xSize * 0.16)),87);
+		ProductButton.setForeground( new Color(-1) );
+		ProductButton.setFont(new Font("Merriweather", Font.BOLD, 21));
+		ProductButton.addActionListener(e->ProductButton_Click());
+		ProductButton.setBackground( new Color(-2743738) );
+		ProductButton.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));
+		ProductButton.setText("   View Products");
+		ProductButton.setHorizontalAlignment(SwingConstants.LEFT);
+		accountPagePanel.add(ProductButton);
 
 		accountBasketButton.setLocation(0,157);
 		accountBasketButton.setSize((int) (Math.round(xSize * 0.16)),87);
@@ -149,7 +150,7 @@ public class AccountPage extends JFrame {
 		accountAddressText.setText("Address:");
 		accountPagePanel.add(accountAddressText);
 
-		accountBankDetails.setLocation((int) (Math.round(xSize * 0.205)),600);
+		accountBankDetails.setLocation((int) (Math.round(xSize * 0.205)),460);
 		accountBankDetails.setSize((int) (Math.round(xSize * 0.22)),40);
 		accountBankDetails.setFont(new Font("Merriweather", Font.BOLD, 32));
 		accountBankDetails.setText("Bank Details:");
@@ -220,7 +221,7 @@ public class AccountPage extends JFrame {
 		addressEditButton.setFocusPainted(false);
 		accountPagePanel.add(addressEditButton);
 
-		bankEditButton.setLocation((int) (Math.round(xSize * 0.5)),580);
+		bankEditButton.setLocation((int) (Math.round(xSize * 0.5)),440);
 		bankEditButton.setSize((int) (Math.round(xSize * 0.15)),70);
 		bankEditButton.setForeground( new Color(0,128,255) );
 		bankEditButton.setFont(new Font("Merriweather", Font.BOLD, 40));
@@ -259,7 +260,7 @@ public class AccountPage extends JFrame {
 		accountPagePanel.setVisible(true);
 	}
 
-	public void accountButton_Click()
+	public void ProductButton_Click()
 	{
 		ProductPageUI productPage = new ProductPageUI();
 		productPage.initPanel();
