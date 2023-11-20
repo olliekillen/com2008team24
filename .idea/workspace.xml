@@ -4,30 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d8c3e42c-1391-466e-bdbd-038550dee454" name="Changes" comment="Fixed product and account pages, which couldn't display due to changes in the last commit.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Team_24_Security_And_Design.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Team_24_Security_And_Design.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/AccountPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/AccountPage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/Controller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/DatabaseOperations.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/Locomotive.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/Locomotive.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/Main$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/ProductBox.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/ProductBox.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/ProductPageUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/ProductPageUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/Products/Product.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/Products/Product.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/RollingStock.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/RollingStock.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sheffield/AccountPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/AccountPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sheffield/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sheffield/IndividualProductPageUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/IndividualProductPageUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sheffield/Locomotive.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/Locomotive.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sheffield/ProductBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/ProductBox.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sheffield/ProductDatabaseOperations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/ProductDatabaseOperations.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sheffield/ProductPageUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/ProductPageUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sheffield/ProductRetriever.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/ProductRetriever.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sheffield/Products/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/Products/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sheffield/RollingStock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/RollingStock.java" afterDir="false" />
-    </list>
+    <list default="true" id="d8c3e42c-1391-466e-bdbd-038550dee454" name="Changes" comment="Individual product page is accessible from product page - data from the database doesn't appear on this page yet." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -106,7 +83,14 @@
       <option name="project" value="LOCAL" />
       <updated>1700236292159</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Individual product page is accessible from product page - data from the database doesn't appear on this page yet.">
+      <created>1700479593256</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1700479593262</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -114,17 +98,18 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Fixed product and account pages, which couldn't display due to changes in the last commit." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed product and account pages, which couldn't display due to changes in the last commit." />
+    <MESSAGE value="Individual product page is accessible from product page - data from the database doesn't appear on this page yet." />
+    <option name="LAST_COMMIT_MESSAGE" value="Individual product page is accessible from product page - data from the database doesn't appear on this page yet." />
   </component>
   <component name="WindowStateProjectService">
     <state x="446" y="43" key="#com.intellij.ide.util.MemberChooser" timestamp="1700391547008">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
     <state x="446" y="43" key="#com.intellij.ide.util.MemberChooser/0.0.1280.672@0.0.1280.672" timestamp="1700391547008" />
-    <state x="193" y="0" key="CommitChangelistDialog2" timestamp="1700236290985">
+    <state x="193" y="0" key="CommitChangelistDialog2" timestamp="1700479591188">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
-    <state x="193" y="0" key="CommitChangelistDialog2/0.0.1280.672@0.0.1280.672" timestamp="1700236290985" />
+    <state x="193" y="0" key="CommitChangelistDialog2/0.0.1280.672@0.0.1280.672" timestamp="1700479591188" />
     <state x="438" y="206" key="DetectedRootsChooserDialog" timestamp="1700404437877">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
@@ -165,14 +150,22 @@
       <screen x="0" y="0" width="1280" height="672" />
     </state>
     <state width="1237" height="201" key="GridCell.Tab.1.right/0.0.1280.672@0.0.1280.672" timestamp="1700335625868" />
+    <state x="121" y="50" key="MergeDialog" timestamp="1700479843423">
+      <screen x="0" y="0" width="1280" height="672" />
+    </state>
+    <state x="121" y="50" key="MergeDialog/0.0.1280.672@0.0.1280.672" timestamp="1700479843423" />
+    <state x="280" y="98" key="MultipleFileMergeDialog" timestamp="1700479848873">
+      <screen x="0" y="0" width="1280" height="672" />
+    </state>
+    <state x="280" y="98" key="MultipleFileMergeDialog/0.0.1280.672@0.0.1280.672" timestamp="1700479848873" />
     <state x="121" y="0" key="SettingsEditor" timestamp="1700404457116">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
     <state x="121" y="0" key="SettingsEditor/0.0.1280.672@0.0.1280.672" timestamp="1700404457116" />
-    <state x="233" y="69" key="Vcs.Push.Dialog.v2" timestamp="1700236343661">
+    <state x="233" y="69" key="Vcs.Push.Dialog.v2" timestamp="1700479597334">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
-    <state x="233" y="69" key="Vcs.Push.Dialog.v2/0.0.1280.672@0.0.1280.672" timestamp="1700236343661" />
+    <state x="233" y="69" key="Vcs.Push.Dialog.v2/0.0.1280.672@0.0.1280.672" timestamp="1700479597334" />
     <state x="303" y="0" width="672" height="678" key="search.everywhere.popup" timestamp="1700467196973">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
