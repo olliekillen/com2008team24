@@ -12,6 +12,8 @@ import java.awt.*;
 
 public class SignUpForm extends JPanel {
 
+    CustomButton signUpButton = new CustomButton("Sign Up", 10, 30, 10, 30);
+
     /**
      * Creates the layout of the sign-up form using a grid bag layout.
      */
@@ -115,8 +117,7 @@ public class SignUpForm extends JPanel {
         constraints.gridy = 11;
         constraints.gridwidth = 2;
         // Creates and places button at bottom of form.
-        CustomButton signUpButton = new CustomButton("Sign Up", 10, 30, 10, 30);
-        addListener(signUpButton, forenameField, surnameField, emailField, passwordField,
+        addListener(forenameField, surnameField, emailField, passwordField,
                 confirmPasswordField, postcodeField, houseNumberField, roadNameField, cityNameField);
         add(signUpButton.getButtonInPanel(new JPanel()), constraints);
         // Spaces the form vertically so it is centred.
@@ -128,7 +129,6 @@ public class SignUpForm extends JPanel {
      * Adds a listener to the sign-up button. Passing all fields where information must be retrieved from for later
      * validation and database entry.
      *
-     * @param signUpButton The button for the listener to be added to.
      * @param forenameField Field for the forename
      * @param surnameField Field for the surname
      * @param emailField Field for the email
@@ -139,7 +139,7 @@ public class SignUpForm extends JPanel {
      * @param roadNameField Field for the road name
      * @param cityNameField Field for the city name
      */
-    private void addListener(JButton signUpButton, JTextField forenameField, JTextField surnameField,
+    private void addListener(JTextField forenameField, JTextField surnameField,
                              JTextField emailField, JPasswordField passwordField, JPasswordField confirmPassword,
                              JTextField postcodeField, JTextField houseNumberField, JTextField roadNameField,
                              JTextField cityNameField) {

@@ -12,10 +12,12 @@ import java.awt.*;
  */
 public class LoginForm extends JPanel {
 
+    CustomButton loginButton = new CustomButton("Login", 10, 30, 10, 30);
+
     /**
      * Creates the layout of the sign-up form using a box layout oriented on the y-axis.
      */
-    public LoginForm(){
+    public LoginForm(MyFrame myFrame) {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
         add(Box.createVerticalGlue());
@@ -31,11 +33,17 @@ public class LoginForm extends JPanel {
         add(new CustomLabel("Password", 15));
         add(loginPasswordField.getFieldInPanel(new JPanel()));
 
-        add(new CustomLabel("", 0, 20, 0,0,0));
+        add(new CustomLabel("", 0, 20, 0, 0, 0));
 
-        CustomButton loginButton = new CustomButton("Login", 10, 30, 10, 30);
+        addListener(myFrame);
         add(loginButton.getButtonInPanel(new JPanel()), Component.CENTER_ALIGNMENT);
 
         add(Box.createVerticalGlue());
+    }
+
+    private void addListener(MyFrame myFrame) {
+        loginButton.addActionListener(e -> {
+            
+        });
     }
 }
