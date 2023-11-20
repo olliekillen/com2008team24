@@ -1,4 +1,4 @@
-package com.sheffield.orders;
+package com.sheffield;
 
 public class User {
     Integer userId;
