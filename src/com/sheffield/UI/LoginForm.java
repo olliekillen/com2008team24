@@ -1,8 +1,13 @@
 package com.sheffield.UI;
 
+import com.sheffield.DatabaseConnectionHandler;
+import com.sheffield.ProductDatabaseOperations;
+import com.sheffield.ProductPageUI;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.sql.SQLException;
 
 /**
  * A Class that extends JPanel to create the panel for the login form.
@@ -42,8 +47,18 @@ public class LoginForm extends JPanel {
     }
 
     private void addListener(MyFrame myFrame) {
-        loginButton.addActionListener(e -> {
-
+        loginButton.addActionListener(event -> {
+            try {
+                //the database connection can be removed as long as no more data needs to be added
+                DatabaseConnectionHandler dch = new DatabaseConnectionHandler();
+                ProductDatabaseOperations dop = new ProductDatabaseOperations();
+                dch.openConnection();
+                ProductPageUI window = new ProductPageUI();
+                window.initFrame();
+                dch.closeConnection();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         });
     }
 }

@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d8c3e42c-1391-466e-bdbd-038550dee454" name="Changes" comment="Individual product page is accessible from product page - data from the database doesn't appear on this page yet." />
+    <list default="true" id="d8c3e42c-1391-466e-bdbd-038550dee454" name="Changes" comment="Individual product page is accessible from product page - data from the database doesn't appear on this page yet.">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Team_24_Security_And_Design.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Team_24_Security_And_Design.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sheffield/UI/LoginForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/UI/LoginForm.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -23,6 +28,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 5
+}]]></component>
   <component name="ProjectId" id="2XwtE29gaUggz0A9IKHhsPxseRW" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -31,14 +39,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/mysql-connector-j-8.2.0" />
-    <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.2" />
-  </component>
-  <component name="RunManager">
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/dvous/Documents/Java Libs/mysql-connector-j-8.2.0/mysql-connector-j-8.2.0.jar",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager" selected="Application.MyFrame">
+    <configuration name="MyFrame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.sheffield.UI.MyFrame" />
+      <module name="Team_24_Security_And_Design" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.sheffield.UI.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ProductPageLauncher" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.sheffield.ProductPageLauncher" />
       <module name="Team_24_Security_And_Design" />
@@ -54,6 +83,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.MyFrame" />
         <item itemvalue="Application.ProductPageLauncher" />
       </list>
     </recent_temporary>
@@ -75,6 +105,7 @@
       <workItem from="1699802521924" duration="758000" />
       <workItem from="1699831076779" duration="3455000" />
       <workItem from="1699878780488" duration="8339000" />
+      <workItem from="1700484139830" duration="1489000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed product and account pages, which couldn't display due to changes in the last commit.">
       <created>1700236292159</created>
@@ -100,75 +131,5 @@
     <MESSAGE value="Fixed product and account pages, which couldn't display due to changes in the last commit." />
     <MESSAGE value="Individual product page is accessible from product page - data from the database doesn't appear on this page yet." />
     <option name="LAST_COMMIT_MESSAGE" value="Individual product page is accessible from product page - data from the database doesn't appear on this page yet." />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="446" y="43" key="#com.intellij.ide.util.MemberChooser" timestamp="1700391547008">
-      <screen x="0" y="0" width="1280" height="672" />
-    </state>
-    <state x="446" y="43" key="#com.intellij.ide.util.MemberChooser/0.0.1280.672@0.0.1280.672" timestamp="1700391547008" />
-    <state x="193" y="0" key="CommitChangelistDialog2" timestamp="1700479591188">
-      <screen x="0" y="0" width="1280" height="672" />
-    </state>
-    <state x="193" y="0" key="CommitChangelistDialog2/0.0.1280.672@0.0.1280.672" timestamp="1700479591188" />
-    <state x="438" y="206" key="DetectedRootsChooserDialog" timestamp="1700404437877">
-      <screen x="0" y="0" width="1280" height="672" />
-    </state>
-    <state x="438" y="206" key="DetectedRootsChooserDialog/0.0.1280.672@0.0.1280.672" timestamp="1700404437877" />
-    <state x="348" y="77" key="FileChooserDialogImpl" timestamp="1700404436075">
-      <screen x="0" y="0" width="1280" height="672" />
-    </state>
-    <state x="348" y="77" key="FileChooserDialogImpl/0.0.1280.672@0.0.1280.672" timestamp="1700404436075" />
-    <state width="1237" height="141" key="GridCell.Tab.0.bottom" timestamp="1700478956207">
-      <screen x="0" y="0" width="1280" height="672" />
-    </state>
-    <state width="1237" height="141" key="GridCell.Tab.0.bottom/0.0.1280.672@0.0.1280.672" timestamp="1700478956207" />
-    <state width="1237" height="141" key="GridCell.Tab.0.center" timestamp="1700478956206">
-      <screen x="0" y="0" width="1280" height="672" />
-    </state>
-    <state width="1237" height="141" key="GridCell.Tab.0.center/0.0.1280.672@0.0.1280.672" timestamp="1700478956206" />
-    <state width="1237" height="141" key="GridCell.Tab.0.left" timestamp="1700478956206">
-      <screen x="0" y="0" width="1280" height="672" />
-    </state>
-    <state width="1237" height="141" key="GridCell.Tab.0.left/0.0.1280.672@0.0.1280.672" timestamp="1700478956206" />
-    <state width="1237" height="141" key="GridCell.Tab.0.right" timestamp="1700478956207">
-      <screen x="0" y="0" width="1280" height="672" />
-    </state>
-    <state width="1237" height="141" key="GridCell.Tab.0.right/0.0.1280.672@0.0.1280.672" timestamp="1700478956207" />
-    <state width="1237" height="201" key="GridCell.Tab.1.bottom" timestamp="1700335625868">
-      <screen x="0" y="0" width="1280" height="672" />
-    </state>
-    <state width="1237" height="201" key="GridCell.Tab.1.bottom/0.0.1280.672@0.0.1280.672" timestamp="1700335625868" />
-    <state width="1237" height="201" key="GridCell.Tab.1.center" timestamp="1700335625868">
-      <screen x="0" y="0" width="1280" height="672" />
-    </state>
-    <state width="1237" height="201" key="GridCell.Tab.1.center/0.0.1280.672@0.0.1280.672" timestamp="1700335625868" />
-    <state width="1237" height="201" key="GridCell.Tab.1.left" timestamp="1700335625868">
-      <screen x="0" y="0" width="1280" height="672" />
-    </state>
-    <state width="1237" height="201" key="GridCell.Tab.1.left/0.0.1280.672@0.0.1280.672" timestamp="1700335625868" />
-    <state width="1237" height="201" key="GridCell.Tab.1.right" timestamp="1700335625868">
-      <screen x="0" y="0" width="1280" height="672" />
-    </state>
-    <state width="1237" height="201" key="GridCell.Tab.1.right/0.0.1280.672@0.0.1280.672" timestamp="1700335625868" />
-    <state x="121" y="50" key="MergeDialog" timestamp="1700479843423">
-      <screen x="0" y="0" width="1280" height="672" />
-    </state>
-    <state x="121" y="50" key="MergeDialog/0.0.1280.672@0.0.1280.672" timestamp="1700479843423" />
-    <state x="280" y="98" key="MultipleFileMergeDialog" timestamp="1700479848873">
-      <screen x="0" y="0" width="1280" height="672" />
-    </state>
-    <state x="280" y="98" key="MultipleFileMergeDialog/0.0.1280.672@0.0.1280.672" timestamp="1700479848873" />
-    <state x="121" y="0" key="SettingsEditor" timestamp="1700404457116">
-      <screen x="0" y="0" width="1280" height="672" />
-    </state>
-    <state x="121" y="0" key="SettingsEditor/0.0.1280.672@0.0.1280.672" timestamp="1700404457116" />
-    <state x="233" y="69" key="Vcs.Push.Dialog.v2" timestamp="1700479597334">
-      <screen x="0" y="0" width="1280" height="672" />
-    </state>
-    <state x="233" y="69" key="Vcs.Push.Dialog.v2/0.0.1280.672@0.0.1280.672" timestamp="1700479597334" />
-    <state x="303" y="0" width="672" height="678" key="search.everywhere.popup" timestamp="1700467196973">
-      <screen x="0" y="0" width="1280" height="672" />
-    </state>
-    <state x="303" y="0" width="672" height="678" key="search.everywhere.popup/0.0.1280.672@0.0.1280.672" timestamp="1700467196973" />
   </component>
 </project>
