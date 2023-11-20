@@ -150,7 +150,7 @@ public class AccountPage extends JFrame {
 		accountAddressText.setText("Address:");
 		accountPagePanel.add(accountAddressText);
 
-		accountBankDetails.setLocation((int) (Math.round(xSize * 0.205)),600);
+		accountBankDetails.setLocation((int) (Math.round(xSize * 0.205)),460);
 		accountBankDetails.setSize((int) (Math.round(xSize * 0.22)),40);
 		accountBankDetails.setFont(new Font("Merriweather", Font.BOLD, 32));
 		accountBankDetails.setText("Bank Details:");
@@ -221,7 +221,7 @@ public class AccountPage extends JFrame {
 		addressEditButton.setFocusPainted(false);
 		accountPagePanel.add(addressEditButton);
 
-		bankEditButton.setLocation((int) (Math.round(xSize * 0.5)),580);
+		bankEditButton.setLocation((int) (Math.round(xSize * 0.5)),440);
 		bankEditButton.setSize((int) (Math.round(xSize * 0.15)),70);
 		bankEditButton.setForeground( new Color(0,128,255) );
 		bankEditButton.setFont(new Font("Merriweather", Font.BOLD, 40));
