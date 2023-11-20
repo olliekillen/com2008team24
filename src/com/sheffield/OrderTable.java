@@ -59,7 +59,7 @@ public class OrderTable extends JPanel {
 
         // Create a couple of columns 
         model.addColumn("Line Number"); 
-        model.addColumn("com.sheffield.Products.Product Code");
+        model.addColumn("Product Code");
 
         // Append a row 
         for (OrderLine orderLine : orderLines) {
@@ -68,8 +68,6 @@ public class OrderTable extends JPanel {
         }
 
         JScrollPane scrollPane = new JScrollPane(table);
-        JButton deleteButton = new JButton("Delete Order");
-        JButton fulfilButton = new JButton("Fulfil Order");
 
         JLabel title = new JLabel();
         title.setText("Customer Details");
@@ -86,37 +84,11 @@ public class OrderTable extends JPanel {
         JLabel houseNum = new JLabel();
         houseNum.setText("House: " + user.houseNum.toString());
 
-        deleteButton.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    OrderDatabaseOperations.FulfilOrder(order, con);
-                } catch (SQLException e1) {
-                    e1.printStackTrace();
-                }
-            }
-        });
-
-        fulfilButton.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    OrderDatabaseOperations.DeleteOrder(order, con);
-                } catch (SQLException e1) {
-                    e1.printStackTrace();
-                }
-            }
-        });
-
         add (title);
         add (name);
         add (email);
         add (postcode);
         add (houseNum);
         add (scrollPane);
-        add (deleteButton);
-        add (fulfilButton);
     }
 }
