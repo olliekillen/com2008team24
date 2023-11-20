@@ -43,10 +43,10 @@ public class Locomotive extends Product {
     }
 
     private boolean isValidHistoricalEra(String historicalEra) {
-        return historicalEra != null && historicalEra.length() <= 7;
+        return historicalEra != null && historicalEra.length() <= 8;
     }
 
     private boolean isValidPriceBracket(String priceBracket) {
-        return priceBracket != null && priceBracket.length() <= 8;
+        return priceBracket != null && priceBracket.length() <= 10;
     }
 }
