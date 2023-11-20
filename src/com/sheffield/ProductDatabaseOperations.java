@@ -13,7 +13,6 @@ public class ProductDatabaseOperations {
         try {
             String insertSQL = "INSERT INTO Product (productCode, brandName, productName,"+
             "retailPrice, modellingScale, stockCount) VALUES (?, ?, ?, ?, ?, ?)";
-
             PreparedStatement preparedStatement = connection .prepareStatement(insertSQL);
             preparedStatement.setString(1, trainSet.getProductCode());
             preparedStatement.setString(2, trainSet.getBrandName());
@@ -22,9 +21,7 @@ public class ProductDatabaseOperations {
             preparedStatement.setString(5, trainSet.getModellingScale());
             preparedStatement.setInt(6, trainSet.getStockCount());
             int rowsAffected = preparedStatement.executeUpdate();
-
             String insertSQL2 = "INSERT INTO Train_Set (productCode) VALUES (?)";
-
             PreparedStatement preparedStatement2 = connection .prepareStatement(insertSQL2);
             preparedStatement2.setString(1, trainSet.getProductCode());
             int rowsAffected2 = preparedStatement2.executeUpdate();
@@ -38,7 +35,6 @@ public class ProductDatabaseOperations {
     public void getTrainSets(Connection connection, List<Product> trainSetList) throws SQLException {
         try {
             String selectSQL = "SELECT * FROM Train_Set NATURAL JOIN Product";
-
             PreparedStatement preparedStatement = connection.prepareStatement(selectSQL);
             ResultSet resultSet = preparedStatement.executeQuery();
             int count = 0;
@@ -55,11 +51,29 @@ public class ProductDatabaseOperations {
         }
     }
 
+    public Product getTrainSetByProductCode(Connection connection, String productCode) throws SQLException {
+        try {
+            String selectSQL = "SELECT * FROM Train_Set NATURAL JOIN Product WHERE productCode=?";
+            PreparedStatement preparedStatement = connection.prepareStatement(selectSQL);
+            preparedStatement.setString(1, productCode);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            resultSet.next();
+            TrainSet trainSet = new TrainSet(resultSet.getString("productCode"),
+            resultSet.getString("brandName"), resultSet.getString("productName"),
+            resultSet.getBigDecimal("retailPrice"), resultSet.getString("modellingScale"),
+            resultSet.getInt("stockCount"));
+            System.out.println(trainSet);
+            return trainSet;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
     public void insertLocomotive(Locomotive locomotive, Connection connection) throws SQLException {
         try {
             String insertSQL = "INSERT INTO Product (productCode, brandName, productName,"+
             "retailPrice, modellingScale, stockCount) VALUES (?, ?, ?, ?, ?, ?)";
-
             PreparedStatement preparedStatement = connection .prepareStatement(insertSQL);
             preparedStatement.setString(1, locomotive.getProductCode());
             preparedStatement.setString(2, locomotive.getBrandName());
@@ -68,10 +82,8 @@ public class ProductDatabaseOperations {
             preparedStatement.setString(5, locomotive.getModellingScale());
             preparedStatement.setInt(6, locomotive.getStockCount());
             int rowsAffected = preparedStatement.executeUpdate();
-
             String insertSQL2 = "INSERT INTO Locomotive (productCode, historicalEra, priceBracket) VALUES " +
             "(?, ?, ?)";
-
             PreparedStatement preparedStatement2 = connection .prepareStatement(insertSQL2);
             preparedStatement2.setString(1, locomotive.getProductCode());
             preparedStatement2.setString(2, locomotive.getHistoricalEra());
@@ -105,14 +117,29 @@ public class ProductDatabaseOperations {
         }
     }
 
+    public Product getLocomotiveByProductCode(Connection connection, String productCode) throws SQLException {
+        try {
+            String selectSQL = "SELECT * FROM Locomotive NATURAL JOIN Product WHERE productCode=?";
+            PreparedStatement preparedStatement = connection.prepareStatement(selectSQL);
+            preparedStatement.setString(1, productCode);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            return new Locomotive(resultSet.getString("productCode"),
+            resultSet.getString("brandName"), resultSet.getString("productName"),
+            resultSet.getBigDecimal("retailPrice"), resultSet.getString("modellingScale"),
+            resultSet.getInt("stockCount"), resultSet.getString("historicalEra"),
+            resultSet.getString("priceBracket"));
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
     public void deleteProduct(String productCode, Connection connection) throws SQLException {
         try {
             String deleteSQL = "DELETE FROM Product WHERE productCode=?";
             PreparedStatement preparedStatement = connection.prepareStatement(deleteSQL);
             preparedStatement.setString(1, productCode);
-
             int rowsAffected = preparedStatement.executeUpdate();
-
             if (rowsAffected > 0) {
                 System.out.println(rowsAffected + " row(s) deleted successfully.");
             } else {
@@ -128,7 +155,6 @@ public class ProductDatabaseOperations {
         try {
             String insertSQL = "INSERT INTO Product (productCode, brandName, productName,"+
                     "retailPrice, modellingScale, stockCount) VALUES (?, ?, ?, ?, ?, ?)";
-
             PreparedStatement preparedStatement = connection .prepareStatement(insertSQL);
             preparedStatement.setString(1, controller.getProductCode());
             preparedStatement.setString(2, controller.getBrandName());
@@ -137,9 +163,7 @@ public class ProductDatabaseOperations {
             preparedStatement.setString(5, controller.getModellingScale());
             preparedStatement.setInt(6, controller.getStockCount());
             int rowsAffected = preparedStatement.executeUpdate();
-
             String insertSQL2 = "INSERT INTO Controller (productCode, isDigital) VALUES (?, ?)";
-
             PreparedStatement preparedStatement2 = connection .prepareStatement(insertSQL2);
             preparedStatement2.setString(1, controller.getProductCode());
             preparedStatement2.setBoolean(2, controller.getIsDigital());
@@ -154,7 +178,6 @@ public class ProductDatabaseOperations {
     public void getControllers(Connection connection, List<Product> controllerList) throws SQLException {
         try {
             String selectSQL = "SELECT * FROM Controller NATURAL JOIN Product";
-
             PreparedStatement preparedStatement = connection.prepareStatement(selectSQL);
             ResultSet resultSet = preparedStatement.executeQuery();
             int count = 0;
@@ -171,11 +194,26 @@ public class ProductDatabaseOperations {
         }
     }
 
+    public Product getControllerByProductCode(Connection connection, String productCode) throws SQLException {
+        try {
+            String selectSQL = "SELECT * FROM Controller NATURAL JOIN Product WHERE productCode=?";
+            PreparedStatement preparedStatement = connection.prepareStatement(selectSQL);
+            preparedStatement.setString(1, productCode);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            return new Controller(resultSet.getString("productCode"),
+            resultSet.getString("brandName"), resultSet.getString("productName"),
+            resultSet.getBigDecimal("retailPrice"), resultSet.getString("modellingScale"),
+            resultSet.getInt("stockCount"), resultSet.getBoolean("isDigital"));
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
     public void insertTrackPack(TrackPack trackPack, Connection connection) throws SQLException {
         try {
             String insertSQL = "INSERT INTO Product (productCode, brandName, productName,"+
                     "retailPrice, modellingScale, stockCount) VALUES (?, ?, ?, ?, ?, ?)";
-
             PreparedStatement preparedStatement = connection .prepareStatement(insertSQL);
             preparedStatement.setString(1, trackPack.getProductCode());
             preparedStatement.setString(2, trackPack.getBrandName());
@@ -184,13 +222,10 @@ public class ProductDatabaseOperations {
             preparedStatement.setString(5, trackPack.getModellingScale());
             preparedStatement.setInt(6, trackPack.getStockCount());
             int rowsAffected = preparedStatement.executeUpdate();
-
             String insertSQL2 = "INSERT INTO Track_Pack (productCode) VALUES (?)";
-
             PreparedStatement preparedStatement2 = connection .prepareStatement(insertSQL2);
             preparedStatement2.setString(1, trackPack.getProductCode());
             int rowsAffected2 = preparedStatement2.executeUpdate();
-
         } catch (SQLException e) {
             e.printStackTrace();
             throw e;
@@ -200,7 +235,6 @@ public class ProductDatabaseOperations {
     public void getTrackPack(Connection connection, List<Product> trackPackList) throws SQLException {
         try {
             String selectSQL = "SELECT * FROM Track_Pack NATURAL JOIN Product";
-
             PreparedStatement preparedStatement = connection.prepareStatement(selectSQL);
             ResultSet resultSet = preparedStatement.executeQuery();
             int count = 0;
@@ -217,11 +251,26 @@ public class ProductDatabaseOperations {
         }
     }
 
+    public Product getTrackPackByProductCode(Connection connection, String productCode) throws SQLException {
+        try {
+            String selectSQL = "SELECT * FROM Track_Pack NATURAL JOIN Product WHERE productCode=?";
+            PreparedStatement preparedStatement = connection.prepareStatement(selectSQL);
+            preparedStatement.setString(1, productCode);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            return new TrackPack(resultSet.getString("productCode"),
+            resultSet.getString("brandName"), resultSet.getString("productName"),
+            resultSet.getBigDecimal("retailPrice"), resultSet.getString("modellingScale"),
+            resultSet.getInt("stockCount"));
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
     public void insertTrack(Track track, Connection connection) throws SQLException {
         try {
             String insertSQL = "INSERT INTO Product (productCode, brandName, productName,"+
             "retailPrice, modellingScale, stockCount) VALUES (?, ?, ?, ?, ?, ?)";
-
             PreparedStatement preparedStatement = connection .prepareStatement(insertSQL);
             preparedStatement.setString(1, track.getProductCode());
             preparedStatement.setString(2, track.getBrandName());
@@ -230,9 +279,7 @@ public class ProductDatabaseOperations {
             preparedStatement.setString(5, track.getModellingScale());
             preparedStatement.setInt(6, track.getStockCount());
             int rowsAffected = preparedStatement.executeUpdate();
-
             String insertSQL2 = "INSERT INTO Track (productCode) VALUES (?)";
-
             PreparedStatement preparedStatement2 = connection .prepareStatement(insertSQL2);
             preparedStatement2.setString(1, track.getProductCode());
             int rowsAffected2 = preparedStatement2.executeUpdate();
@@ -246,7 +293,6 @@ public class ProductDatabaseOperations {
     public void getTrack(Connection connection, List<Product> trackList) throws SQLException {
         try {
             String selectSQL = "SELECT * FROM Track NATURAL JOIN Product";
-
             PreparedStatement preparedStatement = connection.prepareStatement(selectSQL);
             ResultSet resultSet = preparedStatement.executeQuery();
             int count = 0;
@@ -263,11 +309,26 @@ public class ProductDatabaseOperations {
         }
     }
 
+    public Product getTrackByProductCode(Connection connection, String productCode) throws SQLException {
+        try {
+            String selectSQL = "SELECT * FROM Track NATURAL JOIN Product WHERE productCode=?";
+            PreparedStatement preparedStatement = connection.prepareStatement(selectSQL);
+            preparedStatement.setString(1, productCode);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            return new Track(resultSet.getString("productCode"),
+            resultSet.getString("brandName"), resultSet.getString("productName"),
+            resultSet.getBigDecimal("retailPrice"), resultSet.getString("modellingScale"),
+            resultSet.getInt("stockCount"));
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
     public void insertRollingStock(RollingStock rollingStock, Connection connection) throws SQLException {
         try {
             String insertSQL = "INSERT INTO Product (productCode, brandName, productName,"+
             "retailPrice, modellingScale, stockCount) VALUES (?, ?, ?, ?, ?, ?)";
-
             PreparedStatement preparedStatement = connection .prepareStatement(insertSQL);
             preparedStatement.setString(1, rollingStock.getProductCode());
             preparedStatement.setString(2, rollingStock.getBrandName());
@@ -276,9 +337,7 @@ public class ProductDatabaseOperations {
             preparedStatement.setString(5, rollingStock.getModellingScale());
             preparedStatement.setInt(6, rollingStock.getStockCount());
             int rowsAffected = preparedStatement.executeUpdate();
-
             String insertSQL2 = "INSERT INTO Rolling_Stock (productCode, historicalEra) VALUES (?, ?)";
-
             PreparedStatement preparedStatement2 = connection .prepareStatement(insertSQL2);
             preparedStatement2.setString(1, rollingStock.getProductCode());
             preparedStatement2.setString(2, rollingStock.getHistoricalEra());
@@ -293,7 +352,6 @@ public class ProductDatabaseOperations {
     public void getRollingStock(Connection connection, List<Product> rollingStockList) throws SQLException {
         try {
             String selectSQL = "SELECT * FROM Rolling_Stock NATURAL JOIN Product";
-
             PreparedStatement preparedStatement = connection.prepareStatement(selectSQL);
             ResultSet resultSet = preparedStatement.executeQuery();
             int count = 0;
@@ -310,4 +368,19 @@ public class ProductDatabaseOperations {
         }
     }
 
+    public Product getRollingStockByProductCode(Connection connection, String productCode) throws SQLException {
+        try {
+            String selectSQL = "SELECT * FROM RollingStock NATURAL JOIN Product WHERE productCode=?";
+            PreparedStatement preparedStatement = connection.prepareStatement(selectSQL);
+            preparedStatement.setString(1, productCode);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            return new RollingStock(resultSet.getString("productCode"),
+            resultSet.getString("brandName"), resultSet.getString("productName"),
+            resultSet.getBigDecimal("retailPrice"), resultSet.getString("modellingScale"),
+            resultSet.getInt("stockCount"), resultSet.getString("historicalEra"));
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
 }

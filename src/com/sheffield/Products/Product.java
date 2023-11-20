@@ -11,6 +11,15 @@ public class Product {
     protected String modellingScale;
     protected Integer stockCount;
 
+    public Product() {
+        this.setProductCode("M58392");
+        this.setBrandName("Peco");
+        this.setProductName("Eurostar Train Set");
+        this.setRetailPrice(BigDecimal.ZERO);
+        this.setModellingScale("N Gauge");
+        this.setStockCount(0);
+    }
+
     public Product(String productCode, String brandName, String productName, BigDecimal retailPrice,
     String modellingScale, Integer stockCount) {
         this.setProductCode(productCode);
