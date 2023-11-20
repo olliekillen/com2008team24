@@ -43,7 +43,7 @@ public class LoginForm extends JPanel {
 
     private void addListener(MyFrame myFrame) {
         loginButton.addActionListener(e -> {
-            
+
         });
     }
 }

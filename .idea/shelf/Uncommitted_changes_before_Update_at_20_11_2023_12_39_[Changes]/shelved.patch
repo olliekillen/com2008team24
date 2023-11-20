@@ -1,0 +1,1910 @@
+Index: src/com/sheffield/UI/LoginForm.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.sheffield.UI;\r\n\r\nimport javax.swing.*;\r\nimport javax.swing.border.EmptyBorder;\r\nimport java.awt.*;\r\n\r\n/**\r\n * A Class that extends JPanel to create the panel for the login form.\r\n * This Class also manages action events for this panel.\r\n *\r\n * @author Daniel Vousden\r\n */\r\npublic class LoginForm extends JPanel {\r\n\r\n    CustomButton loginButton = new CustomButton(\"Login\", 10, 30, 10, 30);\r\n\r\n    /**\r\n     * Creates the layout of the sign-up form using a box layout oriented on the y-axis.\r\n     */\r\n    public LoginForm(MyFrame myFrame) {\r\n        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));\r\n\r\n        add(Box.createVerticalGlue());\r\n        add(Box.createVerticalGlue());\r\n\r\n        add(new CustomLabel(\"Login\", 30, 0, 0, 30, 0));\r\n\r\n        CustomTextField loginEmailField = new CustomTextField(20, 5);\r\n        add(new CustomLabel(\"Email\", 15));\r\n        add(loginEmailField.getFieldInPanel(new JPanel()));\r\n\r\n        CustomPasswordField loginPasswordField = new CustomPasswordField(20, 5);\r\n        add(new CustomLabel(\"Password\", 15));\r\n        add(loginPasswordField.getFieldInPanel(new JPanel()));\r\n\r\n        add(new CustomLabel(\"\", 0, 20, 0, 0, 0));\r\n\r\n        addListener(myFrame);\r\n        add(loginButton.getButtonInPanel(new JPanel()), Component.CENTER_ALIGNMENT);\r\n\r\n        add(Box.createVerticalGlue());\r\n    }\r\n\r\n    private void addListener(MyFrame myFrame) {\r\n        loginButton.addActionListener(e -> {\r\n            \r\n        });\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/com/sheffield/UI/LoginForm.java b/src/com/sheffield/UI/LoginForm.java
+--- a/src/com/sheffield/UI/LoginForm.java	(revision b10b0b6b1c41a669e45e798b81b614f642520cdc)
++++ b/src/com/sheffield/UI/LoginForm.java	(date 1700479718896)
+@@ -43,7 +43,7 @@
+ 
+     private void addListener(MyFrame myFrame) {
+         loginButton.addActionListener(e -> {
+-            
++
+         });
+     }
+ }
+Index: src/com/sheffield/Main.java
+===================================================================
+diff --git a/src/com/sheffield/Main.java b/src/com/sheffield/Main.java
+deleted file mode 100644
+--- a/src/com/sheffield/Main.java	(revision b10b0b6b1c41a669e45e798b81b614f642520cdc)
++++ /dev/null	(revision b10b0b6b1c41a669e45e798b81b614f642520cdc)
+@@ -1,33 +0,0 @@
+-package com.sheffield;
+-
+-import javax.swing.*;
+-import java.math.BigDecimal;
+-import java.sql.SQLException;
+-
+-public class Main {
+-    public static void main(String[] args) {
+-        SwingUtilities.invokeLater(new Runnable(){
+-            @Override
+-            public void run() {
+-                try {
+-                    DatabaseConnectionHandler dch = new DatabaseConnectionHandler();
+-                    DatabaseOperations dop = new DatabaseOperations();
+-                    dch.openConnection();
+-                    final ProductPageUI window = new ProductPageUI();
+-                    window.initPanel();
+-                    window.initFrame();
+-                    TrainSet trainSet = new TrainSet("M58392", "Peco",
+-                    "Eurostar Train Set", new BigDecimal(0.25),
+-                    "N Gauge", 12);
+-//                    com.sheffield.TrainSet trainSet = new com.sheffield.TrainSet("M444", "Hornby",
+-//                    "Mallard Record Breaker Train Set", new BigDecimal(225.00),
+-//                    "OO Gauge", 25);
+-                    //dop.insertTrainSet(trainSet, dch.getConnection());
+-                    dch.closeConnection();
+-                } catch (SQLException e) {
+-                    e.printStackTrace();
+-                }
+-            }
+-        });
+-    }
+-}
+\ No newline at end of file
+Index: src/com/sheffield/IndividualProductPageUI.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/com/sheffield/IndividualProductPageUI.java b/src/com/sheffield/IndividualProductPageUI.java
+new file mode 100644
+--- /dev/null	(date 1700479684084)
++++ b/src/com/sheffield/IndividualProductPageUI.java	(date 1700479684084)
+@@ -0,0 +1,336 @@
++//package com.sheffield;
++//
++//import com.sheffield.Products.Product;
++//import javax.swing.*;
++//import javax.imageio.*;
++//import java.awt.*;
++//import java.awt.image.*;
++//import java.io.File;
++//import java.util.List;
++//
++//public class IndividualProductPageUI extends JPanel {
++//
++//    Toolkit tk = Toolkit.getDefaultToolkit();
++//    int xSize = ((int) tk.getScreenSize().getWidth());
++//    int ySize = ((int) tk.getScreenSize().getHeight());
++//    int n = 0;
++//
++//    JPanel productPagePanel = new JPanel(null);
++//
++//    JLabel testComponent = new JLabel();
++//    JButton leftArrow = new JButton();
++//    JButton rightArrow = new JButton();
++//    JLabel profilePicture = new JLabel();
++//    JLabel productHeader = new JLabel();
++//    JButton productAccountButton = new JButton();
++//    JButton productBasketButton = new JButton();
++//    JButton productStaffPageButton = new JButton();
++//    JLabel productSidebar = new JLabel();
++//    JLabel productTypeFilterLabel = new JLabel();
++//    String[] productTypeFilterComboData = {"Train Sets", "Track Packs", "Locomotives", "Rolling Stock", "Tracks",
++//    "Controllers"};
++//    JComboBox<String> productTypeFilterCombo = new JComboBox<>(productTypeFilterComboData);
++//    JLabel productBrandFilterLabel = new JLabel();
++//    String[] productBrandFilterComboData = {"Hornby", "Peco", "Dapol", "Graham Farish", "Bachmann"};
++//    JComboBox<String> productBrandFilterCombo = new JComboBox<>(productBrandFilterComboData);
++//    JLabel productPriceFilterLabel = new JLabel();
++//    String[] productPriceFilterComboData = {"...£10", "£11...£25", "£26...£50", "£51...£100", "£101...£150",
++//    "£151...£200", "£201...£300", "£301..."};
++//    JComboBox<String> productPriceFilterCombo = new JComboBox<>(productPriceFilterComboData);
++//    JLabel productScaleFilterLabel = new JLabel();
++//    String[] productScaleFilterComboData = {"N Gauge", "TT Gauge", "OO Gauge"};
++//    JComboBox<String> productScaleFilterCombo = new JComboBox<>(productScaleFilterComboData);
++//    JTextField productSearch = new JTextField();
++//    JLabel productFilterBar =  new JLabel();
++//    JPanel productAreaBorder = new JPanel(null);
++//    JLabel productBackground = new JLabel();
++//
++//    JLabel padding = new JLabel("");;
++//    JTextArea textArea = new JTextArea(100, 100);
++//
++//    public void initPanel()
++//    {
++//        /* For colours of each of the components:
++//         * Purple: 11854529
++//         * Red: 2743738
++//         * Light Green: 8741250
++//         * Dark Green: 14995422
++//         * Blue: 15440650
++//         * White: 1
++//         * Black: Don't enter anything (default).
++//         * Transparent?: 15658734
++//         */
++//
++//        productHeader.setLocation(0,0);
++//        productHeader.setSize((Math.round(xSize)),70);
++//        productHeader.setForeground( new Color(-1) );
++//        productHeader.setFont(new Font("Merryweather", Font.BOLD, 50));
++//        productHeader.setOpaque(true);
++//        productHeader.setBackground( new Color(-11854529) );
++//        productHeader.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));
++//        productHeader.setText("Trains of Sheffield");
++//        productHeader.setHorizontalAlignment(SwingConstants.CENTER);
++//        productPagePanel.add(productHeader);
++//
++//        productAccountButton.setLocation(0,70);
++//        productAccountButton.setSize((int) (Math.round(xSize * 0.16)),87);
++//        productAccountButton.setForeground( new Color(-1) );
++//        productAccountButton.setFont(new Font("Merriweather", Font.BOLD, 21));
++//        productAccountButton.addActionListener(e->productAccountButton_Click());
++//        productAccountButton.setBackground( new Color(-2743738) );
++//        productAccountButton.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));
++//        productAccountButton.setText("   Account");
++//        productAccountButton.setHorizontalAlignment(SwingConstants.LEFT);
++//        try {
++//            BufferedImage profilePictureImg = ImageIO.read(new File
++//            ("src/com/sheffield/Images/profilePicture.png"));
++//            Image profilePictureImgResized = profilePictureImg.getScaledInstance
++//            (70, 70, Image.SCALE_DEFAULT);
++//            profilePicture.setIcon(new ImageIcon(profilePictureImgResized));
++//        } catch (Exception e) {
++//            System.out.println("The file was not found.");
++//            e.printStackTrace();
++//        }
++//        //profilePicture.setLocation((int) (Math.round(xSize * 0.12)),0);
++//        profilePicture.setSize(70,70);
++//        productAccountButton.add(profilePicture);
++//        productPagePanel.add(productAccountButton);
++//        profilePicture.setLocation((int) (Math.round(xSize * 0.12)),70);
++//
++//        testComponent.setLocation((int) (Math.round(xSize * 0.16)),70);
++//        testComponent.setSize((int) (Math.round(xSize * 0.14)),44);
++//        testComponent.setForeground( new Color(-1) );
++//        testComponent.setOpaque(true);
++//        testComponent.setFont(new Font("Merriweather", Font.BOLD, 14));
++//        testComponent.setBackground( new Color(0xFFD62246) );
++//        testComponent.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));
++//        testComponent.setText("Filter by Product Type");
++//        productPagePanel.add(testComponent);
++//
++//        productBasketButton.setLocation(0,157);
++//        productBasketButton.setSize((int) (Math.round(xSize * 0.16)),87);
++//        productBasketButton.setForeground( new Color(-1) );
++//        productBasketButton.setFont(new Font("Merriweather", Font.BOLD, 21));
++//        productBasketButton.addActionListener(e->productBasketButton_Click());
++//        productBasketButton.setBackground( new Color(-2743738) );
++//        productBasketButton.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));
++//        productBasketButton.setText("   Basket");
++//        productBasketButton.setHorizontalAlignment(SwingConstants.LEFT);
++//        productPagePanel.add(productBasketButton);
++//
++//        productStaffPageButton.setLocation(0,244);
++//        productStaffPageButton.setSize((int) (Math.round(xSize * 0.16)),87);
++//        productStaffPageButton.setForeground( new Color(-1) );
++//        productStaffPageButton.setFont(new Font("Merriweather", Font.BOLD, 21));
++//        productStaffPageButton.addActionListener(e->productStaffPageButton_Click());
++//        productStaffPageButton.setBackground( new Color(-15440650) );
++//        productStaffPageButton.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));
++//        productStaffPageButton.setText("   To Staff Page");
++//        productStaffPageButton.setHorizontalAlignment(SwingConstants.LEFT);
++//        productPagePanel.add(productStaffPageButton);
++//
++//        productSidebar.setLocation(0,70);
++//        productSidebar.setSize((int) (Math.round(xSize * 0.16)),1930);
++//        productSidebar.setOpaque(true);
++//        productSidebar.setBackground( new Color(-11854529) );
++//        productPagePanel.add(productSidebar);
++//
++//        productTypeFilterLabel.setLocation((int) (Math.round(xSize * 0.16)),70);
++//        productTypeFilterLabel.setSize((int) (Math.round(xSize * 0.14)),44);
++//        productTypeFilterLabel.setForeground( new Color(-1) );
++//        productTypeFilterLabel.setOpaque(true);
++//        productTypeFilterLabel.setFont(new Font("Merriweather", Font.BOLD, 14));
++//        productTypeFilterLabel.setBackground( new Color(0xFFD62246) );
++//        productTypeFilterLabel.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));
++//        productTypeFilterLabel.setText("Filter by Product Type");
++//        productPagePanel.add(productTypeFilterLabel);
++//
++//        productTypeFilterCombo.setLocation((int) (Math.round(xSize * 0.16)),114);
++//        productTypeFilterCombo.setSize((int) (Math.round(xSize * 0.14)),43);
++//        productTypeFilterCombo.setForeground( new Color(-1) );
++//        productTypeFilterCombo.setFont(new Font("Merriweather", Font.BOLD, 14));
++//        productTypeFilterCombo.addItemListener(e->productTypeFilterCombo_Click());
++//        productTypeFilterCombo.setBackground( new Color(-2743738) );
++//        productTypeFilterCombo.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));
++//        productPagePanel.add(productTypeFilterCombo);
++//
++//        productBrandFilterLabel.setLocation((int) (Math.round(xSize * 0.3)),70);
++//        productBrandFilterLabel.setSize((int) (Math.round(xSize * 0.14)),44);
++//        productBrandFilterLabel.setForeground( new Color(-1) );
++//        productBrandFilterLabel.setOpaque(true);
++//        productBrandFilterLabel.setFont(new Font("Merriweather", Font.BOLD, 14));
++//        productBrandFilterLabel.setBackground( new Color(0xFFD62246) );
++//        productBrandFilterLabel.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));
++//        productBrandFilterLabel.setText("Filter by Brand");
++//        productPagePanel.add(productBrandFilterLabel);
++//
++//        productBrandFilterCombo.setLocation((int) (Math.round(xSize * 0.3)),114);
++//        productBrandFilterCombo.setSize((int) (Math.round(xSize * 0.14)),43);
++//        productBrandFilterCombo.setForeground( new Color(-1) );
++//        productBrandFilterCombo.setFont(new Font("Merriweather", Font.BOLD, 14));
++//        productBrandFilterCombo.addItemListener(e->productBrandFilterCombo_Click());
++//        productBrandFilterCombo.setBackground( new Color(-2743738) );
++//        productBrandFilterCombo.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));
++//        productPagePanel.add(productBrandFilterCombo);
++//
++//        productPriceFilterLabel.setLocation((int) (Math.round(xSize * 0.44)),70);
++//        productPriceFilterLabel.setSize((int) (Math.round(xSize * 0.14)),44);
++//        productPriceFilterLabel.setForeground( new Color(-1) );
++//        productPriceFilterLabel.setOpaque(true);
++//        productPriceFilterLabel.setFont(new Font("Merriweather", Font.BOLD, 14));
++//        productPriceFilterLabel.setBackground( new Color(0xFFD62246) );
++//        productPriceFilterLabel.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));
++//        productPriceFilterLabel.setText("Filter by Price Range");
++//        productPagePanel.add(productPriceFilterLabel);
++//
++//        productPriceFilterCombo.setLocation((int) (Math.round(xSize * 0.44)),114);
++//        productPriceFilterCombo.setSize((int) (Math.round(xSize * 0.14)),43);
++//        productPriceFilterCombo.setForeground( new Color(-1) );
++//        productPriceFilterCombo.setFont(new Font("Merriweather", Font.BOLD, 14));
++//        productPriceFilterCombo.addItemListener(e->productPriceFilterCombo_Click());
++//        productPriceFilterCombo.setBackground( new Color(-2743738) );
++//        productPriceFilterCombo.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));
++//        productPagePanel.add(productPriceFilterCombo);
++//
++//        productScaleFilterLabel.setLocation((int) (Math.round(xSize * 0.58)),70);
++//        productScaleFilterLabel.setSize((int) (Math.round(xSize * 0.14)),44);
++//        productScaleFilterLabel.setForeground( new Color(-1) );
++//        productScaleFilterLabel.setOpaque(true);
++//        productScaleFilterLabel.setFont(new Font("Merriweather", Font.BOLD, 14));
++//        productScaleFilterLabel.setBackground( new Color(0xFFD62246) );
++//        productScaleFilterLabel.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));
++//        productScaleFilterLabel.setText("Filter by Modelling Scale");
++//        productPagePanel.add(productScaleFilterLabel);
++//
++//        productScaleFilterCombo.setLocation((int) (Math.round(xSize * 0.58)),114);
++//        productScaleFilterCombo.setSize((int) (Math.round(xSize * 0.14)),43);
++//        productScaleFilterCombo.setForeground( new Color(-1) );
++//        productScaleFilterCombo.setFont(new Font("Merriweather", Font.BOLD, 14));
++//        productScaleFilterCombo.addItemListener(e->productScaleFilterCombo_Click());
++//        productScaleFilterCombo.setBackground( new Color(-2743738) );
++//        productScaleFilterCombo.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));
++//        productPagePanel.add(productScaleFilterCombo);
++//
++//        productSearch.setLocation((int) (Math.round(xSize * 0.75)),100);
++//        productSearch.setSize((int) (Math.round(xSize * 0.2)),26);
++//        productSearch.setFont(new Font("Merriweather", Font.BOLD, 14));
++//        productSearch.setBackground( new Color(0xFFFFFF) );
++//        productSearch.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));
++//        productSearch.setText("Search");
++//        productPagePanel.add(productSearch);
++//
++//        productFilterBar.setLocation((int) (Math.round(xSize * 0.16)),70);
++//        productFilterBar.setSize((int) (Math.round(xSize * 0.84)),87);
++//        productFilterBar.setForeground( new Color(-1) );
++//        productFilterBar.setOpaque(true);
++//        productFilterBar.setBackground( new Color(-14995422) );
++//        productFilterBar.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));
++//        productPagePanel.add(productFilterBar);
++//
++//        generateProductAreaComponents();
++//
++//        ProductBoxData productBoxData = new ProductBoxData();
++//        productBoxData.initProductBoxData(this, productTypeFilterCombo, 0);
++//
++//        productAreaBorder.setLocation((int) (Math.round(xSize * 0.19)),175);
++//        productAreaBorder.setSize((int) (Math.round(xSize * 0.75)),464);
++//        productAreaBorder.setForeground( new Color(-1) );
++//        productAreaBorder.setOpaque(true);
++//        productAreaBorder.setBackground( new Color(-14995422) );
++//        productPagePanel.add(productAreaBorder);
++//
++//        productBackground.setLocation(0,0);
++//        productBackground.setSize((Math.round(xSize)),9000);
++//        productBackground.setOpaque(true);
++//        productBackground.setBackground( new Color(-8741250) );
++//        productPagePanel.add(productBackground);
++//
++//        productPagePanel.setVisible(true);
++//    }
++//
++//    public void productBoxConstructor(int x, int y, int width, int height, Product product) {
++//        //a product box is added in the position specified only if there is a valid product to be represented inside
++//        ProductBox productBox = new ProductBox();
++//        productBox.setLocation(x, y);
++//        productBox.setSize(width, height);
++//        productBox.setOpaque(true);
++//        productBox.setBackground(new Color(-1));
++//        productBox.initBox(product.getProductCode(), product.getBrandName(), product.getProductName(),
++//        product.getRetailPrice(), product.getModellingScale());
++//        productBox.validate();
++//        productBox.repaint();
++//        productAreaBorder.add(productBox);
++//    }
++//
++//    public void productAccountButton_Click()
++//    {
++//        //takes the user to the account page
++//        AccountPage accountPage = new AccountPage();
++//        accountPage.initPanel();
++//        accountPage.initFrame();
++//    }
++//    public void productBasketButton_Click()
++//    { System.out.println("productBasketButton_Click() has been pressed "); }
++//    public void productStaffPageButton_Click() { System.out.println("Placeholder"); }
++//
++//    public void generateProductAreaComponents() {
++//        JLabel productAreaText = new JLabel();
++//        productAreaText.setLocation((int) (Math.round(xSize * 0.01)),4);
++//        productAreaText.setSize((int) (Math.round(xSize * 0.22)),44);
++//        productAreaText.setForeground( new Color(-1) );
++//        productAreaText.setFont(new Font("Merriweather", Font.BOLD, 35));
++//        productAreaText.setBackground( new Color(-14995422) );
++//        productAreaText.setText(productTypeFilterCombo.getSelectedItem().toString());
++//        productAreaBorder.add(productAreaText);
++//
++//        JLabel productAreaPageCount = new JLabel();
++//        productAreaPageCount.setLocation((int) (Math.round(xSize * 0.68)),4);
++//        productAreaPageCount.setSize((int) (Math.round(xSize * 0.06)),40);
++//        productAreaPageCount.setForeground( new Color(-1) );
++//        productAreaPageCount.setFont(new Font("Merriweather", Font.BOLD, 35));
++//        productAreaPageCount.setBackground( new Color(-14995422) );
++//        setPageCount(productAreaPageCount);
++//        productAreaBorder.add(productAreaPageCount);
++//    }
++//
++//    public void setPageCount(JLabel productAreaPageCount) {
++//        ProductRetriever productRetriever = new ProductRetriever();
++//        List<Product> productList = productRetriever.getProductsFromDatabase(productTypeFilterCombo);
++//        int first = n + 1;
++//        int second = 1 + productList.size() / 6;
++//        productAreaPageCount.setText(first + " / " + second);
++//    }
++//
++//    public void productTypeFilterCombo_Click() {
++//        //refreshes product area with boxes related to the product type picked
++//        n = 0;
++//        productAreaBorder.removeAll();
++//        ProductBoxData productBoxData = new ProductBoxData();
++//        productBoxData.initProductBoxData(this, productTypeFilterCombo, n);
++//        generateProductAreaComponents();
++//        productAreaBorder.validate();
++//        productAreaBorder.repaint();
++//    }
++//    public void productBrandFilterCombo_Click() {
++//        //refreshes product area with boxes related to the brand picked
++//    }
++//    public void productPriceFilterCombo_Click() {
++//        //refreshes product area with boxes related to the retail price picked
++//    }
++//    public void productScaleFilterCombo_Click() {
++//        //refreshes product area with boxes related to the modelling scale picked
++//    }
++//
++//    public void setButtonImg(JButton jButton, String imgPath) {
++//        try {
++//            BufferedImage rightArrowImg = ImageIO.read(new File
++//            (imgPath));
++//            Image rightArrowImgResized = rightArrowImg.getScaledInstance(30, 30, Image.SCALE_DEFAULT);
++//            jButton.setIcon(new ImageIcon(rightArrowImgResized));
++//        } catch (Exception e) {
++//            System.out.println("The file was not found.");
++//            e.printStackTrace();
++//        }
++//    }
++//
++//}
+Index: src/com/sheffield/RollingStock.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.sheffield;\n\nimport com.sheffield.Products.Product;\n\nimport java.math.BigDecimal;\n\npublic class RollingStock extends Product {\n\n    private String historicalEra;\n\n    public RollingStock(String productCode, String brandName, String productName, BigDecimal retailPrice,\n                      String modellingScale, Integer stockCount, String historicalEra) {\n        super(productCode, brandName, productName, retailPrice, modellingScale, stockCount);\n        this.setHistoricalEra(historicalEra);\n    }\n\n    @Override\n    public String toString() {\n        return (productCode + \" \" + brandName + \" \" + productName + \" \" + retailPrice + \" \" + modellingScale + \" \"\n                + stockCount + \" \" + historicalEra);\n    }\n\n    public String getHistoricalEra() {\n        return historicalEra;\n    }\n\n    public void setHistoricalEra(String historicalEra) {\n        if (isValidHistoricalEra(historicalEra)) {\n            this.historicalEra = historicalEra;\n        } else { throw new IllegalArgumentException(\"Historical era is not valid.\"); }\n    }\n\n    private boolean isValidHistoricalEra(String historicalEra) {\n        return historicalEra != null && historicalEra.length() <= 7;\n    }\n\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/com/sheffield/RollingStock.java b/src/com/sheffield/RollingStock.java
+--- a/src/com/sheffield/RollingStock.java	(revision b10b0b6b1c41a669e45e798b81b614f642520cdc)
++++ b/src/com/sheffield/RollingStock.java	(date 1700479684091)
+@@ -31,7 +31,7 @@
+     }
+ 
+     private boolean isValidHistoricalEra(String historicalEra) {
+-        return historicalEra != null && historicalEra.length() <= 7;
++        return historicalEra != null && historicalEra.length() <= 8;
+     }
+ 
+ }
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ProjectRootManager\" version=\"2\" project-jdk-name=\"19\" project-jdk-type=\"JavaSDK\">\r\n    <output url=\"file://$PROJECT_DIR$/out\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	(revision b10b0b6b1c41a669e45e798b81b614f642520cdc)
++++ b/.idea/misc.xml	(date 1700483524757)
+@@ -1,6 +1,6 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+-  <component name="ProjectRootManager" version="2" project-jdk-name="19" project-jdk-type="JavaSDK">
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_21" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+     <output url="file://$PROJECT_DIR$/out" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: src/com/sheffield/ProductRetriever.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/com/sheffield/ProductRetriever.java b/src/com/sheffield/ProductRetriever.java
+new file mode 100644
+--- /dev/null	(date 1700479684091)
++++ b/src/com/sheffield/ProductRetriever.java	(date 1700479684091)
+@@ -0,0 +1,32 @@
++package com.sheffield;
++import com.sheffield.Products.Product;
++
++import javax.swing.*;
++import java.sql.SQLException;
++import java.util.ArrayList;
++import java.util.List;
++
++public class ProductRetriever {
++    public List<Product> getProductsFromDatabase(JComboBox<String> productTypeFilterCombo) {
++        try {
++            String filter = productTypeFilterCombo.getSelectedItem().toString();
++            DatabaseConnectionHandler dch = new DatabaseConnectionHandler();
++            ProductDatabaseOperations dop = new ProductDatabaseOperations();
++            dch.openConnection();
++            List<Product> productList = new ArrayList<Product>();
++            switch (filter) {
++                case ("Train Sets") -> { dop.getTrainSets(dch.getConnection(), productList); }
++                case ("Track Packs") -> { dop.getTrackPack(dch.getConnection(), productList); }
++                case ("Locomotives") -> { dop.getLocomotives(dch.getConnection(), productList); }
++                case ("Rolling Stock") -> { dop.getRollingStock(dch.getConnection(), productList); }
++                case ("Tracks") -> { dop.getTrack(dch.getConnection(), productList); }
++                case ("Controllers") -> { dop.getControllers(dch.getConnection(), productList); }
++            }
++            dch.closeConnection();
++            return productList;
++        } catch (SQLException e) {
++            e.printStackTrace();
++            return new ArrayList<Product>();
++        }
++    }
++}
+Index: src/com/sheffield/AccountPage.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.sheffield;\n\nimport javax.swing.*;\nimport javax.imageio.*;\nimport java.awt.*;\nimport java.awt.image.*;\nimport java.io.File;\n\n//break class down into smaller parts (it should not be 600 lines).\n\npublic class AccountPage extends JFrame {\n\n\tToolkit tk = Toolkit.getDefaultToolkit();\n\tint xSize = ((int) tk.getScreenSize().getWidth());\n\tint ySize = ((int) tk.getScreenSize().getHeight());\n\n\tJPanel productPagePanel = new JPanel(null);\n\tJScrollPane productPageScrollPane = new JScrollPane(null);\n\n\tJLabel profilePicture = new JLabel();\n\tJLabel pageTitle = new JLabel();\n\tJButton accountButton = new JButton();\n\tJButton productBasketButton = new JButton();\n\tJButton staffButton = new JButton();\n\tJLabel productSidebar = new JLabel();\n\tJLabel accountDetailTitleText = new JLabel();\n\tJLabel accountDetailArea = new JLabel();\n\tJLabel accountNameText = new JLabel();\n\tJLabel accountPasswordText = new JLabel();\n\tJLabel accountEmailText = new JLabel();\n\tJLabel accountDetailAreaBrand = new JLabel();\n\tJLabel accountBankDetails = new JLabel();\n\tJButton accountDetailAreaInfo = new JButton();\n\tJButton accountEditButton = new JButton();\n\tJLabel productTrainSets2 = new JLabel();\n\tJLabel productTrainSets2Name = new JLabel();\n\tJLabel productTrainSets2Price = new JLabel();\n\tJLabel productTrainSets2Code = new JLabel();\n\tJLabel productTrainSets2Brand = new JLabel();\n\tJLabel productTrainSets2Scale = new JLabel();\n\tJButton productTrainSets2Info = new JButton();\n\tJButton productTrainSets2Cart = new JButton();\n\tJLabel productTrainSets3 = new JLabel();\n\tJLabel productTrainSets3Name = new JLabel();\n\tJLabel productTrainSets3Price = new JLabel();\n\tJLabel productTrainSets3Code = new JLabel();\n\tJLabel productTrainSets3Brand = new JLabel();\n\tJLabel productTrainSets3Scale = new JLabel();\n\tJButton productTrainSets3Info = new JButton();\n\tJButton productTrainSets3Cart = new JButton();\n\tJLabel productTrainSets4 = new JLabel();\n\tJLabel productTrainSets4Name = new JLabel();\n\tJLabel productTrainSets4Price = new JLabel();\n\tJLabel productTrainSets4Code = new JLabel();\n\tJLabel productTrainSets4Brand = new JLabel();\n\tJLabel productTrainSets4Scale = new JLabel();\n\tJButton productTrainSets4Info = new JButton();\n\tJButton productTrainSets4Cart = new JButton();\n\tJLabel accountDetailBackGround = new JLabel();\n\tJLabel acountPageBackground = new JLabel();\n\n\tJLabel padding = new JLabel(\"\");\n\tJScrollPane scrollPane = new JScrollPane();\n\tJTextArea textArea = new JTextArea(100, 100);\n\n\tpublic void initFrame()\n\t{\n\t\tthis.setLayout(new GridLayout(1,1));\n\t\tthis.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);\n\t\tthis.setSize((Math.round(xSize)),9000);\n\n\t\tinitPanel();\n\n\t\tproductPageScrollPane.setViewportView(productPagePanel);\n\t\tproductPageScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);\n\t\tproductPageScrollPane.setSize((Math.round(xSize)), (Math.round(ySize)));\n\t\t//JScrollBar verticalScrollBar = productPageScrollPane.createVerticalScrollBar();\n\t\t//verticalScrollBar.setSize((int) (Math.round(xSize * 0.001)),2000);\n\t\tthis.add(productPageScrollPane, \"align right\");\n\t\t//this.add(verticalScrollBar);\n\t\tthis.setVisible(true);\n\t}\n\n\tpublic void initPanel()\n\t{\n\t\t/* For colours of each of the components:\n\t\t * Purple: 11854529\n\t\t * Red: 2743738\n\t\t * Light Green: 8741250\n\t\t * Dark Green: 14995422\n\t\t * Blue: 15440650\n\t\t * White: 1\n\t\t * Black: Don't enter anything (default).\n\t\t * Transparent?: 15658734\n\t\t */\n\n\t\tscrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);\n\t\tscrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);\n\t\t// Row indentation\n\t\ttextArea.setFont(new Font(\"SansSerif\", Font.PLAIN, 12) );\n\t\ttextArea.setEditable(false);\n\t\ttextArea.setLineWrap(false);\n\t\ttextArea.append(\"test\");\n\t\tscrollPane.setRowHeaderView(padding);\n\t\tscrollPane.setViewportView(textArea);\n\t\tscrollPane.getRowHeader().setBackground(Color.WHITE);\n\t\tscrollPane.getViewport().setBackground(Color.WHITE);\n\n\n\n\n\n\t\tpageTitle.setLocation(0,0);\n\t\tpageTitle.setSize((Math.round(xSize)),70);\n\t\tpageTitle.setForeground( new Color(-1) );\n\t\tpageTitle.setFont(new Font(\"Merryweather\", Font.BOLD, 50));\n\t\tpageTitle.setOpaque(true);\n\t\tpageTitle.setBackground( new Color(-11854529) );\n\t\tpageTitle.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));\n\t\tpageTitle.setText(\"Trains of Sheffield\");\n\t\tpageTitle.setHorizontalAlignment(SwingConstants.CENTER);\n\t\tproductPagePanel.add(pageTitle);\n\n\t\taccountButton.setLocation(0,70);\n\t\taccountButton.setSize((int) (Math.round(xSize * 0.16)),87);\n\t\taccountButton.setForeground( new Color(-1) );\n\t\taccountButton.setFont(new Font(\"Merriweather\", Font.BOLD, 21));\n\t\taccountButton.addActionListener(e->accountButton_Click());\n\t\taccountButton.setBackground( new Color(-2743738) );\n\t\taccountButton.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));\n\t\taccountButton.setText(\"   Account\");\n\t\taccountButton.setHorizontalAlignment(SwingConstants.LEFT);\n\t\ttry {\n\t\t\tBufferedImage profilePictureImg = ImageIO.read(new File(\"profilePicture.png\"));\n\t\t\tImage profilePictureImgResized = profilePictureImg.getScaledInstance(70, 70, Image.SCALE_DEFAULT);\n\t\t\tprofilePicture.setIcon(new ImageIcon(profilePictureImgResized));\n\t\t} catch (Exception e) {\n\t\t\tSystem.out.println(\"The file was not found.\");\n\t\t\te.printStackTrace();\n\t\t}\n\t\t//profilePicture.setLocation((int) (Math.round(xSize * 0.12)),70);\n\t\tprofilePicture.setSize(70,70);\n\t\taccountButton.add(profilePicture);\n\t\tproductPagePanel.add(accountButton);\n\n\t\tproductBasketButton.setLocation(0,157);\n\t\tproductBasketButton.setSize((int) (Math.round(xSize * 0.16)),87);\n\t\tproductBasketButton.setForeground( new Color(-1) );\n\t\tproductBasketButton.setFont(new Font(\"Merriweather\", Font.BOLD, 21));\n\t\tproductBasketButton.addActionListener(e->basketButton_Click());\n\t\tproductBasketButton.setBackground( new Color(-2743738) );\n\t\tproductBasketButton.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));\n\t\tproductBasketButton.setText(\"   Basket\");\n\t\tproductBasketButton.setHorizontalAlignment(SwingConstants.LEFT);\n\t\tproductPagePanel.add(productBasketButton);\n\n\t\tstaffButton.setLocation(0,244);\n\t\tstaffButton.setSize((int) (Math.round(xSize * 0.16)),87);\n\t\tstaffButton.setForeground( new Color(-1) );\n\t\tstaffButton.setFont(new Font(\"Merriweather\", Font.BOLD, 21));\n\t\tstaffButton.addActionListener(e->staffButton_Click());\n\t\tstaffButton.setBackground( new Color(-15440650) );\n\t\tstaffButton.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));\n\t\tstaffButton.setText(\"   To Staff Page\");\n\t\tstaffButton.setHorizontalAlignment(SwingConstants.LEFT);\n\t\tproductPagePanel.add(staffButton);\n\n\t\tproductSidebar.setLocation(0,70);\n\t\tproductSidebar.setSize((int) (Math.round(xSize * 0.16)),1930);\n\t\tproductSidebar.setOpaque(true);\n\t\tproductSidebar.setBackground( new Color(-11854529) );\n\t\tproductPagePanel.add(productSidebar);\n\n\n\t\taccountDetailTitleText.setLocation((int) (Math.round(xSize * 0.20)),179);\n\t\taccountDetailTitleText.setSize((int) (Math.round(xSize * 0.22)),44);\n\t\taccountDetailTitleText.setForeground( new Color(-1) );\n\t\taccountDetailTitleText.setFont(new Font(\"Merriweather\", Font.BOLD, 35));\n\t\taccountDetailTitleText.setBackground( new Color(-14995422) );\n\t\taccountDetailTitleText.setText(\"Acount Details \");\n\t\tproductPagePanel.add(accountDetailTitleText);\n\n\t\taccountNameText.setLocation((int) (Math.round(xSize * 0.205)),230);\n\t\taccountNameText.setSize((int) (Math.round(xSize * 0.22)),40);\n\t\taccountNameText.setFont(new Font(\"Merriweather\", Font.BOLD, 32));\n\t\taccountNameText.setText(\"Name:\");\n\t\tproductPagePanel.add(accountNameText);\n\n\t\taccountPasswordText.setLocation((int) (Math.round(xSize * 0.205)),265);\n\t\taccountPasswordText.setSize((int) (Math.round(xSize * 0.22)),40);\n\t\taccountPasswordText.setFont(new Font(\"Merriweather\", Font.BOLD, 32));\n\t\taccountPasswordText.setText(\"Password:\");\n\t\tproductPagePanel.add(accountPasswordText);\n\n\t\taccountEmailText.setLocation((int) (Math.round(xSize * 0.205)),300);\n\t\taccountEmailText.setSize((int) (Math.round(xSize * 0.22)),40);\n\t\taccountEmailText.setFont(new Font(\"Merriweather\", Font.BOLD, 32));\n\t\taccountEmailText.setText(\"Email:\");\n\t\tproductPagePanel.add(accountEmailText);\n\n\t\taccountDetailAreaBrand.setLocation((int) (Math.round(xSize * 0.205)),340);\n\t\taccountDetailAreaBrand.setSize((int) (Math.round(xSize * 0.22)),40);\n\t\taccountDetailAreaBrand.setFont(new Font(\"Merriweather\", Font.BOLD, 32));\n\t\taccountDetailAreaBrand.setText(\"Address:\");\n\t\tproductPagePanel.add(accountDetailAreaBrand);\n\n\t\taccountBankDetails.setLocation((int) (Math.round(xSize * 0.205)),380);\n\t\taccountBankDetails.setSize((int) (Math.round(xSize * 0.22)),40);\n\t\taccountBankDetails.setFont(new Font(\"Merriweather\", Font.BOLD, 32));\n\t\taccountBankDetails.setText(\"Bank Details:\");\n\t\tproductPagePanel.add(accountBankDetails);\n\n\n\t\taccountEditButton.setLocation((int) (Math.round(xSize * 0.375)),400);\n\t\taccountEditButton.setSize((int) (Math.round(xSize * 0.15)),70);\n\t\taccountEditButton.setForeground( new Color(0,191,255) );\n\t\taccountEditButton.setFont(new Font(\"Merriweather\", Font.BOLD, 40));\n\t\taccountEditButton.addActionListener(e->editButton_Click());\n\t\taccountEditButton.setOpaque(false);\n\t\taccountEditButton.setContentAreaFilled(false);\n\t\taccountEditButton.setFocusPainted(false);\n\t\taccountEditButton.setOpaque(false);\n\t\taccountEditButton.setText(\"edit\");\n\t\taccountEditButton.setOpaque(false);\n\t\taccountEditButton.setBorderPainted(false); \n        accountEditButton.setContentAreaFilled(false); \n        accountEditButton.setFocusPainted(false); \n\t\tproductPagePanel.add(accountEditButton);\n\n\t\taccountDetailArea.setLocation((int) (Math.round(xSize * 0.20)),230);\n\t\taccountDetailArea.setSize((int) (Math.round(xSize * 0.72)),750); // Account Detail inner background\n\t\taccountDetailArea.setOpaque(true);\n\t\taccountDetailArea.setBackground( new Color(-1) );\n\t\tproductPagePanel.add(accountDetailArea);\n\n\n\t\taccountDetailBackGround.setLocation((int) (Math.round(xSize * 0.19)),175);\n\t\taccountDetailBackGround.setSize((int) (Math.round(xSize * 0.75)),850); // Green background\n\t\taccountDetailBackGround.setForeground( new Color(-1) );\n\t\taccountDetailBackGround.setOpaque(true);\n\t\taccountDetailBackGround.setBackground( new Color(-14995422) );\n\t\tproductPagePanel.add(accountDetailBackGround);\n\n\t\tacountPageBackground.setLocation(0,0);\n\t\tacountPageBackground.setSize((Math.round(xSize)),9000);\n\t\tacountPageBackground.setOpaque(true);\n\t\tacountPageBackground.setBackground( new Color(-8741250) );\n\t\tproductPagePanel.add(acountPageBackground);\n\n\t\tproductPagePanel.setVisible(true);\n\t}\n\n\tpublic void accountButton_Click()\n\t{\n\t\tfinal ProductPageUI productPage = new ProductPageUI();\n\t\tproductPage.initPanel();\n\t\tproductPage.initFrame();\n\t}\n\tpublic void basketButton_Click()\n\t{\n\t\tSystem.out.println(\"basketButton_Click() has been pressed \");\n\t}\n\tpublic void staffButton_Click()\n\t{\n\t\tSystem.out.println(\"staffButton_Click() has been pressed \");\n\t}\n\tpublic void editButton_Click()\n\t{\n\t\tSystem.out.println(\"Placeholder\");\n\t}\n\n\n\tpublic static void main(String args[]) {\n\t\tfinal AccountPage window = new AccountPage();\n\t\twindow.initPanel();\n\t\twindow.initFrame();\n\t}\n\n\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/com/sheffield/AccountPage.java b/src/com/sheffield/AccountPage.java
+--- a/src/com/sheffield/AccountPage.java	(revision b10b0b6b1c41a669e45e798b81b614f642520cdc)
++++ b/src/com/sheffield/AccountPage.java	(date 1700479684084)
+@@ -1,66 +1,40 @@
+ package com.sheffield;
+ 
+ import javax.swing.*;
+-import javax.imageio.*;
+ import java.awt.*;
+-import java.awt.image.*;
+ import java.io.File;
+ 
+-//break class down into smaller parts (it should not be 600 lines).
+-
+ public class AccountPage extends JFrame {
+ 
+ 	Toolkit tk = Toolkit.getDefaultToolkit();
+ 	int xSize = ((int) tk.getScreenSize().getWidth());
+ 	int ySize = ((int) tk.getScreenSize().getHeight());
+ 
+-	JPanel productPagePanel = new JPanel(null);
+-	JScrollPane productPageScrollPane = new JScrollPane(null);
++	JPanel accountPagePanel = new JPanel(null);
+ 
+-	JLabel profilePicture = new JLabel();
+ 	JLabel pageTitle = new JLabel();
+-	JButton accountButton = new JButton();
+-	JButton productBasketButton = new JButton();
++	JButton ProductButton = new JButton();
++	JButton accountBasketButton = new JButton();
+ 	JButton staffButton = new JButton();
+-	JLabel productSidebar = new JLabel();
++	JLabel accountSidebar = new JLabel();
+ 	JLabel accountDetailTitleText = new JLabel();
+ 	JLabel accountDetailArea = new JLabel();
+ 	JLabel accountNameText = new JLabel();
+ 	JLabel accountPasswordText = new JLabel();
+ 	JLabel accountEmailText = new JLabel();
+-	JLabel accountDetailAreaBrand = new JLabel();
++	JLabel accountAddressText = new JLabel();
+ 	JLabel accountBankDetails = new JLabel();
+-	JButton accountDetailAreaInfo = new JButton();
+-	JButton accountEditButton = new JButton();
+-	JLabel productTrainSets2 = new JLabel();
+-	JLabel productTrainSets2Name = new JLabel();
+-	JLabel productTrainSets2Price = new JLabel();
+-	JLabel productTrainSets2Code = new JLabel();
+-	JLabel productTrainSets2Brand = new JLabel();
+-	JLabel productTrainSets2Scale = new JLabel();
+-	JButton productTrainSets2Info = new JButton();
+-	JButton productTrainSets2Cart = new JButton();
+-	JLabel productTrainSets3 = new JLabel();
+-	JLabel productTrainSets3Name = new JLabel();
+-	JLabel productTrainSets3Price = new JLabel();
+-	JLabel productTrainSets3Code = new JLabel();
+-	JLabel productTrainSets3Brand = new JLabel();
+-	JLabel productTrainSets3Scale = new JLabel();
+-	JButton productTrainSets3Info = new JButton();
+-	JButton productTrainSets3Cart = new JButton();
+-	JLabel productTrainSets4 = new JLabel();
+-	JLabel productTrainSets4Name = new JLabel();
+-	JLabel productTrainSets4Price = new JLabel();
+-	JLabel productTrainSets4Code = new JLabel();
+-	JLabel productTrainSets4Brand = new JLabel();
+-	JLabel productTrainSets4Scale = new JLabel();
+-	JButton productTrainSets4Info = new JButton();
+-	JButton productTrainSets4Cart = new JButton();
++	JButton nameEditButton = new JButton();
++	JButton passwordEditButton = new JButton();
++	JButton emailEditButton = new JButton();
++
++	JButton addressEditButton = new JButton();
++
++	JButton bankEditButton = new JButton();
+ 	JLabel accountDetailBackGround = new JLabel();
+ 	JLabel acountPageBackground = new JLabel();
+ 
+ 	JLabel padding = new JLabel("");
+-	JScrollPane scrollPane = new JScrollPane();
+ 	JTextArea textArea = new JTextArea(100, 100);
+ 
+ 	public void initFrame()
+@@ -70,14 +44,7 @@
+ 		this.setSize((Math.round(xSize)),9000);
+ 
+ 		initPanel();
+-
+-		productPageScrollPane.setViewportView(productPagePanel);
+-		productPageScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+-		productPageScrollPane.setSize((Math.round(xSize)), (Math.round(ySize)));
+-		//JScrollBar verticalScrollBar = productPageScrollPane.createVerticalScrollBar();
+-		//verticalScrollBar.setSize((int) (Math.round(xSize * 0.001)),2000);
+-		this.add(productPageScrollPane, "align right");
+-		//this.add(verticalScrollBar);
++		this.add(accountPagePanel);
+ 		this.setVisible(true);
+ 	}
+ 
+@@ -94,21 +61,11 @@
+ 		 * Transparent?: 15658734
+ 		 */
+ 
+-		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
+-		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+ 		// Row indentation
+ 		textArea.setFont(new Font("SansSerif", Font.PLAIN, 12) );
+ 		textArea.setEditable(false);
+ 		textArea.setLineWrap(false);
+ 		textArea.append("test");
+-		scrollPane.setRowHeaderView(padding);
+-		scrollPane.setViewportView(textArea);
+-		scrollPane.getRowHeader().setBackground(Color.WHITE);
+-		scrollPane.getViewport().setBackground(Color.WHITE);
+-
+-
+-
+-
+ 
+ 		pageTitle.setLocation(0,0);
+ 		pageTitle.setSize((Math.round(xSize)),70);
+@@ -119,40 +76,29 @@
+ 		pageTitle.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));
+ 		pageTitle.setText("Trains of Sheffield");
+ 		pageTitle.setHorizontalAlignment(SwingConstants.CENTER);
+-		productPagePanel.add(pageTitle);
++		accountPagePanel.add(pageTitle);
+ 
+-		accountButton.setLocation(0,70);
+-		accountButton.setSize((int) (Math.round(xSize * 0.16)),87);
+-		accountButton.setForeground( new Color(-1) );
+-		accountButton.setFont(new Font("Merriweather", Font.BOLD, 21));
+-		accountButton.addActionListener(e->accountButton_Click());
+-		accountButton.setBackground( new Color(-2743738) );
+-		accountButton.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));
+-		accountButton.setText("   Account");
+-		accountButton.setHorizontalAlignment(SwingConstants.LEFT);
+-		try {
+-			BufferedImage profilePictureImg = ImageIO.read(new File("profilePicture.png"));
+-			Image profilePictureImgResized = profilePictureImg.getScaledInstance(70, 70, Image.SCALE_DEFAULT);
+-			profilePicture.setIcon(new ImageIcon(profilePictureImgResized));
+-		} catch (Exception e) {
+-			System.out.println("The file was not found.");
+-			e.printStackTrace();
+-		}
+-		//profilePicture.setLocation((int) (Math.round(xSize * 0.12)),70);
+-		profilePicture.setSize(70,70);
+-		accountButton.add(profilePicture);
+-		productPagePanel.add(accountButton);
++		ProductButton.setLocation(0,70);
++		ProductButton.setSize((int) (Math.round(xSize * 0.16)),87);
++		ProductButton.setForeground( new Color(-1) );
++		ProductButton.setFont(new Font("Merriweather", Font.BOLD, 21));
++		ProductButton.addActionListener(e->ProductButton_Click());
++		ProductButton.setBackground( new Color(-2743738) );
++		ProductButton.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));
++		ProductButton.setText("   View Products");
++		ProductButton.setHorizontalAlignment(SwingConstants.LEFT);
++		accountPagePanel.add(ProductButton);
+ 
+-		productBasketButton.setLocation(0,157);
+-		productBasketButton.setSize((int) (Math.round(xSize * 0.16)),87);
+-		productBasketButton.setForeground( new Color(-1) );
+-		productBasketButton.setFont(new Font("Merriweather", Font.BOLD, 21));
+-		productBasketButton.addActionListener(e->basketButton_Click());
+-		productBasketButton.setBackground( new Color(-2743738) );
+-		productBasketButton.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));
+-		productBasketButton.setText("   Basket");
+-		productBasketButton.setHorizontalAlignment(SwingConstants.LEFT);
+-		productPagePanel.add(productBasketButton);
++		accountBasketButton.setLocation(0,157);
++		accountBasketButton.setSize((int) (Math.round(xSize * 0.16)),87);
++		accountBasketButton.setForeground( new Color(-1) );
++		accountBasketButton.setFont(new Font("Merriweather", Font.BOLD, 21));
++		accountBasketButton.addActionListener(e->basketButton_Click());
++		accountBasketButton.setBackground( new Color(-2743738) );
++		accountBasketButton.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));
++		accountBasketButton.setText("   Basket");
++		accountBasketButton.setHorizontalAlignment(SwingConstants.LEFT);
++		accountPagePanel.add(accountBasketButton);
+ 
+ 		staffButton.setLocation(0,244);
+ 		staffButton.setSize((int) (Math.round(xSize * 0.16)),87);
+@@ -163,13 +109,13 @@
+ 		staffButton.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));
+ 		staffButton.setText("   To Staff Page");
+ 		staffButton.setHorizontalAlignment(SwingConstants.LEFT);
+-		productPagePanel.add(staffButton);
++		accountPagePanel.add(staffButton);
+ 
+-		productSidebar.setLocation(0,70);
+-		productSidebar.setSize((int) (Math.round(xSize * 0.16)),1930);
+-		productSidebar.setOpaque(true);
+-		productSidebar.setBackground( new Color(-11854529) );
+-		productPagePanel.add(productSidebar);
++		accountSidebar.setLocation(0,70);
++		accountSidebar.setSize((int) (Math.round(xSize * 0.16)),1930);
++		accountSidebar.setOpaque(true);
++		accountSidebar.setBackground( new Color(-11854529) );
++		accountPagePanel.add(accountSidebar);
+ 
+ 
+ 		accountDetailTitleText.setLocation((int) (Math.round(xSize * 0.20)),179);
+@@ -178,60 +124,124 @@
+ 		accountDetailTitleText.setFont(new Font("Merriweather", Font.BOLD, 35));
+ 		accountDetailTitleText.setBackground( new Color(-14995422) );
+ 		accountDetailTitleText.setText("Acount Details ");
+-		productPagePanel.add(accountDetailTitleText);
++		accountPagePanel.add(accountDetailTitleText);
+ 
+-		accountNameText.setLocation((int) (Math.round(xSize * 0.205)),230);
++		accountNameText.setLocation((int) (Math.round(xSize * 0.205)),240);
+ 		accountNameText.setSize((int) (Math.round(xSize * 0.22)),40);
+ 		accountNameText.setFont(new Font("Merriweather", Font.BOLD, 32));
+ 		accountNameText.setText("Name:");
+-		productPagePanel.add(accountNameText);
++		accountPagePanel.add(accountNameText);
+ 
+-		accountPasswordText.setLocation((int) (Math.round(xSize * 0.205)),265);
++		accountPasswordText.setLocation((int) (Math.round(xSize * 0.205)),285);
+ 		accountPasswordText.setSize((int) (Math.round(xSize * 0.22)),40);
+ 		accountPasswordText.setFont(new Font("Merriweather", Font.BOLD, 32));
+ 		accountPasswordText.setText("Password:");
+-		productPagePanel.add(accountPasswordText);
++		accountPagePanel.add(accountPasswordText);
+ 
+-		accountEmailText.setLocation((int) (Math.round(xSize * 0.205)),300);
++		accountEmailText.setLocation((int) (Math.round(xSize * 0.205)),340);
+ 		accountEmailText.setSize((int) (Math.round(xSize * 0.22)),40);
+ 		accountEmailText.setFont(new Font("Merriweather", Font.BOLD, 32));
+ 		accountEmailText.setText("Email:");
+-		productPagePanel.add(accountEmailText);
++		accountPagePanel.add(accountEmailText);
+ 
+-		accountDetailAreaBrand.setLocation((int) (Math.round(xSize * 0.205)),340);
+-		accountDetailAreaBrand.setSize((int) (Math.round(xSize * 0.22)),40);
+-		accountDetailAreaBrand.setFont(new Font("Merriweather", Font.BOLD, 32));
+-		accountDetailAreaBrand.setText("Address:");
+-		productPagePanel.add(accountDetailAreaBrand);
++		accountAddressText.setLocation((int) (Math.round(xSize * 0.205)),400);
++		accountAddressText.setSize((int) (Math.round(xSize * 0.22)),40);
++		accountAddressText.setFont(new Font("Merriweather", Font.BOLD, 32));
++		accountAddressText.setText("Address:");
++		accountPagePanel.add(accountAddressText);
+ 
+-		accountBankDetails.setLocation((int) (Math.round(xSize * 0.205)),380);
++		accountBankDetails.setLocation((int) (Math.round(xSize * 0.205)),460);
+ 		accountBankDetails.setSize((int) (Math.round(xSize * 0.22)),40);
+ 		accountBankDetails.setFont(new Font("Merriweather", Font.BOLD, 32));
+ 		accountBankDetails.setText("Bank Details:");
+-		productPagePanel.add(accountBankDetails);
++		accountPagePanel.add(accountBankDetails);
++
++
++		nameEditButton.setLocation((int) (Math.round(xSize * 0.5)),220);
++		nameEditButton.setSize((int) (Math.round(xSize * 0.15)),70);
++		nameEditButton.setForeground( new Color(0,128,255) );
++		nameEditButton.setFont(new Font("Merriweather", Font.BOLD, 40));
++		nameEditButton.addActionListener(e->editButton_Click());
++		nameEditButton.setOpaque(false);
++		nameEditButton.setContentAreaFilled(false);
++		nameEditButton.setFocusPainted(false);
++		nameEditButton.setOpaque(false);
++		nameEditButton.setText("edit");
++		nameEditButton.setOpaque(false);
++		nameEditButton.setBorderPainted(false);
++        nameEditButton.setContentAreaFilled(false);
++        nameEditButton.setFocusPainted(false);
++		accountPagePanel.add(nameEditButton);
++
++		passwordEditButton.setLocation((int) (Math.round(xSize * 0.5)),265);
++		passwordEditButton.setSize((int) (Math.round(xSize * 0.15)),70);
++		passwordEditButton.setForeground( new Color(0,128,255) );
++		passwordEditButton.setFont(new Font("Merriweather", Font.BOLD, 40));
++		passwordEditButton.addActionListener(e->editButton_Click());
++		passwordEditButton.setOpaque(false);
++		passwordEditButton.setContentAreaFilled(false);
++		passwordEditButton.setFocusPainted(false);
++		passwordEditButton.setOpaque(false);
++		passwordEditButton.setText("edit");
++		passwordEditButton.setOpaque(false);
++		passwordEditButton.setBorderPainted(false);
++		passwordEditButton.setContentAreaFilled(false);
++		passwordEditButton.setFocusPainted(false);
++		accountPagePanel.add(passwordEditButton);
+ 
++		emailEditButton.setLocation((int) (Math.round(xSize * 0.5)),320);
++		emailEditButton.setSize((int) (Math.round(xSize * 0.15)),70);
++		emailEditButton.setForeground( new Color(0,128,255) );
++		emailEditButton.setFont(new Font("Merriweather", Font.BOLD, 40));
++		emailEditButton.addActionListener(e->editButton_Click());
++		emailEditButton.setOpaque(false);
++		emailEditButton.setContentAreaFilled(false);
++		emailEditButton.setFocusPainted(false);
++		emailEditButton.setOpaque(false);
++		emailEditButton.setText("edit");
++		emailEditButton.setOpaque(false);
++		emailEditButton.setBorderPainted(false);
++		emailEditButton.setContentAreaFilled(false);
++		emailEditButton.setFocusPainted(false);
++		accountPagePanel.add(emailEditButton);
+ 
+-		accountEditButton.setLocation((int) (Math.round(xSize * 0.375)),400);
+-		accountEditButton.setSize((int) (Math.round(xSize * 0.15)),70);
+-		accountEditButton.setForeground( new Color(0,191,255) );
+-		accountEditButton.setFont(new Font("Merriweather", Font.BOLD, 40));
+-		accountEditButton.addActionListener(e->editButton_Click());
+-		accountEditButton.setOpaque(false);
+-		accountEditButton.setContentAreaFilled(false);
+-		accountEditButton.setFocusPainted(false);
+-		accountEditButton.setOpaque(false);
+-		accountEditButton.setText("edit");
+-		accountEditButton.setOpaque(false);
+-		accountEditButton.setBorderPainted(false); 
+-        accountEditButton.setContentAreaFilled(false); 
+-        accountEditButton.setFocusPainted(false); 
+-		productPagePanel.add(accountEditButton);
++		addressEditButton.setLocation((int) (Math.round(xSize * 0.5)),380);
++		addressEditButton.setSize((int) (Math.round(xSize * 0.15)),70);
++		addressEditButton.setForeground( new Color(0,128,255) );
++		addressEditButton.setFont(new Font("Merriweather", Font.BOLD, 40));
++		addressEditButton.addActionListener(e->editButton_Click());
++		addressEditButton.setOpaque(false);
++		addressEditButton.setContentAreaFilled(false);
++		addressEditButton.setFocusPainted(false);
++		addressEditButton.setOpaque(false);
++		addressEditButton.setText("edit");
++		addressEditButton.setOpaque(false);
++		addressEditButton.setBorderPainted(false);
++		addressEditButton.setContentAreaFilled(false);
++		addressEditButton.setFocusPainted(false);
++		accountPagePanel.add(addressEditButton);
++
++		bankEditButton.setLocation((int) (Math.round(xSize * 0.5)),440);
++		bankEditButton.setSize((int) (Math.round(xSize * 0.15)),70);
++		bankEditButton.setForeground( new Color(0,128,255) );
++		bankEditButton.setFont(new Font("Merriweather", Font.BOLD, 40));
++		bankEditButton.addActionListener(e->editButton_Click());
++		bankEditButton.setOpaque(false);
++		bankEditButton.setContentAreaFilled(false);
++		bankEditButton.setFocusPainted(false);
++		bankEditButton.setOpaque(false);
++		bankEditButton.setText("edit");
++		bankEditButton.setOpaque(false);
++		bankEditButton.setBorderPainted(false);
++		bankEditButton.setContentAreaFilled(false);
++		bankEditButton.setFocusPainted(false);
++		accountPagePanel.add(bankEditButton);
+ 
+ 		accountDetailArea.setLocation((int) (Math.round(xSize * 0.20)),230);
+ 		accountDetailArea.setSize((int) (Math.round(xSize * 0.72)),750); // Account Detail inner background
+ 		accountDetailArea.setOpaque(true);
+ 		accountDetailArea.setBackground( new Color(-1) );
+-		productPagePanel.add(accountDetailArea);
++		accountPagePanel.add(accountDetailArea);
+ 
+ 
+ 		accountDetailBackGround.setLocation((int) (Math.round(xSize * 0.19)),175);
+@@ -239,20 +249,20 @@
+ 		accountDetailBackGround.setForeground( new Color(-1) );
+ 		accountDetailBackGround.setOpaque(true);
+ 		accountDetailBackGround.setBackground( new Color(-14995422) );
+-		productPagePanel.add(accountDetailBackGround);
++		accountPagePanel.add(accountDetailBackGround);
+ 
+ 		acountPageBackground.setLocation(0,0);
+ 		acountPageBackground.setSize((Math.round(xSize)),9000);
+ 		acountPageBackground.setOpaque(true);
+ 		acountPageBackground.setBackground( new Color(-8741250) );
+-		productPagePanel.add(acountPageBackground);
++		accountPagePanel.add(acountPageBackground);
+ 
+-		productPagePanel.setVisible(true);
++		accountPagePanel.setVisible(true);
+ 	}
+ 
+-	public void accountButton_Click()
++	public void ProductButton_Click()
+ 	{
+-		final ProductPageUI productPage = new ProductPageUI();
++		ProductPageUI productPage = new ProductPageUI();
+ 		productPage.initPanel();
+ 		productPage.initFrame();
+ 	}
+@@ -266,7 +276,7 @@
+ 	}
+ 	public void editButton_Click()
+ 	{
+-		System.out.println("Placeholder");
++		System.out.println("Edit button has been pressed");
+ 	}
+ 
+ 
+Index: src/com/sheffield/ProductBoxData.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/com/sheffield/ProductBoxData.java b/src/com/sheffield/ProductBoxData.java
+new file mode 100644
+--- /dev/null	(date 1700479684087)
++++ b/src/com/sheffield/ProductBoxData.java	(date 1700479684087)
+@@ -0,0 +1,39 @@
++package com.sheffield;
++
++import com.sheffield.Products.Product;
++
++import javax.swing.*;
++import java.awt.*;
++import java.util.List;
++
++public class ProductBoxData {
++
++    Toolkit tk = Toolkit.getDefaultToolkit();
++    int xSize = ((int) tk.getScreenSize().getWidth());
++    int ySize = ((int) tk.getScreenSize().getHeight());
++
++    public void initProductBoxData(ProductPageUI window, JComboBox<String> productTypeFilterCombo, int n) {
++        //chooses which product type to filter by
++        ProductRetriever productRetriever = new ProductRetriever();
++        List<Product> productList = productRetriever.getProductsFromDatabase(productTypeFilterCombo);
++        //up to six products are shown depending on what is currently stored in the database
++        if (productList.size() > n*6) {
++            window.productBoxConstructor((int) (Math.round(xSize * 0.01)), 56, (int) (Math.round(xSize * 0.24)),
++            195, productList.get(0)); }
++        if (productList.size() > 1 + n*6) {
++            window.productBoxConstructor((int) (Math.round(xSize * 0.255)), 56, (int) (Math.round(xSize * 0.24)),
++            195, productList.get(1)); }
++        if (productList.size() > 2 + n*6) {
++            window.productBoxConstructor((int) (Math.round(xSize * 0.5)), 56, (int) (Math.round(xSize * 0.24)),
++            195, productList.get(2)); }
++        if (productList.size() > 3 + n*6) {
++            window.productBoxConstructor((int) (Math.round(xSize * 0.01)), 261, (int) (Math.round(xSize * 0.24)),
++            195, productList.get(3)); }
++        if (productList.size() > 4 + n*6) {
++            window.productBoxConstructor((int) (Math.round(xSize * 0.255)), 261, (int) (Math.round(xSize * 0.24))
++            , 195, productList.get(4)); }
++        if (productList.size() > 5 + n*6) {
++            window.productBoxConstructor((int) (Math.round(xSize * 0.5)), 261, (int) (Math.round(xSize * 0.24)),
++            195, productList.get(5)); }
++    }
++}
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"d8c3e42c-1391-466e-bdbd-038550dee454\" name=\"Changes\" comment=\"\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/Team_24_Security_And_Design.iml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/Team_24_Security_And_Design.iml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/com/sheffield/UI/LoginForm.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/com/sheffield/UI/LoginForm.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/com/sheffield/UI/LoginUI.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/com/sheffield/UI/LoginUI.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/com/sheffield/UI/SignUpForm.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/com/sheffield/UI/SignUpForm.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\n  &quot;customColor&quot;: &quot;&quot;,\n  &quot;associatedIndex&quot;: 1\n}</component>\r\n  <component name=\"ProjectId\" id=\"2XwtE29gaUggz0A9IKHhsPxseRW\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\n  &quot;keyToString&quot;: {\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\n    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,\n    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,\n    &quot;git-widget-placeholder&quot;: &quot;main&quot;,\n    &quot;last_opened_file_path&quot;: &quot;C:/Users/dvous/Documents/COM2008 JDBC/mysql-connector-j-8.2.0/mysql-connector-j-8.2.0.jar&quot;,\n    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,\n    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,\n    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,\n    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,\n    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,\n    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,\n    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,\n    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.IDE.editor.colors.Java&quot;,\n    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;\n  }\n}</component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"d8c3e42c-1391-466e-bdbd-038550dee454\" name=\"Changes\" comment=\"\" />\r\n      <created>1699551856451</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1699551856451</updated>\r\n      <workItem from=\"1699551858160\" duration=\"1112000\" />\r\n      <workItem from=\"1699631910404\" duration=\"2490000\" />\r\n      <workItem from=\"1699662016204\" duration=\"11360000\" />\r\n      <workItem from=\"1699707248974\" duration=\"2129000\" />\r\n      <workItem from=\"1699711199555\" duration=\"2000\" />\r\n      <workItem from=\"1699727214334\" duration=\"3013000\" />\r\n      <workItem from=\"1699802521924\" duration=\"758000\" />\r\n      <workItem from=\"1699831076779\" duration=\"3455000\" />\r\n      <workItem from=\"1699878780488\" duration=\"9158000\" />\r\n      <workItem from=\"1700408028866\" duration=\"2166000\" />\r\n      <workItem from=\"1700478728227\" duration=\"822000\" />\r\n    </task>\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision b10b0b6b1c41a669e45e798b81b614f642520cdc)
++++ b/.idea/workspace.xml	(date 1700483920542)
+@@ -4,24 +4,61 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="d8c3e42c-1391-466e-bdbd-038550dee454" name="Changes" comment="">
++    <list default="true" id="6602dd85-13d0-4e79-be19-d9813972eec8" name="Changes" comment="">
++      <change afterPath="$PROJECT_DIR$/src/com/sheffield/IndividualProductPageUI.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/com/sheffield/ProductBoxData.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/com/sheffield/ProductPageLauncher.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/com/sheffield/ProductRetriever.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/Team_24_Security_And_Design.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Team_24_Security_And_Design.iml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/AccountPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/AccountPage.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/Controller.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/DatabaseConnectionHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/DatabaseConnectionHandler.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/DatabaseOperations.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/Locomotive.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/Locomotive.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/Main$1.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/Main.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/ProductBox.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/ProductBox.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/ProductPageUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/ProductPageUI.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/Products/Product.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/Products/Product.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/RollingStock.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/RollingStock.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/Track.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/Track.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/TrackPack.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/TrackPack.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/TrainSet.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/TrainSet.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/UI/CharacterLimitDocument.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/UI/CharacterLimitDocument.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/UI/CustomButton.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/UI/CustomButton.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/UI/CustomLabel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/UI/CustomLabel.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/UI/CustomTextField.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/UI/CustomTextField.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/UI/HomePageUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/UI/HomePageUI.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/UI/LoginForm.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/UI/LoginForm.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/UI/LoginUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/UI/LoginUI.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/UI/MyFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/UI/MyFrame.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/UI/NavBar.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/UI/NavBar.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/UI/SignUpForm.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/UI/SignUpForm.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/UI/SignUpUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/UI/SignUpUI.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/orders/Database.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/orders/Database.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/orders/Order.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/orders/Order.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/orders/OrderLine.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/orders/OrderLine.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/orders/OrderPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/orders/OrderPage.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/orders/TablePane$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/orders/TablePane$1.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/orders/TablePane$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/orders/TablePane$2.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/orders/TablePane$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/orders/TablePane$3.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/orders/TablePane.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/orders/TablePane.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/orders/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/orders/User.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/com/sheffield/AccountPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/AccountPage.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/com/sheffield/DatabaseOperations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/ProductDatabaseOperations.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/com/sheffield/Locomotive.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/Locomotive.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/com/sheffield/Main.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/com/sheffield/ProductBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/ProductBox.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/com/sheffield/ProductPageUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/ProductPageUI.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/com/sheffield/RollingStock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/RollingStock.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/com/sheffield/UI/LoginForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/UI/LoginForm.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/com/sheffield/UI/LoginUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/UI/LoginUI.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/com/sheffield/UI/SignUpForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/UI/SignUpForm.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+     <option name="LAST_RESOLUTION" value="IGNORE" />
+-  </component>
+-  <component name="FileTemplateManagerImpl">
+-    <option name="RECENT_TEMPLATES">
+-      <list>
+-        <option value="Class" />
+-      </list>
+-    </option>
+   </component>
+   <component name="Git.Settings">
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+@@ -30,10 +67,9 @@
+     <option name="stateVersion" value="1" />
+   </component>
+   <component name="ProjectColorInfo">{
+-  &quot;customColor&quot;: &quot;&quot;,
+-  &quot;associatedIndex&quot;: 1
++  &quot;associatedIndex&quot;: 3
+ }</component>
+-  <component name="ProjectId" id="2XwtE29gaUggz0A9IKHhsPxseRW" />
++  <component name="ProjectId" id="2YREVbCd6dFHCStSDqu3hB4mhxP" />
+   <component name="ProjectViewState">
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+@@ -42,40 +78,33 @@
+   &quot;keyToString&quot;: {
+     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+-    &quot;last_opened_file_path&quot;: &quot;C:/Users/dvous/Documents/COM2008 JDBC/mysql-connector-j-8.2.0/mysql-connector-j-8.2.0.jar&quot;,
++    &quot;git-widget-placeholder&quot;: &quot;Merging main&quot;,
++    &quot;last_opened_file_path&quot;: &quot;C:/Users/dvous/Documents/Git Repos/Team_24_Security_And_Design&quot;,
+     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.IDE.editor.colors.Java&quot;,
++    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
++    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
++    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+   }
+ }</component>
+   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+   <component name="TaskManager">
+     <task active="true" id="Default" summary="Default task">
+-      <changelist id="d8c3e42c-1391-466e-bdbd-038550dee454" name="Changes" comment="" />
+-      <created>1699551856451</created>
++      <changelist id="6602dd85-13d0-4e79-be19-d9813972eec8" name="Changes" comment="" />
++      <created>1700480015698</created>
+       <option name="number" value="Default" />
+       <option name="presentableId" value="Default" />
+-      <updated>1699551856451</updated>
+-      <workItem from="1699551858160" duration="1112000" />
+-      <workItem from="1699631910404" duration="2490000" />
+-      <workItem from="1699662016204" duration="11360000" />
+-      <workItem from="1699707248974" duration="2129000" />
+-      <workItem from="1699711199555" duration="2000" />
+-      <workItem from="1699727214334" duration="3013000" />
+-      <workItem from="1699802521924" duration="758000" />
+-      <workItem from="1699831076779" duration="3455000" />
+-      <workItem from="1699878780488" duration="9158000" />
+-      <workItem from="1700408028866" duration="2166000" />
+-      <workItem from="1700478728227" duration="822000" />
++      <updated>1700480015698</updated>
++      <workItem from="1700480017382" duration="334000" />
++      <workItem from="1700480370832" duration="159000" />
++      <workItem from="1700480561008" duration="182000" />
++      <workItem from="1700480750742" duration="55000" />
++      <workItem from="1700480809847" duration="903000" />
++      <workItem from="1700483459190" duration="385000" />
+     </task>
+     <servers />
+   </component>
+Index: src/com/sheffield/Locomotive.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.sheffield;\n\nimport com.sheffield.Products.Product;\n\nimport java.math.BigDecimal;\n\npublic class Locomotive extends Product {\n\n    private String historicalEra;\n    private String priceBracket;\n\n    public Locomotive(String productCode, String brandName, String productName, BigDecimal retailPrice,\n    String modellingScale, Integer stockCount, String historicalEra, String priceBracket) {\n        super(productCode, brandName, productName, retailPrice, modellingScale, stockCount);\n        this.setHistoricalEra(historicalEra);\n        this.setPriceBracket(priceBracket);\n    }\n\n    @Override\n    public String toString() {\n        return (productCode + \" \" + brandName + \" \" + productName + \" \" + retailPrice + \" \" + modellingScale + \" \"\n        + stockCount + \" \" + historicalEra + \" \" + priceBracket);\n    }\n\n    public String getHistoricalEra() {\n        return historicalEra;\n    }\n\n    public void setHistoricalEra(String historicalEra) {\n        if (isValidHistoricalEra(historicalEra)) {\n            this.historicalEra = historicalEra;\n        } else { throw new IllegalArgumentException(\"Historical era is not valid.\"); }\n    }\n\n    public String getPriceBracket() {\n        return priceBracket;\n    }\n\n    public void setPriceBracket(String priceBracket) {\n        if (isValidPriceBracket(priceBracket)) {\n            this.priceBracket = priceBracket;\n        } else { throw new IllegalArgumentException(\"Price bracket is not valid.\"); }\n    }\n\n    private boolean isValidHistoricalEra(String historicalEra) {\n        return historicalEra != null && historicalEra.length() <= 7;\n    }\n\n    private boolean isValidPriceBracket(String priceBracket) {\n        return priceBracket != null && priceBracket.length() <= 8;\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/com/sheffield/Locomotive.java b/src/com/sheffield/Locomotive.java
+--- a/src/com/sheffield/Locomotive.java	(revision b10b0b6b1c41a669e45e798b81b614f642520cdc)
++++ b/src/com/sheffield/Locomotive.java	(date 1700479684086)
+@@ -43,10 +43,10 @@
+     }
+ 
+     private boolean isValidHistoricalEra(String historicalEra) {
+-        return historicalEra != null && historicalEra.length() <= 7;
++        return historicalEra != null && historicalEra.length() <= 8;
+     }
+ 
+     private boolean isValidPriceBracket(String priceBracket) {
+-        return priceBracket != null && priceBracket.length() <= 8;
++        return priceBracket != null && priceBracket.length() <= 10;
+     }
+ }
+Index: src/com/sheffield/ProductBox.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.sheffield;\n\nimport javax.swing.*;\nimport javax.imageio.*;\nimport java.awt.*;\nimport java.awt.event.ActionEvent;\nimport java.awt.event.ActionListener;\nimport java.math.BigDecimal;\n\npublic class ProductBox extends JPanel {\n\n//    public com.sheffield.ProductBox(LayoutManager layout) {\n//        super(layout);\n//    }\n\n    Toolkit tk = Toolkit.getDefaultToolkit();\n    int xSize = ((int) tk.getScreenSize().getWidth());\n    int ySize = ((int) tk.getScreenSize().getHeight());\n\n    JLabel productTrainSets = new JLabel();\n    JLabel productTrainSetsName = new JLabel();\n    JLabel productTrainSetsPrice = new JLabel();\n    JLabel productTrainSetsCode = new JLabel();\n    JLabel productTrainSetsBrand = new JLabel();\n    JLabel productTrainSetsScale = new JLabel();\n    JButton productTrainSetsInfo = new JButton();\n    JButton productTrainSetsCart = new JButton();\n\n    public void initBox(String productCode, String brandName, String productName, BigDecimal retailPrice,\n    String modellingScale,int stockCount) {\n        //this.setLayout(null);\n\n        productTrainSetsName.setLocation((int) (Math.round(xSize * 0.005)), 220);\n        productTrainSetsName.setSize((int) (Math.round(xSize * 0.22)), 40);\n        productTrainSetsName.setFont(new Font(\"Merriweather\", Font.BOLD, 16));\n        productTrainSetsName.setText(\"Eurostar Train Set\");\n        this.add(productTrainSetsName);\n\n        productTrainSetsPrice.setLocation((int) (Math.round(xSize * 0.005)), 240);\n        productTrainSetsPrice.setSize((int) (Math.round(xSize * 0.22)), 40);\n        productTrainSetsPrice.setFont(new Font(\"Merriweather\", Font.BOLD, 16));\n        productTrainSetsPrice.setText(\"£250.00\");\n        this.add(productTrainSetsPrice);\n\n        productTrainSetsCode.setLocation((int) (Math.round(xSize * 0.005)), 260);\n        productTrainSetsCode.setSize((int) (Math.round(xSize * 0.22)), 40);\n        productTrainSetsCode.setFont(new Font(\"Merriweather\", Font.BOLD, 16));\n        productTrainSetsCode.setText(\"com.sheffield.Products.Product Code: M58392\");\n        this.add(productTrainSetsCode);\n\n        productTrainSetsBrand.setLocation((int) (Math.round(xSize * 0.005)), 280);\n        productTrainSetsBrand.setSize((int) (Math.round(xSize * 0.22)), 40);\n        productTrainSetsBrand.setFont(new Font(\"Merriweather\", Font.BOLD, 16));\n        productTrainSetsBrand.setText(\"Brand: Peco\");\n        this.add(productTrainSetsBrand);\n\n        productTrainSetsScale.setLocation((int) (Math.round(xSize * 0.005)), 300);\n        productTrainSetsScale.setSize((int) (Math.round(xSize * 0.22)), 40);\n        productTrainSetsScale.setFont(new Font(\"Merriweather\", Font.BOLD, 16));\n        productTrainSetsScale.setText(\"Modelling Scale: N Gauge\");\n        this.add(productTrainSetsScale);\n\n        productTrainSetsInfo.setLocation((int) (Math.round(xSize * 0.025)), 340);\n        productTrainSetsInfo.setSize((int) (Math.round(xSize * 0.14)), 70);\n        productTrainSetsInfo.setForeground(new Color(-1));\n        productTrainSetsInfo.setFont(new Font(\"Merriweather\", Font.BOLD, 17));\n        productTrainSetsInfo.addActionListener(e -> productTrainSetsInfo_Click());\n        productTrainSetsInfo.setBackground(new Color(-2743738));\n        productTrainSetsInfo.setText(\"More Information\");\n        this.add(productTrainSetsInfo);\n\n        productTrainSetsCart.setLocation((int) (Math.round(xSize * 0.175)), 340);\n        productTrainSetsCart.setSize((int) (Math.round(xSize * 0.06)), 70);\n        productTrainSetsCart.setForeground(new Color(-1));\n        productTrainSetsCart.setFont(new Font(\"Merriweather\", Font.BOLD, 40));\n        productTrainSetsCart.addActionListener(e -> productTrainSetsCart_Click());\n        productTrainSetsCart.setBackground(new Color(-2743738));\n        productTrainSetsCart.setText(\"+\");\n        this.add(productTrainSetsCart);\n\n        productTrainSets.setLocation(0, 230);\n        productTrainSets.setSize((int) (Math.round(xSize * 0.24)), 195);\n        productTrainSets.setOpaque(true);\n        productTrainSets.setBackground(new Color(-1));\n        this.add(productTrainSets);\n\n//        productTrainSets.setLocation((int) (Math.round(xSize * 0.20)), 230);\n//        productTrainSets.setSize((int) (Math.round(xSize * 0.24)), 195);\n//        productTrainSets.setOpaque(true);\n//        productTrainSets.setBackground(new Color(-1));\n//        this.add(productTrainSets);\n    }\n\n    public void productTrainSetsInfo_Click()\n    {\n        System.out.println(\"Test\");\n    }\n    public void productTrainSetsCart_Click()\n    {\n        System.out.println(\"Test\");\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/com/sheffield/ProductBox.java b/src/com/sheffield/ProductBox.java
+--- a/src/com/sheffield/ProductBox.java	(revision b10b0b6b1c41a669e45e798b81b614f642520cdc)
++++ b/src/com/sheffield/ProductBox.java	(date 1700479684087)
+@@ -1,10 +1,7 @@
+ package com.sheffield;
+ 
+ import javax.swing.*;
+-import javax.imageio.*;
+ import java.awt.*;
+-import java.awt.event.ActionEvent;
+-import java.awt.event.ActionListener;
+ import java.math.BigDecimal;
+ 
+ public class ProductBox extends JPanel {
+@@ -27,40 +24,40 @@
+     JButton productTrainSetsCart = new JButton();
+ 
+     public void initBox(String productCode, String brandName, String productName, BigDecimal retailPrice,
+-    String modellingScale,int stockCount) {
+-        //this.setLayout(null);
++    String modellingScale) {
++        this.setLayout(null);
+ 
+-        productTrainSetsName.setLocation((int) (Math.round(xSize * 0.005)), 220);
+-        productTrainSetsName.setSize((int) (Math.round(xSize * 0.22)), 40);
++        productTrainSetsName.setLocation((int) (Math.round(xSize * 0.005)), 0);
++        productTrainSetsName.setSize((int) (Math.round(xSize * 0.22)), 20);
+         productTrainSetsName.setFont(new Font("Merriweather", Font.BOLD, 16));
+-        productTrainSetsName.setText("Eurostar Train Set");
++        productTrainSetsName.setText(productName);
+         this.add(productTrainSetsName);
+ 
+-        productTrainSetsPrice.setLocation((int) (Math.round(xSize * 0.005)), 240);
+-        productTrainSetsPrice.setSize((int) (Math.round(xSize * 0.22)), 40);
++        productTrainSetsPrice.setLocation((int) (Math.round(xSize * 0.005)), (int) (Math.round(ySize * 0.025)));
++        productTrainSetsPrice.setSize((int) (Math.round(xSize * 0.22)), 20);
+         productTrainSetsPrice.setFont(new Font("Merriweather", Font.BOLD, 16));
+-        productTrainSetsPrice.setText("£250.00");
++        productTrainSetsPrice.setText("£" + retailPrice);
+         this.add(productTrainSetsPrice);
+ 
+-        productTrainSetsCode.setLocation((int) (Math.round(xSize * 0.005)), 260);
+-        productTrainSetsCode.setSize((int) (Math.round(xSize * 0.22)), 40);
++        productTrainSetsCode.setLocation((int) (Math.round(xSize * 0.005)),  (int) (Math.round(ySize * 0.05)));
++        productTrainSetsCode.setSize((int) (Math.round(xSize * 0.22)), 20);
+         productTrainSetsCode.setFont(new Font("Merriweather", Font.BOLD, 16));
+-        productTrainSetsCode.setText("com.sheffield.Products.Product Code: M58392");
++        productTrainSetsCode.setText("Product Code: " + productCode);
+         this.add(productTrainSetsCode);
+ 
+-        productTrainSetsBrand.setLocation((int) (Math.round(xSize * 0.005)), 280);
+-        productTrainSetsBrand.setSize((int) (Math.round(xSize * 0.22)), 40);
++        productTrainSetsBrand.setLocation((int) (Math.round(xSize * 0.005)),  (int) (Math.round(ySize * 0.075)));
++        productTrainSetsBrand.setSize((int) (Math.round(xSize * 0.22)), 20);
+         productTrainSetsBrand.setFont(new Font("Merriweather", Font.BOLD, 16));
+-        productTrainSetsBrand.setText("Brand: Peco");
++        productTrainSetsBrand.setText("Brand: " + brandName);
+         this.add(productTrainSetsBrand);
+ 
+-        productTrainSetsScale.setLocation((int) (Math.round(xSize * 0.005)), 300);
+-        productTrainSetsScale.setSize((int) (Math.round(xSize * 0.22)), 40);
++        productTrainSetsScale.setLocation((int) (Math.round(xSize * 0.005)),  (int) (Math.round(ySize * 0.1)));
++        productTrainSetsScale.setSize((int) (Math.round(xSize * 0.22)), 20);
+         productTrainSetsScale.setFont(new Font("Merriweather", Font.BOLD, 16));
+-        productTrainSetsScale.setText("Modelling Scale: N Gauge");
++        productTrainSetsScale.setText("Modelling Scale: " + modellingScale);
+         this.add(productTrainSetsScale);
+ 
+-        productTrainSetsInfo.setLocation((int) (Math.round(xSize * 0.025)), 340);
++        productTrainSetsInfo.setLocation((int) (Math.round(xSize * 0.025)),  (int) (Math.round(ySize * 0.15)));
+         productTrainSetsInfo.setSize((int) (Math.round(xSize * 0.14)), 70);
+         productTrainSetsInfo.setForeground(new Color(-1));
+         productTrainSetsInfo.setFont(new Font("Merriweather", Font.BOLD, 17));
+@@ -69,7 +66,7 @@
+         productTrainSetsInfo.setText("More Information");
+         this.add(productTrainSetsInfo);
+ 
+-        productTrainSetsCart.setLocation((int) (Math.round(xSize * 0.175)), 340);
++        productTrainSetsCart.setLocation((int) (Math.round(xSize * 0.175)),  (int) (Math.round(ySize * 0.15)));
+         productTrainSetsCart.setSize((int) (Math.round(xSize * 0.06)), 70);
+         productTrainSetsCart.setForeground(new Color(-1));
+         productTrainSetsCart.setFont(new Font("Merriweather", Font.BOLD, 40));
+@@ -83,12 +80,6 @@
+         productTrainSets.setOpaque(true);
+         productTrainSets.setBackground(new Color(-1));
+         this.add(productTrainSets);
+-
+-//        productTrainSets.setLocation((int) (Math.round(xSize * 0.20)), 230);
+-//        productTrainSets.setSize((int) (Math.round(xSize * 0.24)), 195);
+-//        productTrainSets.setOpaque(true);
+-//        productTrainSets.setBackground(new Color(-1));
+-//        this.add(productTrainSets);
+     }
+ 
+     public void productTrainSetsInfo_Click()
+Index: src/com/sheffield/DatabaseOperations.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/com/sheffield/DatabaseOperations.java b/src/com/sheffield/ProductDatabaseOperations.java
+rename from src/com/sheffield/DatabaseOperations.java
+rename to src/com/sheffield/ProductDatabaseOperations.java
+--- a/src/com/sheffield/DatabaseOperations.java	(revision b10b0b6b1c41a669e45e798b81b614f642520cdc)
++++ b/src/com/sheffield/ProductDatabaseOperations.java	(date 1700479684089)
+@@ -1,14 +1,17 @@
+ package com.sheffield;
+ 
++import com.sheffield.Products.Product;
++
+ import java.sql.Connection;
+ import java.sql.PreparedStatement;
+ import java.sql.ResultSet;
+ import java.sql.SQLException;
++import java.util.List;
+ 
+-public class DatabaseOperations {
++public class ProductDatabaseOperations {
+     public void insertTrainSet(TrainSet trainSet, Connection connection) throws SQLException {
+         try {
+-            String insertSQL = "INSERT INTO com.sheffield.Products.Product (productCode, brandName, productName,"+
++            String insertSQL = "INSERT INTO Product (productCode, brandName, productName,"+
+             "retailPrice, modellingScale, stockCount) VALUES (?, ?, ?, ?, ?, ?)";
+ 
+             PreparedStatement preparedStatement = connection .prepareStatement(insertSQL);
+@@ -32,19 +35,18 @@
+         }
+     }
+ 
+-    public void getTrainSets(Connection connection, TrainSet[] trainSetList) throws SQLException {
++    public void getTrainSets(Connection connection, List<Product> trainSetList) throws SQLException {
+         try {
+-            String selectSQL = "SELECT * FROM Train_Set NATURAL JOIN com.sheffield.Products.Product";
++            String selectSQL = "SELECT * FROM Train_Set NATURAL JOIN Product";
+ 
+             PreparedStatement preparedStatement = connection.prepareStatement(selectSQL);
+             ResultSet resultSet = preparedStatement.executeQuery();
+             int count = 0;
+             while (resultSet.next()) {
+-                trainSetList[count] = new TrainSet(resultSet.getString("productCode"),
+-                resultSet.getString("brandName"), resultSet.getString("productName"),
+-                resultSet.getBigDecimal("retailPrice"), resultSet.getString("modellingScale"),
+-                resultSet.getInt("stockCount"));
+-                System.out.println(trainSetList[count].toString());
++                trainSetList.add(new TrainSet(resultSet.getString("productCode"),
++                        resultSet.getString("brandName"), resultSet.getString("productName"),
++                        resultSet.getBigDecimal("retailPrice"), resultSet.getString("modellingScale"),
++                        resultSet.getInt("stockCount")));
+                 count++;
+             }
+         } catch (SQLException e) {
+@@ -55,7 +57,7 @@
+ 
+     public void insertLocomotive(Locomotive locomotive, Connection connection) throws SQLException {
+         try {
+-            String insertSQL = "INSERT INTO com.sheffield.Products.Product (productCode, brandName, productName,"+
++            String insertSQL = "INSERT INTO Product (productCode, brandName, productName,"+
+             "retailPrice, modellingScale, stockCount) VALUES (?, ?, ?, ?, ?, ?)";
+ 
+             PreparedStatement preparedStatement = connection .prepareStatement(insertSQL);
+@@ -67,7 +69,7 @@
+             preparedStatement.setInt(6, locomotive.getStockCount());
+             int rowsAffected = preparedStatement.executeUpdate();
+ 
+-            String insertSQL2 = "INSERT INTO com.sheffield.Locomotive (productCode, historicalEra, priceBracket) VALUES " +
++            String insertSQL2 = "INSERT INTO Locomotive (productCode, historicalEra, priceBracket) VALUES " +
+             "(?, ?, ?)";
+ 
+             PreparedStatement preparedStatement2 = connection .prepareStatement(insertSQL2);
+@@ -82,20 +84,19 @@
+         }
+     }
+ 
+-    public void getLocomotives(Connection connection, Locomotive[] locomotiveList) throws SQLException {
++    public void getLocomotives(Connection connection, List<Product> locomotiveList) throws SQLException {
+         try {
+-            String selectSQL = "SELECT * FROM com.sheffield.Locomotive NATURAL JOIN com.sheffield.Products.Product";
++            String selectSQL = "SELECT * FROM Locomotive NATURAL JOIN Product";
+ 
+             PreparedStatement preparedStatement = connection.prepareStatement(selectSQL);
+             ResultSet resultSet = preparedStatement.executeQuery();
+             int count = 0;
+             while (resultSet.next()) {
+-                locomotiveList[count] = new Locomotive(resultSet.getString("productCode"),
++                locomotiveList.add(new Locomotive(resultSet.getString("productCode"),
+                 resultSet.getString("brandName"), resultSet.getString("productName"),
+                 resultSet.getBigDecimal("retailPrice"), resultSet.getString("modellingScale"),
+                 resultSet.getInt("stockCount"), resultSet.getString("historicalEra"),
+-                resultSet.getString("priceBracket"));
+-                System.out.println(locomotiveList[count].toString());
++                resultSet.getString("priceBracket")));
+                 count++;
+             }
+         } catch (SQLException e) {
+@@ -104,9 +105,28 @@
+         }
+     }
+ 
++    public void deleteProduct(String productCode, Connection connection) throws SQLException {
++        try {
++            String deleteSQL = "DELETE FROM Product WHERE productCode=?";
++            PreparedStatement preparedStatement = connection.prepareStatement(deleteSQL);
++            preparedStatement.setString(1, productCode);
++
++            int rowsAffected = preparedStatement.executeUpdate();
++
++            if (rowsAffected > 0) {
++                System.out.println(rowsAffected + " row(s) deleted successfully.");
++            } else {
++                System.out.println("No records were found for product code: " + productCode);
++            }
++        } catch (SQLException e) {
++            e.printStackTrace();
++            throw e;
++        }
++    }
++
+     public void insertController(Controller controller, Connection connection) throws SQLException {
+         try {
+-            String insertSQL = "INSERT INTO com.sheffield.Products.Product (productCode, brandName, productName,"+
++            String insertSQL = "INSERT INTO Product (productCode, brandName, productName,"+
+                     "retailPrice, modellingScale, stockCount) VALUES (?, ?, ?, ?, ?, ?)";
+ 
+             PreparedStatement preparedStatement = connection .prepareStatement(insertSQL);
+@@ -118,7 +138,7 @@
+             preparedStatement.setInt(6, controller.getStockCount());
+             int rowsAffected = preparedStatement.executeUpdate();
+ 
+-            String insertSQL2 = "INSERT INTO com.sheffield.Controller (productCode, isDigital) VALUES (?, ?)";
++            String insertSQL2 = "INSERT INTO Controller (productCode, isDigital) VALUES (?, ?)";
+ 
+             PreparedStatement preparedStatement2 = connection .prepareStatement(insertSQL2);
+             preparedStatement2.setString(1, controller.getProductCode());
+@@ -131,19 +151,18 @@
+         }
+     }
+ 
+-    public void getControllers(Connection connection, Controller[] controllerList) throws SQLException {
++    public void getControllers(Connection connection, List<Product> controllerList) throws SQLException {
+         try {
+-            String selectSQL = "SELECT * FROM com.sheffield.Controller NATURAL JOIN com.sheffield.Products.Product";
++            String selectSQL = "SELECT * FROM Controller NATURAL JOIN Product";
+ 
+             PreparedStatement preparedStatement = connection.prepareStatement(selectSQL);
+             ResultSet resultSet = preparedStatement.executeQuery();
+             int count = 0;
+             while (resultSet.next()) {
+-                controllerList[count] = new Controller(resultSet.getString("productCode"),
+-                resultSet.getString("brandName"), resultSet.getString("productName"),
+-                resultSet.getBigDecimal("retailPrice"), resultSet.getString("modellingScale"),
+-                resultSet.getInt("stockCount"), resultSet.getBoolean("isDigital"));
+-                System.out.println(controllerList[count].toString());
++                controllerList.add(new Controller(resultSet.getString("productCode"),
++                        resultSet.getString("brandName"), resultSet.getString("productName"),
++                        resultSet.getBigDecimal("retailPrice"), resultSet.getString("modellingScale"),
++                        resultSet.getInt("stockCount"), resultSet.getBoolean("isDigital")));
+                 count++;
+             }
+         } catch (SQLException e) {
+@@ -154,8 +173,8 @@
+ 
+     public void insertTrackPack(TrackPack trackPack, Connection connection) throws SQLException {
+         try {
+-            String insertSQL = "INSERT INTO com.sheffield.Products.Product (productCode, brandName, productName,"+
+-            "retailPrice, modellingScale, stockCount) VALUES (?, ?, ?, ?, ?, ?)";
++            String insertSQL = "INSERT INTO Product (productCode, brandName, productName,"+
++                    "retailPrice, modellingScale, stockCount) VALUES (?, ?, ?, ?, ?, ?)";
+ 
+             PreparedStatement preparedStatement = connection .prepareStatement(insertSQL);
+             preparedStatement.setString(1, trackPack.getProductCode());
+@@ -178,19 +197,18 @@
+         }
+     }
+ 
+-    public void getTrackPack(Connection connection, TrackPack[] trackPackList) throws SQLException {
++    public void getTrackPack(Connection connection, List<Product> trackPackList) throws SQLException {
+         try {
+-            String selectSQL = "SELECT * FROM Track_Pack NATURAL JOIN com.sheffield.Products.Product";
++            String selectSQL = "SELECT * FROM Track_Pack NATURAL JOIN Product";
+ 
+             PreparedStatement preparedStatement = connection.prepareStatement(selectSQL);
+             ResultSet resultSet = preparedStatement.executeQuery();
+             int count = 0;
+             while (resultSet.next()) {
+-                trackPackList[count] = new TrackPack(resultSet.getString("productCode"),
++                trackPackList.add(new TrackPack(resultSet.getString("productCode"),
+                 resultSet.getString("brandName"), resultSet.getString("productName"),
+                 resultSet.getBigDecimal("retailPrice"), resultSet.getString("modellingScale"),
+-                resultSet.getInt("stockCount"));
+-                System.out.println(trackPackList[count].toString());
++                resultSet.getInt("stockCount")));
+                 count++;
+             }
+         } catch (SQLException e) {
+@@ -201,7 +219,7 @@
+ 
+     public void insertTrack(Track track, Connection connection) throws SQLException {
+         try {
+-            String insertSQL = "INSERT INTO com.sheffield.Products.Product (productCode, brandName, productName,"+
++            String insertSQL = "INSERT INTO Product (productCode, brandName, productName,"+
+             "retailPrice, modellingScale, stockCount) VALUES (?, ?, ?, ?, ?, ?)";
+ 
+             PreparedStatement preparedStatement = connection .prepareStatement(insertSQL);
+@@ -213,7 +231,7 @@
+             preparedStatement.setInt(6, track.getStockCount());
+             int rowsAffected = preparedStatement.executeUpdate();
+ 
+-            String insertSQL2 = "INSERT INTO com.sheffield.Track (productCode) VALUES (?)";
++            String insertSQL2 = "INSERT INTO Track (productCode) VALUES (?)";
+ 
+             PreparedStatement preparedStatement2 = connection .prepareStatement(insertSQL2);
+             preparedStatement2.setString(1, track.getProductCode());
+@@ -225,19 +243,18 @@
+         }
+     }
+ 
+-    public void getTrack(Connection connection, Track[] trackList) throws SQLException {
++    public void getTrack(Connection connection, List<Product> trackList) throws SQLException {
+         try {
+-            String selectSQL = "SELECT * FROM com.sheffield.Track NATURAL JOIN com.sheffield.Products.Product";
++            String selectSQL = "SELECT * FROM Track NATURAL JOIN Product";
+ 
+             PreparedStatement preparedStatement = connection.prepareStatement(selectSQL);
+             ResultSet resultSet = preparedStatement.executeQuery();
+             int count = 0;
+             while (resultSet.next()) {
+-                trackList[count] = new Track(resultSet.getString("productCode"),
++                trackList.add(new Track(resultSet.getString("productCode"),
+                 resultSet.getString("brandName"), resultSet.getString("productName"),
+                 resultSet.getBigDecimal("retailPrice"), resultSet.getString("modellingScale"),
+-                resultSet.getInt("stockCount"));
+-                System.out.println(trackList[count].toString());
++                resultSet.getInt("stockCount")));
+                 count++;
+             }
+         } catch (SQLException e) {
+@@ -248,7 +265,7 @@
+ 
+     public void insertRollingStock(RollingStock rollingStock, Connection connection) throws SQLException {
+         try {
+-            String insertSQL = "INSERT INTO com.sheffield.Products.Product (productCode, brandName, productName,"+
++            String insertSQL = "INSERT INTO Product (productCode, brandName, productName,"+
+             "retailPrice, modellingScale, stockCount) VALUES (?, ?, ?, ?, ?, ?)";
+ 
+             PreparedStatement preparedStatement = connection .prepareStatement(insertSQL);
+@@ -273,19 +290,18 @@
+         }
+     }
+ 
+-    public void getRollingStock(Connection connection, RollingStock[] rollingStockList) throws SQLException {
++    public void getRollingStock(Connection connection, List<Product> rollingStockList) throws SQLException {
+         try {
+-            String selectSQL = "SELECT * FROM Rolling_Stock NATURAL JOIN com.sheffield.Products.Product";
++            String selectSQL = "SELECT * FROM Rolling_Stock NATURAL JOIN Product";
+ 
+             PreparedStatement preparedStatement = connection.prepareStatement(selectSQL);
+             ResultSet resultSet = preparedStatement.executeQuery();
+             int count = 0;
+             while (resultSet.next()) {
+-                rollingStockList[count] = new RollingStock(resultSet.getString("productCode"),
++                rollingStockList.add(new RollingStock(resultSet.getString("productCode"),
+                 resultSet.getString("brandName"), resultSet.getString("productName"),
+                 resultSet.getBigDecimal("retailPrice"), resultSet.getString("modellingScale"),
+-                resultSet.getInt("stockCount"), resultSet.getString("historicalEra"));
+-                System.out.println(rollingStockList[count].toString());
++                resultSet.getInt("stockCount"), resultSet.getString("historicalEra")));
+                 count++;
+             }
+         } catch (SQLException e) {
+Index: src/com/sheffield/ProductPageLauncher.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/com/sheffield/ProductPageLauncher.java b/src/com/sheffield/ProductPageLauncher.java
+new file mode 100644
+--- /dev/null	(date 1700479684089)
++++ b/src/com/sheffield/ProductPageLauncher.java	(date 1700479684089)
+@@ -0,0 +1,25 @@
++package com.sheffield;
++
++import javax.swing.*;
++import java.sql.SQLException;
++
++public class ProductPageLauncher {
++    public static void main(String[] args) {
++        SwingUtilities.invokeLater(new Runnable(){
++            @Override
++            public void run() {
++                try {
++                    //the database connection can be removed as long as no more data needs to be added
++                    DatabaseConnectionHandler dch = new DatabaseConnectionHandler();
++                    ProductDatabaseOperations dop = new ProductDatabaseOperations();
++                    dch.openConnection();
++                    ProductPageUI window = new ProductPageUI();
++                    window.initFrame();
++                    dch.closeConnection();
++                } catch (SQLException e) {
++                    e.printStackTrace();
++                }
++            }
++        });
++    }
++}
+\ No newline at end of file
+Index: src/com/sheffield/ProductPageUI.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.sheffield;\n\nimport javax.swing.*;\nimport javax.imageio.*;\nimport java.awt.*;\nimport java.awt.image.*;\nimport java.io.File;\nimport java.sql.SQLException;\n\npublic class ProductPageUI extends JFrame {\n\n    Toolkit tk = Toolkit.getDefaultToolkit();\n    int xSize = ((int) tk.getScreenSize().getWidth());\n    int ySize = ((int) tk.getScreenSize().getHeight());\n\n    JPanel productPagePanel = new JPanel(null);\n    JScrollPane productPageScrollPane = new JScrollPane(null);\n\n    JLabel testComponent = new JLabel();\n    JLabel leftArrow = new JLabel();\n    JLabel rightArrow = new JLabel();\n    JLabel profilePicture = new JLabel();\n    JLabel productHeader = new JLabel();\n    JButton productAccountButton = new JButton();\n    JButton productBasketButton = new JButton();\n    JButton productStaffPageButton = new JButton();\n    JLabel productSidebar = new JLabel();\n    JLabel productTypeFilterLabel = new JLabel();\n    String[] productTypeFilterComboData = {\"Train Sets\", \"com.sheffield.Track Packs\", \"Locomotives\", \"Rolling Stock\", \"Tracks\",\n    \"Controllers\"};\n    JComboBox<String> productTypeFilterCombo = new JComboBox<>(productTypeFilterComboData);\n    JLabel productBrandFilterLabel = new JLabel();\n    JComboBox<String> productBrandFilterCombo = new JComboBox<>();\n    JLabel productPriceFilterLabel = new JLabel();\n    JComboBox<String> productPriceFilterCombo = new JComboBox<>();\n    JLabel productScaleFilterLabel = new JLabel();\n    JComboBox<String> productScaleFilterCombo = new JComboBox<>();\n    JTextField productSearch = new JTextField();\n    JLabel productFilterBar =  new JLabel();\n    JLabel productTrainSetsText = new JLabel();\n    JLabel productTrainSetsPageCount = new JLabel();\n    ProductBox productBox1 = new ProductBox();\n    ProductBox productBox2 = new ProductBox();\n    ProductBox productBox3 = new ProductBox();\n    ProductBox productBox4 = new ProductBox();\n    JLabel productTrainSetsBorder = new JLabel();\n    JLabel productBackground = new JLabel();\n\n    JLabel padding = new JLabel(\"\");\n    JScrollPane scrollPane = new JScrollPane();\n    JTextArea textArea = new JTextArea(100, 100);\n\n    public void initFrame()\n    {\n        this.setLayout(new GridLayout(1,1));\n        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);\n        this.setSize((Math.round(xSize)),9000);\n\n        initPanel();\n\n        productPageScrollPane.setViewportView(productPagePanel);\n        productPageScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);\n        productPageScrollPane.setSize((Math.round(xSize)), (Math.round(ySize)));\n        //JScrollBar verticalScrollBar = productPageScrollPane.createVerticalScrollBar();\n        //verticalScrollBar.setSize((int) (Math.round(xSize * 0.001)),2000);\n        this.add(productPageScrollPane, \"align right\");\n        //this.add(verticalScrollBar);\n        this.setVisible(true);\n    }\n\n    public void initPanel()\n    {\n        /* For colours of each of the components:\n         * Purple: 11854529\n         * Red: 2743738\n         * Light Green: 8741250\n         * Dark Green: 14995422\n         * Blue: 15440650\n         * White: 1\n         * Black: Don't enter anything (default).\n         * Transparent?: 15658734\n        */\n\n        scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);\n        scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);\n        // Row indentation\n        textArea.setFont(new Font(\"SansSerif\", Font.PLAIN, 12) );\n        textArea.setEditable(false);\n        textArea.setLineWrap(false);\n        textArea.append(\"test\");\n        scrollPane.setRowHeaderView(padding);\n        scrollPane.setViewportView(textArea);\n        scrollPane.getRowHeader().setBackground(Color.WHITE);\n        scrollPane.getViewport().setBackground(Color.WHITE);\n\n        try {\n            BufferedImage leftArrowImg = ImageIO.read(new File(\"leftArrowInactive.png\"));\n            Image leftArrowImgResized = leftArrowImg.getScaledInstance(30, 30, Image.SCALE_DEFAULT);\n            leftArrow.setIcon(new ImageIcon(leftArrowImgResized));\n        } catch (Exception e) {\n            System.out.println(\"The file was not found.\");\n            e.printStackTrace();\n        }\n        leftArrow.setLocation((int) (Math.round(xSize * 0.18)),413);\n        leftArrow.setSize(30,30);\n        productPagePanel.add(leftArrow);\n\n        try {\n            BufferedImage rightArrowImg = ImageIO.read(new File(\"rightArrowActive.png\"));\n            Image rightArrowImgResized = rightArrowImg.getScaledInstance(30, 30, Image.SCALE_DEFAULT);\n            rightArrow.setIcon(new ImageIcon(rightArrowImgResized));\n        } catch (Exception e) {\n            System.out.println(\"The file was not found.\");\n            e.printStackTrace();\n        }\n        rightArrow.setLocation((int) (Math.round(xSize * 0.925)),413);\n        rightArrow.setSize(30,30);\n        productPagePanel.add(rightArrow);\n\n        productHeader.setLocation(0,0);\n        productHeader.setSize((Math.round(xSize)),70);\n        productHeader.setForeground( new Color(-1) );\n        productHeader.setFont(new Font(\"Merryweather\", Font.BOLD, 50));\n        productHeader.setOpaque(true);\n        productHeader.setBackground( new Color(-11854529) );\n        productHeader.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));\n        productHeader.setText(\"Trains of Sheffield\");\n        productHeader.setHorizontalAlignment(SwingConstants.CENTER);\n        productPagePanel.add(productHeader);\n\n        productAccountButton.setLocation(0,70);\n        productAccountButton.setSize((int) (Math.round(xSize * 0.16)),87);\n        productAccountButton.setForeground( new Color(-1) );\n        productAccountButton.setFont(new Font(\"Merriweather\", Font.BOLD, 21));\n        productAccountButton.addActionListener(e->productAccountButton_Click());\n        productAccountButton.setBackground( new Color(-2743738) );\n        productAccountButton.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));\n        productAccountButton.setText(\"   Account\");\n        productAccountButton.setHorizontalAlignment(SwingConstants.LEFT);\n        try {\n            BufferedImage profilePictureImg = ImageIO.read(new File(\"profilePicture.png\"));\n            Image profilePictureImgResized = profilePictureImg.getScaledInstance\n            (70, 70, Image.SCALE_DEFAULT);\n            profilePicture.setIcon(new ImageIcon(profilePictureImgResized));\n        } catch (Exception e) {\n            System.out.println(\"The file was not found.\");\n            e.printStackTrace();\n        }\n        //profilePicture.setLocation((int) (Math.round(xSize * 0.12)),0);\n        profilePicture.setSize(70,70);\n        productAccountButton.add(profilePicture);\n        productPagePanel.add(productAccountButton);\n        profilePicture.setLocation((int) (Math.round(xSize * 0.12)),70);\n\n        testComponent.setLocation((int) (Math.round(xSize * 0.16)),70);\n        testComponent.setSize((int) (Math.round(xSize * 0.14)),44);\n        testComponent.setForeground( new Color(-1) );\n        testComponent.setOpaque(true);\n        testComponent.setFont(new Font(\"Merriweather\", Font.BOLD, 14));\n        testComponent.setBackground( new Color(0xFFD62246) );\n        testComponent.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));\n        testComponent.setText(\"Filter by com.sheffield.Products.Product Type\");\n        productPagePanel.add(testComponent);\n\n        productBasketButton.setLocation(0,157);\n        productBasketButton.setSize((int) (Math.round(xSize * 0.16)),87);\n        productBasketButton.setForeground( new Color(-1) );\n        productBasketButton.setFont(new Font(\"Merriweather\", Font.BOLD, 21));\n        productBasketButton.addActionListener(e->productBasketButton_Click());\n        productBasketButton.setBackground( new Color(-2743738) );\n        productBasketButton.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));\n        productBasketButton.setText(\"   Basket\");\n        productBasketButton.setHorizontalAlignment(SwingConstants.LEFT);\n        productPagePanel.add(productBasketButton);\n\n        productStaffPageButton.setLocation(0,244);\n        productStaffPageButton.setSize((int) (Math.round(xSize * 0.16)),87);\n        productStaffPageButton.setForeground( new Color(-1) );\n        productStaffPageButton.setFont(new Font(\"Merriweather\", Font.BOLD, 21));\n        productStaffPageButton.addActionListener(e->productStaffPageButton_Click());\n        productStaffPageButton.setBackground( new Color(-15440650) );\n        productStaffPageButton.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));\n        productStaffPageButton.setText(\"   To Staff Page\");\n        productStaffPageButton.setHorizontalAlignment(SwingConstants.LEFT);\n        productPagePanel.add(productStaffPageButton);\n\n        productSidebar.setLocation(0,70);\n        productSidebar.setSize((int) (Math.round(xSize * 0.16)),1930);\n        productSidebar.setOpaque(true);\n        productSidebar.setBackground( new Color(-11854529) );\n        productPagePanel.add(productSidebar);\n\n        productTypeFilterLabel.setLocation((int) (Math.round(xSize * 0.16)),70);\n        productTypeFilterLabel.setSize((int) (Math.round(xSize * 0.14)),44);\n        productTypeFilterLabel.setForeground( new Color(-1) );\n        productTypeFilterLabel.setOpaque(true);\n        productTypeFilterLabel.setFont(new Font(\"Merriweather\", Font.BOLD, 14));\n        productTypeFilterLabel.setBackground( new Color(0xFFD62246) );\n        productTypeFilterLabel.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));\n        productTypeFilterLabel.setText(\"Filter by com.sheffield.Products.Product Type\");\n        productPagePanel.add(productTypeFilterLabel);\n\n        productTypeFilterCombo.setLocation((int) (Math.round(xSize * 0.16)),114);\n        productTypeFilterCombo.setSize((int) (Math.round(xSize * 0.14)),43);\n        productTypeFilterCombo.setForeground( new Color(-1) );\n        productTypeFilterCombo.setFont(new Font(\"Merriweather\", Font.BOLD, 14));\n        productTypeFilterCombo.setBackground( new Color(-2743738) );\n        productTypeFilterCombo.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));\n        productPagePanel.add(productTypeFilterCombo);\n\n        productBrandFilterLabel.setLocation((int) (Math.round(xSize * 0.3)),70);\n        productBrandFilterLabel.setSize((int) (Math.round(xSize * 0.14)),44);\n        productBrandFilterLabel.setForeground( new Color(-1) );\n        productBrandFilterLabel.setOpaque(true);\n        productBrandFilterLabel.setFont(new Font(\"Merriweather\", Font.BOLD, 14));\n        productBrandFilterLabel.setBackground( new Color(0xFFD62246) );\n        productBrandFilterLabel.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));\n        productBrandFilterLabel.setText(\"Filter by Brand\");\n        productPagePanel.add(productBrandFilterLabel);\n\n        productBrandFilterCombo.setLocation((int) (Math.round(xSize * 0.3)),114);\n        productBrandFilterCombo.setSize((int) (Math.round(xSize * 0.14)),43);\n        productBrandFilterCombo.setForeground( new Color(-1) );\n        productBrandFilterCombo.setFont(new Font(\"Merriweather\", Font.BOLD, 14));\n        productBrandFilterCombo.setBackground( new Color(-2743738) );\n        productBrandFilterCombo.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));\n        productPagePanel.add(productBrandFilterCombo);\n\n        productPriceFilterLabel.setLocation((int) (Math.round(xSize * 0.44)),70);\n        productPriceFilterLabel.setSize((int) (Math.round(xSize * 0.14)),44);\n        productPriceFilterLabel.setForeground( new Color(-1) );\n        productPriceFilterLabel.setOpaque(true);\n        productPriceFilterLabel.setFont(new Font(\"Merriweather\", Font.BOLD, 14));\n        productPriceFilterLabel.setBackground( new Color(0xFFD62246) );\n        productPriceFilterLabel.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));\n        productPriceFilterLabel.setText(\"Filter by Price Range\");\n        productPagePanel.add(productPriceFilterLabel);\n\n        productPriceFilterCombo.setLocation((int) (Math.round(xSize * 0.44)),114);\n        productPriceFilterCombo.setSize((int) (Math.round(xSize * 0.14)),43);\n        productPriceFilterCombo.setForeground( new Color(-1) );\n        productPriceFilterCombo.setFont(new Font(\"Merriweather\", Font.BOLD, 14));\n        productPriceFilterCombo.setBackground( new Color(-2743738) );\n        productPriceFilterCombo.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));\n        productPagePanel.add(productPriceFilterCombo);\n\n        productScaleFilterLabel.setLocation((int) (Math.round(xSize * 0.58)),70);\n        productScaleFilterLabel.setSize((int) (Math.round(xSize * 0.14)),44);\n        productScaleFilterLabel.setForeground( new Color(-1) );\n        productScaleFilterLabel.setOpaque(true);\n        productScaleFilterLabel.setFont(new Font(\"Merriweather\", Font.BOLD, 14));\n        productScaleFilterLabel.setBackground( new Color(0xFFD62246) );\n        productScaleFilterLabel.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));\n        productScaleFilterLabel.setText(\"Filter by Modelling Scale\");\n        productPagePanel.add(productScaleFilterLabel);\n\n        productScaleFilterCombo.setLocation((int) (Math.round(xSize * 0.58)),114);\n        productScaleFilterCombo.setSize((int) (Math.round(xSize * 0.14)),43);\n        productScaleFilterCombo.setForeground( new Color(-1) );\n        productScaleFilterCombo.setFont(new Font(\"Merriweather\", Font.BOLD, 14));\n        productScaleFilterCombo.setBackground( new Color(-2743738) );\n        productScaleFilterCombo.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));\n        productPagePanel.add(productScaleFilterCombo);\n\n        productSearch.setLocation((int) (Math.round(xSize * 0.75)),100);\n        productSearch.setSize((int) (Math.round(xSize * 0.2)),26);\n        productSearch.setFont(new Font(\"Merriweather\", Font.BOLD, 14));\n        productSearch.setBackground( new Color(0xFFFFFF) );\n        productSearch.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));\n        productSearch.setText(\"Search\");\n        productPagePanel.add(productSearch);\n\n        productFilterBar.setLocation((int) (Math.round(xSize * 0.16)),70);\n        productFilterBar.setSize((int) (Math.round(xSize * 0.84)),87);\n        productFilterBar.setForeground( new Color(-1) );\n        productFilterBar.setOpaque(true);\n        productFilterBar.setBackground( new Color(-14995422) );\n        productFilterBar.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));\n        productPagePanel.add(productFilterBar);\n\n        productTrainSetsText.setLocation((int) (Math.round(xSize * 0.20)),179);\n        productTrainSetsText.setSize((int) (Math.round(xSize * 0.22)),44);\n        productTrainSetsText.setForeground( new Color(-1) );\n        productTrainSetsText.setFont(new Font(\"Merriweather\", Font.BOLD, 35));\n        productTrainSetsText.setBackground( new Color(-14995422) );\n        productTrainSetsText.setText(\"Train Sets\");\n        productPagePanel.add(productTrainSetsText);\n\n        productTrainSetsPageCount.setLocation((int) (Math.round(xSize * 0.87)),179);\n        productTrainSetsPageCount.setSize((int) (Math.round(xSize * 0.06)),40);\n        productTrainSetsPageCount.setForeground( new Color(-1) );\n        productTrainSetsPageCount.setFont(new Font(\"Merriweather\", Font.BOLD, 35));\n        productTrainSetsPageCount.setBackground( new Color(-14995422) );\n        productTrainSetsPageCount.setText(\"1/1\");\n        productPagePanel.add(productTrainSetsPageCount);\n\n        productBoxConstructor((int) (Math.round(xSize * 0.20)), 230, (int) (Math.round(xSize * 0.24)), 195,\n        0);\n        productBoxConstructor((int) (Math.round(xSize * 0.445)), 230, (int) (Math.round(xSize * 0.24)), 195\n        ,1);\n        productBoxConstructor((int) (Math.round(xSize * 0.69)), 230, (int) (Math.round(xSize * 0.24)), 195\n        ,2);\n        productBoxConstructor((int) (Math.round(xSize * 0.20)), 435, (int) (Math.round(xSize * 0.24)), 195\n        ,3);\n\n        productTrainSetsBorder.setLocation((int) (Math.round(xSize * 0.19)),175);\n        productTrainSetsBorder.setSize((int) (Math.round(xSize * 0.75)),464);\n        productTrainSetsBorder.setForeground( new Color(-1) );\n        productTrainSetsBorder.setOpaque(true);\n        productTrainSetsBorder.setBackground( new Color(-14995422) );\n        productPagePanel.add(productTrainSetsBorder);\n\n        productBackground.setLocation(0,0);\n        productBackground.setSize((Math.round(xSize)),9000);\n        productBackground.setOpaque(true);\n        productBackground.setBackground( new Color(-8741250) );\n        productPagePanel.add(productBackground);\n\n        productPagePanel.setVisible(true);\n    }\n\n    public void productBoxConstructor(int x, int y, int width, int height, int recordNum) {\n        try {\n            DatabaseConnectionHandler dch = new DatabaseConnectionHandler();\n            DatabaseOperations dop = new DatabaseOperations();\n            dch.openConnection();\n            TrainSet[] trainSetList = new TrainSet[100];\n            dop.getTrainSets(dch.getConnection(), trainSetList);\n            TrainSet trainSet = trainSetList[recordNum];\n            ProductBox productBox = new ProductBox();\n            productBox.setLocation(x, y);\n            productBox.setSize(width, height);\n            productBox.setOpaque(true);\n            productBox.setBackground(new Color(-1));\n            productBox.initBox(trainSet.getProductCode(), trainSet.getBrandName(), trainSet.getProductName(), trainSet.getRetailPrice(),\n            trainSet.getModellingScale(), trainSet.getStockCount());\n            productPagePanel.add(productBox);\n            dch.closeConnection();\n        } catch (SQLException e) {\n            e.printStackTrace();\n        }\n    }\n\n    public void productAccountButton_Click()\n    {\n        AccountPage accountPage = new AccountPage();\n        accountPage.initPanel();\n        accountPage.initFrame();\n    }\n    public void productBasketButton_Click()\n    {\n        System.out.println(\"productBasketButton_Click() has been pressed \");\n    }\n    public void productStaffPageButton_Click() { System.out.println(\"Placeholder\"); }\n\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/com/sheffield/ProductPageUI.java b/src/com/sheffield/ProductPageUI.java
+--- a/src/com/sheffield/ProductPageUI.java	(revision b10b0b6b1c41a669e45e798b81b614f642520cdc)
++++ b/src/com/sheffield/ProductPageUI.java	(date 1700479684090)
+@@ -1,24 +1,29 @@
+ package com.sheffield;
+ 
++import com.sheffield.Products.Product;
+ import javax.swing.*;
+ import javax.imageio.*;
+ import java.awt.*;
+ import java.awt.image.*;
+ import java.io.File;
+-import java.sql.SQLException;
++import java.util.ArrayList;
++import java.util.List;
+ 
+ public class ProductPageUI extends JFrame {
+ 
+     Toolkit tk = Toolkit.getDefaultToolkit();
+     int xSize = ((int) tk.getScreenSize().getWidth());
+     int ySize = ((int) tk.getScreenSize().getHeight());
++    int n = 0;
+ 
+-    JPanel productPagePanel = new JPanel(null);
+     JScrollPane productPageScrollPane = new JScrollPane(null);
++    JPanel productPagePanel = new JPanel(null);
++    ProductRetriever productRetriever = new ProductRetriever();
++    List<Product> productList = new ArrayList<Product>();
+ 
+     JLabel testComponent = new JLabel();
+-    JLabel leftArrow = new JLabel();
+-    JLabel rightArrow = new JLabel();
++    JButton leftArrow = new JButton();
++    JButton rightArrow = new JButton();
+     JLabel profilePicture = new JLabel();
+     JLabel productHeader = new JLabel();
+     JButton productAccountButton = new JButton();
+@@ -26,24 +31,22 @@
+     JButton productStaffPageButton = new JButton();
+     JLabel productSidebar = new JLabel();
+     JLabel productTypeFilterLabel = new JLabel();
+-    String[] productTypeFilterComboData = {"Train Sets", "com.sheffield.Track Packs", "Locomotives", "Rolling Stock", "Tracks",
++    String[] productTypeFilterComboData = {"Train Sets", "Track Packs", "Locomotives", "Rolling Stock", "Tracks",
+     "Controllers"};
+     JComboBox<String> productTypeFilterCombo = new JComboBox<>(productTypeFilterComboData);
+     JLabel productBrandFilterLabel = new JLabel();
+-    JComboBox<String> productBrandFilterCombo = new JComboBox<>();
++    String[] productBrandFilterComboData = {"Hornby", "Peco", "Dapol", "Graham Farish", "Bachmann"};
++    JComboBox<String> productBrandFilterCombo = new JComboBox<>(productBrandFilterComboData);
+     JLabel productPriceFilterLabel = new JLabel();
+-    JComboBox<String> productPriceFilterCombo = new JComboBox<>();
++    String[] productPriceFilterComboData = {"...£10", "£11...£25", "£26...£50", "£51...£100", "£101...£150",
++    "£151...£200", "£201...£300", "£301..."};
++    JComboBox<String> productPriceFilterCombo = new JComboBox<>(productPriceFilterComboData);
+     JLabel productScaleFilterLabel = new JLabel();
+-    JComboBox<String> productScaleFilterCombo = new JComboBox<>();
++    String[] productScaleFilterComboData = {"N Gauge", "TT Gauge", "OO Gauge"};
++    JComboBox<String> productScaleFilterCombo = new JComboBox<>(productScaleFilterComboData);
+     JTextField productSearch = new JTextField();
+     JLabel productFilterBar =  new JLabel();
+-    JLabel productTrainSetsText = new JLabel();
+-    JLabel productTrainSetsPageCount = new JLabel();
+-    ProductBox productBox1 = new ProductBox();
+-    ProductBox productBox2 = new ProductBox();
+-    ProductBox productBox3 = new ProductBox();
+-    ProductBox productBox4 = new ProductBox();
+-    JLabel productTrainSetsBorder = new JLabel();
++    JPanel productAreaBorder = new JPanel(null);
+     JLabel productBackground = new JLabel();
+ 
+     JLabel padding = new JLabel("");
+@@ -55,16 +58,8 @@
+         this.setLayout(new GridLayout(1,1));
+         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+         this.setSize((Math.round(xSize)),9000);
+-
+         initPanel();
+-
+-        productPageScrollPane.setViewportView(productPagePanel);
+-        productPageScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+-        productPageScrollPane.setSize((Math.round(xSize)), (Math.round(ySize)));
+-        //JScrollBar verticalScrollBar = productPageScrollPane.createVerticalScrollBar();
+-        //verticalScrollBar.setSize((int) (Math.round(xSize * 0.001)),2000);
+-        this.add(productPageScrollPane, "align right");
+-        //this.add(verticalScrollBar);
++        this.add(productPagePanel);
+         this.setVisible(true);
+     }
+ 
+@@ -93,20 +88,22 @@
+         scrollPane.getRowHeader().setBackground(Color.WHITE);
+         scrollPane.getViewport().setBackground(Color.WHITE);
+ 
+-        try {
+-            BufferedImage leftArrowImg = ImageIO.read(new File("leftArrowInactive.png"));
+-            Image leftArrowImgResized = leftArrowImg.getScaledInstance(30, 30, Image.SCALE_DEFAULT);
+-            leftArrow.setIcon(new ImageIcon(leftArrowImgResized));
+-        } catch (Exception e) {
+-            System.out.println("The file was not found.");
+-            e.printStackTrace();
+-        }
++        setButtonImg(leftArrow, "src/com/sheffield/Images/leftArrowInactive.png");
+         leftArrow.setLocation((int) (Math.round(xSize * 0.18)),413);
+         leftArrow.setSize(30,30);
++        leftArrow.addActionListener(e->leftArrow_Click());
++        leftArrow.setBorderPainted(false);
++        leftArrow.setContentAreaFilled(false);
++        leftArrow.setFocusPainted(false);
++        leftArrow.setOpaque(false);
+         productPagePanel.add(leftArrow);
+ 
++        List<Product> productList = productRetriever.getProductsFromDatabase(productTypeFilterCombo);
++        if (productList.size() / 6 > 0) { setButtonImg(rightArrow, "src/com/sheffield/Images/rightArrowActive.png"); }
++        else { setButtonImg(rightArrow, "src/com/sheffield/Images/rightArrowInactive.png"); }
+         try {
+-            BufferedImage rightArrowImg = ImageIO.read(new File("rightArrowActive.png"));
++            BufferedImage rightArrowImg = ImageIO.read(new File
++            ("src/com/sheffield/Images/rightArrowActive.png"));
+             Image rightArrowImgResized = rightArrowImg.getScaledInstance(30, 30, Image.SCALE_DEFAULT);
+             rightArrow.setIcon(new ImageIcon(rightArrowImgResized));
+         } catch (Exception e) {
+@@ -115,6 +112,11 @@
+         }
+         rightArrow.setLocation((int) (Math.round(xSize * 0.925)),413);
+         rightArrow.setSize(30,30);
++        rightArrow.addActionListener(e->rightArrow_Click());
++        rightArrow.setBorderPainted(false);
++        rightArrow.setContentAreaFilled(false);
++        rightArrow.setFocusPainted(false);
++        rightArrow.setOpaque(false);
+         productPagePanel.add(rightArrow);
+ 
+         productHeader.setLocation(0,0);
+@@ -138,7 +140,8 @@
+         productAccountButton.setText("   Account");
+         productAccountButton.setHorizontalAlignment(SwingConstants.LEFT);
+         try {
+-            BufferedImage profilePictureImg = ImageIO.read(new File("profilePicture.png"));
++            BufferedImage profilePictureImg = ImageIO.read(new File
++            ("src/com/sheffield/Images/profilePicture.png"));
+             Image profilePictureImgResized = profilePictureImg.getScaledInstance
+             (70, 70, Image.SCALE_DEFAULT);
+             profilePicture.setIcon(new ImageIcon(profilePictureImgResized));
+@@ -159,7 +162,7 @@
+         testComponent.setFont(new Font("Merriweather", Font.BOLD, 14));
+         testComponent.setBackground( new Color(0xFFD62246) );
+         testComponent.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));
+-        testComponent.setText("Filter by com.sheffield.Products.Product Type");
++        testComponent.setText("Filter by Product Type");
+         productPagePanel.add(testComponent);
+ 
+         productBasketButton.setLocation(0,157);
+@@ -197,13 +200,14 @@
+         productTypeFilterLabel.setFont(new Font("Merriweather", Font.BOLD, 14));
+         productTypeFilterLabel.setBackground( new Color(0xFFD62246) );
+         productTypeFilterLabel.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));
+-        productTypeFilterLabel.setText("Filter by com.sheffield.Products.Product Type");
++        productTypeFilterLabel.setText("Filter by Product Type");
+         productPagePanel.add(productTypeFilterLabel);
+ 
+         productTypeFilterCombo.setLocation((int) (Math.round(xSize * 0.16)),114);
+         productTypeFilterCombo.setSize((int) (Math.round(xSize * 0.14)),43);
+         productTypeFilterCombo.setForeground( new Color(-1) );
+         productTypeFilterCombo.setFont(new Font("Merriweather", Font.BOLD, 14));
++        productTypeFilterCombo.addItemListener(e->productTypeFilterCombo_Click());
+         productTypeFilterCombo.setBackground( new Color(-2743738) );
+         productTypeFilterCombo.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));
+         productPagePanel.add(productTypeFilterCombo);
+@@ -222,6 +226,7 @@
+         productBrandFilterCombo.setSize((int) (Math.round(xSize * 0.14)),43);
+         productBrandFilterCombo.setForeground( new Color(-1) );
+         productBrandFilterCombo.setFont(new Font("Merriweather", Font.BOLD, 14));
++        productBrandFilterCombo.addItemListener(e->productBrandFilterCombo_Click());
+         productBrandFilterCombo.setBackground( new Color(-2743738) );
+         productBrandFilterCombo.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));
+         productPagePanel.add(productBrandFilterCombo);
+@@ -240,6 +245,7 @@
+         productPriceFilterCombo.setSize((int) (Math.round(xSize * 0.14)),43);
+         productPriceFilterCombo.setForeground( new Color(-1) );
+         productPriceFilterCombo.setFont(new Font("Merriweather", Font.BOLD, 14));
++        productPriceFilterCombo.addItemListener(e->productPriceFilterCombo_Click());
+         productPriceFilterCombo.setBackground( new Color(-2743738) );
+         productPriceFilterCombo.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));
+         productPagePanel.add(productPriceFilterCombo);
+@@ -258,6 +264,7 @@
+         productScaleFilterCombo.setSize((int) (Math.round(xSize * 0.14)),43);
+         productScaleFilterCombo.setForeground( new Color(-1) );
+         productScaleFilterCombo.setFont(new Font("Merriweather", Font.BOLD, 14));
++        productScaleFilterCombo.addItemListener(e->productScaleFilterCombo_Click());
+         productScaleFilterCombo.setBackground( new Color(-2743738) );
+         productScaleFilterCombo.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));
+         productPagePanel.add(productScaleFilterCombo);
+@@ -278,37 +285,17 @@
+         productFilterBar.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));
+         productPagePanel.add(productFilterBar);
+ 
+-        productTrainSetsText.setLocation((int) (Math.round(xSize * 0.20)),179);
+-        productTrainSetsText.setSize((int) (Math.round(xSize * 0.22)),44);
+-        productTrainSetsText.setForeground( new Color(-1) );
+-        productTrainSetsText.setFont(new Font("Merriweather", Font.BOLD, 35));
+-        productTrainSetsText.setBackground( new Color(-14995422) );
+-        productTrainSetsText.setText("Train Sets");
+-        productPagePanel.add(productTrainSetsText);
++        generateProductAreaComponents();
+ 
+-        productTrainSetsPageCount.setLocation((int) (Math.round(xSize * 0.87)),179);
+-        productTrainSetsPageCount.setSize((int) (Math.round(xSize * 0.06)),40);
+-        productTrainSetsPageCount.setForeground( new Color(-1) );
+-        productTrainSetsPageCount.setFont(new Font("Merriweather", Font.BOLD, 35));
+-        productTrainSetsPageCount.setBackground( new Color(-14995422) );
+-        productTrainSetsPageCount.setText("1/1");
+-        productPagePanel.add(productTrainSetsPageCount);
++        ProductBoxData productBoxData = new ProductBoxData();
++        productBoxData.initProductBoxData(this, productTypeFilterCombo, 0);
+ 
+-        productBoxConstructor((int) (Math.round(xSize * 0.20)), 230, (int) (Math.round(xSize * 0.24)), 195,
+-        0);
+-        productBoxConstructor((int) (Math.round(xSize * 0.445)), 230, (int) (Math.round(xSize * 0.24)), 195
+-        ,1);
+-        productBoxConstructor((int) (Math.round(xSize * 0.69)), 230, (int) (Math.round(xSize * 0.24)), 195
+-        ,2);
+-        productBoxConstructor((int) (Math.round(xSize * 0.20)), 435, (int) (Math.round(xSize * 0.24)), 195
+-        ,3);
+-
+-        productTrainSetsBorder.setLocation((int) (Math.round(xSize * 0.19)),175);
+-        productTrainSetsBorder.setSize((int) (Math.round(xSize * 0.75)),464);
+-        productTrainSetsBorder.setForeground( new Color(-1) );
+-        productTrainSetsBorder.setOpaque(true);
+-        productTrainSetsBorder.setBackground( new Color(-14995422) );
+-        productPagePanel.add(productTrainSetsBorder);
++        productAreaBorder.setLocation((int) (Math.round(xSize * 0.19)),175);
++        productAreaBorder.setSize((int) (Math.round(xSize * 0.75)),464);
++        productAreaBorder.setForeground( new Color(-1) );
++        productAreaBorder.setOpaque(true);
++        productAreaBorder.setBackground( new Color(-14995422) );
++        productPagePanel.add(productAreaBorder);
+ 
+         productBackground.setLocation(0,0);
+         productBackground.setSize((Math.round(xSize)),9000);
+@@ -319,38 +306,126 @@
+         productPagePanel.setVisible(true);
+     }
+ 
+-    public void productBoxConstructor(int x, int y, int width, int height, int recordNum) {
+-        try {
+-            DatabaseConnectionHandler dch = new DatabaseConnectionHandler();
+-            DatabaseOperations dop = new DatabaseOperations();
+-            dch.openConnection();
+-            TrainSet[] trainSetList = new TrainSet[100];
+-            dop.getTrainSets(dch.getConnection(), trainSetList);
+-            TrainSet trainSet = trainSetList[recordNum];
++    public void productBoxConstructor(int x, int y, int width, int height, Product product) {
++            //a product box is added in the position specified only if there is a valid product to be represented inside
+             ProductBox productBox = new ProductBox();
+             productBox.setLocation(x, y);
+             productBox.setSize(width, height);
+             productBox.setOpaque(true);
+             productBox.setBackground(new Color(-1));
+-            productBox.initBox(trainSet.getProductCode(), trainSet.getBrandName(), trainSet.getProductName(), trainSet.getRetailPrice(),
+-            trainSet.getModellingScale(), trainSet.getStockCount());
+-            productPagePanel.add(productBox);
+-            dch.closeConnection();
+-        } catch (SQLException e) {
+-            e.printStackTrace();
+-        }
++            productBox.initBox(product.getProductCode(), product.getBrandName(), product.getProductName(),
++            product.getRetailPrice(), product.getModellingScale());
++            productBox.validate();
++            productBox.repaint();
++            productAreaBorder.add(productBox);
+     }
+ 
+     public void productAccountButton_Click()
+     {
++        //takes the user to the account page
+         AccountPage accountPage = new AccountPage();
+         accountPage.initPanel();
+         accountPage.initFrame();
+     }
+     public void productBasketButton_Click()
+-    {
+-        System.out.println("productBasketButton_Click() has been pressed ");
+-    }
++    { System.out.println("productBasketButton_Click() has been pressed "); }
+     public void productStaffPageButton_Click() { System.out.println("Placeholder"); }
+ 
++    public void generateProductAreaComponents() {
++        JLabel productAreaText = new JLabel();
++        productAreaText.setLocation((int) (Math.round(xSize * 0.01)),4);
++        productAreaText.setSize((int) (Math.round(xSize * 0.22)),44);
++        productAreaText.setForeground( new Color(-1) );
++        productAreaText.setFont(new Font("Merriweather", Font.BOLD, 35));
++        productAreaText.setBackground( new Color(-14995422) );
++        productAreaText.setText(productTypeFilterCombo.getSelectedItem().toString());
++        productAreaBorder.add(productAreaText);
++
++        JLabel productAreaPageCount = new JLabel();
++        productAreaPageCount.setLocation((int) (Math.round(xSize * 0.68)),4);
++        productAreaPageCount.setSize((int) (Math.round(xSize * 0.06)),40);
++        productAreaPageCount.setForeground( new Color(-1) );
++        productAreaPageCount.setFont(new Font("Merriweather", Font.BOLD, 35));
++        productAreaPageCount.setBackground( new Color(-14995422) );
++        setPageCount(productAreaPageCount);
++        productAreaBorder.add(productAreaPageCount);
++    }
++
++    public void setPageCount(JLabel productAreaPageCount) {
++        int first = n + 1;
++        int second = 1 + productList.size() / 6;
++        productAreaPageCount.setText(first + " / " + second);
++    }
++
++    public void setButtonImg(JButton jButton, String imgPath) {
++        try {
++            BufferedImage rightArrowImg = ImageIO.read(new File
++            (imgPath));
++            Image rightArrowImgResized = rightArrowImg.getScaledInstance(30, 30, Image.SCALE_DEFAULT);
++            jButton.setIcon(new ImageIcon(rightArrowImgResized));
++        } catch (Exception e) {
++            System.out.println("The file was not found.");
++            e.printStackTrace();
++        }
++    }
++
++    public void productTypeFilterCombo_Click() {
++        //refreshes product area with boxes related to the product type picked
++        n = 0;
++        productAreaBorder.removeAll();
++        ProductBoxData productBoxData = new ProductBoxData();
++        productBoxData.initProductBoxData(this, productTypeFilterCombo, n);
++        generateProductAreaComponents();
++        productAreaBorder.validate();
++        productAreaBorder.repaint();
++    }
++    public void productBrandFilterCombo_Click() {
++        //refreshes product area with boxes related to the brand picked
++    }
++    public void productPriceFilterCombo_Click() {
++        //refreshes product area with boxes related to the retail price picked
++    }
++    public void productScaleFilterCombo_Click() {
++        //refreshes product area with boxes related to the modelling scale picked
++    }
++    public void leftArrow_Click() {
++        System.out.println("n is " + n);
++        //the first if statement only activates if the page number isn't the first page (nothing happens if so)
++        if (n >= 1) {
++            if (n <= productList.size() / 6) {
++                setButtonImg(rightArrow, "src/com/sheffield/Images/rightArrowActive.png"); }
++            //the second if statement changes the left button to grey when the first page is reached
++            if (n >= 2) {
++                setButtonImg(leftArrow, "src/com/sheffield/Images/leftArrowActive.png");
++            } else { setButtonImg(leftArrow, "src/com/sheffield/Images/leftArrowInactive.png"); }
++            n = n - 1;
++            productAreaBorder.removeAll();
++            ProductBoxData productBoxData = new ProductBoxData();
++            productBoxData.initProductBoxData(this, productTypeFilterCombo, n);
++            generateProductAreaComponents();
++            productPagePanel.validate();
++            productPagePanel.repaint();
++            System.out.println("n is " + n);
++        }
++    }
++    public void rightArrow_Click() {
++        System.out.println("n is " + n);
++        //the first if statement only activates if the page number isn't the final page (nothing happens if so)
++        if (n <= productList.size() / 6 - 1) {
++            if (n >= 0) { setButtonImg(leftArrow, "src/com/sheffield/Images/leftArrowActive.png"); }
++            //the second if statement changes the right button to grey when the last page is reached
++            if (n <= productList.size() / 6 - 2) {
++                setButtonImg(rightArrow, "src/com/sheffield/Images/rightArrowActive.png");
++            } else { setButtonImg(rightArrow, "src/com/sheffield/Images/rightArrowInactive.png"); }
++            n = n + 1;
++            productAreaBorder.removeAll();
++            ProductBoxData productBoxData = new ProductBoxData();
++            productBoxData.initProductBoxData(this, productTypeFilterCombo, n);
++            generateProductAreaComponents();
++            productPagePanel.validate();
++            productPagePanel.repaint();
++            System.out.println("n is " + n);
++        }
++    }
++
+ }
