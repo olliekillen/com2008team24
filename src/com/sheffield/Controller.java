@@ -8,6 +8,11 @@ public class Controller extends Product {
 
     private boolean isDigital;
 
+    public Controller() {
+        super();
+        this.setIsDigital(false);
+    }
+
     public Controller(String productCode, String brandName, String productName, BigDecimal retailPrice,
                         String modellingScale, Integer stockCount, Boolean isDigital) {
         super(productCode, brandName, productName, retailPrice, modellingScale, stockCount);

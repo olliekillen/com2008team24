@@ -16,12 +16,10 @@ public class ProductPageUI extends JFrame {
     int ySize = ((int) tk.getScreenSize().getHeight());
     int n = 0;
 
-    JScrollPane productPageScrollPane = new JScrollPane(null);
     JPanel productPagePanel = new JPanel(null);
     ProductRetriever productRetriever = new ProductRetriever();
     List<Product> productList = new ArrayList<Product>();
 
-    JLabel testComponent = new JLabel();
     JButton leftArrow = new JButton();
     JButton rightArrow = new JButton();
     JLabel profilePicture = new JLabel();
@@ -49,8 +47,6 @@ public class ProductPageUI extends JFrame {
     JPanel productAreaBorder = new JPanel(null);
     JLabel productBackground = new JLabel();
 
-    JLabel padding = new JLabel("");
-    JScrollPane scrollPane = new JScrollPane();
     JTextArea textArea = new JTextArea(100, 100);
 
     public void initFrame()
@@ -76,17 +72,11 @@ public class ProductPageUI extends JFrame {
          * Transparent?: 15658734
         */
 
-        scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
-        scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         // Row indentation
         textArea.setFont(new Font("SansSerif", Font.PLAIN, 12) );
         textArea.setEditable(false);
         textArea.setLineWrap(false);
         textArea.append("test");
-        scrollPane.setRowHeaderView(padding);
-        scrollPane.setViewportView(textArea);
-        scrollPane.getRowHeader().setBackground(Color.WHITE);
-        scrollPane.getViewport().setBackground(Color.WHITE);
 
         setButtonImg(leftArrow, "src/com/sheffield/Images/leftArrowInactive.png");
         leftArrow.setLocation((int) (Math.round(xSize * 0.18)),413);
@@ -98,7 +88,7 @@ public class ProductPageUI extends JFrame {
         leftArrow.setOpaque(false);
         productPagePanel.add(leftArrow);
 
-        List<Product> productList = productRetriever.getProductsFromDatabase(productTypeFilterCombo);
+        productList = productRetriever.getProductsFromDatabase(productTypeFilterCombo);
         if (productList.size() / 6 > 0) { setButtonImg(rightArrow, "src/com/sheffield/Images/rightArrowActive.png"); }
         else { setButtonImg(rightArrow, "src/com/sheffield/Images/rightArrowInactive.png"); }
         try {
@@ -154,16 +144,6 @@ public class ProductPageUI extends JFrame {
         productAccountButton.add(profilePicture);
         productPagePanel.add(productAccountButton);
         profilePicture.setLocation((int) (Math.round(xSize * 0.12)),70);
-
-        testComponent.setLocation((int) (Math.round(xSize * 0.16)),70);
-        testComponent.setSize((int) (Math.round(xSize * 0.14)),44);
-        testComponent.setForeground( new Color(-1) );
-        testComponent.setOpaque(true);
-        testComponent.setFont(new Font("Merriweather", Font.BOLD, 14));
-        testComponent.setBackground( new Color(0xFFD62246) );
-        testComponent.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));
-        testComponent.setText("Filter by Product Type");
-        productPagePanel.add(testComponent);
 
         productBasketButton.setLocation(0,157);
         productBasketButton.setSize((int) (Math.round(xSize * 0.16)),87);
@@ -313,18 +293,19 @@ public class ProductPageUI extends JFrame {
             productBox.setSize(width, height);
             productBox.setOpaque(true);
             productBox.setBackground(new Color(-1));
+            productAreaBorder.add(productBox);
             productBox.initBox(product.getProductCode(), product.getBrandName(), product.getProductName(),
             product.getRetailPrice(), product.getModellingScale());
             productBox.validate();
             productBox.repaint();
-            productAreaBorder.add(productBox);
+            //productAreaBorder.add(productBox);
     }
 
     public void productAccountButton_Click()
     {
         //takes the user to the account page
+        this.dispose();
         AccountPage accountPage = new AccountPage();
-        accountPage.initPanel();
         accountPage.initFrame();
     }
     public void productBasketButton_Click()
@@ -354,6 +335,8 @@ public class ProductPageUI extends JFrame {
     public void setPageCount(JLabel productAreaPageCount) {
         int first = n + 1;
         int second = 1 + productList.size() / 6;
+        System.out.println(productList.size());
+        System.out.println("productList.size() / 6 is " + productList.size() / 6);
         productAreaPageCount.setText(first + " / " + second);
     }
 
@@ -371,6 +354,7 @@ public class ProductPageUI extends JFrame {
 
     public void productTypeFilterCombo_Click() {
         //refreshes product area with boxes related to the product type picked
+        productList = productRetriever.getProductsFromDatabase(productTypeFilterCombo);
         n = 0;
         productAreaBorder.removeAll();
         ProductBoxData productBoxData = new ProductBoxData();

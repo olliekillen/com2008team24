@@ -29,4 +29,28 @@ public class ProductRetriever {
             return new ArrayList<Product>();
         }
     }
+
+    public Product getProductFromDatabase(String productCode) {
+        try {
+            DatabaseConnectionHandler dch = new DatabaseConnectionHandler();
+            ProductDatabaseOperations dop = new ProductDatabaseOperations();
+            dch.openConnection();
+            Product product = new Product();
+            switch (productCode.charAt(0)) {
+            //switch ("Z".charAt(0)) {
+                //case ('Z') -> { product = dop.getTrainSetByProductCode(dch.getConnection(), productCode); }
+                case ('M') -> { product = dop.getTrainSetByProductCode(dch.getConnection(), productCode); }
+                case ('P') -> { product = dop.getTrackPackByProductCode(dch.getConnection(), productCode); }
+                case ('L') -> { product = dop.getLocomotiveByProductCode(dch.getConnection(), productCode); }
+                case ('S') -> { product = dop.getRollingStockByProductCode(dch.getConnection(), productCode); }
+                case ('R') -> { product = dop.getTrackByProductCode(dch.getConnection(), productCode); }
+                case ('C') -> { product = dop.getControllerByProductCode(dch.getConnection(), productCode); }
+            }
+            dch.closeConnection();
+            return product;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return new Product();
+        }
+    }
 }

@@ -9,6 +9,12 @@ public class Locomotive extends Product {
     private String historicalEra;
     private String priceBracket;
 
+    public Locomotive() {
+        super();
+        this.setHistoricalEra("Era 3");
+        this.setPriceBracket("DCC-Ready");
+    }
+
     public Locomotive(String productCode, String brandName, String productName, BigDecimal retailPrice,
     String modellingScale, Integer stockCount, String historicalEra, String priceBracket) {
         super(productCode, brandName, productName, retailPrice, modellingScale, stockCount);

@@ -1,8 +1,11 @@
 package com.sheffield;
 
+import com.sheffield.Products.Product;
+
 import javax.swing.*;
 import java.awt.*;
 import java.math.BigDecimal;
+import java.sql.SQLException;
 
 public class ProductBox extends JPanel {
 
@@ -14,79 +17,90 @@ public class ProductBox extends JPanel {
     int xSize = ((int) tk.getScreenSize().getWidth());
     int ySize = ((int) tk.getScreenSize().getHeight());
 
-    JLabel productTrainSets = new JLabel();
-    JLabel productTrainSetsName = new JLabel();
-    JLabel productTrainSetsPrice = new JLabel();
-    JLabel productTrainSetsCode = new JLabel();
-    JLabel productTrainSetsBrand = new JLabel();
-    JLabel productTrainSetsScale = new JLabel();
-    JButton productTrainSetsInfo = new JButton();
-    JButton productTrainSetsCart = new JButton();
+    JLabel productBackground = new JLabel();
+    JLabel productName = new JLabel();
+    JLabel productPrice = new JLabel();
+    JLabel productCode = new JLabel();
+    JLabel productBrand = new JLabel();
+    JLabel productScale = new JLabel();
+    JButton productInfo = new JButton();
+    JButton productCart = new JButton();
 
-    public void initBox(String productCode, String brandName, String productName, BigDecimal retailPrice,
+    public void initBox(String productCodeInput, String brandName, String productNameInput, BigDecimal retailPrice,
     String modellingScale) {
         this.setLayout(null);
 
-        productTrainSetsName.setLocation((int) (Math.round(xSize * 0.005)), 0);
-        productTrainSetsName.setSize((int) (Math.round(xSize * 0.22)), 20);
-        productTrainSetsName.setFont(new Font("Merriweather", Font.BOLD, 16));
-        productTrainSetsName.setText(productName);
-        this.add(productTrainSetsName);
+        productName.setLocation((int) (Math.round(xSize * 0.005)), 0);
+        productName.setSize((int) (Math.round(xSize * 0.22)), 20);
+        productName.setFont(new Font("Merriweather", Font.BOLD, 16));
+        productName.setText(productNameInput);
+        add(productName);
 
-        productTrainSetsPrice.setLocation((int) (Math.round(xSize * 0.005)), (int) (Math.round(ySize * 0.025)));
-        productTrainSetsPrice.setSize((int) (Math.round(xSize * 0.22)), 20);
-        productTrainSetsPrice.setFont(new Font("Merriweather", Font.BOLD, 16));
-        productTrainSetsPrice.setText("£" + retailPrice);
-        this.add(productTrainSetsPrice);
+        productPrice.setLocation((int) (Math.round(xSize * 0.005)), (int) (Math.round(ySize * 0.025)));
+        productPrice.setSize((int) (Math.round(xSize * 0.22)), 20);
+        productPrice.setFont(new Font("Merriweather", Font.BOLD, 16));
+        productPrice.setText("£" + retailPrice);
+        add(productPrice);
 
-        productTrainSetsCode.setLocation((int) (Math.round(xSize * 0.005)),  (int) (Math.round(ySize * 0.05)));
-        productTrainSetsCode.setSize((int) (Math.round(xSize * 0.22)), 20);
-        productTrainSetsCode.setFont(new Font("Merriweather", Font.BOLD, 16));
-        productTrainSetsCode.setText("Product Code: " + productCode);
-        this.add(productTrainSetsCode);
+        productCode.setLocation((int) (Math.round(xSize * 0.005)),  (int) (Math.round(ySize * 0.05)));
+        productCode.setSize((int) (Math.round(xSize * 0.22)), 20);
+        productCode.setFont(new Font("Merriweather", Font.BOLD, 16));
+        productCode.setText("Product Code: " + productCodeInput);
+        add(productCode);
 
-        productTrainSetsBrand.setLocation((int) (Math.round(xSize * 0.005)),  (int) (Math.round(ySize * 0.075)));
-        productTrainSetsBrand.setSize((int) (Math.round(xSize * 0.22)), 20);
-        productTrainSetsBrand.setFont(new Font("Merriweather", Font.BOLD, 16));
-        productTrainSetsBrand.setText("Brand: " + brandName);
-        this.add(productTrainSetsBrand);
+        productBrand.setLocation((int) (Math.round(xSize * 0.005)),  (int) (Math.round(ySize * 0.075)));
+        productBrand.setSize((int) (Math.round(xSize * 0.22)), 20);
+        productBrand.setFont(new Font("Merriweather", Font.BOLD, 16));
+        productBrand.setText("Brand: " + brandName);
+        add(productBrand);
 
-        productTrainSetsScale.setLocation((int) (Math.round(xSize * 0.005)),  (int) (Math.round(ySize * 0.1)));
-        productTrainSetsScale.setSize((int) (Math.round(xSize * 0.22)), 20);
-        productTrainSetsScale.setFont(new Font("Merriweather", Font.BOLD, 16));
-        productTrainSetsScale.setText("Modelling Scale: " + modellingScale);
-        this.add(productTrainSetsScale);
+        productScale.setLocation((int) (Math.round(xSize * 0.005)),  (int) (Math.round(ySize * 0.1)));
+        productScale.setSize((int) (Math.round(xSize * 0.22)), 20);
+        productScale.setFont(new Font("Merriweather", Font.BOLD, 16));
+        productScale.setText("Modelling Scale: " + modellingScale);
+        add(productScale);
 
-        productTrainSetsInfo.setLocation((int) (Math.round(xSize * 0.025)),  (int) (Math.round(ySize * 0.15)));
-        productTrainSetsInfo.setSize((int) (Math.round(xSize * 0.14)), 70);
-        productTrainSetsInfo.setForeground(new Color(-1));
-        productTrainSetsInfo.setFont(new Font("Merriweather", Font.BOLD, 17));
-        productTrainSetsInfo.addActionListener(e -> productTrainSetsInfo_Click());
-        productTrainSetsInfo.setBackground(new Color(-2743738));
-        productTrainSetsInfo.setText("More Information");
-        this.add(productTrainSetsInfo);
+        productInfo.setLocation((int) (Math.round(xSize * 0.025)),  (int) (Math.round(ySize * 0.15)));
+        productInfo.setSize((int) (Math.round(xSize * 0.14)), 70);
+        productInfo.setForeground(new Color(-1));
+        productInfo.setFont(new Font("Merriweather", Font.BOLD, 17));
+        productInfo.addActionListener(e -> productInfo_Click());
+        productInfo.setBackground(new Color(-2743738));
+        productInfo.setText("More Information");
+        add(productInfo);
 
-        productTrainSetsCart.setLocation((int) (Math.round(xSize * 0.175)),  (int) (Math.round(ySize * 0.15)));
-        productTrainSetsCart.setSize((int) (Math.round(xSize * 0.06)), 70);
-        productTrainSetsCart.setForeground(new Color(-1));
-        productTrainSetsCart.setFont(new Font("Merriweather", Font.BOLD, 40));
-        productTrainSetsCart.addActionListener(e -> productTrainSetsCart_Click());
-        productTrainSetsCart.setBackground(new Color(-2743738));
-        productTrainSetsCart.setText("+");
-        this.add(productTrainSetsCart);
+        productCart.setLocation((int) (Math.round(xSize * 0.175)),  (int) (Math.round(ySize * 0.15)));
+        productCart.setSize((int) (Math.round(xSize * 0.06)), 70);
+        productCart.setForeground(new Color(-1));
+        productCart.setFont(new Font("Merriweather", Font.BOLD, 40));
+        productCart.addActionListener(e -> productCart_Click());
+        productCart.setBackground(new Color(-2743738));
+        productCart.setText("+");
+        add(productCart);
 
-        productTrainSets.setLocation(0, 230);
-        productTrainSets.setSize((int) (Math.round(xSize * 0.24)), 195);
-        productTrainSets.setOpaque(true);
-        productTrainSets.setBackground(new Color(-1));
-        this.add(productTrainSets);
+        productBackground.setLocation(0, 230);
+        productBackground.setSize((int) (Math.round(xSize * 0.24)), 195);
+        productBackground.setOpaque(true);
+        productBackground.setBackground(new Color(-1));
+        add(productBackground);
     }
 
-    public void productTrainSetsInfo_Click()
-    {
-        System.out.println("Test");
+    public void initSingleProduct(String productCode, String brandName, String productName, BigDecimal retailPrice,
+    String modellingScale, int stockCount, Product product) {
+
     }
-    public void productTrainSetsCart_Click()
+
+    public void productInfo_Click() {
+        IndividualProductPageUI singleProductPagePanel = new IndividualProductPageUI();
+        String productCodeText = productCode.getText().substring(14);
+        ProductRetriever productRetriever = new ProductRetriever();
+        Product product = productRetriever.getProductFromDatabase(productCodeText);
+        singleProductPagePanel.initFrame(product);
+        JFrame jframe = (JFrame) SwingUtilities.getWindowAncestor(this);
+        jframe.dispose();
+        singleProductPagePanel.setVisible(true);
+    }
+    public void productCart_Click()
     {
         System.out.println("Test");
     }

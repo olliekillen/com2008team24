@@ -13,7 +13,7 @@ public class AccountPage extends JFrame {
 	JPanel accountPagePanel = new JPanel(null);
 
 	JLabel pageTitle = new JLabel();
-	JButton accountButton = new JButton();
+	JButton productButton = new JButton();
 	JButton accountBasketButton = new JButton();
 	JButton staffButton = new JButton();
 	JLabel accountSidebar = new JLabel();
@@ -78,15 +78,16 @@ public class AccountPage extends JFrame {
 		pageTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		accountPagePanel.add(pageTitle);
 
-		accountButton.setLocation(0,70);
-		accountButton.setSize((int) (Math.round(xSize * 0.16)),87);
-		accountButton.setForeground( new Color(-1) );
-		accountButton.setFont(new Font("Merriweather", Font.BOLD, 21));
-		accountButton.addActionListener(e->accountButton_Click());
-		accountButton.setBackground( new Color(-2743738) );
-		accountButton.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));
-		accountButton.setText("   Account");
-		accountButton.setHorizontalAlignment(SwingConstants.LEFT);
+		productButton.setLocation(0,70);
+		productButton.setSize((int) (Math.round(xSize * 0.16)),87);
+		productButton.setForeground( new Color(-1) );
+		productButton.setFont(new Font("Merriweather", Font.BOLD, 21));
+		productButton.addActionListener(e->productButton_Click());
+		productButton.setBackground( new Color(-2743738) );
+		productButton.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));
+		productButton.setText("   Products");
+		productButton.setHorizontalAlignment(SwingConstants.LEFT);
+		accountPagePanel.add(productButton);
 
 		accountBasketButton.setLocation(0,157);
 		accountBasketButton.setSize((int) (Math.round(xSize * 0.16)),87);
@@ -259,10 +260,10 @@ public class AccountPage extends JFrame {
 		accountPagePanel.setVisible(true);
 	}
 
-	public void accountButton_Click()
+	public void productButton_Click()
 	{
+		this.dispose();
 		ProductPageUI productPage = new ProductPageUI();
-		productPage.initPanel();
 		productPage.initFrame();
 	}
 	public void basketButton_Click()
@@ -281,7 +282,6 @@ public class AccountPage extends JFrame {
 
 	public static void main(String args[]) {
 		final AccountPage window = new AccountPage();
-		window.initPanel();
 		window.initFrame();
 	}
 

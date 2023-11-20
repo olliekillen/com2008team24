@@ -4,50 +4,29 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d8c3e42c-1391-466e-bdbd-038550dee454" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="d8c3e42c-1391-466e-bdbd-038550dee454" name="Changes" comment="Fixed product and account pages, which couldn't display due to changes in the last commit.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Team_24_Security_And_Design.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Team_24_Security_And_Design.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/AccountPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/AccountPage.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/Controller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/DatabaseConnectionHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/DatabaseConnectionHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/DatabaseOperations.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/Locomotive.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/Locomotive.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/Main$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/Main.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/ProductBox.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/ProductBox.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/ProductPageUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/ProductPageUI.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/Products/Product.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/Products/Product.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/RollingStock.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/RollingStock.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/Track.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/Track.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/TrackPack.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/TrackPack.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/TrainSet.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/TrainSet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/UI/CharacterLimitDocument.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/UI/CharacterLimitDocument.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/UI/CustomButton.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/UI/CustomButton.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/UI/CustomLabel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/UI/CustomLabel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/UI/CustomTextField.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/UI/CustomTextField.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/UI/HomePageUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/UI/HomePageUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/UI/LoginForm.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/UI/LoginForm.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/UI/LoginUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/UI/LoginUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/UI/MyFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/UI/MyFrame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/UI/NavBar.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/UI/NavBar.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/UI/SignUpForm.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/UI/SignUpForm.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/UI/SignUpUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/UI/SignUpUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/orders/Database.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/orders/Database.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/orders/Order.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/orders/Order.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/orders/OrderLine.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/orders/OrderLine.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/orders/OrderPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/orders/OrderPage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/orders/TablePane$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/orders/TablePane$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/orders/TablePane$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/orders/TablePane$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/orders/TablePane$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/orders/TablePane$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/orders/TablePane.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/orders/TablePane.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/orders/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Team_24_Security_And_Design/com/sheffield/orders/User.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/sheffield/AccountPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/AccountPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sheffield/DatabaseOperations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/ProductDatabaseOperations.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sheffield/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/sheffield/IndividualProductPageUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/IndividualProductPageUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sheffield/Locomotive.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/Locomotive.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/sheffield/ProductBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/ProductBox.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sheffield/ProductBoxData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/ProductBoxData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sheffield/ProductPageLauncher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/ProductPageLauncher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sheffield/ProductDatabaseOperations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/ProductDatabaseOperations.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/sheffield/ProductPageUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/ProductPageUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/sheffield/ProductRetriever.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/ProductRetriever.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sheffield/Products/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/Products/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sheffield/RollingStock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/RollingStock.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,8 +56,8 @@
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Lab03 - JDBC_Starter/mysql-connector-j-8.2.0" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/mysql-connector-j-8.2.0" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
@@ -92,53 +71,6 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="Team_24_Security_And_Design" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="WORKING_DIRECTORY" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="Team_24_Security_And_Design" />
-      <option name="filePath" />
-      <option name="vmParameters" />
-      <option name="alternativeJrePath" />
-      <option name="programParameters" />
-      <option name="passParentEnvs" value="true" />
-      <option name="workingDirectory" />
-      <option name="isAlternativeJrePathEnabled" value="false" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="filePath" />
-      <option name="vmParameters" />
-      <option name="alternativeJrePath" />
-      <option name="programParameters" />
-      <option name="passParentEnvs" value="true" />
-      <option name="workingDirectory" />
-      <option name="isAlternativeJrePathEnabled" value="false" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="WORKING_DIRECTORY" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -167,43 +99,83 @@
       <workItem from="1699831076779" duration="3455000" />
       <workItem from="1699878780488" duration="8339000" />
     </task>
+    <task id="LOCAL-00001" summary="Fixed product and account pages, which couldn't display due to changes in the last commit.">
+      <created>1700236292159</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1700236292159</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Fixed product and account pages, which couldn't display due to changes in the last commit." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed product and account pages, which couldn't display due to changes in the last commit." />
+  </component>
   <component name="WindowStateProjectService">
-    <state x="438" y="206" key="DetectedRootsChooserDialog" timestamp="1700228142094">
+    <state x="446" y="43" key="#com.intellij.ide.util.MemberChooser" timestamp="1700391547008">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
-    <state x="438" y="206" key="DetectedRootsChooserDialog/0.0.1280.672@0.0.1280.672" timestamp="1700228142094" />
-    <state x="348" y="77" key="FileChooserDialogImpl" timestamp="1700228136565">
+    <state x="446" y="43" key="#com.intellij.ide.util.MemberChooser/0.0.1280.672@0.0.1280.672" timestamp="1700391547008" />
+    <state x="193" y="0" key="CommitChangelistDialog2" timestamp="1700236290985">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
-    <state x="348" y="77" key="FileChooserDialogImpl/0.0.1280.672@0.0.1280.672" timestamp="1700228136565" />
-    <state width="1237" height="125" key="GridCell.Tab.0.bottom" timestamp="1700235977154">
+    <state x="193" y="0" key="CommitChangelistDialog2/0.0.1280.672@0.0.1280.672" timestamp="1700236290985" />
+    <state x="438" y="206" key="DetectedRootsChooserDialog" timestamp="1700404437877">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
-    <state width="1237" height="125" key="GridCell.Tab.0.bottom/0.0.1280.672@0.0.1280.672" timestamp="1700235977154" />
-    <state width="1237" height="125" key="GridCell.Tab.0.center" timestamp="1700235977154">
+    <state x="438" y="206" key="DetectedRootsChooserDialog/0.0.1280.672@0.0.1280.672" timestamp="1700404437877" />
+    <state x="348" y="77" key="FileChooserDialogImpl" timestamp="1700404436075">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
-    <state width="1237" height="125" key="GridCell.Tab.0.center/0.0.1280.672@0.0.1280.672" timestamp="1700235977154" />
-    <state width="1237" height="125" key="GridCell.Tab.0.left" timestamp="1700235977154">
+    <state x="348" y="77" key="FileChooserDialogImpl/0.0.1280.672@0.0.1280.672" timestamp="1700404436075" />
+    <state width="1237" height="141" key="GridCell.Tab.0.bottom" timestamp="1700478956207">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
-    <state width="1237" height="125" key="GridCell.Tab.0.left/0.0.1280.672@0.0.1280.672" timestamp="1700235977154" />
-    <state width="1237" height="125" key="GridCell.Tab.0.right" timestamp="1700235977154">
+    <state width="1237" height="141" key="GridCell.Tab.0.bottom/0.0.1280.672@0.0.1280.672" timestamp="1700478956207" />
+    <state width="1237" height="141" key="GridCell.Tab.0.center" timestamp="1700478956206">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
-    <state width="1237" height="125" key="GridCell.Tab.0.right/0.0.1280.672@0.0.1280.672" timestamp="1700235977154" />
-    <state x="121" y="0" key="SettingsEditor" timestamp="1700228269024">
+    <state width="1237" height="141" key="GridCell.Tab.0.center/0.0.1280.672@0.0.1280.672" timestamp="1700478956206" />
+    <state width="1237" height="141" key="GridCell.Tab.0.left" timestamp="1700478956206">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
-    <state x="121" y="0" key="SettingsEditor/0.0.1280.672@0.0.1280.672" timestamp="1700228269024" />
-    <state x="233" y="69" key="Vcs.Push.Dialog.v2" timestamp="1700226063558">
+    <state width="1237" height="141" key="GridCell.Tab.0.left/0.0.1280.672@0.0.1280.672" timestamp="1700478956206" />
+    <state width="1237" height="141" key="GridCell.Tab.0.right" timestamp="1700478956207">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
-    <state x="233" y="69" key="Vcs.Push.Dialog.v2/0.0.1280.672@0.0.1280.672" timestamp="1700226063558" />
+    <state width="1237" height="141" key="GridCell.Tab.0.right/0.0.1280.672@0.0.1280.672" timestamp="1700478956207" />
+    <state width="1237" height="201" key="GridCell.Tab.1.bottom" timestamp="1700335625868">
+      <screen x="0" y="0" width="1280" height="672" />
+    </state>
+    <state width="1237" height="201" key="GridCell.Tab.1.bottom/0.0.1280.672@0.0.1280.672" timestamp="1700335625868" />
+    <state width="1237" height="201" key="GridCell.Tab.1.center" timestamp="1700335625868">
+      <screen x="0" y="0" width="1280" height="672" />
+    </state>
+    <state width="1237" height="201" key="GridCell.Tab.1.center/0.0.1280.672@0.0.1280.672" timestamp="1700335625868" />
+    <state width="1237" height="201" key="GridCell.Tab.1.left" timestamp="1700335625868">
+      <screen x="0" y="0" width="1280" height="672" />
+    </state>
+    <state width="1237" height="201" key="GridCell.Tab.1.left/0.0.1280.672@0.0.1280.672" timestamp="1700335625868" />
+    <state width="1237" height="201" key="GridCell.Tab.1.right" timestamp="1700335625868">
+      <screen x="0" y="0" width="1280" height="672" />
+    </state>
+    <state width="1237" height="201" key="GridCell.Tab.1.right/0.0.1280.672@0.0.1280.672" timestamp="1700335625868" />
+    <state x="121" y="0" key="SettingsEditor" timestamp="1700404457116">
+      <screen x="0" y="0" width="1280" height="672" />
+    </state>
+    <state x="121" y="0" key="SettingsEditor/0.0.1280.672@0.0.1280.672" timestamp="1700404457116" />
+    <state x="233" y="69" key="Vcs.Push.Dialog.v2" timestamp="1700236343661">
+      <screen x="0" y="0" width="1280" height="672" />
+    </state>
+    <state x="233" y="69" key="Vcs.Push.Dialog.v2/0.0.1280.672@0.0.1280.672" timestamp="1700236343661" />
+    <state x="303" y="0" width="672" height="678" key="search.everywhere.popup" timestamp="1700467196973">
+      <screen x="0" y="0" width="1280" height="672" />
+    </state>
+    <state x="303" y="0" width="672" height="678" key="search.everywhere.popup/0.0.1280.672@0.0.1280.672" timestamp="1700467196973" />
   </component>
 </project>

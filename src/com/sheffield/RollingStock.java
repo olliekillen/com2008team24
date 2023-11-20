@@ -8,6 +8,11 @@ public class RollingStock extends Product {
 
     private String historicalEra;
 
+    public RollingStock() {
+        super();
+        this.setHistoricalEra("Era 3");
+    }
+
     public RollingStock(String productCode, String brandName, String productName, BigDecimal retailPrice,
                       String modellingScale, Integer stockCount, String historicalEra) {
         super(productCode, brandName, productName, retailPrice, modellingScale, stockCount);
