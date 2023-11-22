@@ -3,6 +3,8 @@ package com.sheffield;
 import com.sheffield.Products.Product;
 import javax.swing.*;
 import java.awt.*;
+import java.sql.Connection;
+import java.sql.SQLException;
 
 public class IndividualProductPageUI extends JFrame {
 
@@ -69,7 +71,13 @@ public class IndividualProductPageUI extends JFrame {
         singleProductAccountButton.setSize((int) (Math.round(xSize * 0.16)),87);
         singleProductAccountButton.setForeground( new Color(-1) );
         singleProductAccountButton.setFont(new Font("Merriweather", Font.BOLD, 21));
-        singleProductAccountButton.addActionListener(e->singleProductAccountButton_Click());
+        singleProductAccountButton.addActionListener(e-> {
+            try {
+                singleProductAccountButton_Click();
+            } catch (SQLException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
         singleProductAccountButton.setBackground( new Color(-2743738) );
         singleProductAccountButton.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));
         singleProductAccountButton.setText("   Account");
@@ -227,12 +235,15 @@ public class IndividualProductPageUI extends JFrame {
         }
     }
 
-    public void singleProductAccountButton_Click()
+    public void singleProductAccountButton_Click() throws SQLException
     {
         //takes the user to the account page
         this.dispose();
         AccountPage accountPage = new AccountPage();
-        accountPage.initFrame();
+        DatabaseConnectionHandler con = new DatabaseConnectionHandler();
+        con.openConnection();
+        accountPage.initPanel(1, con.getConnection()); // TODO USER ID
+        con.closeConnection();
     }
     public void singleProductBasketButton_Click()
     { System.out.println("singleProductBasketButton_Click() has been pressed "); }

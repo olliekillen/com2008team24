@@ -5,10 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d8c3e42c-1391-466e-bdbd-038550dee454" name="Changes" comment="Individual product page is accessible from product page - data from the database doesn't appear on this page yet.">
+      <change afterPath="$PROJECT_DIR$/src/com/sheffield/AccountDataOperations.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/sheffield/AccountDetailBox.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/sheffield/Address.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/sheffield/BankDetails.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Team_24_Security_And_Design.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Team_24_Security_And_Design.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sheffield/UI/LoginForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/UI/LoginForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sheffield/AccountPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/AccountPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sheffield/IndividualProductPageUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/IndividualProductPageUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sheffield/ProductPageUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/ProductPageUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sheffield/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/User.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,15 +31,16 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 5
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
   <component name="ProjectId" id="2XwtE29gaUggz0A9IKHhsPxseRW" />
-  <component name="ProjectLevelVcsManager">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
@@ -43,7 +51,7 @@
   "keyToString": {
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/dvous/Documents/Java Libs/mysql-connector-j-8.2.0/mysql-connector-j-8.2.0.jar",
+    "last_opened_file_path": "C:/Users/Admin/Downloads/mysql-connector-j-8.2.0/mysql-connector-j-8.2.0.jar",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -54,7 +62,20 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="Application.MyFrame">
+  <component name="RunManager" selected="Application.AccountPage">
+    <configuration name="AccountPage" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.sheffield.AccountPage" />
+      <module name="Team_24_Security_And_Design" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.sheffield.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="MyFrame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.sheffield.UI.MyFrame" />
       <module name="Team_24_Security_And_Design" />
@@ -83,8 +104,9 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.MyFrame" />
+        <item itemvalue="Application.AccountPage" />
         <item itemvalue="Application.ProductPageLauncher" />
+        <item itemvalue="Application.MyFrame" />
       </list>
     </recent_temporary>
   </component>
@@ -131,5 +153,16 @@
     <MESSAGE value="Fixed product and account pages, which couldn't display due to changes in the last commit." />
     <MESSAGE value="Individual product page is accessible from product page - data from the database doesn't appear on this page yet." />
     <option name="LAST_COMMIT_MESSAGE" value="Individual product page is accessible from product page - data from the database doesn't appear on this page yet." />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/sheffield/AccountPage.java</url>
+          <line>7</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

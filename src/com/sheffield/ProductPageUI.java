@@ -6,6 +6,7 @@ import javax.imageio.*;
 import java.awt.*;
 import java.awt.image.*;
 import java.io.File;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -124,7 +125,13 @@ public class ProductPageUI extends JFrame {
         productAccountButton.setSize((int) (Math.round(xSize * 0.16)),87);
         productAccountButton.setForeground( new Color(-1) );
         productAccountButton.setFont(new Font("Merriweather", Font.BOLD, 21));
-        productAccountButton.addActionListener(e->productAccountButton_Click());
+        productAccountButton.addActionListener(e-> {
+            try {
+                productAccountButton_Click();
+            } catch (SQLException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
         productAccountButton.setBackground( new Color(-2743738) );
         productAccountButton.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));
         productAccountButton.setText("   Account");
@@ -301,12 +308,16 @@ public class ProductPageUI extends JFrame {
             //productAreaBorder.add(productBox);
     }
 
-    public void productAccountButton_Click()
+    public void productAccountButton_Click() throws SQLException
     {
         //takes the user to the account page
         this.dispose();
         AccountPage accountPage = new AccountPage();
-        accountPage.initFrame();
+        DatabaseConnectionHandler con = new DatabaseConnectionHandler();
+        con.openConnection();
+        accountPage.initPanel(1, con.getConnection()); //TODO USER ID
+        con.closeConnection();
+
     }
     public void productBasketButton_Click()
     { System.out.println("productBasketButton_Click() has been pressed "); }

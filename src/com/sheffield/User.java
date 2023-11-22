@@ -18,4 +18,13 @@ public class User {
         this.postcode = postcode;
         this.houseNum = houseNum;
     }
+
+    public Integer getId() {return userId; }
+    public String getEmail() {return email; }
+    public String getpass() {return pass; }
+    public String getForename() {return forename; }
+    public String getSurname() {return surname; }
+    public String getPostcode() {return postcode; }
+    public Integer getHouseNum() {return houseNum; }
+
 }
