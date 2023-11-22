@@ -7,8 +7,6 @@ import java.sql.*;
 
 public class AccountPage extends JFrame {
 
-	private int userId;
-
 	Toolkit tk = Toolkit.getDefaultToolkit();
 	int xSize = ((int) tk.getScreenSize().getWidth());
 	int ySize = ((int) tk.getScreenSize().getHeight());
@@ -25,8 +23,6 @@ public class AccountPage extends JFrame {
 
 	JLabel accountDetailBackGround = new JLabel();
 	JLabel acountPageBackground = new JLabel();
-
-	JLabel padding = new JLabel("");
 	JTextArea textArea = new JTextArea(100, 100);
 
 	public void initFrame(int userId) throws SQLException
