@@ -92,7 +92,7 @@ public class PasswordHasher {
      * @return the hex String of the salt and encrypted password appended.
      */
     private static String concatenateSaltToHexPassword(byte[] salt, String hexPassword){
-        return bytesToHex(salt) + " " + hexPassword;
+        return bytesToHex(salt) + hexPassword;
     }
 
 }

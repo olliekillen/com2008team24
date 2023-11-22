@@ -29,7 +29,7 @@ public class MyFrame extends JFrame {
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		add(new HomePageUI(this));
-		setVisible(true);s
+		setVisible(true);
 	}
 
 	/**

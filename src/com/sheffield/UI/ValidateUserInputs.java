@@ -239,4 +239,35 @@ public class ValidateUserInputs {
 
         return cityNameErrorMessages;
     }
+    public String getEmail(){
+        return this.email;
+    }
+
+    public String getForename(){
+        return this.forename;
+    }
+
+    public String getSurname(){
+        return this.surname;
+    }
+
+    public String getPostcode(){
+        return this.postcode;
+    }
+
+    public int getHouseNumber(){
+        return Integer.parseInt(this.houseNumber);
+    }
+
+    public char[] getPassword(){
+        return this.password;
+    }
+
+    public String getCity(){
+        return this.cityName;
+    }
+
+    public String getRoadName(){
+        return this.roadName;
+    }
 }

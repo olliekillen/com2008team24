@@ -150,8 +150,8 @@ public class SignUpForm extends JPanel {
                     cityNameField.getText());
 
             if (userSignUpInfo.isValid()){
-                String password = PasswordHasher.hashPassword(passwordField.getPassword());
-                System.out.println(password);
+                UserDatabaseOperations.addNewUser(userSignUpInfo);
+                System.out.println("Done Successfully");
             }
             else System.out.println("Not Valid");;
         });

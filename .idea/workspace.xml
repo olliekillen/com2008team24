@@ -5,9 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d8c3e42c-1391-466e-bdbd-038550dee454" name="Changes" comment="Individual product page is accessible from product page - data from the database doesn't appear on this page yet.">
-      <change afterPath="$PROJECT_DIR$/src/com/sheffield/UI/PasswordHasher.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/sheffield/UI/UserDatabaseOperations.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/sheffield/UI/MyFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/UI/MyFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sheffield/UI/PasswordHasher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/UI/PasswordHasher.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/sheffield/UI/SignUpForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/UI/SignUpForm.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/sheffield/UI/ValidateUserInputs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/UI/ValidateUserInputs.java" afterDir="false" />
     </list>
@@ -112,6 +113,7 @@
       <workItem from="1700492800892" duration="4244000" />
       <workItem from="1700561688537" duration="2443000" />
       <workItem from="1700567333002" duration="795000" />
+      <workItem from="1700649845585" duration="4833000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed product and account pages, which couldn't display due to changes in the last commit.">
       <created>1700236292159</created>
