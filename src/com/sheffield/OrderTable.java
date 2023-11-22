@@ -1,14 +1,16 @@
-package com.sheffield.orders;
+package com.sheffield;
 
 import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+
 import java.awt.event.*;
+import java.sql.*;
 
 
-public class TablePane extends JPanel {
+public class OrderTable extends JPanel {
 
-    public TablePane(ArrayList<Order> orders) {
+    public OrderTable(ArrayList<Order> orders) {
         DefaultTableModel model = new DefaultTableModel(); 
         JTable table = new JTable(model); 
 
@@ -32,30 +34,32 @@ public class TablePane extends JPanel {
                                       order.userId});
         }
 
+        table.setSize(750,750);
         JScrollPane scrollPane = new JScrollPane(table);
-        JButton button = new JButton("View Top Order");
-
-        button.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                new OrderPage("Order " + orders.get(0).orderNumber, orders.get(0));
-            }
-        });
 
         add (scrollPane);
-        add (button);
     }
 
-    public TablePane(Order order) {
-        User user = Database.GetUser(order.userId);
-        ArrayList<OrderLine> orderLines = Database.GetOrderLine("src\\com.sheffield.orders\\orderLines.txt", order);
+    public OrderTable(Order order, Connection con) {
+        User user = null;
+        try {
+            user = OrderDatabaseOperations.GetUser(order.userId, con);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        ArrayList<OrderLine> orderLines = null;
+        try {
+            orderLines = OrderDatabaseOperations.GetOrderLine(order, con);
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
         DefaultTableModel model = new DefaultTableModel(); 
         JTable table = new JTable(model); 
 
         // Create a couple of columns 
         model.addColumn("Line Number"); 
-        model.addColumn("com.sheffield.Products.Product Code");
+        model.addColumn("Product Code");
 
         // Append a row 
         for (OrderLine orderLine : orderLines) {
@@ -64,8 +68,6 @@ public class TablePane extends JPanel {
         }
 
         JScrollPane scrollPane = new JScrollPane(table);
-        JButton deleteButton = new JButton("Delete Order");
-        JButton fulfilButton = new JButton("Fulfil Order");
 
         JLabel title = new JLabel();
         title.setText("Customer Details");
@@ -82,29 +84,11 @@ public class TablePane extends JPanel {
         JLabel houseNum = new JLabel();
         houseNum.setText("House: " + user.houseNum.toString());
 
-        deleteButton.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Database.FulfilOrder(order);
-            }
-        });
-
-        fulfilButton.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Database.DeleteOrder(order);
-            }
-        });
-
         add (title);
         add (name);
         add (email);
         add (postcode);
         add (houseNum);
         add (scrollPane);
-        add (deleteButton);
-        add (fulfilButton);
     }
 }
