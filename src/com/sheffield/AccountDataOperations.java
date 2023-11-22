@@ -39,16 +39,29 @@ public class AccountDataOperations {
         Address address = null;
         Statement stmt = null;
         try {
+            int position = 0;
+
+            String postCode =null ;
+            Integer houseNumber = null;
             ResultSet res =
-                    stmt.executeQuery("SELECT * FROM Address ");
-            res.absolute(userId);
-                String postCode = res.getString(1);
-                Integer houseNumber = res.getInt(2);
-                String roadName = res.getString(3);
-                String city = res.getString(4);
+                    stmt.executeQuery("SELECT * FROM Users ");
 
-                address = new Address(postCode,houseNumber,roadName,city);
+            while(res.next()) {
+                if(userId == res.getInt(1)){
+                    postCode = res.getString(5);
+                    houseNumber = res.getInt(6);
+                }
 
+            }
+            res = stmt.executeQuery("SELECT * FROM Address");
+            while(res.next()) {
+                if(postCode == res.getString(1)
+                        && houseNumber == res.getInt(2)) {
+                    String roadName = res.getString(3);
+                    String city = res.getString(4);
+                    address = new Address(postCode, houseNumber, roadName, city);
+                }
+            }
             res.close();
         }
         catch (SQLException ex) {
