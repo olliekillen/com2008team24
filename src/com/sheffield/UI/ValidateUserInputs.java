@@ -29,6 +29,12 @@ public class ValidateUserInputs {
 
     }
 
+    public boolean isValid(){
+        return this.validateForename().isEmpty() && this.validateSurname().isEmpty() && this.validateEmail().isEmpty()
+                && this.validatePassword().isEmpty() && this.validatePostcode().isEmpty()
+                && this.validateHouseNumber().isEmpty() && this.validateRoadName().isEmpty()
+                && this.validateCityName().isEmpty();
+    }
     public List<String> validateForename(){
         ArrayList<String> forenameErrorMessages = new ArrayList<>();
 

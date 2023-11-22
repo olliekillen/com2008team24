@@ -35,7 +35,7 @@ public class SignUpForm extends JPanel {
         constraints.gridy = 1;
         constraints.gridwidth = 1;
         // Creates forename label and field.
-        CustomTextField forenameField = new CustomTextField(20, 5);
+        CustomTextField forenameField = new CustomTextField(20, 30);
         add(new CustomLabel("Forename", 15), constraints);
         constraints.gridy = 2;
         add(forenameField.getFieldInPanel(new JPanel()), constraints);
@@ -44,7 +44,7 @@ public class SignUpForm extends JPanel {
         constraints.gridy = 3;
         constraints.gridwidth = 1;
         // Creates surname label and field.
-        CustomTextField surnameField = new CustomTextField(20, 5);
+        CustomTextField surnameField = new CustomTextField(20, 30);
         add(new CustomLabel("Surname", 15), constraints);
         constraints.gridy = 4;
         add(surnameField.getFieldInPanel(new JPanel()), constraints);;
@@ -53,7 +53,7 @@ public class SignUpForm extends JPanel {
         constraints.gridy = 5;
         constraints.gridwidth = 1;
         // Creates email label and field.
-        CustomTextField emailField = new CustomTextField(20, 5);
+        CustomTextField emailField = new CustomTextField(20, 50);
         add(new CustomLabel("Email", 15), constraints);
         constraints.gridy = 6;
         add(emailField.getFieldInPanel(new JPanel()), constraints);
@@ -62,7 +62,7 @@ public class SignUpForm extends JPanel {
         constraints.gridy = 7;
         constraints.gridwidth = 1;
         // Creates password label and field.
-        CustomPasswordField passwordField = new CustomPasswordField(20, 5);
+        CustomPasswordField passwordField = new CustomPasswordField(20, 15);
         add(new CustomLabel("Password", 15), constraints);
         constraints.gridy = 8;
         add(passwordField.getFieldInPanel(new JPanel()), constraints);
@@ -71,7 +71,7 @@ public class SignUpForm extends JPanel {
         constraints.gridy = 9;
         constraints.gridwidth = 1;
         // Creates confirm password label and field.
-        CustomPasswordField confirmPasswordField = new CustomPasswordField(20, 5);
+        CustomPasswordField confirmPasswordField = new CustomPasswordField(20, 15);
         add(new CustomLabel("Confirm Password", 15), constraints);
         constraints.gridy = 10;
         add(confirmPasswordField.getFieldInPanel(new JPanel()), constraints);
@@ -80,7 +80,7 @@ public class SignUpForm extends JPanel {
         constraints.gridy = 1;
         constraints.gridwidth = 1;
         // Creates post code label and field.
-        CustomTextField postcodeField = new CustomTextField(20, 5);
+        CustomTextField postcodeField = new CustomTextField(20, 8);
         add(new CustomLabel("Postcode", 15), constraints);
         constraints.gridy = 2;
         add(postcodeField.getFieldInPanel(new JPanel()), constraints);
@@ -89,7 +89,7 @@ public class SignUpForm extends JPanel {
         constraints.gridy = 3;
         constraints.gridwidth = 1;
         // Creates house number label and field.
-        CustomTextField houseNumberField = new CustomTextField(20, 5);
+        CustomTextField houseNumberField = new CustomTextField(20, 4);
         add(new CustomLabel("House Number", 15), constraints);
         constraints.gridy = 4;
         add(houseNumberField.getFieldInPanel(new JPanel()), constraints);
@@ -98,7 +98,7 @@ public class SignUpForm extends JPanel {
         constraints.gridy = 5;
         constraints.gridwidth = 1;
         // Creates road name label and field.
-        CustomTextField roadNameField = new CustomTextField(20, 5);
+        CustomTextField roadNameField = new CustomTextField(20, 37);
         add(new CustomLabel("Road Name", 15), constraints);
         constraints.gridy = 6;
         add(roadNameField.getFieldInPanel(new JPanel()), constraints);
@@ -107,7 +107,7 @@ public class SignUpForm extends JPanel {
         constraints.gridy = 7;
         constraints.gridwidth = 1;
         // Creates city name label and field.
-        CustomTextField cityNameField = new CustomTextField(20, 5);
+        CustomTextField cityNameField = new CustomTextField(20, 25);
         add(new CustomLabel("City Name", 15), constraints);
         constraints.gridy = 8;
         add(cityNameField.getFieldInPanel(new JPanel()), constraints);
@@ -148,6 +148,12 @@ public class SignUpForm extends JPanel {
                     emailField.getText(), passwordField.getPassword(), confirmPassword.getPassword(),
                     postcodeField.getText(), houseNumberField.getText(), roadNameField.getText(),
                     cityNameField.getText());
+
+            if (userSignUpInfo.isValid()){
+                String password = PasswordHasher.hashPassword(passwordField.getPassword());
+                System.out.println(password);
+            }
+            else System.out.println("Not Valid");;
         });
     }
 }

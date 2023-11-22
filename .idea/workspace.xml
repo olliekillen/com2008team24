@@ -5,10 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d8c3e42c-1391-466e-bdbd-038550dee454" name="Changes" comment="Individual product page is accessible from product page - data from the database doesn't appear on this page yet.">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/sheffield/UI/PasswordHasher.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Team_24_Security_And_Design.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Team_24_Security_And_Design.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sheffield/UI/LoginForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/UI/LoginForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sheffield/UI/MyFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/UI/MyFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sheffield/UI/SignUpForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/UI/SignUpForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sheffield/UI/ValidateUserInputs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/UI/ValidateUserInputs.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,9 +29,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 5
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
   <component name="ProjectId" id="2XwtE29gaUggz0A9IKHhsPxseRW" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -39,21 +40,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/dvous/Documents/Java Libs/mysql-connector-j-8.2.0/mysql-connector-j-8.2.0.jar",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/dvous/Documents/Java Libs/mysql-connector-j-8.2.0/mysql-connector-j-8.2.0.jar&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Application.MyFrame">
     <configuration name="MyFrame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.sheffield.UI.MyFrame" />
@@ -106,6 +107,11 @@
       <workItem from="1699831076779" duration="3455000" />
       <workItem from="1699878780488" duration="8339000" />
       <workItem from="1700484139830" duration="1489000" />
+      <workItem from="1700485926657" duration="1799000" />
+      <workItem from="1700490434514" duration="746000" />
+      <workItem from="1700492800892" duration="4244000" />
+      <workItem from="1700561688537" duration="2443000" />
+      <workItem from="1700567333002" duration="795000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed product and account pages, which couldn't display due to changes in the last commit.">
       <created>1700236292159</created>
