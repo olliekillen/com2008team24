@@ -28,21 +28,9 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d8c3e42c-1391-466e-bdbd-038550dee454" name="Changes" comment="Individual product page is accessible from product page - data from the database doesn't appear on this page yet.">
-      <change afterPath="$PROJECT_DIR$/src/com/sheffield/Staff.java" afterDir="false" />
+    <list default="true" id="d8c3e42c-1391-466e-bdbd-038550dee454" name="Changes" comment="Fixed problem where when exiting the individual product staff page, all nav buttons disappear.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Team_24_Security_And_Design.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Team_24_Security_And_Design.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sheffield/AccountDataOperations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/AccountDataOperations.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sheffield/AccountPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/AccountPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sheffield/IndividualProductPageUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/IndividualProductPageUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sheffield/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sheffield/OrderDatabaseOperations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/OrderDatabaseOperations.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sheffield/ProductBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/ProductBox.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sheffield/ProductBoxData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/ProductBoxData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/sheffield/ProductDatabaseOperations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/ProductDatabaseOperations.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sheffield/ProductPageLauncher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/ProductPageLauncher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sheffield/ProductPageUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/ProductPageUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sheffield/UI/LoginForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/UI/LoginForm.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -162,7 +150,14 @@
       <option name="project" value="LOCAL" />
       <updated>1700479593262</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Fixed problem where when exiting the individual product staff page, all nav buttons disappear.">
+      <created>1700730130310</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1700730130310</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -182,7 +177,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Fixed product and account pages, which couldn't display due to changes in the last commit." />
     <MESSAGE value="Individual product page is accessible from product page - data from the database doesn't appear on this page yet." />
-    <option name="LAST_COMMIT_MESSAGE" value="Individual product page is accessible from product page - data from the database doesn't appear on this page yet." />
+    <MESSAGE value="Fixed problem where when exiting the individual product staff page, all nav buttons disappear." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed problem where when exiting the individual product staff page, all nav buttons disappear." />
   </component>
   <component name="WindowStateProjectService">
     <state x="471" y="47" key="#com.intellij.openapi.roots.ui.configuration.libraryEditor.LibraryEditorDialog" timestamp="1700670802312">
@@ -193,6 +189,10 @@
       <screen x="0" y="0" width="1280" height="672" />
     </state>
     <state x="424" y="227" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1280.672@0.0.1280.672" timestamp="1700674979020" />
+    <state x="31" y="0" key="CommitChangelistDialog2" timestamp="1700730129257">
+      <screen x="0" y="0" width="1280" height="672" />
+    </state>
+    <state x="31" y="0" key="CommitChangelistDialog2/0.0.1280.672@0.0.1280.672" timestamp="1700730129257" />
     <state x="438" y="206" key="DetectedRootsChooserDialog" timestamp="1700671067365">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
@@ -205,22 +205,22 @@
       <screen x="0" y="0" width="1280" height="672" />
     </state>
     <state x="348" y="77" key="FileChooserDialogImpl/0.0.1280.672@0.0.1280.672" timestamp="1700671065646" />
-    <state width="1237" height="77" key="GridCell.Tab.0.bottom" timestamp="1700729828174">
+    <state width="1237" height="199" key="GridCell.Tab.0.bottom" timestamp="1700730440638">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
-    <state width="1237" height="77" key="GridCell.Tab.0.bottom/0.0.1280.672@0.0.1280.672" timestamp="1700729828174" />
-    <state width="1237" height="77" key="GridCell.Tab.0.center" timestamp="1700729828174">
+    <state width="1237" height="199" key="GridCell.Tab.0.bottom/0.0.1280.672@0.0.1280.672" timestamp="1700730440638" />
+    <state width="1237" height="199" key="GridCell.Tab.0.center" timestamp="1700730440638">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
-    <state width="1237" height="77" key="GridCell.Tab.0.center/0.0.1280.672@0.0.1280.672" timestamp="1700729828174" />
-    <state width="1237" height="77" key="GridCell.Tab.0.left" timestamp="1700729828174">
+    <state width="1237" height="199" key="GridCell.Tab.0.center/0.0.1280.672@0.0.1280.672" timestamp="1700730440638" />
+    <state width="1237" height="199" key="GridCell.Tab.0.left" timestamp="1700730440638">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
-    <state width="1237" height="77" key="GridCell.Tab.0.left/0.0.1280.672@0.0.1280.672" timestamp="1700729828174" />
-    <state width="1237" height="77" key="GridCell.Tab.0.right" timestamp="1700729828174">
+    <state width="1237" height="199" key="GridCell.Tab.0.left/0.0.1280.672@0.0.1280.672" timestamp="1700730440638" />
+    <state width="1237" height="199" key="GridCell.Tab.0.right" timestamp="1700730440638">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
-    <state width="1237" height="77" key="GridCell.Tab.0.right/0.0.1280.672@0.0.1280.672" timestamp="1700729828174" />
+    <state width="1237" height="199" key="GridCell.Tab.0.right/0.0.1280.672@0.0.1280.672" timestamp="1700730440638" />
     <state width="1237" height="201" key="GridCell.Tab.1.bottom" timestamp="1700729784372">
       <screen x="0" y="0" width="1280" height="672" />
     </state>

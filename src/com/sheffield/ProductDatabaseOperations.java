@@ -123,6 +123,7 @@ public class ProductDatabaseOperations {
             PreparedStatement preparedStatement = connection.prepareStatement(selectSQL);
             preparedStatement.setString(1, productCode);
             ResultSet resultSet = preparedStatement.executeQuery();
+            resultSet.next();
             return new Locomotive(resultSet.getString("productCode"),
             resultSet.getString("brandName"), resultSet.getString("productName"),
             resultSet.getBigDecimal("retailPrice"), resultSet.getString("modellingScale"),
@@ -200,6 +201,7 @@ public class ProductDatabaseOperations {
             PreparedStatement preparedStatement = connection.prepareStatement(selectSQL);
             preparedStatement.setString(1, productCode);
             ResultSet resultSet = preparedStatement.executeQuery();
+            resultSet.next();
             return new Controller(resultSet.getString("productCode"),
             resultSet.getString("brandName"), resultSet.getString("productName"),
             resultSet.getBigDecimal("retailPrice"), resultSet.getString("modellingScale"),
@@ -315,6 +317,7 @@ public class ProductDatabaseOperations {
             PreparedStatement preparedStatement = connection.prepareStatement(selectSQL);
             preparedStatement.setString(1, productCode);
             ResultSet resultSet = preparedStatement.executeQuery();
+            resultSet.next();
             return new Track(resultSet.getString("productCode"),
             resultSet.getString("brandName"), resultSet.getString("productName"),
             resultSet.getBigDecimal("retailPrice"), resultSet.getString("modellingScale"),
@@ -370,10 +373,11 @@ public class ProductDatabaseOperations {
 
     public Product getRollingStockByProductCode(Connection connection, String productCode) throws SQLException {
         try {
-            String selectSQL = "SELECT * FROM RollingStock NATURAL JOIN Product WHERE productCode=?";
+            String selectSQL = "SELECT * FROM Rolling_Stock NATURAL JOIN Product WHERE productCode=?";
             PreparedStatement preparedStatement = connection.prepareStatement(selectSQL);
             preparedStatement.setString(1, productCode);
             ResultSet resultSet = preparedStatement.executeQuery();
+            resultSet.next();
             return new RollingStock(resultSet.getString("productCode"),
             resultSet.getString("brandName"), resultSet.getString("productName"),
             resultSet.getBigDecimal("retailPrice"), resultSet.getString("modellingScale"),
