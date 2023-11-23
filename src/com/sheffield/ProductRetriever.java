@@ -37,8 +37,6 @@ public class ProductRetriever {
             dch.openConnection();
             Product product = new Product();
             switch (productCode.charAt(0)) {
-            //switch ("Z".charAt(0)) {
-                //case ('Z') -> { product = dop.getTrainSetByProductCode(dch.getConnection(), productCode); }
                 case ('M') -> { product = dop.getTrainSetByProductCode(dch.getConnection(), productCode); }
                 case ('P') -> { product = dop.getTrackPackByProductCode(dch.getConnection(), productCode); }
                 case ('L') -> { product = dop.getLocomotiveByProductCode(dch.getConnection(), productCode); }

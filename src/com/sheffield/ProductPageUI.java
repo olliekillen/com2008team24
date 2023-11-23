@@ -153,7 +153,7 @@ public class ProductPageUI extends JFrame {
         //profilePicture.setLocation((int) (Math.round(xSize * 0.12)),0);
         profilePicture.setSize((int) (Math.round(ySize * 0.1)),(int) (Math.round(ySize * 0.1)));
         //productAccountButton.add(profilePicture);
-        if (! isStaffPage) { productPagePanel.add(productAccountButton); }
+        productPagePanel.add(productAccountButton);
         profilePicture.setLocation((int) (Math.round(xSize * 0.12)),(int) (Math.round(ySize * 0.12)));
 
         productBasketButton.setLocation(0,(int) (Math.round(ySize * 0.22)));
@@ -165,20 +165,24 @@ public class ProductPageUI extends JFrame {
         productBasketButton.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));
         productBasketButton.setText("   Basket");
         productBasketButton.setHorizontalAlignment(SwingConstants.LEFT);
-        if (! isStaffPage) { productPagePanel.add(productBasketButton); }
+        if (isStaffPage) {
+            productBasketButton.setText("   View Orders");
+            productBasketButton.addActionListener(e->productViewOrdersButton_Click());
+        }
+        productPagePanel.add(productBasketButton);
 
+        productStaffPageButton.setLocation(0,(int) (Math.round(ySize * 0.338)));
         productStaffPageButton.setSize((int) (Math.round(xSize * 0.16)),(int) (Math.round(ySize * 0.12)));
         productStaffPageButton.setForeground( new Color(-1) );
         productStaffPageButton.setFont(new Font("Merriweather", Font.BOLD, 17));
         productStaffPageButton.setBackground( new Color(-15440650) );
         productStaffPageButton.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));
         if (!isStaffPage) {
-            productStaffPageButton.setLocation(0,(int) (Math.round(ySize * 0.338)));
             productStaffPageButton.setText("   To Staff Page");
             productStaffPageButton.addActionListener(e->productStaffPageButton_Click());
         }
         else {
-            productStaffPageButton.setLocation(0,(int) (Math.round(ySize * 0.1)));
+            if (isManager) { productStaffPageButton.setLocation(0,(int) (Math.round(ySize * 0.458))); }
             productStaffPageButton.setText("   To Customer Page");
             productStaffPageButton.addActionListener(e->productLeaveStaffPageButton_Click());
         }
@@ -334,10 +338,6 @@ public class ProductPageUI extends JFrame {
 
     public void setIsStaffPage(Boolean isStaffPage) { this.isStaffPage = isStaffPage; }
 
-    public int getCurrentUserId() { return this.currentUserId; }
-
-    public void setCurrentUserId(int currentUserId) { this.currentUserId = currentUserId; }
-
     public Boolean getIsStaff() { return this.isStaff; }
 
     public void setIsStaff(Boolean isStaff) { this.isStaff = isStaff; }
@@ -345,6 +345,10 @@ public class ProductPageUI extends JFrame {
     public Boolean getIsManager() { return this.isManager; }
 
     public void setIsManager(Boolean isManager) { this.isManager = isManager; }
+
+    public int getCurrentUserId() { return this.currentUserId; }
+
+    public void setCurrentUserId(int currentUserId) { this.currentUserId = currentUserId; }
 
     public void generateProductAreaComponents() {
         JLabel productAreaText = new JLabel();
@@ -387,32 +391,26 @@ public class ProductPageUI extends JFrame {
     public void productAccountButton_Click()
     {
         //takes the user to the account page
-        this.dispose();
         AccountPage accountPage = new AccountPage();
-        try {
-            accountPage.initFrame(5);
-        } catch (SQLException e){
-            e.printStackTrace();
-        }
+        accountPage.initFrame(getIsStaffPage(),5);
+        this.dispose();
     }
-    public void productBasketButton_Click()
-    { System.out.println("productBasketButton_Click() has been pressed "); }
+    public void productBasketButton_Click() { System.out.println("productBasketButton_Click() has been pressed "); }
+    public void productViewOrdersButton_Click() { System.out.println("Placeholder"); }
     public void productStaffPageButton_Click() {
-        this.setIsStaffPage(true);
         ProductPageUI productPage = new ProductPageUI();
         productPage.initFrame(true, 5);
         this.dispose();
     }
     public void productLeaveStaffPageButton_Click() {
-        this.setIsStaffPage(false);
-        this.dispose();
         ProductPageUI productPage = new ProductPageUI();
         productPage.initFrame(false, 5);
+        this.dispose();
     }
     public void productManagerPageButton_Click() {
-        this.dispose();
         ProductPageUI productPage = new ProductPageUI();
         productPage.initFrame(true, 5);
+        this.dispose();
     }
     public void productTypeFilterCombo_Click() {
         //refreshes product area with boxes related to the product type picked

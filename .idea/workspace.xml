@@ -28,11 +28,13 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d8c3e42c-1391-466e-bdbd-038550dee454" name="Changes" comment="Fixed problem where correct product details don't appear when pressing 'More Information' button in product box.">
+    <list default="true" id="d8c3e42c-1391-466e-bdbd-038550dee454" name="Changes" comment="Add to basket button now removed from product page when in staff mode.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sheffield/ProductBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/ProductBox.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sheffield/ProductDatabaseOperations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/ProductDatabaseOperations.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sheffield/AccountDataOperations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/AccountDataOperations.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sheffield/AccountPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/AccountPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sheffield/IndividualProductPageUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/IndividualProductPageUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/sheffield/ProductPageUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/ProductPageUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sheffield/ProductRetriever.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/ProductRetriever.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -166,7 +168,14 @@
       <option name="project" value="LOCAL" />
       <updated>1700730823011</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Add to basket button now removed from product page when in staff mode.">
+      <created>1700736222956</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1700736222956</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -188,7 +197,8 @@
     <MESSAGE value="Individual product page is accessible from product page - data from the database doesn't appear on this page yet." />
     <MESSAGE value="Fixed problem where when exiting the individual product staff page, all nav buttons disappear." />
     <MESSAGE value="Fixed problem where correct product details don't appear when pressing 'More Information' button in product box." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed problem where correct product details don't appear when pressing 'More Information' button in product box." />
+    <MESSAGE value="Add to basket button now removed from product page when in staff mode." />
+    <option name="LAST_COMMIT_MESSAGE" value="Add to basket button now removed from product page when in staff mode." />
   </component>
   <component name="WindowStateProjectService">
     <state x="471" y="47" key="#com.intellij.openapi.roots.ui.configuration.libraryEditor.LibraryEditorDialog" timestamp="1700670802312">
@@ -199,10 +209,10 @@
       <screen x="0" y="0" width="1280" height="672" />
     </state>
     <state x="424" y="227" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1280.672@0.0.1280.672" timestamp="1700674979020" />
-    <state x="31" y="0" key="CommitChangelistDialog2" timestamp="1700730822036">
+    <state x="31" y="0" key="CommitChangelistDialog2" timestamp="1700736221602">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
-    <state x="31" y="0" key="CommitChangelistDialog2/0.0.1280.672@0.0.1280.672" timestamp="1700730822036" />
+    <state x="31" y="0" key="CommitChangelistDialog2/0.0.1280.672@0.0.1280.672" timestamp="1700736221602" />
     <state x="438" y="206" key="DetectedRootsChooserDialog" timestamp="1700671067365">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
@@ -215,22 +225,22 @@
       <screen x="0" y="0" width="1280" height="672" />
     </state>
     <state x="348" y="77" key="FileChooserDialogImpl/0.0.1280.672@0.0.1280.672" timestamp="1700671065646" />
-    <state width="1237" height="199" key="GridCell.Tab.0.bottom" timestamp="1700734968523">
+    <state width="1237" height="199" key="GridCell.Tab.0.bottom" timestamp="1700750791749">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
-    <state width="1237" height="199" key="GridCell.Tab.0.bottom/0.0.1280.672@0.0.1280.672" timestamp="1700734968523" />
-    <state width="1237" height="199" key="GridCell.Tab.0.center" timestamp="1700734968523">
+    <state width="1237" height="199" key="GridCell.Tab.0.bottom/0.0.1280.672@0.0.1280.672" timestamp="1700750791749" />
+    <state width="1237" height="199" key="GridCell.Tab.0.center" timestamp="1700750791748">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
-    <state width="1237" height="199" key="GridCell.Tab.0.center/0.0.1280.672@0.0.1280.672" timestamp="1700734968523" />
-    <state width="1237" height="199" key="GridCell.Tab.0.left" timestamp="1700734968523">
+    <state width="1237" height="199" key="GridCell.Tab.0.center/0.0.1280.672@0.0.1280.672" timestamp="1700750791748" />
+    <state width="1237" height="199" key="GridCell.Tab.0.left" timestamp="1700750791748">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
-    <state width="1237" height="199" key="GridCell.Tab.0.left/0.0.1280.672@0.0.1280.672" timestamp="1700734968523" />
-    <state width="1237" height="199" key="GridCell.Tab.0.right" timestamp="1700734968523">
+    <state width="1237" height="199" key="GridCell.Tab.0.left/0.0.1280.672@0.0.1280.672" timestamp="1700750791748" />
+    <state width="1237" height="199" key="GridCell.Tab.0.right" timestamp="1700750791749">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
-    <state width="1237" height="199" key="GridCell.Tab.0.right/0.0.1280.672@0.0.1280.672" timestamp="1700734968523" />
+    <state width="1237" height="199" key="GridCell.Tab.0.right/0.0.1280.672@0.0.1280.672" timestamp="1700750791749" />
     <state width="1237" height="201" key="GridCell.Tab.1.bottom" timestamp="1700729784372">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
@@ -259,10 +269,10 @@
       <screen x="0" y="0" width="1280" height="672" />
     </state>
     <state x="179" y="65" width="1095" height="487" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.0.1280.672@0.0.1280.672" timestamp="1700675333673" />
-    <state x="93" y="93" width="1095" height="493" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1700661794172">
+    <state x="93" y="93" width="1095" height="519" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1700750738683">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
-    <state x="93" y="93" width="1095" height="493" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1280.672@0.0.1280.672" timestamp="1700661794172" />
+    <state x="93" y="93" width="1095" height="519" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1280.672@0.0.1280.672" timestamp="1700750738683" />
     <state x="458" y="250" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1700661794107">
       <screen x="0" y="0" width="1280" height="672" />
     </state>
@@ -290,7 +300,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/sheffield/IndividualProductPageUI.java</url>
-          <line>40</line>
+          <line>44</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>

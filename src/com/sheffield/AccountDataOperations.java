@@ -106,7 +106,6 @@ public class AccountDataOperations {
 
     public Boolean getStaffByUserID(Connection connection, int userID) throws SQLException {
         try {
-            System.out.println(userID);
             String selectSQL = "SELECT * FROM Staff NATURAL JOIN Users WHERE userID=?";
             PreparedStatement preparedStatement = connection.prepareStatement(selectSQL);
             preparedStatement.setInt(1, userID);
