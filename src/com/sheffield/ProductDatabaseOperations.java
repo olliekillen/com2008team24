@@ -62,7 +62,6 @@ public class ProductDatabaseOperations {
             resultSet.getString("brandName"), resultSet.getString("productName"),
             resultSet.getBigDecimal("retailPrice"), resultSet.getString("modellingScale"),
             resultSet.getInt("stockCount"));
-            System.out.println(trainSet);
             return trainSet;
         } catch (SQLException e) {
             e.printStackTrace();

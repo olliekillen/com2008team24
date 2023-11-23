@@ -369,8 +369,6 @@ public class ProductPageUI extends JFrame {
     public void setPageCount(JLabel productAreaPageCount) {
         int first = n + 1;
         int second = 1 + productList.size() / 6;
-        System.out.println(productList.size());
-        System.out.println("productList.size() / 6 is " + productList.size() / 6);
         productAreaPageCount.setText(first + " / " + second);
     }
 
@@ -437,7 +435,6 @@ public class ProductPageUI extends JFrame {
         //refreshes product area with boxes related to the modelling scale picked
     }
     public void leftArrow_Click() {
-        System.out.println("n is " + n);
         //the first if statement only activates if the page number isn't the first page (nothing happens if so)
         if (n >= 1) {
             if (n <= productList.size() / 6) {
@@ -453,11 +450,9 @@ public class ProductPageUI extends JFrame {
             generateProductAreaComponents();
             productPagePanel.validate();
             productPagePanel.repaint();
-            System.out.println("n is " + n);
         }
     }
     public void rightArrow_Click() {
-        System.out.println("n is " + n);
         //the first if statement only activates if the page number isn't the final page (nothing happens if so)
         if (n <= productList.size() / 6 - 1) {
             if (n >= 0) { setButtonImg(leftArrow, "src/com/sheffield/Images/leftArrowActive.png"); }
@@ -472,7 +467,6 @@ public class ProductPageUI extends JFrame {
             generateProductAreaComponents();
             productPagePanel.validate();
             productPagePanel.repaint();
-            System.out.println("n is " + n);
         }
     }
 

@@ -61,7 +61,8 @@ public class ProductBox extends JPanel {
         add(productScale);
 
         productInfo.setLocation((int) (Math.round(xSize * 0.025)),  (int) (Math.round(ySize * 0.15)));
-        productInfo.setSize((int) (Math.round(xSize * 0.14)), (int) (Math.round(ySize * 0.1)));
+        if (isStaffPage) { productInfo.setSize((int) (Math.round(xSize * 0.19)), (int) (Math.round(ySize * 0.1))); }
+        else { productInfo.setSize((int) (Math.round(xSize * 0.14)), (int) (Math.round(ySize * 0.1))); }
         productInfo.setForeground(new Color(-1));
         productInfo.setFont(new Font("Merriweather", Font.BOLD, 17));
         productInfo.addActionListener(e -> productInfo_Click(isStaffPage));
@@ -76,7 +77,7 @@ public class ProductBox extends JPanel {
         productCart.addActionListener(e -> productCart_Click());
         productCart.setBackground(new Color(-2743738));
         productCart.setText("+");
-        add(productCart);
+        if(! isStaffPage) { add(productCart); }
 
         productBackground.setLocation(0, (int) (Math.round(ySize * 0.15)));
         productBackground.setSize((int) (Math.round(xSize * 0.24)), (int) (Math.round(ySize * 0.24)));
