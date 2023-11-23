@@ -13,6 +13,8 @@ public class AccountPage extends JFrame {
 
 	JPanel accountPagePanel = new JPanel(null);
 
+	private int currentUserId;
+
 	JLabel pageTitle = new JLabel();
 	JButton productButton = new JButton();
 	JButton accountBasketButton = new JButton();
@@ -157,7 +159,7 @@ public class AccountPage extends JFrame {
 	{
 		this.dispose();
 		ProductPageUI productPage = new ProductPageUI();
-		productPage.initFrame();
+		productPage.initFrame(true, 2);
 	}
 	public void basketButton_Click()
 	{

@@ -3,30 +3,46 @@
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </select>
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="d8c3e42c-1391-466e-bdbd-038550dee454" name="Changes" comment="Individual product page is accessible from product page - data from the database doesn't appear on this page yet.">
-      <change afterPath="$PROJECT_DIR$/.vscode/settings.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/sheffield/AccountDataOperations.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/sheffield/AccountDetailBox.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/sheffield/Address.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/sheffield/BankDetails.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/sheffield/OrderDatabaseOperations.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/sheffield/OrderPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/sheffield/Staff.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Team_24_Security_And_Design.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Team_24_Security_And_Design.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sheffield/AccountDataOperations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/AccountDataOperations.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/sheffield/AccountPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/AccountPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/sheffield/IndividualProductPageUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/IndividualProductPageUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sheffield/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/Order.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sheffield/OrderDatabaseOperations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/OrderDatabaseOperations.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sheffield/ProductBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/ProductBox.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sheffield/ProductBoxData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/ProductBoxData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sheffield/ProductDatabaseOperations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/ProductDatabaseOperations.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sheffield/ProductPageLauncher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/ProductPageLauncher.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/sheffield/ProductPageUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/ProductPageUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sheffield/UI/UserDatabaseOperations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/UI/UserDatabaseOperations.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sheffield/orders/Database.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sheffield/orders/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sheffield/orders/OrderLine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/OrderLine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sheffield/orders/OrderPage.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sheffield/orders/TablePane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/OrderTable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sheffield/orders/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sheffield/orders/orderLines.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sheffield/orders/orders.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sheffield/UI/LoginForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/UI/LoginForm.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,14 +58,10 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 5
-}</component>
   <component name="ProjectId" id="2XwtE29gaUggz0A9IKHhsPxseRW" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -58,22 +70,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "Merging main",
-    "last_opened_file_path": "C:/Users/dvous/Documents/mysql-connector-j-8.2.0/mysql-connector-j-8.2.0/mysql-connector-j-8.2.0.jar",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "vue.rearranger.settings.migration": "true"
-  }
-}]]></component>
-  <component name="RunManager" selected="Application.AccountPage">
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/mysql-connector-j-8.2.0" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.sheffield" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.ProductPageLauncher">
     <configuration name="AccountPage" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.sheffield.AccountPage" />
       <module name="Team_24_Security_And_Design" />
@@ -115,9 +123,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.ProductPageLauncher" />
         <item itemvalue="Application.AccountPage" />
         <item itemvalue="Application.MyFrame" />
-        <item itemvalue="Application.ProductPageLauncher" />
       </list>
     </recent_temporary>
   </component>
@@ -139,12 +147,6 @@
       <workItem from="1699831076779" duration="3455000" />
       <workItem from="1699878780488" duration="8339000" />
       <workItem from="1700484139830" duration="1489000" />
-      <workItem from="1700485926657" duration="1799000" />
-      <workItem from="1700490434514" duration="746000" />
-      <workItem from="1700492800892" duration="4244000" />
-      <workItem from="1700561688537" duration="2443000" />
-      <workItem from="1700567333002" duration="795000" />
-      <workItem from="1700649845585" duration="4833000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed product and account pages, which couldn't display due to changes in the last commit.">
       <created>1700236292159</created>
@@ -166,27 +168,120 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Fixed product and account pages, which couldn't display due to changes in the last commit." />
     <MESSAGE value="Individual product page is accessible from product page - data from the database doesn't appear on this page yet." />
     <option name="LAST_COMMIT_MESSAGE" value="Individual product page is accessible from product page - data from the database doesn't appear on this page yet." />
   </component>
+  <component name="WindowStateProjectService">
+    <state x="471" y="47" key="#com.intellij.openapi.roots.ui.configuration.libraryEditor.LibraryEditorDialog" timestamp="1700670802312">
+      <screen x="0" y="0" width="1280" height="672" />
+    </state>
+    <state x="471" y="47" key="#com.intellij.openapi.roots.ui.configuration.libraryEditor.LibraryEditorDialog/0.0.1280.672@0.0.1280.672" timestamp="1700670802312" />
+    <state x="424" y="227" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1700674979020">
+      <screen x="0" y="0" width="1280" height="672" />
+    </state>
+    <state x="424" y="227" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1280.672@0.0.1280.672" timestamp="1700674979020" />
+    <state x="438" y="206" key="DetectedRootsChooserDialog" timestamp="1700671067365">
+      <screen x="0" y="0" width="1280" height="672" />
+    </state>
+    <state x="438" y="206" key="DetectedRootsChooserDialog/0.0.1280.672@0.0.1280.672" timestamp="1700671067365" />
+    <state x="93" y="93" width="1095" height="487" key="DiffContextDialog" timestamp="1700675333673">
+      <screen x="0" y="0" width="1280" height="672" />
+    </state>
+    <state x="93" y="93" width="1095" height="487" key="DiffContextDialog/0.0.1280.672@0.0.1280.672" timestamp="1700675333673" />
+    <state x="348" y="77" key="FileChooserDialogImpl" timestamp="1700671065646">
+      <screen x="0" y="0" width="1280" height="672" />
+    </state>
+    <state x="348" y="77" key="FileChooserDialogImpl/0.0.1280.672@0.0.1280.672" timestamp="1700671065646" />
+    <state width="1237" height="77" key="GridCell.Tab.0.bottom" timestamp="1700729828174">
+      <screen x="0" y="0" width="1280" height="672" />
+    </state>
+    <state width="1237" height="77" key="GridCell.Tab.0.bottom/0.0.1280.672@0.0.1280.672" timestamp="1700729828174" />
+    <state width="1237" height="77" key="GridCell.Tab.0.center" timestamp="1700729828174">
+      <screen x="0" y="0" width="1280" height="672" />
+    </state>
+    <state width="1237" height="77" key="GridCell.Tab.0.center/0.0.1280.672@0.0.1280.672" timestamp="1700729828174" />
+    <state width="1237" height="77" key="GridCell.Tab.0.left" timestamp="1700729828174">
+      <screen x="0" y="0" width="1280" height="672" />
+    </state>
+    <state width="1237" height="77" key="GridCell.Tab.0.left/0.0.1280.672@0.0.1280.672" timestamp="1700729828174" />
+    <state width="1237" height="77" key="GridCell.Tab.0.right" timestamp="1700729828174">
+      <screen x="0" y="0" width="1280" height="672" />
+    </state>
+    <state width="1237" height="77" key="GridCell.Tab.0.right/0.0.1280.672@0.0.1280.672" timestamp="1700729828174" />
+    <state width="1237" height="201" key="GridCell.Tab.1.bottom" timestamp="1700729784372">
+      <screen x="0" y="0" width="1280" height="672" />
+    </state>
+    <state width="1237" height="201" key="GridCell.Tab.1.bottom/0.0.1280.672@0.0.1280.672" timestamp="1700729784372" />
+    <state width="1237" height="201" key="GridCell.Tab.1.center" timestamp="1700729784372">
+      <screen x="0" y="0" width="1280" height="672" />
+    </state>
+    <state width="1237" height="201" key="GridCell.Tab.1.center/0.0.1280.672@0.0.1280.672" timestamp="1700729784372" />
+    <state width="1237" height="201" key="GridCell.Tab.1.left" timestamp="1700729784371">
+      <screen x="0" y="0" width="1280" height="672" />
+    </state>
+    <state width="1237" height="201" key="GridCell.Tab.1.left/0.0.1280.672@0.0.1280.672" timestamp="1700729784371" />
+    <state width="1237" height="201" key="GridCell.Tab.1.right" timestamp="1700729784372">
+      <screen x="0" y="0" width="1280" height="672" />
+    </state>
+    <state width="1237" height="201" key="GridCell.Tab.1.right/0.0.1280.672@0.0.1280.672" timestamp="1700729784372" />
+    <state x="121" y="50" key="MergeDialog" timestamp="1700661884686">
+      <screen x="0" y="0" width="1280" height="672" />
+    </state>
+    <state x="121" y="50" key="MergeDialog/0.0.1280.672@0.0.1280.672" timestamp="1700661884686" />
+    <state x="121" y="0" key="SettingsEditor" timestamp="1700671072040">
+      <screen x="0" y="0" width="1280" height="672" />
+    </state>
+    <state x="121" y="0" key="SettingsEditor/0.0.1280.672@0.0.1280.672" timestamp="1700671072040" />
+    <state x="179" y="65" width="1095" height="487" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1700675333673">
+      <screen x="0" y="0" width="1280" height="672" />
+    </state>
+    <state x="179" y="65" width="1095" height="487" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.0.1280.672@0.0.1280.672" timestamp="1700675333673" />
+    <state x="93" y="93" width="1095" height="493" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1700661794172">
+      <screen x="0" y="0" width="1280" height="672" />
+    </state>
+    <state x="93" y="93" width="1095" height="493" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1280.672@0.0.1280.672" timestamp="1700661794172" />
+    <state x="458" y="250" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1700661794107">
+      <screen x="0" y="0" width="1280" height="672" />
+    </state>
+    <state x="458" y="250" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.672@0.0.1280.672" timestamp="1700661794107" />
+    <state x="208" y="43" width="864" height="629" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1700679084405">
+      <screen x="0" y="0" width="1280" height="672" />
+    </state>
+    <state x="208" y="43" width="864" height="629" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1280.672@0.0.1280.672" timestamp="1700679084405" />
+    <state x="259" y="185" width="910" height="476" key="dock-window-2" timestamp="1700656829530">
+      <screen x="0" y="0" width="1280" height="672" />
+    </state>
+    <state x="259" y="185" width="910" height="476" key="dock-window-2/0.0.1280.672@0.0.1280.672" timestamp="1700656829530" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/sheffield/AccountPage.java</url>
-          <line>7</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/com/sheffield/AccountPage.java</url>
-          <line>172</line>
-          <properties class="com.sheffield.AccountPage" method="main">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.sql.SQLException" package="java.sql" />
           <option name="timeStamp" value="3" />
+        </breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/sheffield/ProductBox.java</url>
+          <line>89</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/sheffield/IndividualProductPageUI.java</url>
+          <line>40</line>
+          <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

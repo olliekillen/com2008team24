@@ -12,6 +12,9 @@ public class IndividualProductPageUI extends JFrame {
     int xSize = ((int) tk.getScreenSize().getWidth());
     int ySize = ((int) tk.getScreenSize().getHeight());
 
+    private Boolean isStaffPage;
+    private int currentUserId;
+
     JPanel singleProductPagePanel = new JPanel(null);
 
     JLabel singleProductHeader = new JLabel();
@@ -33,17 +36,18 @@ public class IndividualProductPageUI extends JFrame {
     JPanel singleProductAreaBorder = new JPanel(null);
     JLabel singleProductBackground = new JLabel();
 
-    public void initFrame(Product product)
+    public void initFrame(Product product, Boolean isStaffPage, int userId)
     {
         this.setLayout(new GridLayout(1,1));
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize((Math.round(xSize)),9000);
-        initPanel(product);
+        this.setIsStaffPage(isStaffPage);
+        initPanel(product, userId);
         this.add(singleProductPagePanel);
         this.setVisible(true);
     }
 
-    public void initPanel(Product product)
+    public void initPanel(Product product, int userId)
     {
         /* For colours of each of the components:
          * Purple: 11854529
@@ -148,6 +152,8 @@ public class IndividualProductPageUI extends JFrame {
         singleProductBracket.setHorizontalAlignment(SwingConstants.CENTER);
         singleProductBracket.setFont(new Font("Merriweather", Font.BOLD, 48));
 
+        initProductDetails(product);
+
         singleProductAddBasket.setLocation((int) (Math.round(xSize * 0.28)),  (int) (Math.round(ySize * 0.73)));
         singleProductAddBasket.setSize((int) (Math.round(xSize * 0.16)), (int) (Math.round(ySize * 0.1 )));
         singleProductAddBasket.setHorizontalAlignment(SwingConstants.CENTER);
@@ -227,13 +233,20 @@ public class IndividualProductPageUI extends JFrame {
             if (product instanceof  Controller) { controller = (Controller) product; }
             if(controller.getIsDigital()) {
                 singleProductEra.setText("Digital");
-                singleProductPagePanel.add(singleProductEra);
             } else {
                 singleProductEra.setText("Not Digital");
-                singleProductPagePanel.add(singleProductEra);
             }
+            singleProductPagePanel.add(singleProductEra);
         }
     }
+
+    public Boolean getIsStaffPage() { return this.isStaffPage; }
+
+    public void setIsStaffPage(Boolean isStaffPage) { this.isStaffPage = isStaffPage; }
+
+    public int getCurrentUserId() { return this.currentUserId; }
+
+    public void setCurrentUserId(int currentUserId) { this.currentUserId = currentUserId; }
 
     public void singleProductAccountButton_Click() throws SQLException
     {
@@ -251,8 +264,8 @@ public class IndividualProductPageUI extends JFrame {
     public void singleProductAddBasket_Click() {}
     public void singleProductOrder_Click() {}
     public void singleProductBrowse_Click() {
-        this.dispose();
         ProductPageUI productPage = new ProductPageUI();
-        productPage.initFrame();
+        productPage.initFrame(isStaffPage, 5);
+        this.dispose();
     }
 }

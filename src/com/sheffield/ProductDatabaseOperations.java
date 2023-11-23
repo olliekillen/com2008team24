@@ -13,7 +13,7 @@ public class ProductDatabaseOperations {
         try {
             String insertSQL = "INSERT INTO Product (productCode, brandName, productName,"+
             "retailPrice, modellingScale, stockCount) VALUES (?, ?, ?, ?, ?, ?)";
-            PreparedStatement preparedStatement = connection .prepareStatement(insertSQL);
+            PreparedStatement preparedStatement = connection.prepareStatement(insertSQL);
             preparedStatement.setString(1, trainSet.getProductCode());
             preparedStatement.setString(2, trainSet.getBrandName());
             preparedStatement.setString(3, trainSet.getProductName());

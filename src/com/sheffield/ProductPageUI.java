@@ -6,6 +6,7 @@ import javax.imageio.*;
 import java.awt.*;
 import java.awt.image.*;
 import java.io.File;
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +17,11 @@ public class ProductPageUI extends JFrame {
     int xSize = ((int) tk.getScreenSize().getWidth());
     int ySize = ((int) tk.getScreenSize().getHeight());
     int n = 0;
+
+    private Boolean isStaffPage;
+    private Boolean isStaff;
+    private Boolean isManager;
+    private int currentUserId;
 
     JPanel productPagePanel = new JPanel(null);
     ProductRetriever productRetriever = new ProductRetriever();
@@ -28,6 +34,7 @@ public class ProductPageUI extends JFrame {
     JButton productAccountButton = new JButton();
     JButton productBasketButton = new JButton();
     JButton productStaffPageButton = new JButton();
+    JButton productManagerPageButton = new JButton();
     JLabel productSidebar = new JLabel();
     JLabel productTypeFilterLabel = new JLabel();
     String[] productTypeFilterComboData = {"Train Sets", "Track Packs", "Locomotives", "Rolling Stock", "Tracks",
@@ -48,19 +55,18 @@ public class ProductPageUI extends JFrame {
     JPanel productAreaBorder = new JPanel(null);
     JLabel productBackground = new JLabel();
 
-    JTextArea textArea = new JTextArea(100, 100);
-
-    public void initFrame()
+    public void initFrame(Boolean isStaffPage, int userId)
     {
         this.setLayout(new GridLayout(1,1));
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize((Math.round(xSize)),9000);
-        initPanel();
+        this.setIsStaffPage(isStaffPage);
+        initPanel(userId);
         this.add(productPagePanel);
         this.setVisible(true);
     }
 
-    public void initPanel()
+    public void initPanel(int userId)
     {
         /* For colours of each of the components:
          * Purple: 11854529
@@ -72,16 +78,20 @@ public class ProductPageUI extends JFrame {
          * Black: Don't enter anything (default).
          * Transparent?: 15658734
         */
-
-        // Row indentation
-        textArea.setFont(new Font("SansSerif", Font.PLAIN, 12) );
-        textArea.setEditable(false);
-        textArea.setLineWrap(false);
-        textArea.append("test");
+        this.setCurrentUserId(userId);
+        this.setIsManager(false);
+        try {
+            DatabaseConnectionHandler dch = new DatabaseConnectionHandler();
+            AccountDataOperations dop = new AccountDataOperations();
+            dch.openConnection();
+            isStaff = dop.getStaffByUserID(dch.getConnection(), currentUserId);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
         setButtonImg(leftArrow, "src/com/sheffield/Images/leftArrowInactive.png");
-        leftArrow.setLocation((int) (Math.round(xSize * 0.18)),413);
-        leftArrow.setSize(30,30);
+        leftArrow.setLocation((int) (Math.round(xSize * 0.18)),(int) (Math.round(ySize * 0.573)));
+        leftArrow.setSize((int) (Math.round(ySize * 0.04)),(int) (Math.round(ySize * 0.04)));
         leftArrow.addActionListener(e->leftArrow_Click());
         leftArrow.setBorderPainted(false);
         leftArrow.setContentAreaFilled(false);
@@ -101,8 +111,8 @@ public class ProductPageUI extends JFrame {
             System.out.println("The file was not found.");
             e.printStackTrace();
         }
-        rightArrow.setLocation((int) (Math.round(xSize * 0.925)),413);
-        rightArrow.setSize(30,30);
+        rightArrow.setLocation((int) (Math.round(xSize * 0.925)),(int) (Math.round(ySize * 0.573)));
+        rightArrow.setSize((int) (Math.round(ySize * 0.04)),(int) (Math.round(ySize * 0.04)));
         rightArrow.addActionListener(e->rightArrow_Click());
         rightArrow.setBorderPainted(false);
         rightArrow.setContentAreaFilled(false);
@@ -111,7 +121,7 @@ public class ProductPageUI extends JFrame {
         productPagePanel.add(rightArrow);
 
         productHeader.setLocation(0,0);
-        productHeader.setSize((Math.round(xSize)),70);
+        productHeader.setSize((Math.round(xSize)),(int) (Math.round(ySize * 0.1)));
         productHeader.setForeground( new Color(-1) );
         productHeader.setFont(new Font("Merryweather", Font.BOLD, 50));
         productHeader.setOpaque(true);
@@ -121,67 +131,79 @@ public class ProductPageUI extends JFrame {
         productHeader.setHorizontalAlignment(SwingConstants.CENTER);
         productPagePanel.add(productHeader);
 
-        productAccountButton.setLocation(0,70);
-        productAccountButton.setSize((int) (Math.round(xSize * 0.16)),87);
+        productAccountButton.setLocation(0,(int) (Math.round(ySize * 0.1)));
+        productAccountButton.setSize((int) (Math.round(xSize * 0.16)),(int) (Math.round(ySize * 0.12)));
         productAccountButton.setForeground( new Color(-1) );
-        productAccountButton.setFont(new Font("Merriweather", Font.BOLD, 21));
-        productAccountButton.addActionListener(e-> {
-            try {
-                productAccountButton_Click();
-            } catch (SQLException ex) {
-                throw new RuntimeException(ex);
-            }
-        });
+        productAccountButton.setFont(new Font("Merriweather", Font.BOLD, 17));
+        productAccountButton.addActionListener(e->productAccountButton_Click());
         productAccountButton.setBackground( new Color(-2743738) );
         productAccountButton.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));
         productAccountButton.setText("   Account");
         productAccountButton.setHorizontalAlignment(SwingConstants.LEFT);
-        try {
-            BufferedImage profilePictureImg = ImageIO.read(new File
-            ("src/com/sheffield/Images/profilePicture.png"));
-            Image profilePictureImgResized = profilePictureImg.getScaledInstance
-            (70, 70, Image.SCALE_DEFAULT);
-            profilePicture.setIcon(new ImageIcon(profilePictureImgResized));
-        } catch (Exception e) {
-            System.out.println("The file was not found.");
-            e.printStackTrace();
-        }
+//        try {
+//            BufferedImage profilePictureImg = ImageIO.read(new File
+//            ("src/com/sheffield/Images/profilePicture.png"));
+//            Image profilePictureImgResized = profilePictureImg.getScaledInstance
+//            (70, 70, Image.SCALE_DEFAULT);
+//            profilePicture.setIcon(new ImageIcon(profilePictureImgResized));
+//        } catch (Exception e) {
+//            System.out.println("The file was not found.");
+//            e.printStackTrace();
+//        }
         //profilePicture.setLocation((int) (Math.round(xSize * 0.12)),0);
-        profilePicture.setSize(70,70);
-        productAccountButton.add(profilePicture);
-        productPagePanel.add(productAccountButton);
-        profilePicture.setLocation((int) (Math.round(xSize * 0.12)),70);
+        profilePicture.setSize((int) (Math.round(ySize * 0.1)),(int) (Math.round(ySize * 0.1)));
+        //productAccountButton.add(profilePicture);
+        if (! isStaffPage) { productPagePanel.add(productAccountButton); }
+        profilePicture.setLocation((int) (Math.round(xSize * 0.12)),(int) (Math.round(ySize * 0.12)));
 
-        productBasketButton.setLocation(0,157);
-        productBasketButton.setSize((int) (Math.round(xSize * 0.16)),87);
+        productBasketButton.setLocation(0,(int) (Math.round(ySize * 0.22)));
+        productBasketButton.setSize((int) (Math.round(xSize * 0.16)),(int) (Math.round(ySize * 0.12)));
         productBasketButton.setForeground( new Color(-1) );
-        productBasketButton.setFont(new Font("Merriweather", Font.BOLD, 21));
+        productBasketButton.setFont(new Font("Merriweather", Font.BOLD, 17));
         productBasketButton.addActionListener(e->productBasketButton_Click());
         productBasketButton.setBackground( new Color(-2743738) );
         productBasketButton.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));
         productBasketButton.setText("   Basket");
         productBasketButton.setHorizontalAlignment(SwingConstants.LEFT);
-        productPagePanel.add(productBasketButton);
+        if (! isStaffPage) { productPagePanel.add(productBasketButton); }
 
-        productStaffPageButton.setLocation(0,244);
-        productStaffPageButton.setSize((int) (Math.round(xSize * 0.16)),87);
+        productStaffPageButton.setSize((int) (Math.round(xSize * 0.16)),(int) (Math.round(ySize * 0.12)));
         productStaffPageButton.setForeground( new Color(-1) );
-        productStaffPageButton.setFont(new Font("Merriweather", Font.BOLD, 21));
-        productStaffPageButton.addActionListener(e->productStaffPageButton_Click());
+        productStaffPageButton.setFont(new Font("Merriweather", Font.BOLD, 17));
         productStaffPageButton.setBackground( new Color(-15440650) );
         productStaffPageButton.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));
-        productStaffPageButton.setText("   To Staff Page");
+        if (!isStaffPage) {
+            productStaffPageButton.setLocation(0,(int) (Math.round(ySize * 0.338)));
+            productStaffPageButton.setText("   To Staff Page");
+            productStaffPageButton.addActionListener(e->productStaffPageButton_Click());
+        }
+        else {
+            productStaffPageButton.setLocation(0,(int) (Math.round(ySize * 0.1)));
+            productStaffPageButton.setText("   To Customer Page");
+            productStaffPageButton.addActionListener(e->productLeaveStaffPageButton_Click());
+        }
         productStaffPageButton.setHorizontalAlignment(SwingConstants.LEFT);
-        productPagePanel.add(productStaffPageButton);
+        if(isStaff) { productPagePanel.add(productStaffPageButton); }
 
-        productSidebar.setLocation(0,70);
-        productSidebar.setSize((int) (Math.round(xSize * 0.16)),1930);
+        productManagerPageButton.setLocation(0,(int) (Math.round(ySize * 0.22)));
+        productManagerPageButton.setSize((int) (Math.round(xSize * 0.16)),(int) (Math.round(ySize * 0.12)));
+        productManagerPageButton.setForeground( new Color(-1) );
+        productManagerPageButton.setFont(new Font("Merriweather", Font.BOLD, 17));
+        productManagerPageButton.setBackground( new Color(-15440650) );
+        productManagerPageButton.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));
+        productManagerPageButton.setText("   To Manager Page");
+        productManagerPageButton.addActionListener(e->productManagerPageButton_Click());
+        productManagerPageButton.setHorizontalAlignment(SwingConstants.LEFT);
+        if (isStaffPage && isManager) { productPagePanel.add(productManagerPageButton); }
+
+        productSidebar.setLocation(0,(int) (Math.round(ySize * 0.1)));
+        productSidebar.setSize((int) (Math.round(xSize * 0.16)),(int) (Math.round(ySize * 0.9)));
         productSidebar.setOpaque(true);
         productSidebar.setBackground( new Color(-11854529) );
         productPagePanel.add(productSidebar);
 
-        productTypeFilterLabel.setLocation((int) (Math.round(xSize * 0.16)),70);
-        productTypeFilterLabel.setSize((int) (Math.round(xSize * 0.14)),44);
+        productTypeFilterLabel.setLocation((int) (Math.round(xSize * 0.16)),(int) (Math.round(ySize * 0.097)));
+        productTypeFilterLabel.setSize((int) (Math.round(xSize * 0.14)),(int) (Math.round(ySize * 0.0605)));
         productTypeFilterLabel.setForeground( new Color(-1) );
         productTypeFilterLabel.setOpaque(true);
         productTypeFilterLabel.setFont(new Font("Merriweather", Font.BOLD, 14));
@@ -190,8 +212,8 @@ public class ProductPageUI extends JFrame {
         productTypeFilterLabel.setText("Filter by Product Type");
         productPagePanel.add(productTypeFilterLabel);
 
-        productTypeFilterCombo.setLocation((int) (Math.round(xSize * 0.16)),114);
-        productTypeFilterCombo.setSize((int) (Math.round(xSize * 0.14)),43);
+        productTypeFilterCombo.setLocation((int) (Math.round(xSize * 0.16)),(int) (Math.round(ySize * 0.159)));
+        productTypeFilterCombo.setSize((int) (Math.round(xSize * 0.14)),(int) (Math.round(ySize * 0.0595)));
         productTypeFilterCombo.setForeground( new Color(-1) );
         productTypeFilterCombo.setFont(new Font("Merriweather", Font.BOLD, 14));
         productTypeFilterCombo.addItemListener(e->productTypeFilterCombo_Click());
@@ -199,8 +221,8 @@ public class ProductPageUI extends JFrame {
         productTypeFilterCombo.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));
         productPagePanel.add(productTypeFilterCombo);
 
-        productBrandFilterLabel.setLocation((int) (Math.round(xSize * 0.3)),70);
-        productBrandFilterLabel.setSize((int) (Math.round(xSize * 0.14)),44);
+        productBrandFilterLabel.setLocation((int) (Math.round(xSize * 0.3)),(int) (Math.round(ySize * 0.097)));
+        productBrandFilterLabel.setSize((int) (Math.round(xSize * 0.14)),(int) (Math.round(ySize * 0.0605)));
         productBrandFilterLabel.setForeground( new Color(-1) );
         productBrandFilterLabel.setOpaque(true);
         productBrandFilterLabel.setFont(new Font("Merriweather", Font.BOLD, 14));
@@ -209,8 +231,8 @@ public class ProductPageUI extends JFrame {
         productBrandFilterLabel.setText("Filter by Brand");
         productPagePanel.add(productBrandFilterLabel);
 
-        productBrandFilterCombo.setLocation((int) (Math.round(xSize * 0.3)),114);
-        productBrandFilterCombo.setSize((int) (Math.round(xSize * 0.14)),43);
+        productBrandFilterCombo.setLocation((int) (Math.round(xSize * 0.3)),(int) (Math.round(ySize * 0.159)));
+        productBrandFilterCombo.setSize((int) (Math.round(xSize * 0.14)),(int) (Math.round(ySize * 0.0595)));
         productBrandFilterCombo.setForeground( new Color(-1) );
         productBrandFilterCombo.setFont(new Font("Merriweather", Font.BOLD, 14));
         productBrandFilterCombo.addItemListener(e->productBrandFilterCombo_Click());
@@ -218,8 +240,8 @@ public class ProductPageUI extends JFrame {
         productBrandFilterCombo.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));
         productPagePanel.add(productBrandFilterCombo);
 
-        productPriceFilterLabel.setLocation((int) (Math.round(xSize * 0.44)),70);
-        productPriceFilterLabel.setSize((int) (Math.round(xSize * 0.14)),44);
+        productPriceFilterLabel.setLocation((int) (Math.round(xSize * 0.44)),(int) (Math.round(ySize * 0.097)));
+        productPriceFilterLabel.setSize((int) (Math.round(xSize * 0.14)),(int) (Math.round(ySize * 0.0605)));
         productPriceFilterLabel.setForeground( new Color(-1) );
         productPriceFilterLabel.setOpaque(true);
         productPriceFilterLabel.setFont(new Font("Merriweather", Font.BOLD, 14));
@@ -228,8 +250,8 @@ public class ProductPageUI extends JFrame {
         productPriceFilterLabel.setText("Filter by Price Range");
         productPagePanel.add(productPriceFilterLabel);
 
-        productPriceFilterCombo.setLocation((int) (Math.round(xSize * 0.44)),114);
-        productPriceFilterCombo.setSize((int) (Math.round(xSize * 0.14)),43);
+        productPriceFilterCombo.setLocation((int) (Math.round(xSize * 0.44)),(int) (Math.round(ySize * 0.159)));
+        productPriceFilterCombo.setSize((int) (Math.round(xSize * 0.14)),(int) (Math.round(ySize * 0.0595)));
         productPriceFilterCombo.setForeground( new Color(-1) );
         productPriceFilterCombo.setFont(new Font("Merriweather", Font.BOLD, 14));
         productPriceFilterCombo.addItemListener(e->productPriceFilterCombo_Click());
@@ -237,8 +259,8 @@ public class ProductPageUI extends JFrame {
         productPriceFilterCombo.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));
         productPagePanel.add(productPriceFilterCombo);
 
-        productScaleFilterLabel.setLocation((int) (Math.round(xSize * 0.58)),70);
-        productScaleFilterLabel.setSize((int) (Math.round(xSize * 0.14)),44);
+        productScaleFilterLabel.setLocation((int) (Math.round(xSize * 0.58)),(int) (Math.round(ySize * 0.097)));
+        productScaleFilterLabel.setSize((int) (Math.round(xSize * 0.14)),(int) (Math.round(ySize * 0.0605)));
         productScaleFilterLabel.setForeground( new Color(-1) );
         productScaleFilterLabel.setOpaque(true);
         productScaleFilterLabel.setFont(new Font("Merriweather", Font.BOLD, 14));
@@ -247,8 +269,8 @@ public class ProductPageUI extends JFrame {
         productScaleFilterLabel.setText("Filter by Modelling Scale");
         productPagePanel.add(productScaleFilterLabel);
 
-        productScaleFilterCombo.setLocation((int) (Math.round(xSize * 0.58)),114);
-        productScaleFilterCombo.setSize((int) (Math.round(xSize * 0.14)),43);
+        productScaleFilterCombo.setLocation((int) (Math.round(xSize * 0.58)),(int) (Math.round(ySize * 0.159)));
+        productScaleFilterCombo.setSize((int) (Math.round(xSize * 0.14)),(int) (Math.round(ySize * 0.0595)));
         productScaleFilterCombo.setForeground( new Color(-1) );
         productScaleFilterCombo.setFont(new Font("Merriweather", Font.BOLD, 14));
         productScaleFilterCombo.addItemListener(e->productScaleFilterCombo_Click());
@@ -256,16 +278,16 @@ public class ProductPageUI extends JFrame {
         productScaleFilterCombo.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));
         productPagePanel.add(productScaleFilterCombo);
 
-        productSearch.setLocation((int) (Math.round(xSize * 0.75)),100);
-        productSearch.setSize((int) (Math.round(xSize * 0.2)),26);
+        productSearch.setLocation((int) (Math.round(xSize * 0.75)),(int) (Math.round(ySize * 0.14)));
+        productSearch.setSize((int) (Math.round(xSize * 0.2)),(int) (Math.round(ySize * 0.037)));
         productSearch.setFont(new Font("Merriweather", Font.BOLD, 14));
         productSearch.setBackground( new Color(0xFFFFFF) );
         productSearch.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));
         productSearch.setText("Search");
         productPagePanel.add(productSearch);
 
-        productFilterBar.setLocation((int) (Math.round(xSize * 0.16)),70);
-        productFilterBar.setSize((int) (Math.round(xSize * 0.84)),87);
+        productFilterBar.setLocation((int) (Math.round(xSize * 0.16)),(int) (Math.round(ySize * 0.097)));
+        productFilterBar.setSize((int) (Math.round(xSize * 0.84)),(int) (Math.round(ySize * 0.126)));
         productFilterBar.setForeground( new Color(-1) );
         productFilterBar.setOpaque(true);
         productFilterBar.setBackground( new Color(-14995422) );
@@ -277,15 +299,15 @@ public class ProductPageUI extends JFrame {
         ProductBoxData productBoxData = new ProductBoxData();
         productBoxData.initProductBoxData(this, productTypeFilterCombo, 0);
 
-        productAreaBorder.setLocation((int) (Math.round(xSize * 0.19)),175);
-        productAreaBorder.setSize((int) (Math.round(xSize * 0.75)),464);
+        productAreaBorder.setLocation((int) (Math.round(xSize * 0.19)),(int) (Math.round(ySize * 0.24)));
+        productAreaBorder.setSize((int) (Math.round(xSize * 0.75)),(int) (Math.round(ySize * 0.64)));
         productAreaBorder.setForeground( new Color(-1) );
         productAreaBorder.setOpaque(true);
         productAreaBorder.setBackground( new Color(-14995422) );
         productPagePanel.add(productAreaBorder);
 
         productBackground.setLocation(0,0);
-        productBackground.setSize((Math.round(xSize)),9000);
+        productBackground.setSize((Math.round(xSize)),(Math.round(ySize)));
         productBackground.setOpaque(true);
         productBackground.setBackground( new Color(-8741250) );
         productPagePanel.add(productBackground);
@@ -293,40 +315,41 @@ public class ProductPageUI extends JFrame {
         productPagePanel.setVisible(true);
     }
 
-    public void productBoxConstructor(int x, int y, int width, int height, Product product) {
+    public void productBoxConstructor(int x, int y, Product product) {
             //a product box is added in the position specified only if there is a valid product to be represented inside
             ProductBox productBox = new ProductBox();
             productBox.setLocation(x, y);
-            productBox.setSize(width, height);
+            productBox.setSize((int) (Math.round(xSize * 0.24)), 195);
             productBox.setOpaque(true);
             productBox.setBackground(new Color(-1));
             productAreaBorder.add(productBox);
             productBox.initBox(product.getProductCode(), product.getBrandName(), product.getProductName(),
-            product.getRetailPrice(), product.getModellingScale());
+            product.getRetailPrice(), product.getModellingScale(), getIsStaffPage());
             productBox.validate();
             productBox.repaint();
             //productAreaBorder.add(productBox);
     }
 
-    public void productAccountButton_Click() throws SQLException
-    {
-        //takes the user to the account page
-        this.dispose();
-        AccountPage accountPage = new AccountPage();
-        DatabaseConnectionHandler con = new DatabaseConnectionHandler();
-        con.openConnection();
-        // accountPage.initPanel(1, con.getConnection()); //TODO USER ID
-        con.closeConnection();
+    public Boolean getIsStaffPage() { return this.isStaffPage; }
 
-    }
-    public void productBasketButton_Click()
-    { System.out.println("productBasketButton_Click() has been pressed "); }
-    public void productStaffPageButton_Click() { System.out.println("Placeholder"); }
+    public void setIsStaffPage(Boolean isStaffPage) { this.isStaffPage = isStaffPage; }
+
+    public int getCurrentUserId() { return this.currentUserId; }
+
+    public void setCurrentUserId(int currentUserId) { this.currentUserId = currentUserId; }
+
+    public Boolean getIsStaff() { return this.isStaff; }
+
+    public void setIsStaff(Boolean isStaff) { this.isStaff = isStaff; }
+
+    public Boolean getIsManager() { return this.isManager; }
+
+    public void setIsManager(Boolean isManager) { this.isManager = isManager; }
 
     public void generateProductAreaComponents() {
         JLabel productAreaText = new JLabel();
-        productAreaText.setLocation((int) (Math.round(xSize * 0.01)),4);
-        productAreaText.setSize((int) (Math.round(xSize * 0.22)),44);
+        productAreaText.setLocation((int) (Math.round(xSize * 0.01)),(int) (Math.round(ySize * 0.002)));
+        productAreaText.setSize((int) (Math.round(xSize * 0.22)),(int) (Math.round(ySize * 0.062)));
         productAreaText.setForeground( new Color(-1) );
         productAreaText.setFont(new Font("Merriweather", Font.BOLD, 35));
         productAreaText.setBackground( new Color(-14995422) );
@@ -334,8 +357,8 @@ public class ProductPageUI extends JFrame {
         productAreaBorder.add(productAreaText);
 
         JLabel productAreaPageCount = new JLabel();
-        productAreaPageCount.setLocation((int) (Math.round(xSize * 0.68)),4);
-        productAreaPageCount.setSize((int) (Math.round(xSize * 0.06)),40);
+        productAreaPageCount.setLocation((int) (Math.round(xSize * 0.68)),(int) (Math.round(ySize * 0.002)));
+        productAreaPageCount.setSize((int) (Math.round(xSize * 0.06)),(int) (Math.round(ySize * 0.062)));
         productAreaPageCount.setForeground( new Color(-1) );
         productAreaPageCount.setFont(new Font("Merriweather", Font.BOLD, 35));
         productAreaPageCount.setBackground( new Color(-14995422) );
@@ -363,6 +386,36 @@ public class ProductPageUI extends JFrame {
         }
     }
 
+    public void productAccountButton_Click()
+    {
+        //takes the user to the account page
+        this.dispose();
+        AccountPage accountPage = new AccountPage();
+        try {
+            accountPage.initFrame(5);
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+    public void productBasketButton_Click()
+    { System.out.println("productBasketButton_Click() has been pressed "); }
+    public void productStaffPageButton_Click() {
+        this.setIsStaffPage(true);
+        ProductPageUI productPage = new ProductPageUI();
+        productPage.initFrame(true, 5);
+        this.dispose();
+    }
+    public void productLeaveStaffPageButton_Click() {
+        this.setIsStaffPage(false);
+        this.dispose();
+        ProductPageUI productPage = new ProductPageUI();
+        productPage.initFrame(false, 5);
+    }
+    public void productManagerPageButton_Click() {
+        this.dispose();
+        ProductPageUI productPage = new ProductPageUI();
+        productPage.initFrame(true, 5);
+    }
     public void productTypeFilterCombo_Click() {
         //refreshes product area with boxes related to the product type picked
         productList = productRetriever.getProductsFromDatabase(productTypeFilterCombo);

@@ -132,5 +132,64 @@ public class OrderDatabaseOperations {
                 stmt.close();
             }
     }
+
+    public Boolean getCurrentOrder(Connection connection, int userId) {
+        try {
+            String selectSQL = "SELECT * FROM Orders WHERE userId=? && statusField=pending";
+            PreparedStatement preparedStatement = connection.prepareStatement(selectSQL);
+            preparedStatement.setInt(1, userId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            Order order = new Order(resultSet.getInt("orderNumber"),
+            resultSet.getString("orderDate"), resultSet.getString("orderStatus"),
+            resultSet.getFloat("orderCost"), resultSet.getBoolean("orderBlocked"),
+            null, resultSet.getInt("userId"));
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public void insertOrder(Order order, Connection connection) throws SQLException {
+        try {
+            String insertSQL = "INSERT INTO Order (productCode, brandName, productName,"+
+            "retailPrice, modellingScale, stockCount) VALUES (?, ?, ?, ?, ?, ?)";
+            PreparedStatement preparedStatement = connection.prepareStatement(insertSQL);
+            preparedStatement.setInt(1, order.getOrderNumber());
+            preparedStatement.setString(2, order.getOrderDate());
+            preparedStatement.setString(3, order.getOrderStatus());
+            preparedStatement.setFloat(4, order.getOrderCost());
+            preparedStatement.setBoolean(5, order.getOrderBlocked());
+            preparedStatement.setInt(6, order.getUserId());
+            int rowsAffected = preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    public void insertOrderLine(RollingStock rollingStock, Connection connection) throws SQLException {
+        try {
+            String insertSQL = "INSERT INTO Product (productCode, brandName, productName,"+
+            "retailPrice, modellingScale, stockCount) VALUES (?, ?, ?, ?, ?, ?)";
+            PreparedStatement preparedStatement = connection .prepareStatement(insertSQL);
+            preparedStatement.setString(1, rollingStock.getProductCode());
+            preparedStatement.setString(2, rollingStock.getBrandName());
+            preparedStatement.setString(3, rollingStock.getProductName());
+            preparedStatement.setBigDecimal(4, rollingStock.getRetailPrice());
+            preparedStatement.setString(5, rollingStock.getModellingScale());
+            preparedStatement.setInt(6, rollingStock.getStockCount());
+            int rowsAffected = preparedStatement.executeUpdate();
+            String insertSQL2 = "INSERT INTO Rolling_Stock (productCode, historicalEra) VALUES (?, ?)";
+            PreparedStatement preparedStatement2 = connection .prepareStatement(insertSQL2);
+            preparedStatement2.setString(1, rollingStock.getProductCode());
+            preparedStatement2.setString(2, rollingStock.getHistoricalEra());
+            int rowsAffected2 = preparedStatement2.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
 }
 

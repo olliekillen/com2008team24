@@ -1,5 +1,10 @@
 package com.sheffield;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import java.sql.*;
 
 public class AccountDataOperations {
@@ -99,5 +104,25 @@ public class AccountDataOperations {
         return card;
     }
 
-
+    public Boolean getStaffByUserID(Connection connection, int userID) throws SQLException {
+        try {
+            System.out.println(userID);
+            String selectSQL = "SELECT * FROM Staff NATURAL JOIN Users WHERE userID=?";
+            PreparedStatement preparedStatement = connection.prepareStatement(selectSQL);
+            preparedStatement.setInt(1, userID);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                Staff staff = new Staff(resultSet.getInt("userId"),
+                resultSet.getString("emailAddress"), resultSet.getString("pass"),
+                resultSet.getString("forename"), resultSet.getString("surname"),
+                resultSet.getString("postcode"), resultSet.getInt("houseNumber"));
+                return true;
+            } else {
+                return false;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }
