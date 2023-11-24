@@ -3,9 +3,7 @@ package com.sheffield.UI;
 import com.sheffield.DatabaseConnectionHandler;
 import com.sheffield.User;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class UserDatabaseOperations {
 
@@ -40,5 +38,56 @@ public class UserDatabaseOperations {
         }catch(SQLException e){
             e.printStackTrace();
         }
+    }
+
+    public static boolean checkLoginInfoIsValid(String emailEntered, char[] passwordEntered) {
+
+      try {
+          DatabaseConnectionHandler handler = new DatabaseConnectionHandler();
+          handler.openConnection();
+          Connection con = handler.getConnection();
+
+          ResultSet emailsAndPasswords = getLoginInfoFromDB(con);
+
+          while (emailsAndPasswords.next()) {
+              if (emailEntered.equals(emailsAndPasswords.getString("emailAddress"))){
+
+                  String hashedDBPassword = emailsAndPasswords.getString("pass");
+                  if (PasswordHasher.hashPassword(passwordEntered, hashedDBPassword.substring(0,32)).equals(hashedDBPassword.substring(32))){
+                      System.out.println("Valid Login");
+                      return true;
+                  }
+                  else {
+                      System.out.println("Incorrect Password");
+                      return false;
+                  }
+
+              }
+          }
+
+          handler.closeConnection();
+
+          System.out.println("There does not exist an account with this email");
+      }catch(SQLException e){
+
+      }
+        return false;
+
+    }
+
+    public static ResultSet getLoginInfoFromDB(Connection con){
+        try {
+
+            String sql = "SELECT emailAddress, pass FROM Users";
+            PreparedStatement statement = con.prepareStatement(sql);
+            ResultSet results = statement.executeQuery();
+
+            return results;
+
+        }catch(SQLException e){
+            System.out.println("Couldn't Fetch Login Info");
+
+        }
+        return null;
     }
 }

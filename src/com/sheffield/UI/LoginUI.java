@@ -28,7 +28,14 @@ public class LoginUI extends JPanel {
 	public LoginUI(MyFrame myFrame){
 		setLayout(new BorderLayout());
 		add(new NavBar(myFrame), BorderLayout.NORTH);
-		add(new LoginForm(myFrame), BorderLayout.CENTER);
+		add(new LoginForm(myFrame, "", "", ""), BorderLayout.CENTER);
+
+	}
+
+	public LoginUI(MyFrame myFrame, String errorMessage, String emailText, String passwordText){
+		setLayout(new BorderLayout());
+		add(new NavBar(myFrame), BorderLayout.NORTH);
+		add(new LoginForm(myFrame, errorMessage, emailText, passwordText), BorderLayout.CENTER);
 
 	}
 

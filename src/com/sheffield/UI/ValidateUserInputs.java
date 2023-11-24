@@ -35,7 +35,7 @@ public class ValidateUserInputs {
                 && this.validateHouseNumber().isEmpty() && this.validateRoadName().isEmpty()
                 && this.validateCityName().isEmpty();
     }
-    public List<String> validateForename(){
+    public ArrayList<String> validateForename(){
         ArrayList<String> forenameErrorMessages = new ArrayList<>();
 
         // Checks that forename does not contain any illegal characters.
@@ -46,7 +46,7 @@ public class ValidateUserInputs {
         return forenameErrorMessages;
     }
 
-    public List<String> validateSurname(){
+    public ArrayList<String> validateSurname(){
         ArrayList<String> surnameErrorMessages = new ArrayList<>();
 
         // Checks that forename does not contain any illegal characters.
@@ -62,7 +62,7 @@ public class ValidateUserInputs {
      *
      * @return validationMessagesEmail List of the error messages.
      */
-    public List<String> validateEmail() {
+    public ArrayList<String> validateEmail() {
         ArrayList<String> emailErrorMessages = new ArrayList<>();
         boolean invalidEmail = false;
         // Values to track the index and amount of certain characters in the email.
@@ -139,7 +139,7 @@ public class ValidateUserInputs {
      * @return validationMessagesPassword Returns a list of Strings which describe
      *         the validation issues with the password if there are any.
      */
-    public List<String> validatePassword() {
+    public ArrayList<String> validatePassword() {
         ArrayList<String> passwordErrorMessages = new ArrayList<>();
         boolean containsACapitalLetter;
 
@@ -194,18 +194,18 @@ public class ValidateUserInputs {
 
     }
 
-    public List<String> validatePostcode(){
+    public ArrayList<String> validatePostcode(){
         ArrayList<String> postcodeErrorMessages = new ArrayList<>();
 
         // Checks that postcode does not contain any illegal characters.
         if (postcode.matches(".*[@#$%^&+=;].*") || postcode.isEmpty()) {
-            postcodeErrorMessages.add("No special characters or spaces.");
+            postcodeErrorMessages.add("No special characters.");
         }
 
         return postcodeErrorMessages;
     }
 
-    public List<String> validateHouseNumber(){
+    public ArrayList<String> validateHouseNumber(){
         ArrayList<String> houseNumberErrorMessages = new ArrayList<>();
 
         try {
@@ -218,7 +218,7 @@ public class ValidateUserInputs {
         return houseNumberErrorMessages;
     }
 
-    public List<String> validateRoadName(){
+    public ArrayList<String> validateRoadName(){
         ArrayList<String> roadNameErrorMessages = new ArrayList<>();
 
         // Checks that roadName does not contain any illegal characters.
@@ -229,7 +229,7 @@ public class ValidateUserInputs {
         return roadNameErrorMessages;
     }
 
-    public List<String> validateCityName(){
+    public ArrayList<String> validateCityName(){
         ArrayList<String> cityNameErrorMessages = new ArrayList<>();
 
         // Checks that cityName does not contain any illegal characters.

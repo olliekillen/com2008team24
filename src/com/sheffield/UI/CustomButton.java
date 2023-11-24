@@ -35,6 +35,7 @@ public class CustomButton extends JButton {
      */
     public JPanel getButtonInPanel(JPanel panel){
         panel.add(this);
+        panel.setMaximumSize(new Dimension(500, 200));
         return panel;
     }
 }

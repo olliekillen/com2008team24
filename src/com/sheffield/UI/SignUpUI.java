@@ -6,6 +6,7 @@ import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.util.ArrayList;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -32,7 +33,20 @@ public class SignUpUI extends JPanel {
     public SignUpUI(MyFrame myFrame) {
         setLayout(new BorderLayout());
         add(new NavBar(myFrame), BorderLayout.NORTH);
-        add(new SignUpForm(), BorderLayout.CENTER);
+        add(new SignUpForm(myFrame), BorderLayout.CENTER);
+    }
+
+    public SignUpUI(MyFrame myFrame, ArrayList<String> forenameErrors,ArrayList<String> surnameErrors,
+                    ArrayList<String> emailErrors,ArrayList<String> password,ArrayList<String> postcodeErrors,
+                    ArrayList<String> houseNumberErrors,ArrayList<String> roadNameErrors,
+                    ArrayList<String> cityNameErrors, String forenameText, String surnameText, String emailText,
+                    String passwordText, String confirmPasswordText,String postcodeText,String houseNumberText,
+                    String roadNameText, String cityNameText, boolean isValidSignUp) {
+        setLayout(new BorderLayout());
+        add(new NavBar(myFrame), BorderLayout.NORTH);
+        add(new SignUpForm(myFrame, forenameErrors, surnameErrors, emailErrors, password, postcodeErrors,
+                houseNumberErrors, roadNameErrors, cityNameErrors, forenameText, surnameText, emailText, passwordText,
+                confirmPasswordText, postcodeText, houseNumberText, roadNameText, cityNameText, isValidSignUp), BorderLayout.CENTER);
     }
 
 }

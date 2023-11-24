@@ -5,28 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d8c3e42c-1391-466e-bdbd-038550dee454" name="Changes" comment="Individual product page is accessible from product page - data from the database doesn't appear on this page yet.">
-      <change afterPath="$PROJECT_DIR$/.vscode/settings.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/sheffield/AccountDataOperations.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/sheffield/AccountDetailBox.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/sheffield/Address.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/sheffield/BankDetails.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/sheffield/OrderDatabaseOperations.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/sheffield/OrderPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Team_24_Security_And_Design.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Team_24_Security_And_Design.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sheffield/AccountPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/AccountPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sheffield/IndividualProductPageUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/IndividualProductPageUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sheffield/ProductPageUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/ProductPageUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sheffield/UI/CustomButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/UI/CustomButton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sheffield/UI/CustomLabel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/UI/CustomLabel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sheffield/UI/LoginForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/UI/LoginForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sheffield/UI/LoginUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/UI/LoginUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sheffield/UI/PasswordHasher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/UI/PasswordHasher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sheffield/UI/SignUpForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/UI/SignUpForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sheffield/UI/SignUpUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/UI/SignUpUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/sheffield/UI/UserDatabaseOperations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/UI/UserDatabaseOperations.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sheffield/orders/Database.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sheffield/orders/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sheffield/orders/OrderLine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/OrderLine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sheffield/orders/OrderPage.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sheffield/orders/TablePane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/OrderTable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sheffield/orders/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sheffield/orders/orderLines.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sheffield/orders/orders.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sheffield/UI/ValidateUserInputs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/UI/ValidateUserInputs.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,22 +46,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "Merging main",
-    "last_opened_file_path": "C:/Users/dvous/Documents/mysql-connector-j-8.2.0/mysql-connector-j-8.2.0/mysql-connector-j-8.2.0.jar",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/dvous/Documents/mysql-connector-j-8.2.0/mysql-connector-j-8.2.0/mysql-connector-j-8.2.0.jar&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
-  <component name="RunManager" selected="Application.AccountPage">
+}</component>
+  <component name="RunManager" selected="Application.MyFrame">
     <configuration name="AccountPage" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.sheffield.AccountPage" />
       <module name="Team_24_Security_And_Design" />
@@ -115,8 +103,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.AccountPage" />
         <item itemvalue="Application.MyFrame" />
+        <item itemvalue="Application.AccountPage" />
         <item itemvalue="Application.ProductPageLauncher" />
       </list>
     </recent_temporary>
@@ -145,6 +133,14 @@
       <workItem from="1700561688537" duration="2443000" />
       <workItem from="1700567333002" duration="795000" />
       <workItem from="1700649845585" duration="4833000" />
+      <workItem from="1700665935830" duration="5107000" />
+      <workItem from="1700684692026" duration="645000" />
+      <workItem from="1700751689435" duration="342000" />
+      <workItem from="1700754444442" duration="670000" />
+      <workItem from="1700827077011" duration="1616000" />
+      <workItem from="1700835453296" duration="2613000" />
+      <workItem from="1700840086139" duration="1536000" />
+      <workItem from="1700841851194" duration="743000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed product and account pages, which couldn't display due to changes in the last commit.">
       <created>1700236292159</created>
