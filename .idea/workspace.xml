@@ -6,15 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="d8c3e42c-1391-466e-bdbd-038550dee454" name="Changes" comment="Individual product page is accessible from product page - data from the database doesn't appear on this page yet.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sheffield/UI/CustomButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/UI/CustomButton.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sheffield/UI/CustomLabel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/UI/CustomLabel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sheffield/DatabaseConnectionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/DatabaseConnectionHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/sheffield/UI/LoginForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/UI/LoginForm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sheffield/UI/LoginUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/UI/LoginUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sheffield/UI/PasswordHasher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/UI/PasswordHasher.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/sheffield/UI/SignUpForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/UI/SignUpForm.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/sheffield/UI/SignUpUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/UI/SignUpUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/sheffield/UI/UserDatabaseOperations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/UI/UserDatabaseOperations.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sheffield/UI/ValidateUserInputs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/UI/ValidateUserInputs.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,7 +136,7 @@
       <workItem from="1700827077011" duration="1616000" />
       <workItem from="1700835453296" duration="2613000" />
       <workItem from="1700840086139" duration="1536000" />
-      <workItem from="1700841851194" duration="743000" />
+      <workItem from="1700841851194" duration="3251000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed product and account pages, which couldn't display due to changes in the last commit.">
       <created>1700236292159</created>

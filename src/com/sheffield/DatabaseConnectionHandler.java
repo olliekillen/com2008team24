@@ -12,11 +12,7 @@ public class DatabaseConnectionHandler {
     private Connection connection = null;
 
     public void openConnection() throws SQLException {
-        try {
             connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
     }
 
     public void closeConnection() {

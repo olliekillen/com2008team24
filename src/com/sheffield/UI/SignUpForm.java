@@ -2,6 +2,7 @@ package com.sheffield.UI;
 
 import javax.swing.*;
 import java.awt.*;
+import java.sql.SQLException;
 import java.util.*;
 
 /**
@@ -131,7 +132,7 @@ public class SignUpForm extends JPanel {
                       ArrayList<String> houseNumberErrors,ArrayList<String> roadNameErrors,
                       ArrayList<String> cityNameErrors, String forenameText, String surnameText, String emailText,
                       String passwordText, String confirmPasswordText,String postcodeText,String houseNumberText,
-                      String roadNameText, String cityNameText, boolean isValidSignUp ){
+                      String roadNameText, String cityNameText, String message ){
         setLayout(new GridBagLayout());
         GridBagConstraints constraints = new GridBagConstraints();
         // Spaces the form vertically so it is centred.
@@ -260,12 +261,15 @@ public class SignUpForm extends JPanel {
                 confirmPasswordField, postcodeField, houseNumberField, roadNameField, cityNameField);
         add(signUpButton.getButtonInPanel(new JPanel()), constraints);
         // Spaces the form vertically so it is centred.
-        if (isValidSignUp){
             constraints.gridx = 0;
             constraints.gridy = 16;
             constraints.gridwidth = 2;
-            add(new CustomLabel("Successful registration", 15, new Color(34, 139, 34)), constraints);
-        }
+            if (message.equals("Can't Connect To Database")){
+                add(new CustomLabel(message , 15, new Color(255, 0, 0)), constraints);
+            }
+            else{
+                add(new CustomLabel(message , 15, new Color(34, 139, 34)), constraints);
+            }
         add(Box.createVerticalGlue());
 
     }
@@ -306,15 +310,26 @@ public class SignUpForm extends JPanel {
                     cityNameField.getText());
 
             if (userSignUpInfo.isValid()){
-                myFrame.showPanel(new SignUpUI(myFrame, userSignUpInfo.validateForename(),
-                        userSignUpInfo.validateSurname(),userSignUpInfo.validateEmail(),
-                        userSignUpInfo.validatePassword(),userSignUpInfo.validatePostcode(),
-                        userSignUpInfo.validateHouseNumber(),userSignUpInfo.validateRoadName(),
-                        userSignUpInfo.validateCityName(), forenameField.getText(), surnameField.getText(),
-                        emailField.getText(), new String(passwordField.getPassword()),
-                        new String(confirmPassword.getPassword()), postcodeField.getText(), houseNumberField.getText(),
-                        roadNameField.getText(), cityNameField.getText(), true));
-                UserDatabaseOperations.addNewUser(userSignUpInfo);
+                try {
+                    myFrame.showPanel(new SignUpUI(myFrame, userSignUpInfo.validateForename(),
+                            userSignUpInfo.validateSurname(), userSignUpInfo.validateEmail(),
+                            userSignUpInfo.validatePassword(), userSignUpInfo.validatePostcode(),
+                            userSignUpInfo.validateHouseNumber(), userSignUpInfo.validateRoadName(),
+                            userSignUpInfo.validateCityName(), forenameField.getText(), surnameField.getText(),
+                            emailField.getText(), new String(passwordField.getPassword()),
+                            new String(confirmPassword.getPassword()), postcodeField.getText(), houseNumberField.getText(),
+                            roadNameField.getText(), cityNameField.getText(), "Successful Registration"));
+                    UserDatabaseOperations.addNewUser(userSignUpInfo);
+                }catch(SQLException exception){
+                        myFrame.showPanel(new SignUpUI(myFrame, userSignUpInfo.validateForename(),
+                                userSignUpInfo.validateSurname(), userSignUpInfo.validateEmail(),
+                                userSignUpInfo.validatePassword(), userSignUpInfo.validatePostcode(),
+                                userSignUpInfo.validateHouseNumber(), userSignUpInfo.validateRoadName(),
+                                userSignUpInfo.validateCityName(), forenameField.getText(), surnameField.getText(),
+                                emailField.getText(), new String(passwordField.getPassword()),
+                                new String(confirmPassword.getPassword()), postcodeField.getText(), houseNumberField.getText(),
+                                roadNameField.getText(), cityNameField.getText(), "Can't Connect To Database"));
+                }
             }
             else {
                 myFrame.showPanel(new SignUpUI(myFrame, userSignUpInfo.validateForename(),
@@ -324,7 +339,7 @@ public class SignUpForm extends JPanel {
                         userSignUpInfo.validateCityName(), forenameField.getText(), surnameField.getText(),
                         emailField.getText(), new String(passwordField.getPassword()),
                         new String(confirmPassword.getPassword()), postcodeField.getText(), houseNumberField.getText(),
-                                roadNameField.getText(), cityNameField.getText(), false));
+                                roadNameField.getText(), cityNameField.getText(), ""));
             };
         });
     }

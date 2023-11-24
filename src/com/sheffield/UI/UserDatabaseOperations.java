@@ -7,8 +7,7 @@ import java.sql.*;
 
 public class UserDatabaseOperations {
 
-    public static void addNewUser(ValidateUserInputs newUser) {
-        try {
+    public static void addNewUser(ValidateUserInputs newUser) throws SQLException{
             DatabaseConnectionHandler handler = new DatabaseConnectionHandler();
             handler.openConnection();
             Connection con = handler.getConnection();
@@ -34,15 +33,9 @@ public class UserDatabaseOperations {
             statement2.executeUpdate();
 
             handler.closeConnection();
-
-        }catch(SQLException e){
-            e.printStackTrace();
-        }
     }
 
-    public static boolean checkLoginInfoIsValid(String emailEntered, char[] passwordEntered) {
-
-      try {
+    public static boolean checkLoginInfoIsValid(String emailEntered, char[] passwordEntered) throws SQLException{
           DatabaseConnectionHandler handler = new DatabaseConnectionHandler();
           handler.openConnection();
           Connection con = handler.getConnection();
@@ -68,9 +61,7 @@ public class UserDatabaseOperations {
           handler.closeConnection();
 
           System.out.println("There does not exist an account with this email");
-      }catch(SQLException e){
 
-      }
         return false;
 
     }

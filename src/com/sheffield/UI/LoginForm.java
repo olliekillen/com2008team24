@@ -20,6 +20,7 @@ import java.sql.SQLException;
 public class LoginForm extends JPanel {
 
     CustomButton loginButton = new CustomButton("Login", 10, 30, 10, 30);
+    int incorrectPasswordCount = 0;
 
     /**
      * Creates the layout of the sign-up form using a box layout oriented on the y-axis.
@@ -52,8 +53,8 @@ public class LoginForm extends JPanel {
 
     private void addListener(MyFrame myFrame, JTextField emailField, JPasswordField passwordField) {
         loginButton.addActionListener(event -> {
-            if (UserDatabaseOperations.checkLoginInfoIsValid(emailField.getText(), passwordField.getPassword())) {
             try {
+                if (UserDatabaseOperations.checkLoginInfoIsValid(emailField.getText(), passwordField.getPassword())) {
                     //the database connection can be removed as long as no more data needs to be added
                     DatabaseConnectionHandler dch = new DatabaseConnectionHandler();
                     ProductDatabaseOperations dop = new ProductDatabaseOperations();
@@ -61,12 +62,9 @@ public class LoginForm extends JPanel {
                     ProductPageUI window = new ProductPageUI();
                     window.initFrame();
                     dch.closeConnection();
-                } catch(SQLException e){
-                    e.printStackTrace();
                 }
-            }
-            else{
-                try {
+
+                else {
                     DatabaseConnectionHandler handler = new DatabaseConnectionHandler();
                     handler.openConnection();
                     Connection con = handler.getConnection();
@@ -74,27 +72,22 @@ public class LoginForm extends JPanel {
                     ResultSet results = UserDatabaseOperations.getLoginInfoFromDB(con);
                     boolean emailFound = false;
 
-                    System.out.println("Here 1");
-                    System.out.println(results.next());
-                    System.out.println("Here 2");
                     while (results.next()) {
                         if (emailField.getText().equals(results.getString("emailAddress"))) {
                             emailFound = true;
                             myFrame.showPanel(new LoginUI(myFrame, "Incorrect Password", emailField.getText(), new String(passwordField.getPassword())));
                         }
-                        }
+                    }
 
-                    if(!emailFound) {
+                    if (!emailFound) {
                         myFrame.showPanel(new LoginUI(myFrame, "There does not exist an account with this email", emailField.getText(), new String(passwordField.getPassword())));
                     }
 
                     handler.closeConnection();
-
-                }catch(SQLException e){
-                    e.printStackTrace();
-                    System.out.println("Here 3");
                 }
-            }
+                } catch(SQLException e){
+                    myFrame.showPanel(new LoginUI(myFrame, "Can't establish a connection to the database", emailField.getText(), new String(passwordField.getPassword())));
+                }
         });
     }
 }

@@ -41,12 +41,12 @@ public class SignUpUI extends JPanel {
                     ArrayList<String> houseNumberErrors,ArrayList<String> roadNameErrors,
                     ArrayList<String> cityNameErrors, String forenameText, String surnameText, String emailText,
                     String passwordText, String confirmPasswordText,String postcodeText,String houseNumberText,
-                    String roadNameText, String cityNameText, boolean isValidSignUp) {
+                    String roadNameText, String cityNameText, String message) {
         setLayout(new BorderLayout());
         add(new NavBar(myFrame), BorderLayout.NORTH);
         add(new SignUpForm(myFrame, forenameErrors, surnameErrors, emailErrors, password, postcodeErrors,
                 houseNumberErrors, roadNameErrors, cityNameErrors, forenameText, surnameText, emailText, passwordText,
-                confirmPasswordText, postcodeText, houseNumberText, roadNameText, cityNameText, isValidSignUp), BorderLayout.CENTER);
+                confirmPasswordText, postcodeText, houseNumberText, roadNameText, cityNameText, message), BorderLayout.CENTER);
     }
 
 }
