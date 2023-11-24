@@ -36,6 +36,10 @@ public class IndividualProductPageUI extends JFrame {
     JButton singleProductAddBasket= new JButton();
     JButton singleProductOrder= new JButton();
     JButton singleProductBrowse= new JButton();
+    JButton singleProductDecreaseStock = new JButton();
+    JButton singleProductIncreaseStock = new JButton();
+    JLabel singleProductStockCount = new JLabel();
+    JButton singleProductConfirmStockChange = new JButton();
     JLabel singleProductBox = new JLabel();
     JPanel singleProductAreaBorder = new JPanel(null);
     JLabel singleProductBackground = new JLabel();
@@ -188,9 +192,15 @@ public class IndividualProductPageUI extends JFrame {
         singleProductAddBasket.setHorizontalAlignment(SwingConstants.CENTER);
         singleProductAddBasket.setForeground( new Color(-1) );
         singleProductAddBasket.setFont(new Font("Merriweather", Font.BOLD, 18));
-        singleProductAddBasket.addActionListener(e -> singleProductAddBasket_Click());
         singleProductAddBasket.setBackground( new Color(-2743738) );
-        singleProductAddBasket.setText("Add To Basket");
+        if (!isStaffPage) {
+            singleProductAddBasket.setText("Add To Basket");
+            singleProductAddBasket.addActionListener(e -> singleProductAddBasket_Click());
+        }
+        else {
+            singleProductAddBasket.setText("Edit Product");
+            singleProductAddBasket.addActionListener(e->editProduct_Click());
+        }
         singleProductPagePanel.add(singleProductAddBasket);
 
         singleProductOrder.setLocation((int) (Math.round(xSize * 0.48)),  (int) (Math.round(ySize * 0.73)));
@@ -198,9 +208,15 @@ public class IndividualProductPageUI extends JFrame {
         singleProductOrder.setHorizontalAlignment(SwingConstants.CENTER);
         singleProductOrder.setForeground( new Color(-1) );
         singleProductOrder.setFont(new Font("Merriweather", Font.BOLD, 18));
-        singleProductOrder.addActionListener(e -> singleProductOrder_Click());
         singleProductOrder.setBackground( new Color(-2743738) );
-        singleProductOrder.setText("View Order");
+        if (!isStaffPage) {
+            singleProductOrder.setText("View Order");
+            singleProductOrder.addActionListener(e -> singleProductOrder_Click());
+        }
+        else {
+            singleProductOrder.setText("Delete Product");
+            singleProductOrder.addActionListener(e->deleteProduct_Click());
+        }
         singleProductPagePanel.add(singleProductOrder);
 
         singleProductBrowse.setLocation((int) (Math.round(xSize * 0.68)),  (int) (Math.round(ySize * 0.73)));
@@ -237,7 +253,7 @@ public class IndividualProductPageUI extends JFrame {
     public void initProductDetails(Product product) {
         singleProductName.setText(product.getProductName());
         singleProductPagePanel.add(singleProductName);
-        singleProductPrice.setText("        Price: £" + product.getRetailPrice());
+        singleProductPrice.setText("        Price: £" + product.getRetailPrice() + "0");
         singleProductPagePanel.add(singleProductPrice);
         if (product.getStockCount() > 0)
         { singleProductStock.setText(product.getStockCount() + " left in stock.        "); }
@@ -323,6 +339,26 @@ public class IndividualProductPageUI extends JFrame {
         ProductPageUI productPage = new ProductPageUI();
         productPage.initFrame(isStaffPage, 5);
         this.dispose();
+    }
+    public void editProduct_Click() {
+        EditProductUI editProductPage = new EditProductUI();
+        editProductPage.initFrame(getIsStaffPage(), 5, singleProductCode.getText().substring(14));
+        this.dispose();
+    }
+    public void deleteProduct_Click() {
+        try {
+            DatabaseConnectionHandler dch = new DatabaseConnectionHandler();
+            ProductDatabaseOperations dop = new ProductDatabaseOperations();
+            dch.openConnection();
+            String productCodeText = singleProductCode.getText().substring(14);
+            dop.deleteProduct(productCodeText, dch.getConnection());
+            ProductPageUI productPage = new ProductPageUI();
+            productPage.initFrame(isStaffPage, 5);
+            dch.closeConnection();
+            this.dispose();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
     public void singleProductManagerPageButton_Click() {
         IndividualProductPageUI singleProductPage = new IndividualProductPageUI();

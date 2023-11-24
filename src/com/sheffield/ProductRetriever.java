@@ -51,4 +51,58 @@ public class ProductRetriever {
             return new Product();
         }
     }
+
+    public RollingStock getRollingStockFromDatabase(String productCode) {
+        try {
+            DatabaseConnectionHandler dch = new DatabaseConnectionHandler();
+            ProductDatabaseOperations dop = new ProductDatabaseOperations();
+            dch.openConnection();
+            RollingStock rollingStock = dop.getRollingStockByProductCode(dch.getConnection(), productCode);
+            dch.closeConnection();
+            return rollingStock;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return new RollingStock();
+        }
+    }
+
+    public Locomotive getLocomotiveFromDatabase(String productCode) {
+        try {
+            DatabaseConnectionHandler dch = new DatabaseConnectionHandler();
+            ProductDatabaseOperations dop = new ProductDatabaseOperations();
+            dch.openConnection();
+            Locomotive locomotive = dop.getLocomotiveByProductCode(dch.getConnection(), productCode);
+            dch.closeConnection();
+            return locomotive;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return new Locomotive();
+        }
+    }
+
+    public Controller getControllerFromDatabase(String productCode) {
+        try {
+            DatabaseConnectionHandler dch = new DatabaseConnectionHandler();
+            ProductDatabaseOperations dop = new ProductDatabaseOperations();
+            dch.openConnection();
+            Controller controller = dop.getControllerByProductCode(dch.getConnection(), productCode);
+            dch.closeConnection();
+            return controller;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return new Controller();
+        }
+    }
+
+    public String productTypeCheck(String productCode) {
+        switch (productCode.charAt(0)) {
+            case ('M') -> { return "train set"; }
+            case ('P') -> { return "track pack"; }
+            case ('L') -> { return "locomotive"; }
+            case ('S') -> { return "rolling stock"; }
+            case ('R') -> { return "track"; }
+            case ('C') -> { return "controller"; }
+            default -> { return "error"; }
+        }
+    }
 }

@@ -39,7 +39,7 @@ public class ProductBox extends JPanel {
         productPrice.setLocation((int) (Math.round(xSize * 0.005)), (int) (Math.round(ySize * 0.025)));
         productPrice.setSize((int) (Math.round(xSize * 0.22)), (int) (Math.round(ySize * 0.03)));
         productPrice.setFont(new Font("Merriweather", Font.BOLD, 16));
-        productPrice.setText("£" + retailPrice);
+        productPrice.setText("£" + retailPrice + "0");
         add(productPrice);
 
         productCode.setLocation((int) (Math.round(xSize * 0.005)),  (int) (Math.round(ySize * 0.05)));
