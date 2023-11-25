@@ -328,10 +328,10 @@ public class ProductPageUI extends JFrame {
             productBox.setBackground(new Color(-1));
             productAreaBorder.add(productBox);
             productBox.initBox(product.getProductCode(), product.getBrandName(), product.getProductName(),
-            product.getRetailPrice(), product.getModellingScale(), getIsStaffPage());
+            product.getRetailPrice(), product.getModellingScale(), getIsStaffPage(), getCurrentUserId(),
+            product.getProductCode());
             productBox.validate();
             productBox.repaint();
-            //productAreaBorder.add(productBox);
     }
 
     public Boolean getIsStaffPage() { return this.isStaffPage; }

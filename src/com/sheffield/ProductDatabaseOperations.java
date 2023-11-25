@@ -284,6 +284,7 @@ public class ProductDatabaseOperations {
             PreparedStatement preparedStatement = connection.prepareStatement(selectSQL);
             preparedStatement.setString(1, productCode);
             ResultSet resultSet = preparedStatement.executeQuery();
+            resultSet.next();
             return new TrackPack(resultSet.getString("productCode"),
             resultSet.getString("brandName"), resultSet.getString("productName"),
             resultSet.getBigDecimal("retailPrice"), resultSet.getString("modellingScale"),

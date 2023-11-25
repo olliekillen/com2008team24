@@ -5,6 +5,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 public class IndividualProductPageUI extends JFrame {
 
@@ -195,7 +199,7 @@ public class IndividualProductPageUI extends JFrame {
         singleProductAddBasket.setBackground( new Color(-2743738) );
         if (!isStaffPage) {
             singleProductAddBasket.setText("Add To Basket");
-            singleProductAddBasket.addActionListener(e -> singleProductAddBasket_Click());
+            singleProductAddBasket.addActionListener(e -> singleProductAddBasket_Click(product.getProductCode(), userId));
         }
         else {
             singleProductAddBasket.setText("Edit Product");
@@ -333,7 +337,37 @@ public class IndividualProductPageUI extends JFrame {
         singleProductPage.initFrame(product, false, 5);
         this.dispose();
     }
-    public void singleProductAddBasket_Click() {}
+    public void singleProductAddBasket_Click(String productID, int userID) {
+        try {
+            DatabaseConnectionHandler dch = new DatabaseConnectionHandler();
+            OrderDatabaseOperations dop = new OrderDatabaseOperations();
+            dch.openConnection();
+            ProductRetriever productRetriever = new ProductRetriever();
+            Product product = productRetriever.getProductFromDatabase(productID);
+            if (dop.doesCurrentOrderExist(dch.getConnection(), userID)) {
+                java.util.List<Order> orderList = new ArrayList<Order>();
+                orderList = dop.getCurrentOrder(dch.getConnection(), userID, orderList);
+                java.util.List<OrderLine> orderLineList = new ArrayList<OrderLine>();
+                if((dop.getOrderLine(orderList.get(0), product, orderLineList, dch.getConnection()).size() == 0)) {
+                    int orderLineNumber = dop.getOrderLineNumber(orderList.get(0), product, dch.getConnection());
+                    dop.insertOrderLine(orderList.get(0), product, orderLineNumber, dch.getConnection());
+                }
+                else { dop.updateOrderLine(orderList.get(0), product, dch.getConnection()); }
+                dop.updateOrderTotal(orderList.get(0), product, dch.getConnection());
+            } else {
+                String dateInString = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+                Order order = new Order(1, dateInString, "pending", product.getRetailPrice().floatValue(), false,
+                null, userID);
+                dop.insertOrder(order, dch.getConnection());
+                List<Order> orderList = new ArrayList<Order>();
+                orderList = dop.getCurrentOrder(dch.getConnection(), userID, orderList);
+                dop.insertOrderLine(orderList.get(0), product, 1, dch.getConnection());
+            }
+            dch.closeConnection();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
     public void singleProductOrder_Click() {}
     public void singleProductBrowse_Click() {
         ProductPageUI productPage = new ProductPageUI();
