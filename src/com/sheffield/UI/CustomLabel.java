@@ -40,4 +40,11 @@ public class CustomLabel extends JLabel {
         setFont(new Font("Arial", Font.PLAIN, fontSize));
         setAlignmentX(JLabel.CENTER_ALIGNMENT);
     }
+
+    public CustomLabel(String text, int fontSize, Color color){
+        super(text);
+        setFont(new Font("Arial", Font.PLAIN, fontSize));
+        setForeground(color);
+        setAlignmentX(JLabel.CENTER_ALIGNMENT);
+    }
 }
