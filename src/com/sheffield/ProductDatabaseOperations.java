@@ -96,15 +96,19 @@ public class ProductDatabaseOperations {
             PreparedStatement preparedStatement = connection.prepareStatement(selectSQL);
             preparedStatement.setString(1, "%" + searchContents + "%");
             ResultSet resultSet = preparedStatement.executeQuery();
-            while (resultSet.next()) {
-                trainSetList.add(new TrainSet(resultSet.getString("productCode"),
-                resultSet.getString("brandName"), resultSet.getString("productName"),
-                resultSet.getBigDecimal("retailPrice"), resultSet.getString("modellingScale"),
-                resultSet.getInt("stockCount")));
-            }
+            getProductEnd(resultSet, trainSetList);
         } catch (SQLException e) {
             e.printStackTrace();
             throw e;
+        }
+    }
+
+    public void getProductEnd(ResultSet resultSet, List<Product> list) throws SQLException {
+        while (resultSet.next()) {
+            list.add(new Product(resultSet.getString("productCode"),
+            resultSet.getString("brandName"), resultSet.getString("productName"),
+            resultSet.getBigDecimal("retailPrice"), resultSet.getString("modellingScale"),
+            resultSet.getInt("stockCount")));
         }
     }
 
