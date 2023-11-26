@@ -314,7 +314,7 @@ public class ProductPageUI extends JFrame {
         generateProductAreaComponents();
 
         ProductBoxData productBoxData = new ProductBoxData();
-        productBoxData.initProductBoxData(this, productTypeFilterCombo, 0, false,
+        productBoxData.initProductBoxData(this, productTypeFilterCombo, 0, "Other",
         productSearch.getText());
 
         productAreaBorder.setLocation((int) (Math.round(xSize * 0.19)),(int) (Math.round(ySize * 0.24)));
@@ -432,7 +432,7 @@ public class ProductPageUI extends JFrame {
         n = 0;
         productAreaBorder.removeAll();
         ProductBoxData productBoxData = new ProductBoxData();
-        productBoxData.initProductBoxData(this, productTypeFilterCombo, n, false, productSearch.getText());
+        productBoxData.initProductBoxData(this, productTypeFilterCombo, n, "Other", productSearch.getText());
         generateProductAreaComponents();
         setButtonImg(leftArrow, "src/com/sheffield/Images/leftArrowInactive.png");
         if (n <= productList.size() / 6 - 1) {
@@ -443,12 +443,51 @@ public class ProductPageUI extends JFrame {
     }
     public void productBrandFilterCombo_Click() {
         //refreshes product area with boxes related to the brand picked
+        productList = productRetriever.getProductsFromDatabase(productTypeFilterCombo);
+        n = 0;
+        productAreaBorder.removeAll();
+        ProductBoxData productBoxData = new ProductBoxData();
+        productBoxData.initProductBoxData(this, productTypeFilterCombo, n, "Brand",
+        productBrandFilterCombo.getSelectedItem().toString());
+        generateProductAreaComponents();
+        setButtonImg(leftArrow, "src/com/sheffield/Images/leftArrowInactive.png");
+        if (n <= productList.size() / 6 - 1) {
+            setButtonImg(rightArrow, "src/com/sheffield/Images/rightArrowActive.png");
+        } else { setButtonImg(rightArrow, "src/com/sheffield/Images/rightArrowInactive.png"); }
+        productAreaBorder.validate();
+        productAreaBorder.repaint();
     }
     public void productPriceFilterCombo_Click() {
         //refreshes product area with boxes related to the retail price picked
+        productList = productRetriever.getProductsFromDatabase(productTypeFilterCombo);
+        n = 0;
+        productAreaBorder.removeAll();
+        ProductBoxData productBoxData = new ProductBoxData();
+        productBoxData.initProductBoxData(this, productTypeFilterCombo, n, "Price",
+        productPriceFilterCombo.getSelectedItem().toString());
+        generateProductAreaComponents();
+        setButtonImg(leftArrow, "src/com/sheffield/Images/leftArrowInactive.png");
+        if (n <= productList.size() / 6 - 1) {
+            setButtonImg(rightArrow, "src/com/sheffield/Images/rightArrowActive.png");
+        } else { setButtonImg(rightArrow, "src/com/sheffield/Images/rightArrowInactive.png"); }
+        productAreaBorder.validate();
+        productAreaBorder.repaint();
     }
     public void productScaleFilterCombo_Click() {
         //refreshes product area with boxes related to the modelling scale picked
+        productList = productRetriever.getProductsFromDatabase(productTypeFilterCombo);
+        n = 0;
+        productAreaBorder.removeAll();
+        ProductBoxData productBoxData = new ProductBoxData();
+        productBoxData.initProductBoxData(this, productTypeFilterCombo, n, "Scale",
+        productScaleFilterCombo.getSelectedItem().toString());
+        generateProductAreaComponents();
+        setButtonImg(leftArrow, "src/com/sheffield/Images/leftArrowInactive.png");
+        if (n <= productList.size() / 6 - 1) {
+            setButtonImg(rightArrow, "src/com/sheffield/Images/rightArrowActive.png");
+        } else { setButtonImg(rightArrow, "src/com/sheffield/Images/rightArrowInactive.png"); }
+        productAreaBorder.validate();
+        productAreaBorder.repaint();
     }
     public void searchButton_Click() {
         //searches for products by product name
@@ -459,7 +498,7 @@ public class ProductPageUI extends JFrame {
         } else { setButtonImg(rightArrow, "src/com/sheffield/Images/rightArrowInactive.png"); }
         productAreaBorder.removeAll();
         ProductBoxData productBoxData = new ProductBoxData();
-        productBoxData.initProductBoxData(this, productTypeFilterCombo, n, true, productSearch.getText());
+        productBoxData.initProductBoxData(this, productTypeFilterCombo, n, "Other", productSearch.getText());
         generateProductAreaComponents();
         productPagePanel.validate();
         productPagePanel.repaint();
@@ -476,7 +515,7 @@ public class ProductPageUI extends JFrame {
             n = n - 1;
             productAreaBorder.removeAll();
             ProductBoxData productBoxData = new ProductBoxData();
-            productBoxData.initProductBoxData(this, productTypeFilterCombo, n, false,
+            productBoxData.initProductBoxData(this, productTypeFilterCombo, n, "Other",
             productSearch.getText());
             generateProductAreaComponents();
             productPagePanel.validate();
@@ -494,7 +533,7 @@ public class ProductPageUI extends JFrame {
             n = n + 1;
             productAreaBorder.removeAll();
             ProductBoxData productBoxData = new ProductBoxData();
-            productBoxData.initProductBoxData(this, productTypeFilterCombo, n, false, productSearch.getText());
+            productBoxData.initProductBoxData(this, productTypeFilterCombo, n, "Other", productSearch.getText());
             generateProductAreaComponents();
             productPagePanel.validate();
             productPagePanel.repaint();
