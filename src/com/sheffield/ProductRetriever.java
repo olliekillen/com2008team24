@@ -30,6 +30,29 @@ public class ProductRetriever {
         }
     }
 
+    public List<Product> searchProductsFromDatabase(JComboBox<String> productTypeFilterCombo, String searchContents) {
+        try {
+            String filter = productTypeFilterCombo.getSelectedItem().toString();
+            DatabaseConnectionHandler dch = new DatabaseConnectionHandler();
+            ProductDatabaseOperations dop = new ProductDatabaseOperations();
+            dch.openConnection();
+            List<Product> productList = new ArrayList<Product>();
+            switch (filter) {
+                case ("Train Sets") -> { dop.getTrainSetSearch(dch.getConnection(), productList, searchContents); }
+                case ("Track Packs") -> { dop.getTrackPackSearch(dch.getConnection(), productList, searchContents); }
+                case ("Locomotives") -> { dop.getLocomotiveSearch(dch.getConnection(), productList, searchContents); }
+                case ("Rolling Stock") -> { dop.getRollingStockSearch(dch.getConnection(), productList, searchContents); }
+                case ("Tracks") -> { dop.getTrackSearch(dch.getConnection(), productList, searchContents); }
+                case ("Controllers") -> { dop.getControllerSearch(dch.getConnection(), productList, searchContents); }
+            }
+            dch.closeConnection();
+            return productList;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return new ArrayList<Product>();
+        }
+    }
+
     public Product getProductFromDatabase(String productCode) {
         try {
             DatabaseConnectionHandler dch = new DatabaseConnectionHandler();

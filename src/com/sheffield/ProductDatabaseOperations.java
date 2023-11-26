@@ -90,6 +90,24 @@ public class ProductDatabaseOperations {
         }
     }
 
+    public void getTrainSetSearch(Connection connection, List<Product> trainSetList, String searchContents) throws SQLException {
+        try {
+            String selectSQL = "SELECT * FROM Train_Set NATURAL JOIN Product WHERE productName LIKE ? ESCAPE '!'";
+            PreparedStatement preparedStatement = connection.prepareStatement(selectSQL);
+            preparedStatement.setString(1, "%" + searchContents + "%");
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                trainSetList.add(new TrainSet(resultSet.getString("productCode"),
+                resultSet.getString("brandName"), resultSet.getString("productName"),
+                resultSet.getBigDecimal("retailPrice"), resultSet.getString("modellingScale"),
+                resultSet.getInt("stockCount")));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
     public Product getTrainSetByProductCode(Connection connection, String productCode) throws SQLException {
         try {
             String selectSQL = "SELECT * FROM Train_Set NATURAL JOIN Product WHERE productCode=?";
@@ -139,6 +157,26 @@ public class ProductDatabaseOperations {
                 resultSet.getInt("stockCount"), resultSet.getString("historicalEra"),
                 resultSet.getString("priceBracket")));
                 count++;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    public void getLocomotiveSearch(Connection connection, List<Product> locomotiveList, String searchContents) throws SQLException {
+        try {
+            String selectSQL = "SELECT * FROM Locomotive NATURAL JOIN Product WHERE productName LIKE ? ESCAPE '!'";
+
+            PreparedStatement preparedStatement = connection.prepareStatement(selectSQL);
+            preparedStatement.setString(1, "%" + searchContents + "%");
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                locomotiveList.add(new Locomotive(resultSet.getString("productCode"),
+                resultSet.getString("brandName"), resultSet.getString("productName"),
+                resultSet.getBigDecimal("retailPrice"), resultSet.getString("modellingScale"),
+                resultSet.getInt("stockCount"), resultSet.getString("historicalEra"),
+                resultSet.getString("priceBracket")));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -214,6 +252,24 @@ public class ProductDatabaseOperations {
         }
     }
 
+    public void getControllerSearch(Connection connection, List<Product> controllerList, String searchContents) throws SQLException {
+        try {
+            String selectSQL = "SELECT * FROM Controller NATURAL JOIN Product WHERE productName LIKE ? ESCAPE '!'";
+            PreparedStatement preparedStatement = connection.prepareStatement(selectSQL);
+            preparedStatement.setString(1, "%" + searchContents + "%");
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                controllerList.add(new Controller(resultSet.getString("productCode"),
+                resultSet.getString("brandName"), resultSet.getString("productName"),
+                resultSet.getBigDecimal("retailPrice"), resultSet.getString("modellingScale"),
+                resultSet.getInt("stockCount"), resultSet.getBoolean("isDigital")));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
     public Controller getControllerByProductCode(Connection connection, String productCode) throws SQLException {
         try {
             String selectSQL = "SELECT * FROM Controller NATURAL JOIN Product WHERE productCode=?";
@@ -278,6 +334,24 @@ public class ProductDatabaseOperations {
         }
     }
 
+    public void getTrackPackSearch(Connection connection, List<Product> trackPackList, String searchContents) throws SQLException {
+        try {
+            String selectSQL = "SELECT * FROM Track_Pack NATURAL JOIN Product WHERE productName LIKE ? ESCAPE '!'";
+            PreparedStatement preparedStatement = connection.prepareStatement(selectSQL);
+            preparedStatement.setString(1, "%" + searchContents + "%");
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                trackPackList.add(new TrackPack(resultSet.getString("productCode"),
+                resultSet.getString("brandName"), resultSet.getString("productName"),
+                resultSet.getBigDecimal("retailPrice"), resultSet.getString("modellingScale"),
+                resultSet.getInt("stockCount")));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
     public Product getTrackPackByProductCode(Connection connection, String productCode) throws SQLException {
         try {
             String selectSQL = "SELECT * FROM Track_Pack NATURAL JOIN Product WHERE productCode=?";
@@ -328,6 +402,24 @@ public class ProductDatabaseOperations {
         }
     }
 
+    public void getTrackSearch(Connection connection, List<Product> trackList, String searchContents) throws SQLException {
+        try {
+            String selectSQL = "SELECT * FROM Track NATURAL JOIN Product WHERE productName LIKE ? ESCAPE '!'";
+            PreparedStatement preparedStatement = connection.prepareStatement(selectSQL);
+            preparedStatement.setString(1, "%" + searchContents + "%");
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                trackList.add(new Track(resultSet.getString("productCode"),
+                resultSet.getString("brandName"), resultSet.getString("productName"),
+                resultSet.getBigDecimal("retailPrice"), resultSet.getString("modellingScale"),
+                resultSet.getInt("stockCount")));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
     public Product getTrackByProductCode(Connection connection, String productCode) throws SQLException {
         try {
             String selectSQL = "SELECT * FROM Track NATURAL JOIN Product WHERE productCode=?";
@@ -371,6 +463,24 @@ public class ProductDatabaseOperations {
                 resultSet.getBigDecimal("retailPrice"), resultSet.getString("modellingScale"),
                 resultSet.getInt("stockCount"), resultSet.getString("historicalEra")));
                 count++;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    public void getRollingStockSearch(Connection connection, List<Product> rollingStockList, String searchContents) throws SQLException {
+        try {
+            String selectSQL = "SELECT * FROM Rolling_Stock NATURAL JOIN Product WHERE productName LIKE ? ESCAPE '!'";
+            PreparedStatement preparedStatement = connection.prepareStatement(selectSQL);
+            preparedStatement.setString(1, "%" + searchContents + "%");
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                rollingStockList.add(new RollingStock(resultSet.getString("productCode"),
+                resultSet.getString("brandName"), resultSet.getString("productName"),
+                resultSet.getBigDecimal("retailPrice"), resultSet.getString("modellingScale"),
+                resultSet.getInt("stockCount"), resultSet.getString("historicalEra")));
             }
         } catch (SQLException e) {
             e.printStackTrace();

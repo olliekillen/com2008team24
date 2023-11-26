@@ -51,6 +51,7 @@ public class ProductPageUI extends JFrame {
     String[] productScaleFilterComboData = {"N Gauge", "TT Gauge", "OO Gauge"};
     JComboBox<String> productScaleFilterCombo = new JComboBox<>(productScaleFilterComboData);
     JTextField productSearch = new JTextField();
+    JButton searchButton = new JButton();
     JLabel productFilterBar =  new JLabel();
     JPanel productAreaBorder = new JPanel(null);
     JLabel productBackground = new JLabel();
@@ -283,8 +284,19 @@ public class ProductPageUI extends JFrame {
         productScaleFilterCombo.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));
         productPagePanel.add(productScaleFilterCombo);
 
-        productSearch.setLocation((int) (Math.round(xSize * 0.75)),(int) (Math.round(ySize * 0.14)));
-        productSearch.setSize((int) (Math.round(xSize * 0.2)),(int) (Math.round(ySize * 0.037)));
+        searchButton.setLocation((int) (Math.round(xSize * 0.86)),(int) (Math.round(ySize * 0.14)));
+        searchButton.setSize((int) (Math.round(xSize * 0.1)),(int) (Math.round(ySize * 0.037)));
+        searchButton.setForeground( new Color(-1) );
+        searchButton.setOpaque(true);
+        searchButton.setFont(new Font("Merriweather", Font.BOLD, 14));
+        searchButton.addActionListener(e -> searchButton_Click());
+        searchButton.setBackground( new Color(-2743738) );
+        searchButton.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 3));
+        searchButton.setText("Search");
+        productPagePanel.add(searchButton);
+
+        productSearch.setLocation((int) (Math.round(xSize * 0.76)),(int) (Math.round(ySize * 0.14)));
+        productSearch.setSize((int) (Math.round(xSize * 0.1)),(int) (Math.round(ySize * 0.037)));
         productSearch.setFont(new Font("Merriweather", Font.BOLD, 14));
         productSearch.setBackground( new Color(0xFFFFFF) );
         productSearch.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));
@@ -302,7 +314,8 @@ public class ProductPageUI extends JFrame {
         generateProductAreaComponents();
 
         ProductBoxData productBoxData = new ProductBoxData();
-        productBoxData.initProductBoxData(this, productTypeFilterCombo, 0);
+        productBoxData.initProductBoxData(this, productTypeFilterCombo, 0, false,
+        productSearch.getText());
 
         productAreaBorder.setLocation((int) (Math.round(xSize * 0.19)),(int) (Math.round(ySize * 0.24)));
         productAreaBorder.setSize((int) (Math.round(xSize * 0.75)),(int) (Math.round(ySize * 0.64)));
@@ -419,7 +432,7 @@ public class ProductPageUI extends JFrame {
         n = 0;
         productAreaBorder.removeAll();
         ProductBoxData productBoxData = new ProductBoxData();
-        productBoxData.initProductBoxData(this, productTypeFilterCombo, n);
+        productBoxData.initProductBoxData(this, productTypeFilterCombo, n, false, productSearch.getText());
         generateProductAreaComponents();
         setButtonImg(leftArrow, "src/com/sheffield/Images/leftArrowInactive.png");
         if (n <= productList.size() / 6 - 1) {
@@ -437,6 +450,20 @@ public class ProductPageUI extends JFrame {
     public void productScaleFilterCombo_Click() {
         //refreshes product area with boxes related to the modelling scale picked
     }
+    public void searchButton_Click() {
+        //searches for products by product name
+        n=0;
+        setButtonImg(leftArrow, "src/com/sheffield/Images/leftArrowInactive.png");
+        if (n <= productList.size() / 6 - 1) {
+            setButtonImg(rightArrow, "src/com/sheffield/Images/rightArrowActive.png");
+        } else { setButtonImg(rightArrow, "src/com/sheffield/Images/rightArrowInactive.png"); }
+        productAreaBorder.removeAll();
+        ProductBoxData productBoxData = new ProductBoxData();
+        productBoxData.initProductBoxData(this, productTypeFilterCombo, n, true, productSearch.getText());
+        generateProductAreaComponents();
+        productPagePanel.validate();
+        productPagePanel.repaint();
+    }
     public void leftArrow_Click() {
         //the first if statement only activates if the page number isn't the first page (nothing happens if so)
         if (n >= 1) {
@@ -449,7 +476,8 @@ public class ProductPageUI extends JFrame {
             n = n - 1;
             productAreaBorder.removeAll();
             ProductBoxData productBoxData = new ProductBoxData();
-            productBoxData.initProductBoxData(this, productTypeFilterCombo, n);
+            productBoxData.initProductBoxData(this, productTypeFilterCombo, n, false,
+            productSearch.getText());
             generateProductAreaComponents();
             productPagePanel.validate();
             productPagePanel.repaint();
@@ -466,7 +494,7 @@ public class ProductPageUI extends JFrame {
             n = n + 1;
             productAreaBorder.removeAll();
             ProductBoxData productBoxData = new ProductBoxData();
-            productBoxData.initProductBoxData(this, productTypeFilterCombo, n);
+            productBoxData.initProductBoxData(this, productTypeFilterCombo, n, false, productSearch.getText());
             generateProductAreaComponents();
             productPagePanel.validate();
             productPagePanel.repaint();

@@ -4,6 +4,7 @@ import com.sheffield.Products.Product;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ProductBoxData {
@@ -12,10 +13,13 @@ public class ProductBoxData {
     int xSize = ((int) tk.getScreenSize().getWidth());
     int ySize = ((int) tk.getScreenSize().getHeight());
 
-    public void initProductBoxData(ProductPageUI window, JComboBox<String> productTypeFilterCombo, int n) {
+    public void initProductBoxData(ProductPageUI window, JComboBox<String> productTypeFilterCombo, int n,
+    Boolean isSearch, String searchContents) {
         //chooses which product type to filter by
         ProductRetriever productRetriever = new ProductRetriever();
-        List<Product> productList = productRetriever.getProductsFromDatabase(productTypeFilterCombo);
+        List<Product> productList;
+        if (! isSearch) { productList = productRetriever.getProductsFromDatabase(productTypeFilterCombo); }
+        else { productList = productRetriever.searchProductsFromDatabase(productTypeFilterCombo, searchContents); }
         //up to six products are shown depending on what is currently stored in the database
         if (productList.size() > n*6) {
             window.productBoxConstructor((int) (Math.round(xSize * 0.01)), 56, productList.get(0)); }
