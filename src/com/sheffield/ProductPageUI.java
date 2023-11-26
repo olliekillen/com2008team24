@@ -79,7 +79,14 @@ public class ProductPageUI extends JFrame {
          * Transparent?: 15658734
         */
         this.setCurrentUserId(userId);
-        this.setIsManager(false);
+        try {
+            DatabaseConnectionHandler dch = new DatabaseConnectionHandler();
+            AccountDataOperations dop = new AccountDataOperations();
+            dch.openConnection();
+            isManager = dop.getManagerByUserID(dch.getConnection(), currentUserId);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         try {
             DatabaseConnectionHandler dch = new DatabaseConnectionHandler();
             AccountDataOperations dop = new AccountDataOperations();
@@ -88,6 +95,9 @@ public class ProductPageUI extends JFrame {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
+        System.out.println("isStaff: " + isManager);
+        System.out.println("isManager: " + isManager);
 
         setButtonImg(leftArrow, "src/com/sheffield/Images/leftArrowInactive.png");
         leftArrow.setLocation((int) (Math.round(xSize * 0.18)),(int) (Math.round(ySize * 0.573)));
@@ -182,14 +192,14 @@ public class ProductPageUI extends JFrame {
             productStaffPageButton.addActionListener(e->productStaffPageButton_Click());
         }
         else {
-            if (isManager) { productStaffPageButton.setLocation(0,(int) (Math.round(ySize * 0.458))); }
+            if(isManager) { productStaffPageButton.setLocation(0,(int) (Math.round(ySize * 0.455))); }
             productStaffPageButton.setText("   To Customer Page");
             productStaffPageButton.addActionListener(e->productLeaveStaffPageButton_Click());
         }
         productStaffPageButton.setHorizontalAlignment(SwingConstants.LEFT);
-        if(isStaff) { productPagePanel.add(productStaffPageButton); }
+        if(isStaff || isManager) { productPagePanel.add(productStaffPageButton); }
 
-        productManagerPageButton.setLocation(0,(int) (Math.round(ySize * 0.22)));
+        productManagerPageButton.setLocation(0,(int) (Math.round(ySize * 0.338)));
         productManagerPageButton.setSize((int) (Math.round(xSize * 0.16)),(int) (Math.round(ySize * 0.12)));
         productManagerPageButton.setForeground( new Color(-1) );
         productManagerPageButton.setFont(new Font("Merriweather", Font.BOLD, 17));
@@ -399,7 +409,7 @@ public class ProductPageUI extends JFrame {
     public void productViewOrdersButton_Click() { System.out.println("Placeholder"); }
     public void productStaffPageButton_Click() {
         ProductPageUI productPage = new ProductPageUI();
-        productPage.initFrame(true, 5);
+        productPage.initFrame(true, 10);
         this.dispose();
     }
     public void productLeaveStaffPageButton_Click() {
@@ -408,8 +418,8 @@ public class ProductPageUI extends JFrame {
         this.dispose();
     }
     public void productManagerPageButton_Click() {
-        ProductPageUI productPage = new ProductPageUI();
-        productPage.initFrame(true, 5);
+        ManagerPageUI managerPage = new ManagerPageUI();
+        managerPage.initFrame(true, currentUserId);
         this.dispose();
     }
     public void productTypeFilterCombo_Click() {
