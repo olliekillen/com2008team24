@@ -112,15 +112,6 @@ public class ProductPageUI extends JFrame {
         productList = productRetriever.getProductsFromDatabase(productTypeFilterCombo);
         if (productList.size() / 6 > 0) { setButtonImg(rightArrow, "src/com/sheffield/Images/rightArrowActive.png"); }
         else { setButtonImg(rightArrow, "src/com/sheffield/Images/rightArrowInactive.png"); }
-        try {
-            BufferedImage rightArrowImg = ImageIO.read(new File
-            ("src/com/sheffield/Images/rightArrowActive.png"));
-            Image rightArrowImgResized = rightArrowImg.getScaledInstance(30, 30, Image.SCALE_DEFAULT);
-            rightArrow.setIcon(new ImageIcon(rightArrowImgResized));
-        } catch (Exception e) {
-            System.out.println("The file was not found.");
-            e.printStackTrace();
-        }
         rightArrow.setLocation((int) (Math.round(xSize * 0.925)),(int) (Math.round(ySize * 0.573)));
         rightArrow.setSize((int) (Math.round(ySize * 0.04)),(int) (Math.round(ySize * 0.04)));
         rightArrow.addActionListener(e->rightArrow_Click());
@@ -430,6 +421,10 @@ public class ProductPageUI extends JFrame {
         ProductBoxData productBoxData = new ProductBoxData();
         productBoxData.initProductBoxData(this, productTypeFilterCombo, n);
         generateProductAreaComponents();
+        setButtonImg(leftArrow, "src/com/sheffield/Images/leftArrowInactive.png");
+        if (n <= productList.size() / 6 - 1) {
+            setButtonImg(rightArrow, "src/com/sheffield/Images/rightArrowActive.png");
+        } else { setButtonImg(rightArrow, "src/com/sheffield/Images/rightArrowInactive.png"); }
         productAreaBorder.validate();
         productAreaBorder.repaint();
     }
