@@ -66,6 +66,25 @@ public class UserDatabaseOperations {
 
     }
 
+    public static boolean checkIfEmailIsInUse(String emailEntered) throws SQLException{
+        DatabaseConnectionHandler handler = new DatabaseConnectionHandler();
+        handler.openConnection();
+        Connection con = handler.getConnection();
+
+        ResultSet emailsAndPasswords = getLoginInfoFromDB(con);
+
+        while (emailsAndPasswords.next()) {
+            if (emailEntered.equals(emailsAndPasswords.getString("emailAddress"))){
+                return true;
+            }
+        }
+
+        handler.closeConnection();
+
+        return false;
+
+    }
+
     public static ResultSet getLoginInfoFromDB(Connection con){
         try {
 

@@ -1,5 +1,6 @@
 package com.sheffield.UI;
 
+import java.sql.SQLException;
 import java.util.*;
 
 public class ValidateUserInputs {
@@ -128,6 +129,14 @@ public class ValidateUserInputs {
         // If the email is invalid the validation message is added to the list.
         if (invalidEmail) {
             emailErrorMessages.add("Please enter a valid email.");
+        }
+
+        try {
+            if (UserDatabaseOperations.checkIfEmailIsInUse(email)) {
+                emailErrorMessages.add("This Email is already in use");
+            }
+        }catch(SQLException e){
+            emailErrorMessages.add("There was an issue validating this email.");
         }
 
         return emailErrorMessages;
