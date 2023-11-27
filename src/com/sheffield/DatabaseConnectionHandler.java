@@ -4,6 +4,12 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+/**
+ * This class connects to the database, and forms the connection used in all methods that reference data from
+ * the database.
+ *
+ * @author Luke Parry
+ */
 public class DatabaseConnectionHandler {
     private static final String DB_URL = "jdbc:mysql://stusql.dcs.shef.ac.uk:3306/team024";
     private static final String DB_USER = "team024";

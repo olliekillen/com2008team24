@@ -7,6 +7,13 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.sql.SQLException;
 
+/**
+ * This class is the JFrame that holds all of the manager page UI components. This page allows a man
+ * details more in-depth than is displayed on the product page, and allows the product to be edited or deleted when a
+ * staff member accesses this page in staff mode
+ *
+ * @author Luke Parry
+ */
 public class ManagerPageUI extends JFrame {
     Toolkit tk = Toolkit.getDefaultToolkit();
     int xSize = ((int) tk.getScreenSize().getWidth());

@@ -1,5 +1,7 @@
 package com.sheffield;
 
+import com.sheffield.Products.Product;
+
 import javax.swing.*;
 import java.awt.*;
 import java.sql.*;
@@ -12,6 +14,11 @@ public class AccountPage extends JFrame {
 
 	JPanel accountPagePanel = new JPanel(null);
 
+	private Boolean isStaffPage;
+	private Boolean isStaff;
+	private Boolean isManager;
+	private int currentUserId;
+
 	JLabel pageTitle = new JLabel();
 	JButton productButton = new JButton();
 	JButton accountBasketButton = new JButton();
@@ -21,13 +28,14 @@ public class AccountPage extends JFrame {
 
 
 	JLabel accountDetailBackGround = new JLabel();
-	JLabel accountPageBackground = new JLabel();
+	JLabel acountPageBackground = new JLabel();
 
-	public void initFrame(int userId) throws SQLException
+	public void initFrame(Boolean isStaffPage, int userId)
 	{
 		this.setLayout(new GridLayout(1,1));
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize((Math.round(xSize)),9000);
+		this.setIsStaffPage(isStaffPage);
 		DatabaseConnectionHandler con = new DatabaseConnectionHandler();
 		try {
 			con.openConnection();
@@ -54,9 +62,19 @@ public class AccountPage extends JFrame {
 		 * Transparent?: 15658734
 		 */
 
+		this.setCurrentUserId(userId);
+		this.setIsManager(false);
+		try {
+			DatabaseConnectionHandler dch = new DatabaseConnectionHandler();
+			AccountDataOperations dop = new AccountDataOperations();
+			dch.openConnection();
+			isStaff = dop.getStaffByUserID(dch.getConnection(), currentUserId);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 
 		pageTitle.setLocation(0,0);
-		pageTitle.setSize((Math.round(xSize)),70);
+		pageTitle.setSize((Math.round(xSize)),(int) (Math.round(ySize * 0.1)));
 		pageTitle.setForeground( new Color(-1) );
 		pageTitle.setFont(new Font("Merryweather", Font.BOLD, 50));
 		pageTitle.setOpaque(true);
@@ -66,10 +84,10 @@ public class AccountPage extends JFrame {
 		pageTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		accountPagePanel.add(pageTitle);
 
-		productButton.setLocation(0,70);
+		productButton.setLocation(0,(int) (Math.round(ySize * 0.1)));
 		productButton.setSize((int) (Math.round(xSize * 0.16)),87);
 		productButton.setForeground( new Color(-1) );
-		productButton.setFont(new Font("Merriweather", Font.BOLD, 21));
+		productButton.setFont(new Font("Merriweather", Font.BOLD, 17));
 		productButton.addActionListener(e->productButton_Click());
 		productButton.setBackground( new Color(-2743738) );
 		productButton.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));
@@ -77,27 +95,42 @@ public class AccountPage extends JFrame {
 		productButton.setHorizontalAlignment(SwingConstants.LEFT);
 		accountPagePanel.add(productButton);
 
-		accountBasketButton.setLocation(0,157);
+		accountBasketButton.setLocation(0,(int) (Math.round(ySize * 0.22)));
 		accountBasketButton.setSize((int) (Math.round(xSize * 0.16)),87);
 		accountBasketButton.setForeground( new Color(-1) );
-		accountBasketButton.setFont(new Font("Merriweather", Font.BOLD, 21));
-		accountBasketButton.addActionListener(e->basketButton_Click());
+		accountBasketButton.setFont(new Font("Merriweather", Font.BOLD, 17));
 		accountBasketButton.setBackground( new Color(-2743738) );
 		accountBasketButton.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));
 		accountBasketButton.setText("   Basket");
 		accountBasketButton.setHorizontalAlignment(SwingConstants.LEFT);
+		if (isStaffPage) {
+			accountBasketButton.setText("   View Orders");
+			accountBasketButton.addActionListener(e->viewOrdersButton_Click());
+		} else {
+			accountBasketButton.setText("   Basket");
+			accountBasketButton.addActionListener(e->basketButton_Click());
+		}
 		accountPagePanel.add(accountBasketButton);
 
-		staffButton.setLocation(0,244);
+		staffButton.setLocation(0,(int) (Math.round(ySize * 0.338)));
 		staffButton.setSize((int) (Math.round(xSize * 0.16)),87);
 		staffButton.setForeground( new Color(-1) );
-		staffButton.setFont(new Font("Merriweather", Font.BOLD, 21));
-		staffButton.addActionListener(e->staffButton_Click());
+		staffButton.setFont(new Font("Merriweather", Font.BOLD, 17));
 		staffButton.setBackground( new Color(-15440650) );
 		staffButton.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));
-		staffButton.setText("   To Staff Page");
 		staffButton.setHorizontalAlignment(SwingConstants.LEFT);
-		accountPagePanel.add(staffButton);
+		if (!isStaffPage) {
+			staffButton.setText("   To Staff Page");
+			staffButton.addActionListener(e->staffButton_Click());
+		}
+		else {
+			if (isManager) {
+				staffButton.setLocation(0, (int) (Math.round(ySize * 0.458)));
+			}
+			staffButton.setText("   To Customer Page");
+			staffButton.addActionListener(e -> leaveStaffPageButton_Click());
+		}
+		if (getIsStaff()) { accountPagePanel.add(staffButton); }
 
 		accountSidebar.setLocation(0,70);
 		accountSidebar.setSize((int) (Math.round(xSize * 0.16)),1930);
@@ -130,11 +163,11 @@ public class AccountPage extends JFrame {
 		accountDetailBackGround.setBackground( new Color(-14995422) );
 		accountPagePanel.add(accountDetailBackGround);
 
-		accountPageBackground.setLocation(0,0);
-		accountPageBackground.setSize((Math.round(xSize)),9000);
-		accountPageBackground.setOpaque(true);
-		accountPageBackground.setBackground( new Color(-8741250) );
-		accountPagePanel.add(accountPageBackground);
+		acountPageBackground.setLocation(0,0);
+		acountPageBackground.setSize((Math.round(xSize)),9000);
+		acountPageBackground.setOpaque(true);
+		acountPageBackground.setBackground( new Color(-8741250) );
+		accountPagePanel.add(acountPageBackground);
 
 		accountPagePanel.setVisible(true);
 	}
@@ -148,34 +181,52 @@ public class AccountPage extends JFrame {
 		accountPagePanel.add(box);
 		box.validate();
 		box.repaint();
-
 	}
+
+	public Boolean getIsStaffPage() { return this.isStaffPage; }
+
+	public void setIsStaffPage(Boolean isStaffPage) { this.isStaffPage = isStaffPage; }
+
+	public Boolean getIsStaff() { return this.isStaff; }
+
+	public void setIsStaff(Boolean isStaff) { this.isStaff = isStaff; }
+
+	public Boolean getIsManager() { return this.isManager; }
+
+	public void setIsManager(Boolean isManager) { this.isManager = isManager; }
+
+	public int getCurrentUserId() { return this.currentUserId; }
+
+	public void setCurrentUserId(int currentUserId) { this.currentUserId = currentUserId; }
 
 	public void productButton_Click()
 	{
-		this.dispose();
 		ProductPageUI productPage = new ProductPageUI();
-		productPage.initFrame();
+		productPage.initFrame(getIsStaffPage(), 5);
+		this.dispose();
 	}
-	public void basketButton_Click()
-	{
-		System.out.println("basketButton_Click() has been pressed ");
+	public void basketButton_Click() { System.out.println("Placeholder"); }
+	public void viewOrdersButton_Click() {
+		AccountPage accountPage = new AccountPage();
+		accountPage.initFrame(getIsStaffPage(), 5);
+		this.dispose();
 	}
-	public void staffButton_Click()
-	{
-		System.out.println("staffButton_Click() has been pressed ");
+	public void staffButton_Click() {
+		AccountPage accountPage = new AccountPage();
+		accountPage.initFrame(true, 5);
+		this.dispose();
+	}
+	public void leaveStaffPageButton_Click() {
+		AccountPage accountPage = new AccountPage();
+		accountPage.initFrame(false, 5);
+		this.dispose();
 	}
 
 
 
 	public static void main(String args[]) {
 		final AccountPage window = new AccountPage();
-		try {
-			window.initFrame(2);
-		}catch (SQLException e){
-			e.printStackTrace();
-		}
-
+			window.initFrame(false, 5);
 	}
 
 

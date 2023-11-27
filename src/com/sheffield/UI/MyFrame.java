@@ -42,7 +42,7 @@ public class MyFrame extends JFrame {
 	}
 
 	/**
-	 * Clears the contnet pane and displays the panel passed to the function.
+	 * Clears the content pane and displays the panel passed to the function.
 	 *
 	 * @param panel The JPanel to be displayed.
 	 */

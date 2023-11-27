@@ -4,6 +4,12 @@ import com.sheffield.Products.Product;
 
 import java.math.BigDecimal;
 
+/**
+ * This class represents a controller object - it has an extra boolean value to represent
+ * whether or not the controller is digital
+ *
+ * @author Luke Parry
+ */
 public class Controller extends Product {
 
     private boolean isDigital;
