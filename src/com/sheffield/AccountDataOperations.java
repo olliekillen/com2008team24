@@ -38,7 +38,7 @@ public class AccountDataOperations {
         return user;
     }
 
-    public static Address getUserAddress (Integer userId, Connection con) throws SQLException {
+    public static Address GetUserAddress(Integer userId, Connection con) throws SQLException {
         Address address = null;
         PreparedStatement stmt = con.prepareStatement("SELECT * FROM Users ");
         try {
