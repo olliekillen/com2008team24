@@ -1,6 +1,7 @@
 package com.sheffield;
 
 import javax.swing.*;
+import java.math.BigDecimal;
 import java.sql.SQLException;
 
 public class ProductPageLauncher {
@@ -14,7 +15,7 @@ public class ProductPageLauncher {
                     ProductDatabaseOperations dop = new ProductDatabaseOperations();
                     dch.openConnection();
                     ProductPageUI window = new ProductPageUI();
-                    window.initFrame();
+                    window.initFrame(false, 5);
                     dch.closeConnection();
                 } catch (SQLException e) {
                     e.printStackTrace();

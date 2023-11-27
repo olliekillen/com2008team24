@@ -1,7 +1,12 @@
 package com.sheffield;
 
+import com.sheffield.Products.Product;
+
+import javax.xml.transform.Result;
 import java.util.ArrayList;
 import java.sql.*;
+import java.util.List;
+import java.math.BigDecimal;
 
 public class OrderDatabaseOperations {
     public static ArrayList<Order> GetOrders (Connection con) throws SQLException {
@@ -131,6 +136,176 @@ public class OrderDatabaseOperations {
                 if (stmt != null) 
                 stmt.close();
             }
+    }
+
+    public ResultSet currentOrder(Connection connection, int userId) throws SQLException {
+        try {
+            String selectSQL = "SELECT * FROM Orders WHERE userId=? && statusField=?";
+            PreparedStatement preparedStatement = connection.prepareStatement(selectSQL);
+            preparedStatement.setInt(1, userId);
+            preparedStatement.setString(2, "pending");
+            ResultSet resultSet = preparedStatement.executeQuery();
+            return resultSet;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    public Boolean doesCurrentOrderExist(Connection connection, int userId) throws SQLException {
+        try {
+            ResultSet resultSet = currentOrder(connection, userId);
+            int count = 0;
+            while (resultSet.next()) { count++; }
+            return count > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    public List<Order> getCurrentOrder(Connection connection, int userId, List<Order> orderList) throws SQLException {
+        try {
+            ResultSet resultSet = currentOrder(connection, userId);
+            while (resultSet.next()) {
+                orderList.add(new Order(resultSet.getInt("orderNumber"),
+                resultSet.getString("orderDate"), resultSet.getString("statusField"),
+                resultSet.getFloat("totalCost"), resultSet.getBoolean("blockedStatus"),
+                null, resultSet.getInt("userId")));
+            }
+            return orderList;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    public void insertOrder(Order order, Connection connection) throws SQLException {
+        try {
+            String insertSQL = "INSERT INTO Orders (orderNumber, orderDate, statusField, "+
+            "totalCost, blockedStatus, userID) VALUES (?, ?, ?, ?, ?, ?)";
+            PreparedStatement preparedStatement = connection.prepareStatement(insertSQL);
+            preparedStatement.setInt(1, order.getOrderNumber());
+            preparedStatement.setString(2, order.getOrderDate());
+            preparedStatement.setString(3, order.getOrderStatus());
+            preparedStatement.setFloat(4, order.getOrderCost());
+            preparedStatement.setBoolean(5, order.getOrderBlocked());
+            preparedStatement.setInt(6, order.getUserId());
+            int rowsAffected = preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    public void updateOrderTotal(Order order, Product product, Connection connection) throws SQLException {
+        try {
+            String insertSQL = "UPDATE Orders SET totalCost=? WHERE orderNumber=?";
+            PreparedStatement preparedStatement = connection.prepareStatement(insertSQL);
+            preparedStatement.setFloat(1, order.getOrderCost() + product.getRetailPrice().floatValue());
+            preparedStatement.setInt(2, order.getOrderNumber());
+            System.out.println(order.getOrderCost() + product.getRetailPrice().floatValue());
+            int rowsAffected = preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    public ResultSet currentOrderLine(Order order, Product product, Connection connection) throws SQLException {
+        try {
+            String selectSQL = "SELECT * FROM Order_Lines WHERE productCode=? && orderNumber=?";
+            PreparedStatement preparedStatement = connection.prepareStatement(selectSQL);
+            preparedStatement.setString(1, product.getProductCode());
+            preparedStatement.setInt(2, order.getOrderNumber());
+            return preparedStatement.executeQuery();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    public List<OrderLine> getOrderLine(Order order, Product product, List<OrderLine> orderLineList, Connection connection) throws SQLException {
+        try {
+            System.out.println(order.getOrderNumber());
+            System.out.println(product.getProductCode());
+            ResultSet resultSet = currentOrderLine(order, product, connection);
+            while (resultSet.next()) {
+                orderLineList.add(new OrderLine(resultSet.getString("productCode"),
+                resultSet.getInt("orderNumber"), resultSet.getInt("orderLineNumber"),
+                resultSet.getInt("quantity"), resultSet.getDouble("lineCost")));
+            }
+            return orderLineList;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    public int getOrderLineNumber(Order order, Product product, Connection connection) throws SQLException {
+        try {
+            String selectSQL = "SELECT * FROM Order_Lines WHERE orderNumber=?";
+            PreparedStatement preparedStatement = connection.prepareStatement(selectSQL);
+            preparedStatement.setInt(1, order.getOrderNumber());
+            ResultSet resultSet = preparedStatement.executeQuery();
+            int count = 0;
+            while (resultSet.next()) { count++; }
+            return count + 1;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    public void insertOrderLine(Order order, Product product, int orderLineNumber, Connection connection) throws SQLException {
+        try {
+            String insertSQL = "INSERT INTO Order_Lines (productCode, orderNumber, orderLineNumber, quantity, lineCost) VALUES (?, ?, ?, ?, ?)";
+            PreparedStatement preparedStatement = connection .prepareStatement(insertSQL);
+            preparedStatement.setString(1, product.getProductCode());
+            preparedStatement.setInt(2, order.getOrderNumber());
+            preparedStatement.setInt(3, orderLineNumber);
+            preparedStatement.setInt(4, getOrderLineCount(connection,product.getProductCode()) + 1);
+            preparedStatement.setBigDecimal(5, new BigDecimal(product.getRetailPrice().floatValue()
+            * (getOrderLineCount(connection, product.getProductCode()) + 1.0)));
+            int rowsAffected = preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    public void updateOrderLine(Order order, Product product, Connection connection) throws SQLException {
+        try {
+            List<OrderLine> orderLineList = new ArrayList<OrderLine>();
+            orderLineList = getOrderLine(order, product, orderLineList, connection);
+            String insertSQL = "UPDATE Order_Lines SET quantity=?, lineCost=? WHERE productCode=? AND orderNumber=?";
+            PreparedStatement preparedStatement = connection .prepareStatement(insertSQL);
+            preparedStatement.setInt(1, orderLineList.get(0).quantity + 1);
+            preparedStatement.setBigDecimal(2, new BigDecimal(product.getRetailPrice().floatValue()
+            * (orderLineList.get(0).quantity + 1.0)));
+            preparedStatement.setString(3, product.getProductCode());
+            preparedStatement.setInt(4, order.getOrderNumber());
+            int rowsAffected = preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    public int getOrderLineCount(Connection connection, String productCode) throws SQLException {
+        try {
+            String selectSQL = "SELECT * FROM Order_Lines WHERE productCode=?";
+            PreparedStatement preparedStatement = connection.prepareStatement(selectSQL);
+            preparedStatement.setString(1, productCode);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            int count = 0;
+            while (resultSet.next()) { count++; }
+            return count;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return 0;
+            //throw e;
+        }
     }
 }
 

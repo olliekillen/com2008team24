@@ -21,9 +21,13 @@ public class User {
 
     public Integer getId() {return userId; }
     public String getEmail() {return email; }
-    public String getpass() {return pass; }
+    public String getpass() {
+        String asterPass = "*".repeat(pass.length());
+
+        return asterPass; }
     public String getForename() {return forename; }
     public String getSurname() {return surname; }
+    public String getFullName(){return forename+" "+surname;}
     public String getPostcode() {return postcode; }
     public Integer getHouseNum() {return houseNum; }
 

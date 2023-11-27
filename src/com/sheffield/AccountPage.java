@@ -2,7 +2,6 @@ package com.sheffield;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.File;
 import java.sql.*;
 
 public class AccountPage extends JFrame {
@@ -22,8 +21,7 @@ public class AccountPage extends JFrame {
 
 
 	JLabel accountDetailBackGround = new JLabel();
-	JLabel acountPageBackground = new JLabel();
-	JTextArea textArea = new JTextArea(100, 100);
+	JLabel accountPageBackground = new JLabel();
 
 	public void initFrame(int userId) throws SQLException
 	{
@@ -56,11 +54,6 @@ public class AccountPage extends JFrame {
 		 * Transparent?: 15658734
 		 */
 
-		// Row indentation
-		textArea.setFont(new Font("SansSerif", Font.PLAIN, 12) );
-		textArea.setEditable(false);
-		textArea.setLineWrap(false);
-		textArea.append("test");
 
 		pageTitle.setLocation(0,0);
 		pageTitle.setSize((Math.round(xSize)),70);
@@ -121,12 +114,13 @@ public class AccountPage extends JFrame {
 		accountDetailTitleText.setText("Acount Details ");
 		accountPagePanel.add(accountDetailTitleText);
 
+
 		//DISPLAYING ACCOUNT DETAILS
 		AccountDataOperations accountData = new AccountDataOperations();
 
 		User user = accountData.GetUserData(userId,con);
-		Address address = accountData.getUserAddress(userId,con);
-		accountDetailBoxConstructor(user,address,"TODO");
+		Address address = accountData.GetUserAddress(userId,con);
+		accountDetailBoxConstructor( user,address,"TODO");
 
 
 		accountDetailBackGround.setLocation((int) (Math.round(xSize * 0.19)),175);
@@ -136,21 +130,25 @@ public class AccountPage extends JFrame {
 		accountDetailBackGround.setBackground( new Color(-14995422) );
 		accountPagePanel.add(accountDetailBackGround);
 
-		acountPageBackground.setLocation(0,0);
-		acountPageBackground.setSize((Math.round(xSize)),9000);
-		acountPageBackground.setOpaque(true);
-		acountPageBackground.setBackground( new Color(-8741250) );
-		accountPagePanel.add(acountPageBackground);
+		accountPageBackground.setLocation(0,0);
+		accountPageBackground.setSize((Math.round(xSize)),9000);
+		accountPageBackground.setOpaque(true);
+		accountPageBackground.setBackground( new Color(-8741250) );
+		accountPagePanel.add(accountPageBackground);
 
 		accountPagePanel.setVisible(true);
 	}
-	public void accountDetailBoxConstructor(User user , Address address,String cardNum){
+	public void accountDetailBoxConstructor(User user , Address address,String cardNum ){
 		AccountDetailBox box = new AccountDetailBox();
 		box.initAccountDetail(user,address,cardNum);
 		box.setOpaque(true);
+		box.setLocation((int) (Math.round(xSize * 0.20)),230);
+		box.setSize((int) (Math.round(xSize * 0.72)),750);
+		box.setBackground(Color.white);
 		accountPagePanel.add(box);
 		box.validate();
 		box.repaint();
+
 	}
 
 	public void productButton_Click()

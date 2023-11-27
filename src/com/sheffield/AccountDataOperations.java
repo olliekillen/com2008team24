@@ -1,5 +1,10 @@
 package com.sheffield;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import java.sql.*;
 
 public class AccountDataOperations {
@@ -33,7 +38,7 @@ public class AccountDataOperations {
         return user;
     }
 
-    public static Address getUserAddress (Integer userId, Connection con) throws SQLException {
+    public static Address GetUserAddress(Integer userId, Connection con) throws SQLException {
         Address address = null;
         PreparedStatement stmt = con.prepareStatement("SELECT * FROM Users ");
         try {
@@ -99,5 +104,29 @@ public class AccountDataOperations {
         return card;
     }
 
+    public Boolean getStaffByUserID(Connection connection, int userID) throws SQLException {
+        try {
+            String selectSQL = "SELECT * FROM Staff NATURAL JOIN Users WHERE userID=?";
+            PreparedStatement preparedStatement = connection.prepareStatement(selectSQL);
+            preparedStatement.setInt(1, userID);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            return resultSet.next();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 
+    public Boolean getManagerByUserID(Connection connection, int userID) throws SQLException {
+        try {
+            String selectSQL = "SELECT * FROM Manager NATURAL JOIN Users WHERE userID=?";
+            PreparedStatement preparedStatement = connection.prepareStatement(selectSQL);
+            preparedStatement.setInt(1, userID);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            return resultSet.next();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }

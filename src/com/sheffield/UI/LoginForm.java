@@ -60,7 +60,7 @@ public class LoginForm extends JPanel {
                     ProductDatabaseOperations dop = new ProductDatabaseOperations();
                     dch.openConnection();
                     ProductPageUI window = new ProductPageUI();
-                    window.initFrame();
+                    window.initFrame(true, 2);
                     dch.closeConnection();
                 }
 
