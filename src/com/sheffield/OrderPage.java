@@ -18,10 +18,10 @@ public class OrderPage extends JFrame {
     JButton orderButton = new JButton();
 	JButton fulfilButton = new JButton();
     JButton deleteButton = new JButton();
-	JLabel accountSidebar = new JLabel();
+	JLabel orderSidebar = new JLabel();
 	JLabel orderTitleText = new JLabel();
 
-	JLabel accountDetailBackGround = new JLabel();
+	JLabel orderDetailBackGround = new JLabel();
 	JLabel acountPageBackground = new JLabel();
 
 	JLabel padding = new JLabel("");
@@ -95,11 +95,11 @@ public class OrderPage extends JFrame {
 		orderButton.setHorizontalAlignment(SwingConstants.LEFT);
 		orderPagePanel.add(orderButton);
 
-		accountSidebar.setLocation(0,70);
-		accountSidebar.setSize((int) (Math.round(xSize * 0.16)),1930);
-		accountSidebar.setOpaque(true);
-		accountSidebar.setBackground( new Color(-11854529) );
-		orderPagePanel.add(accountSidebar);
+		orderSidebar.setLocation(0,70);
+		orderSidebar.setSize((int) (Math.round(xSize * 0.16)),1930);
+		orderSidebar.setOpaque(true);
+		orderSidebar.setBackground( new Color(-11854529) );
+		orderPagePanel.add(orderSidebar);
 
 
 		orderTitleText.setLocation((int) (Math.round(xSize * 0.20)),179);
@@ -120,12 +120,12 @@ public class OrderPage extends JFrame {
         orderPagePanel.add(orderTable);
 
 
-		accountDetailBackGround.setLocation((int) (Math.round(xSize * 0.19)),175);
-		accountDetailBackGround.setSize((int) (Math.round(xSize * 0.75)),850); // Green background
-		accountDetailBackGround.setForeground( new Color(-1) );
-		accountDetailBackGround.setOpaque(true);
-		accountDetailBackGround.setBackground( new Color(-14995422) );
-		orderPagePanel.add(accountDetailBackGround);
+		orderDetailBackGround.setLocation((int) (Math.round(xSize * 0.19)),175);
+		orderDetailBackGround.setSize((int) (Math.round(xSize * 0.75)),850); // Green background
+		orderDetailBackGround.setForeground( new Color(-1) );
+		orderDetailBackGround.setOpaque(true);
+		orderDetailBackGround.setBackground( new Color(-14995422) );
+		orderPagePanel.add(orderDetailBackGround);
 
 		acountPageBackground.setLocation(0,0);
 		acountPageBackground.setSize((Math.round(xSize)),9000);
@@ -210,11 +210,11 @@ public class OrderPage extends JFrame {
 		deleteButton.setHorizontalAlignment(SwingConstants.LEFT);
 		orderPagePanel.add(deleteButton);
 
-		accountSidebar.setLocation(0,70);
-		accountSidebar.setSize((int) (Math.round(xSize * 0.16)),1930);
-		accountSidebar.setOpaque(true);
-		accountSidebar.setBackground( new Color(-11854529) );
-		orderPagePanel.add(accountSidebar);
+		orderSidebar.setLocation(0,70);
+		orderSidebar.setSize((int) (Math.round(xSize * 0.16)),1930);
+		orderSidebar.setOpaque(true);
+		orderSidebar.setBackground( new Color(-11854529) );
+		orderPagePanel.add(orderSidebar);
 
 
 		orderTitleText.setLocation((int) (Math.round(xSize * 0.20)),179);
@@ -235,12 +235,110 @@ public class OrderPage extends JFrame {
         orderPagePanel.add(orderTable);
 
 
-		accountDetailBackGround.setLocation((int) (Math.round(xSize * 0.19)),175);
-		accountDetailBackGround.setSize((int) (Math.round(xSize * 0.75)),850); // Green background
-		accountDetailBackGround.setForeground( new Color(-1) );
-		accountDetailBackGround.setOpaque(true);
-		accountDetailBackGround.setBackground( new Color(-14995422) );
-		orderPagePanel.add(accountDetailBackGround);
+		orderDetailBackGround.setLocation((int) (Math.round(xSize * 0.19)),175);
+		orderDetailBackGround.setSize((int) (Math.round(xSize * 0.75)),850); // Green background
+		orderDetailBackGround.setForeground( new Color(-1) );
+		orderDetailBackGround.setOpaque(true);
+		orderDetailBackGround.setBackground( new Color(-14995422) );
+		orderPagePanel.add(orderDetailBackGround);
+
+		acountPageBackground.setLocation(0,0);
+		acountPageBackground.setSize((Math.round(xSize)),9000);
+		acountPageBackground.setOpaque(true);
+		acountPageBackground.setBackground( new Color(-8741250) );
+		orderPagePanel.add(acountPageBackground);
+
+		orderPagePanel.setVisible(true);
+	}
+
+	public void initPanel(ArrayList<Order> orders, User user, Connection con)
+	{
+		/* For colours of each of the components:
+		 * Purple: 11854529
+		 * Red: 2743738
+		 * Light Green: 8741250
+		 * Dark Green: 14995422
+		 * Blue: 15440650
+		 * White: 1
+		 * Black: Don't enter anything (default).
+		 * Transparent?: 15658734
+		 */
+
+		this.orders = orders;
+
+		// Row indentation
+		textArea.setFont(new Font("SansSerif", Font.PLAIN, 12) );
+		textArea.setEditable(false);
+		textArea.setLineWrap(false);
+		textArea.append("test");
+
+		pageTitle.setLocation(0,0);
+		pageTitle.setSize((Math.round(xSize)),70);
+		pageTitle.setForeground( new Color(-1) );
+		pageTitle.setFont(new Font("Merryweather", Font.BOLD, 50));
+		pageTitle.setOpaque(true);
+		pageTitle.setBackground( new Color(-11854529) );
+		pageTitle.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));
+		pageTitle.setText("Trains of Sheffield");
+		pageTitle.setHorizontalAlignment(SwingConstants.CENTER);
+		orderPagePanel.add(pageTitle);
+
+		customerButton.setLocation(0,70);
+		customerButton.setSize((int) (Math.round(xSize * 0.16)),87);
+		customerButton.setForeground( new Color(-1) );
+		customerButton.setFont(new Font("Merriweather", Font.BOLD, 21));
+		customerButton.addActionListener(e->customerButton_Click());
+		customerButton.setBackground( new Color(-15440650) );
+		customerButton.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));
+		customerButton.setText("   To Customer Page");
+		customerButton.setHorizontalAlignment(SwingConstants.LEFT);
+		orderPagePanel.add(customerButton);
+
+        orderButton.setLocation(0,157);
+		orderButton.setSize((int) (Math.round(xSize * 0.16)),87);
+		orderButton.setForeground( new Color(-1) );
+		orderButton.setFont(new Font("Merriweather", Font.BOLD, 21));
+        orderButton.addActionListener(e->orderButton_Click());
+		orderButton.setBackground( new Color(-2743738) );
+		orderButton.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));
+		orderButton.setText("   View Top Order");
+		orderButton.setHorizontalAlignment(SwingConstants.LEFT);
+		orderPagePanel.add(orderButton);
+
+		orderSidebar.setLocation(0,70);
+		orderSidebar.setSize((int) (Math.round(xSize * 0.16)),1930);
+		orderSidebar.setOpaque(true);
+		orderSidebar.setBackground( new Color(-11854529) );
+		orderPagePanel.add(orderSidebar);
+
+
+		orderTitleText.setLocation((int) (Math.round(xSize * 0.20)),179);
+		orderTitleText.setSize((int) (Math.round(xSize * 0.22)),44);
+		orderTitleText.setForeground( new Color(-1) );
+		orderTitleText.setFont(new Font("Merriweather", Font.BOLD, 35));
+		orderTitleText.setBackground( new Color(-14995422) );
+		orderTitleText.setText("Orders ");
+		orderPagePanel.add(orderTitleText);
+		for (Order order:orders) {
+			if (order.userId != user.userId)
+				orders.remove(order);
+		}
+        OrderTable orderTable = new OrderTable(orders);
+
+        orderTable.setLocation((int) (Math.round(xSize * 0.20)),230);
+        orderTable.setSize((int) (Math.round(xSize * 0.72)),750);
+		orderTable.setFont(new Font("Merriweather", Font.BOLD, 32));
+        orderTable.setOpaque(true);
+		orderTable.setBackground( new Color(-1) );
+        orderPagePanel.add(orderTable);
+
+
+		orderDetailBackGround.setLocation((int) (Math.round(xSize * 0.19)),175);
+		orderDetailBackGround.setSize((int) (Math.round(xSize * 0.75)),850); // Green background
+		orderDetailBackGround.setForeground( new Color(-1) );
+		orderDetailBackGround.setOpaque(true);
+		orderDetailBackGround.setBackground( new Color(-14995422) );
+		orderPagePanel.add(orderDetailBackGround);
 
 		acountPageBackground.setLocation(0,0);
 		acountPageBackground.setSize((Math.round(xSize)),9000);
