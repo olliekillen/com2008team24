@@ -11,6 +11,11 @@ public class OrderPage extends JFrame {
 	int xSize = ((int) tk.getScreenSize().getWidth());
 	int ySize = ((int) tk.getScreenSize().getHeight());
 
+	private Boolean isStaffPage;
+	private Boolean isStaff;
+	private Boolean isManager;
+	private int currentUserId;
+
 	JPanel orderPagePanel = new JPanel(null);
 
 	JLabel pageTitle = new JLabel();
@@ -30,18 +35,19 @@ public class OrderPage extends JFrame {
     ArrayList<Order> orders = null;
 	OrderTable orderDetails = null;
 
-	public void initFrame()
+	public void initFrame(Boolean isStaffPage, int userId, DatabaseConnectionHandler con)
 	{
 		this.setLayout(new GridLayout(1,1));
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize((Math.round(xSize)),9000);
-
+		this.setIsStaffPage(isStaffPage);
 		//initPanel(con);
 		this.add(orderPagePanel);
+		this.initPanel(orders, con.getConnection(), 5);
 		this.setVisible(true);
 	}
 
-	public void initPanel(ArrayList<Order> orders, Connection con)
+	public void initPanel(ArrayList<Order> orders, Connection con, int userId)
 	{
 		/* For colours of each of the components:
 		 * Purple: 11854529
@@ -53,6 +59,17 @@ public class OrderPage extends JFrame {
 		 * Black: Don't enter anything (default).
 		 * Transparent?: 15658734
 		 */
+
+		this.setCurrentUserId(userId);
+		this.setIsManager(false);
+		try {
+			DatabaseConnectionHandler dch = new DatabaseConnectionHandler();
+			AccountDataOperations dop = new AccountDataOperations();
+			dch.openConnection();
+			isStaff = dop.getStaffByUserID(dch.getConnection(), currentUserId);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 
 		this.orders = orders;
 
@@ -263,7 +280,7 @@ public class OrderPage extends JFrame {
             con.openConnection();
             System.out.println("Connection Successful");
             window.initPanel(orders.get(0), con.getConnection());
-            window.initFrame();
+            window.initFrame(isStaffPage, currentUserId, con);
             con.closeConnection();
         } 
 
@@ -288,8 +305,8 @@ public class OrderPage extends JFrame {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-            window.initPanel(orders, con.getConnection());
-            window.initFrame();
+            //window.initPanel(orders, con.getConnection());
+            window.initFrame(isStaffPage, currentUserId, con);
             con.closeConnection();
         } 
 
@@ -299,6 +316,23 @@ public class OrderPage extends JFrame {
 		dispose();
 
 	}
+
+	public Boolean getIsStaffPage() { return this.isStaffPage; }
+
+	public void setIsStaffPage(Boolean isStaffPage) { this.isStaffPage = isStaffPage; }
+
+	public Boolean getIsStaff() { return this.isStaff; }
+
+	public void setIsStaff(Boolean isStaff) { this.isStaff = isStaff; }
+
+	public Boolean getIsManager() { return this.isManager; }
+
+	public void setIsManager(Boolean isManager) { this.isManager = isManager; }
+
+	public int getCurrentUserId() { return this.currentUserId; }
+
+	public void setCurrentUserId(int currentUserId) { this.currentUserId = currentUserId; }
+
 	public void fulfilButton_Click()
 	{	
 		try {
@@ -345,8 +379,7 @@ public class OrderPage extends JFrame {
 				e.printStackTrace();
 			}
 
-            window.initPanel(orders, con.getConnection());
-            window.initFrame();
+            window.initFrame(true, 5, con);
             con.closeConnection();
         } 
 

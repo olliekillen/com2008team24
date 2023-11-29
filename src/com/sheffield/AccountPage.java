@@ -28,7 +28,6 @@ public class AccountPage extends JFrame {
 	JButton productButton = new JButton();
 	JButton accountBasketButton = new JButton();
 	JButton staffButton = new JButton();
-	JButton refreshButton = new JButton();
 	JLabel accountSidebar = new JLabel();
 	JLabel accountDetailTitleText = new JLabel();
 
@@ -139,29 +138,20 @@ public class AccountPage extends JFrame {
 		}
 		if (getIsStaff()) { accountPagePanel.add(staffButton); }
 
-		accountSidebar.setLocation(0,70);
-		accountSidebar.setSize((int) (Math.round(xSize * 0.16)),1930);
+		accountSidebar.setLocation(0,(int) (Math.round(ySize * 0.1)));
+		accountSidebar.setSize((int) (Math.round(xSize * 0.16)),(int) (Math.round(ySize * 0.9)));
 		accountSidebar.setOpaque(true);
 		accountSidebar.setBackground( new Color(-11854529) );
 		accountPagePanel.add(accountSidebar);
 
 
-		accountDetailTitleText.setLocation((int) (Math.round(xSize * 0.20)),179);
-		accountDetailTitleText.setSize((int) (Math.round(xSize * 0.22)),44);
+		accountDetailTitleText.setLocation((int) (Math.round(xSize * 0.20)),(int) (Math.round(ySize * 0.113)));
+		accountDetailTitleText.setSize((int) (Math.round(xSize * 0.22)),(int) (Math.round(ySize * 0.09)));
 		accountDetailTitleText.setForeground( new Color(-1) );
 		accountDetailTitleText.setFont(new Font("Merriweather", Font.BOLD, 35));
 		accountDetailTitleText.setBackground( new Color(-14995422) );
 		accountDetailTitleText.setText("Acount Details ");
 		accountPagePanel.add(accountDetailTitleText);
-
-		refreshButton.setLocation((int)(xSize * 0.75),(int) (ySize*0.22));
-		refreshButton.setSize((int) (Math.round(xSize * 0.16)),87);
-		refreshButton.setForeground( Color.black );
-		refreshButton.setFont(new Font("Merriweather", Font.BOLD, 17));
-		refreshButton.addActionListener(e->refreshButton_Click());
-		refreshButton.setBackground( new Color(211,211,211) );
-		refreshButton.setText("Refresh page");
-		accountPagePanel.add(refreshButton);
 
 		//DISPLAYING ACCOUNT DETAILS
 		AccountDataOperations accountData = new AccountDataOperations();
@@ -173,15 +163,15 @@ public class AccountPage extends JFrame {
 
 
 
-		accountDetailBackGround.setLocation((int) (Math.round(xSize * 0.19)),175);
-		accountDetailBackGround.setSize((int) (Math.round(xSize * 0.75)),850); // Green background
+		accountDetailBackGround.setLocation((int) (Math.round(xSize * 0.19)),(int) (Math.round(ySize * 0.12)));
+		accountDetailBackGround.setSize((int) (Math.round(xSize * 0.75)),(int) (Math.round(ySize * 0.77))); // Green background
 		accountDetailBackGround.setForeground( new Color(-1) );
 		accountDetailBackGround.setOpaque(true);
 		accountDetailBackGround.setBackground( new Color(-14995422) );
 		accountPagePanel.add(accountDetailBackGround);
 
 		acountPageBackground.setLocation(0,0);
-		acountPageBackground.setSize((Math.round(xSize)),9000);
+		acountPageBackground.setSize((Math.round(xSize)),(Math.round(ySize)));
 		acountPageBackground.setOpaque(true);
 		acountPageBackground.setBackground( new Color(-8741250) );
 		accountPagePanel.add(acountPageBackground);
@@ -196,8 +186,8 @@ public class AccountPage extends JFrame {
 		AccountDetailBox box = new AccountDetailBox();
 		box.initAccountDetail(user,address,card);
 		box.setOpaque(true);
-		box.setLocation((int) (Math.round(xSize * 0.20)),230);
-		box.setSize((int) (Math.round(xSize * 0.72)),750);
+		box.setLocation((int) (Math.round(xSize * 0.20)),(int) (Math.round(ySize * 0.19)));
+		box.setSize((int) (Math.round(xSize * 0.72)),(int) (Math.round(ySize * 0.67)));
 		box.setBackground(Color.white);
 		accountPagePanel.add(box);
 		box.validate();

@@ -39,57 +39,57 @@ public class AccountDetailBox extends JPanel {
         this.setLayout(null);
         int userId = user.getId();
 
-        accountNameText.setLocation((int) (Math.round(xSize * 0.01)), 10);
-        accountNameText.setSize((int) (Math.round(xSize * 0.35)), 40);
+        accountNameText.setLocation((int) (Math.round(xSize * 0.01)), (int) (Math.round(ySize * 0.02)));
+        accountNameText.setSize((int) (Math.round(xSize * 0.35)), (int) (Math.round(ySize * 0.04)));
         accountNameText.setFont(new Font("Merriweather", Font.BOLD, 32));
         accountNameText.setText("Name: " + user.getFullName());
         add(accountNameText);
 
         accountPasswordText.setLocation((int) (Math.round(xSize * 0.01)), 55);
-        accountPasswordText.setSize((int) (Math.round(xSize * .35)), 40);
+        accountPasswordText.setSize((int) (Math.round(xSize * .35)), (int) (Math.round(ySize * 0.04)));
         accountPasswordText.setFont(new Font("Merriweather", Font.BOLD, 32));
         accountPasswordText.setText("Password: " + "**********");
         add(accountPasswordText);
 
         accountEmailText.setLocation((int) (Math.round(xSize * 0.01)), 110);
-        accountEmailText.setSize((int) (Math.round(xSize * .35)), 40);
+        accountEmailText.setSize((int) (Math.round(xSize * .35)), (int) (Math.round(ySize * 0.03)));
         accountEmailText.setFont(new Font("Merriweather", Font.BOLD, 32));
         accountEmailText.setText("Email: " + user.getEmail());
         add(accountEmailText);
 
         accountAddressText.setLocation((int) (Math.round(xSize * 0.01)), 170);
-        accountAddressText.setSize((int) (Math.round(xSize * .35)), 40);
+        accountAddressText.setSize((int) (Math.round(xSize * .35)), (int) (Math.round(ySize * 0.03)));
         accountAddressText.setFont(new Font("Merriweather", Font.BOLD, 32));
         accountAddressText.setText("Address: " + address.getAddress());
         add(accountAddressText);
 
         accountBankDetails.setLocation((int) (Math.round(xSize * 0.01)), 230);
-        accountBankDetails.setSize((int) (Math.round(xSize * 0.35)), 40);
+        accountBankDetails.setSize((int) (Math.round(xSize * 0.35)), (int) (Math.round(ySize * 0.03)));
         accountBankDetails.setFont(new Font("Merriweather", Font.BOLD, 32));
         accountBankDetails.setText("Bank Details:");
         add(accountBankDetails);
 
         accountCardText.setLocation((int) (Math.round(xSize * 0.01)), 280);
-        accountCardText.setSize((int) (Math.round(xSize * 0.35)), 40);
+        accountCardText.setSize((int) (Math.round(xSize * 0.35)), (int) (Math.round(ySize * 0.03)));
         accountCardText.setFont(new Font("Merriweather", Font.BOLD, 28));
         accountCardText.setText("Card Number Ending :");
         add(accountCardText);
 
         bankNumberText.setLocation((int) (Math.round(xSize * 0.2)), 280);
-        bankNumberText.setSize((int) (Math.round(xSize * 0.35)), 40);
+        bankNumberText.setSize((int) (Math.round(xSize * 0.35)), (int) (Math.round(ySize * 0.03)));
         bankNumberText.setFont(new Font("Merriweather", Font.BOLD, 28));
         bankNumberText.setText(card.getCardNumberHidden());
         add(bankNumberText);
 
         bankExpireText.setLocation((int) (Math.round(xSize * 0.3)), 280);
-        bankExpireText.setSize((int) (Math.round(xSize * 0.35)), 40);
+        bankExpireText.setSize((int) (Math.round(xSize * 0.35)), (int) (Math.round(ySize * 0.03)));
         bankExpireText.setFont(new Font("Merriweather", Font.BOLD, 28));
         bankExpireText.setText("expire: " + card.getExpiryDate());
         add(bankExpireText);
 
 
         nameEditButton.setLocation((int) (Math.round(xSize * 0.4)), -10);
-        nameEditButton.setSize((int) (Math.round(xSize * 0.15)), 70);
+        nameEditButton.setSize((int) (Math.round(xSize * 0.15)), (int) (Math.round(ySize * 0.08)));
         nameEditButton.setForeground(new Color(0, 128, 255));
         nameEditButton.setFont(new Font("Merriweather", Font.BOLD, 40));
         nameEditButton.addActionListener(e -> {
