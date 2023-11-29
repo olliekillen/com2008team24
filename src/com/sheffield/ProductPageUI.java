@@ -35,6 +35,7 @@ public class ProductPageUI extends JFrame {
     JButton productBasketButton = new JButton();
     JButton productStaffPageButton = new JButton();
     JButton productManagerPageButton = new JButton();
+    JButton productCreatePageButton = new JButton();
     JLabel productSidebar = new JLabel();
     JLabel productTypeFilterLabel = new JLabel();
     String[] productTypeFilterComboData = {"Train Sets", "Track Packs", "Locomotives", "Rolling Stock", "Tracks",
@@ -173,25 +174,27 @@ public class ProductPageUI extends JFrame {
         }
         productPagePanel.add(productBasketButton);
 
-        productStaffPageButton.setLocation(0,(int) (Math.round(ySize * 0.338)));
+        productStaffPageButton.setLocation(0,(int) (Math.round(ySize * 0.455)));
         productStaffPageButton.setSize((int) (Math.round(xSize * 0.16)),(int) (Math.round(ySize * 0.12)));
         productStaffPageButton.setForeground( new Color(-1) );
         productStaffPageButton.setFont(new Font("Merriweather", Font.BOLD, 17));
         productStaffPageButton.setBackground( new Color(-15440650) );
         productStaffPageButton.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));
         if (!isStaffPage) {
+            productStaffPageButton.setLocation(0,(int) (Math.round(ySize * 0.338)));
             productStaffPageButton.setText("   To Staff Page");
             productStaffPageButton.addActionListener(e->productStaffPageButton_Click());
         }
         else {
-            if(isManager) { productStaffPageButton.setLocation(0,(int) (Math.round(ySize * 0.455))); }
+            if(isManager) {
+                productStaffPageButton.setLocation(0,(int) (Math.round(ySize * 0.572))); }
             productStaffPageButton.setText("   To Customer Page");
             productStaffPageButton.addActionListener(e->productLeaveStaffPageButton_Click());
         }
         productStaffPageButton.setHorizontalAlignment(SwingConstants.LEFT);
         if(isStaff || isManager) { productPagePanel.add(productStaffPageButton); }
 
-        productManagerPageButton.setLocation(0,(int) (Math.round(ySize * 0.338)));
+        productManagerPageButton.setLocation(0,(int) (Math.round(ySize * 0.455)));
         productManagerPageButton.setSize((int) (Math.round(xSize * 0.16)),(int) (Math.round(ySize * 0.12)));
         productManagerPageButton.setForeground( new Color(-1) );
         productManagerPageButton.setFont(new Font("Merriweather", Font.BOLD, 17));
@@ -201,6 +204,17 @@ public class ProductPageUI extends JFrame {
         productManagerPageButton.addActionListener(e->productManagerPageButton_Click());
         productManagerPageButton.setHorizontalAlignment(SwingConstants.LEFT);
         if (isStaffPage && isManager) { productPagePanel.add(productManagerPageButton); }
+
+        productCreatePageButton.setLocation(0,(int) (Math.round(ySize * 0.338)));
+        productCreatePageButton.setSize((int) (Math.round(xSize * 0.16)),(int) (Math.round(ySize * 0.12)));
+        productCreatePageButton.setForeground( new Color(-1) );
+        productCreatePageButton.setFont(new Font("Merriweather", Font.BOLD, 17));
+        productCreatePageButton.setBackground( new Color(-2743738) );
+        productCreatePageButton.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));
+        productCreatePageButton.setText("   Create Product");
+        productCreatePageButton.addActionListener(e->createProductButton_Click());
+        productCreatePageButton.setHorizontalAlignment(SwingConstants.LEFT);
+        if (isStaffPage) { productPagePanel.add(productCreatePageButton); }
 
         productSidebar.setLocation(0,(int) (Math.round(ySize * 0.1)));
         productSidebar.setSize((int) (Math.round(xSize * 0.16)),(int) (Math.round(ySize * 0.9)));
@@ -416,6 +430,19 @@ public class ProductPageUI extends JFrame {
             dch.openConnection();
             OrderPage orderPage = new OrderPage();
             orderPage.initFrame(isStaffPage, currentUserId, dch);
+            this.dispose();
+            dch.closeConnection();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    public void createProductButton_Click() {
+        try {
+            ProductCreatorPage productCreatorPage = new ProductCreatorPage();
+            DatabaseConnectionHandler dch = new DatabaseConnectionHandler();
+            dch.openConnection();
+            productCreatorPage.initFrame(getIsStaffPage(), getCurrentUserId());
+            productCreatorPage.initPanel(dch.getConnection());
             this.dispose();
             dch.closeConnection();
         } catch (SQLException e) {

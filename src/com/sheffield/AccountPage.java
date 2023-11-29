@@ -230,6 +230,19 @@ public class AccountPage extends JFrame {
 			e.printStackTrace();
 		}
 	}
+	public void createProductButton_Click() {
+		try {
+			ProductCreatorPage productCreatorPage = new ProductCreatorPage();
+			DatabaseConnectionHandler dch = new DatabaseConnectionHandler();
+			dch.openConnection();
+			productCreatorPage.initFrame(getIsStaffPage(), getCurrentUserId());
+			productCreatorPage.initPanel(dch.getConnection());
+			this.dispose();
+			dch.closeConnection();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 	public void staffButton_Click() {
 		AccountPage accountPage = new AccountPage();
 		accountPage.initFrame(true, 5);

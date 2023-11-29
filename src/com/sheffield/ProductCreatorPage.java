@@ -15,18 +15,11 @@ public class ProductCreatorPage extends JFrame {
 
 	JLabel pageTitle = new JLabel();
 	JButton customerButton = new JButton();
-    JButton productCreatorButton = new JButton();
 	JLabel productCreatorSidebar = new JLabel();
 	JLabel productCreatorTitleText = new JLabel();
     ProductCreatorBox productDetails = new ProductCreatorBox();
-
-
 	JLabel productCreatorDetailBackGround = new JLabel();
 	JLabel acountPageBackground = new JLabel();
-
-	JLabel padding = new JLabel("");
-	JTextArea textArea = new JTextArea(100, 100);
-
 
 	public void initFrame()
 	{
@@ -54,11 +47,6 @@ public class ProductCreatorPage extends JFrame {
 
 
 		// Row indentation
-		textArea.setFont(new Font("SansSerif", Font.PLAIN, 12) );
-		textArea.setEditable(false);
-		textArea.setLineWrap(false);
-		textArea.append("test");
-
 		pageTitle.setLocation(0,0);
 		pageTitle.setSize((Math.round(xSize)),70);
 		pageTitle.setForeground( new Color(-1) );
@@ -129,8 +117,6 @@ public class ProductCreatorPage extends JFrame {
             final ProductCreatorPage window = new ProductCreatorPage();
             DatabaseConnectionHandler con = new DatabaseConnectionHandler();
             con.openConnection();
-            System.out.println("Connection Successful");
-
             window.initPanel(con.getConnection());
             window.initFrame();
             con.closeConnection();
