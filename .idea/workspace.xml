@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d8c3e42c-1391-466e-bdbd-038550dee454" name="Changes" comment="merging xml">
+    <list default="true" id="d8c3e42c-1391-466e-bdbd-038550dee454" name="Changes" comment="Designed Home Page">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Team_24_Security_And_Design.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Team_24_Security_And_Design.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sheffield/UI/UserDatabaseOperations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/UI/UserDatabaseOperations.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sheffield/UI/CustomJTextArea.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/UI/CustomJTextArea.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sheffield/UI/CustomLabel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/UI/CustomLabel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sheffield/UI/HomePagePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/UI/HomePagePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sheffield/UI/HomePageUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/UI/HomePageUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,6 +58,11 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\dvous\Documents\Git Repos\Team_24_Security_And_Design\src\com\sheffield\Images" />
+    </key>
+  </component>
   <component name="RunManager" selected="Application.MyFrame">
     <configuration name="AccountPage" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.sheffield.AccountPage" />
@@ -137,6 +144,7 @@
       <workItem from="1700840086139" duration="1536000" />
       <workItem from="1700841851194" duration="4226000" />
       <workItem from="1701101370333" duration="632000" />
+      <workItem from="1701255813746" duration="8003000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed product and account pages, which couldn't display due to changes in the last commit.">
       <created>1700236292159</created>
@@ -158,11 +166,23 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Fixed product and account pages, which couldn't display due to changes in the last commit." />
     <MESSAGE value="Individual product page is accessible from product page - data from the database doesn't appear on this page yet." />
     <MESSAGE value="merging xml" />
-    <option name="LAST_COMMIT_MESSAGE" value="merging xml" />
+    <MESSAGE value="Designed Home Page" />
+    <option name="LAST_COMMIT_MESSAGE" value="Designed Home Page" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
