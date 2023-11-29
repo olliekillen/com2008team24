@@ -1,11 +1,19 @@
+/**
+ * A Class that extends JFrame to create the frame for the product creation page
+ *
+ * @author Ollie Killen
+ */
+
 package com.sheffield;
 
-import java.util.ArrayList;
 import javax.swing.*;
 import java.awt.*;
 import java.sql.*;
 
 public class ProductCreatorPage extends JFrame {
+
+	private Boolean isStaffPage;
+	private int currentUserId;
 
 	Toolkit tk = Toolkit.getDefaultToolkit();
 	int xSize = ((int) tk.getScreenSize().getWidth());
@@ -24,12 +32,11 @@ public class ProductCreatorPage extends JFrame {
 	JLabel productCreatorDetailBackGround = new JLabel();
 	JLabel acountPageBackground = new JLabel();
 
-	JLabel padding = new JLabel("");
-	JTextArea textArea = new JTextArea(100, 100);
-
-
-	public void initFrame()
+	// Method to set layout and close operation and make visible
+	public void initFrame(Boolean isStaffPage, int currentUserId)
 	{
+		this.setIsStaffPage(isStaffPage);
+		this.setCurrentUserId(currentUserId);
 		this.setLayout(new GridLayout(1,1));
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize((Math.round(xSize)),9000);
@@ -39,6 +46,8 @@ public class ProductCreatorPage extends JFrame {
 		this.setVisible(true);
 	}
 
+
+	// Method to set location and colours of buttons, panels etc
 	public void initPanel(Connection con)
 	{
 		/* For colours of each of the components:
@@ -54,10 +63,6 @@ public class ProductCreatorPage extends JFrame {
 
 
 		// Row indentation
-		textArea.setFont(new Font("SansSerif", Font.PLAIN, 12) );
-		textArea.setEditable(false);
-		textArea.setLineWrap(false);
-		textArea.append("test");
 
 		pageTitle.setLocation(0,0);
 		pageTitle.setSize((Math.round(xSize)),70);
@@ -96,6 +101,8 @@ public class ProductCreatorPage extends JFrame {
 		productCreatorTitleText.setText("Orders ");
 		productCreatorPagePanel.add(productCreatorTitleText);
 
+
+		// Setting location of panel of class productCreatorBox which contains the product form
         productDetails.setLocation((int) (Math.round(xSize * 0.20)),230);
         productDetails.setSize((int) (Math.round(xSize * 0.72)),750);
 		productDetails.setFont(new Font("Merriweather", Font.BOLD, 32));
@@ -119,27 +126,22 @@ public class ProductCreatorPage extends JFrame {
 		productCreatorPagePanel.setVisible(true);
 	}
 
+	// Method for button to go to customer page
 	public void customerButton_Click()
 	{
-		System.out.println("Customer button has been pressed ");
+		ProductPageUI productPage = new ProductPageUI();
+		productPage.initFrame(isStaffPage, currentUserId);
+		this.dispose();
 	}
 
-	public static void main(String args[]) {
-        try {
-            final ProductCreatorPage window = new ProductCreatorPage();
-            DatabaseConnectionHandler con = new DatabaseConnectionHandler();
-            con.openConnection();
-            System.out.println("Connection Successful");
-
-            window.initPanel(con.getConnection());
-            window.initFrame();
-            con.closeConnection();
-        } 
-
-        catch (SQLException e) {
-            e.printStackTrace();
-        }
+	//Method to set variable isStaffPage
+	public void setIsStaffPage(Boolean isStaffPage) {
+		this.isStaffPage = isStaffPage;
 	}
 
+	//Method to set variable currentUserId
+	public void setCurrentUserId(int currentUserId) {
+		this.currentUserId = currentUserId;
+	}
 
 }
