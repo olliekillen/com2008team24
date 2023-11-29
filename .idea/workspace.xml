@@ -3,38 +3,14 @@
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
-  <component name="BranchesTreeState">
-    <expand>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-    </expand>
-    <select>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-    </select>
-  </component>
   <component name="ChangeListManager">
-    <list default="true" id="d8c3e42c-1391-466e-bdbd-038550dee454" name="Changes" comment="Edit product page completed and is accessible from the staff individual product page.">
-      <change afterPath="$PROJECT_DIR$/src/com/sheffield/UI/EditButtonUI.java" afterDir="false" />
+    <list default="true" id="d8c3e42c-1391-466e-bdbd-038550dee454" name="Changes" comment="Added Funtinality to most of the Edit button &#10;TODO :&#10;Bank edit  + Bank editUI&#10;Refresh button.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sheffield/AccountDataOperations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/AccountDataOperations.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Team_24_Security_And_Design.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Team_24_Security_And_Design.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/sheffield/AccountDetailBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/AccountDetailBox.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/sheffield/AccountPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/AccountPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sheffield/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sheffield/EditProductUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/EditProductUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sheffield/UI/EditButtonUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/UI/EditButtonUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,6 +30,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
   <component name="ProjectId" id="2XwtE29gaUggz0A9IKHhsPxseRW" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -62,17 +41,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "git-widget-placeholder": "main",
-    "node.js.selected.package.tslint": "(autodetect)"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Admin/Downloads/mysql-connector-j-8.2.0/mysql-connector-j-8.2.0.jar&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
-  <component name="RecentsManager">
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="com.sheffield" />
-    </key>
-  </component>
+}</component>
   <component name="RunManager" selected="Application.AccountPage">
     <configuration name="AccountPage" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.sheffield.AccountPage" />
@@ -116,8 +102,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.AccountPage" />
-        <item itemvalue="Application.ProductPageLauncher" />
         <item itemvalue="Application.MyFrame" />
+        <item itemvalue="Application.ProductPageLauncher" />
       </list>
     </recent_temporary>
   </component>
@@ -139,6 +125,22 @@
       <workItem from="1699831076779" duration="3455000" />
       <workItem from="1699878780488" duration="8339000" />
       <workItem from="1700484139830" duration="1489000" />
+      <workItem from="1700485926657" duration="1799000" />
+      <workItem from="1700490434514" duration="746000" />
+      <workItem from="1700492800892" duration="4244000" />
+      <workItem from="1700561688537" duration="2443000" />
+      <workItem from="1700567333002" duration="795000" />
+      <workItem from="1700649845585" duration="4833000" />
+      <workItem from="1700665935830" duration="5107000" />
+      <workItem from="1700684692026" duration="645000" />
+      <workItem from="1700751689435" duration="342000" />
+      <workItem from="1700754444442" duration="670000" />
+      <workItem from="1700827077011" duration="1616000" />
+      <workItem from="1700835453296" duration="2613000" />
+      <workItem from="1700840086139" duration="1536000" />
+      <workItem from="1700841851194" duration="4226000" />
+      <workItem from="1701101370333" duration="632000" />
+      <workItem from="1701254276320" duration="3715000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed product and account pages, which couldn't display due to changes in the last commit.">
       <created>1700236292159</created>
@@ -154,42 +156,23 @@
       <option name="project" value="LOCAL" />
       <updated>1700479593262</updated>
     </task>
-    <task id="LOCAL-00003" summary="Fixed problem where when exiting the individual product staff page, all nav buttons disappear.">
-      <created>1700730130310</created>
+    <task id="LOCAL-00003" summary="Added Funtinality to most of the Edit button &#10;TODO :&#10;Bank edit  + Bank editUI&#10;Refresh button">
+      <option name="closed" value="true" />
+      <created>1701251934667</created>
       <option name="number" value="00003" />
       <option name="presentableId" value="LOCAL-00003" />
       <option name="project" value="LOCAL" />
-      <updated>1700730130310</updated>
+      <updated>1701251934667</updated>
     </task>
-    <task id="LOCAL-00004" summary="Fixed problem where correct product details don't appear when pressing 'More Information' button in product box.">
-      <created>1700730823011</created>
+    <task id="LOCAL-00004" summary="Added Funtinality to most of the Edit button &#10;TODO :&#10;Bank edit  + Bank editUI&#10;Refresh button.">
+      <option name="closed" value="true" />
+      <created>1701252169295</created>
       <option name="number" value="00004" />
       <option name="presentableId" value="LOCAL-00004" />
       <option name="project" value="LOCAL" />
-      <updated>1700730823011</updated>
+      <updated>1701252169295</updated>
     </task>
-    <task id="LOCAL-00005" summary="Add to basket button now removed from product page when in staff mode.">
-      <created>1700736222956</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1700736222956</updated>
-    </task>
-    <task id="LOCAL-00006" summary="Staff button now works on all pages, made changes to how other buttons work.">
-      <created>1700751323156</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1700751323156</updated>
-    </task>
-    <task id="LOCAL-00007" summary="Edit product page completed and is accessible from the staff individual product page.">
-      <created>1700848824243</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1700848824243</updated>
-    </task>
-    <option name="localTasksCounter" value="8" />
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -209,47 +192,16 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Fixed product and account pages, which couldn't display due to changes in the last commit." />
     <MESSAGE value="Individual product page is accessible from product page - data from the database doesn't appear on this page yet." />
-    <MESSAGE value="Fixed problem where when exiting the individual product staff page, all nav buttons disappear." />
-    <MESSAGE value="Fixed problem where correct product details don't appear when pressing 'More Information' button in product box." />
-    <MESSAGE value="Add to basket button now removed from product page when in staff mode." />
-    <MESSAGE value="Staff button now works on all pages, made changes to how other buttons work." />
-    <MESSAGE value="Edit product page completed and is accessible from the staff individual product page." />
-    <option name="LAST_COMMIT_MESSAGE" value="Edit product page completed and is accessible from the staff individual product page." />
+    <MESSAGE value="merging xml" />
+    <MESSAGE value="Added Funtinality to most of the Edit button &#10;TODO :&#10;Bank edit  + Bank editUI&#10;Refresh button" />
+    <MESSAGE value="Added Funtinality to most of the Edit button &#10;TODO :&#10;Bank edit  + Bank editUI&#10;Refresh button." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Funtinality to most of the Edit button &#10;TODO :&#10;Bank edit  + Bank editUI&#10;Refresh button." />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <breakpoint enabled="true" type="java-exception">
-          <properties class="java.sql.SQLException" package="java.sql" />
-          <option name="timeStamp" value="3" />
-        </breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/sheffield/EditProductUI.java</url>
-          <line>269</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/sheffield/ProductDatabaseOperations.java</url>
-          <line>150</line>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/sheffield/EditProductUI.java</url>
-          <line>291</line>
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="com.mysql.cj.jdbc.result.ResultSetImpl" memberName="db" />
       </pinned-members>
     </pin-to-top-manager>
-    <watches-manager>
-      <configuration name="Application">
-        <watch expression="((ResultSetImpl)resultSet).db" custom="com.mysql.cj.jdbc.result.ResultSetImpl" />
-        <watch expression="((ResultSetImpl)resultSet).db" custom="com.mysql.cj.jdbc.result.ResultSetImpl" />
-      </configuration>
-    </watches-manager>
   </component>
 </project>

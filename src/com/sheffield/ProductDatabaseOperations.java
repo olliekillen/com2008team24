@@ -122,7 +122,7 @@ public class ProductDatabaseOperations {
             preparedStatement2.setString(1, locomotive.getProductCode());
             preparedStatement2.setString(2, locomotive.getHistoricalEra());
             preparedStatement2.setString(3, locomotive.getPriceBracket());
-            int rowsAffected2 = preparedStatement2.executeUpdate();
+            preparedStatement2.executeUpdate();
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -213,7 +213,7 @@ public class ProductDatabaseOperations {
             PreparedStatement preparedStatement2 = connection .prepareStatement(insertSQL2);
             preparedStatement2.setString(1, controller.getProductCode());
             preparedStatement2.setBoolean(2, controller.getIsDigital());
-            int rowsAffected2 = preparedStatement2.executeUpdate();
+            preparedStatement2.executeUpdate();
 
         } catch (SQLException e) {
             e.printStackTrace();

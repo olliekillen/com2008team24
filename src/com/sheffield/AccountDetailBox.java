@@ -6,6 +6,13 @@ import java.awt.*;
 import java.io.File;
 import java.sql.Connection;
 import java.sql.SQLException;
+
+/**
+ * This class is the JFrame that houses all of User's account details display  functionallities , to display account informations
+ * and calls to the EditButton UI to allow the user to update their details
+ *
+ * @author Nguyen Anh Le
+ */
 public class AccountDetailBox extends JPanel {
 
     Toolkit tk = Toolkit.getDefaultToolkit();
@@ -17,7 +24,9 @@ public class AccountDetailBox extends JPanel {
     JLabel accountEmailText = new JLabel();
     JLabel accountAddressText = new JLabel();
     JLabel accountBankDetails = new JLabel();
-    JLabel accountBanktext = new JLabel();
+    JLabel accountCardText = new JLabel();
+    JLabel bankNumberText = new JLabel();
+    JLabel bankExpireText = new JLabel();
     JButton nameEditButton = new JButton();
     JButton passwordEditButton = new JButton();
     JButton emailEditButton = new JButton();
@@ -26,54 +35,66 @@ public class AccountDetailBox extends JPanel {
 
     JButton bankEditButton = new JButton();
 
-    public void initAccountDetail(User user, Address address, String cardNum) {
+    public void initAccountDetail(User user, Address address, BankDetails card, JFrame account, boolean isStaff) {
         this.setLayout(null);
         int userId = user.getId();
 
-        accountNameText.setLocation((int) (Math.round(xSize * 0.01)), 10);
-        accountNameText.setSize((int) (Math.round(xSize * 0.35)), 40);
+        accountNameText.setLocation((int) (Math.round(xSize * 0.01)), (int) (Math.round(ySize * 0.02)));
+        accountNameText.setSize((int) (Math.round(xSize * 0.35)), (int) (Math.round(ySize * 0.04)));
         accountNameText.setFont(new Font("Merriweather", Font.BOLD, 32));
         accountNameText.setText("Name: " + user.getFullName());
         add(accountNameText);
 
         accountPasswordText.setLocation((int) (Math.round(xSize * 0.01)), 55);
-        accountPasswordText.setSize((int) (Math.round(xSize * .35)), 40);
+        accountPasswordText.setSize((int) (Math.round(xSize * .35)), (int) (Math.round(ySize * 0.04)));
         accountPasswordText.setFont(new Font("Merriweather", Font.BOLD, 32));
-        accountPasswordText.setText("Password: " + user.getpass());
+        accountPasswordText.setText("Password: " + "**********");
         add(accountPasswordText);
 
         accountEmailText.setLocation((int) (Math.round(xSize * 0.01)), 110);
-        accountEmailText.setSize((int) (Math.round(xSize * .35)), 40);
+        accountEmailText.setSize((int) (Math.round(xSize * .35)), (int) (Math.round(ySize * 0.03)));
         accountEmailText.setFont(new Font("Merriweather", Font.BOLD, 32));
         accountEmailText.setText("Email: " + user.getEmail());
         add(accountEmailText);
 
         accountAddressText.setLocation((int) (Math.round(xSize * 0.01)), 170);
-        accountAddressText.setSize((int) (Math.round(xSize * .35)), 40);
+        accountAddressText.setSize((int) (Math.round(xSize * .35)), (int) (Math.round(ySize * 0.03)));
         accountAddressText.setFont(new Font("Merriweather", Font.BOLD, 32));
         accountAddressText.setText("Address: " + address.getAddress());
         add(accountAddressText);
 
         accountBankDetails.setLocation((int) (Math.round(xSize * 0.01)), 230);
-        accountBankDetails.setSize((int) (Math.round(xSize * 0.35)), 40);
+        accountBankDetails.setSize((int) (Math.round(xSize * 0.35)), (int) (Math.round(ySize * 0.03)));
         accountBankDetails.setFont(new Font("Merriweather", Font.BOLD, 32));
         accountBankDetails.setText("Bank Details:");
         add(accountBankDetails);
 
-        accountBanktext.setLocation((int) (Math.round(xSize * 0.01)), 280);
-        accountBanktext.setSize((int) (Math.round(xSize * 0.35)), 40);
-        accountBanktext.setFont(new Font("Merriweather", Font.BOLD, 28));
-        accountBanktext.setText("Card Number:");
-        add(accountBanktext);
+        accountCardText.setLocation((int) (Math.round(xSize * 0.01)), 280);
+        accountCardText.setSize((int) (Math.round(xSize * 0.35)), (int) (Math.round(ySize * 0.03)));
+        accountCardText.setFont(new Font("Merriweather", Font.BOLD, 28));
+        accountCardText.setText("Card Number Ending :");
+        add(accountCardText);
+
+        bankNumberText.setLocation((int) (Math.round(xSize * 0.2)), 280);
+        bankNumberText.setSize((int) (Math.round(xSize * 0.35)), (int) (Math.round(ySize * 0.03)));
+        bankNumberText.setFont(new Font("Merriweather", Font.BOLD, 28));
+        bankNumberText.setText(card.getCardNumberHidden());
+        add(bankNumberText);
+
+        bankExpireText.setLocation((int) (Math.round(xSize * 0.3)), 280);
+        bankExpireText.setSize((int) (Math.round(xSize * 0.35)), (int) (Math.round(ySize * 0.03)));
+        bankExpireText.setFont(new Font("Merriweather", Font.BOLD, 28));
+        bankExpireText.setText("expire: " + card.getExpiryDate());
+        add(bankExpireText);
 
 
-        nameEditButton.setLocation((int) (Math.round(xSize * 0.3)), -10);
-        nameEditButton.setSize((int) (Math.round(xSize * 0.15)), 70);
+        nameEditButton.setLocation((int) (Math.round(xSize * 0.4)), -10);
+        nameEditButton.setSize((int) (Math.round(xSize * 0.15)), (int) (Math.round(ySize * 0.08)));
         nameEditButton.setForeground(new Color(0, 128, 255));
         nameEditButton.setFont(new Font("Merriweather", Font.BOLD, 40));
         nameEditButton.addActionListener(e -> {
             try {
-                editNameButton_Click(userId);
+                editNameButton_Click(userId,account,isStaff);
             } catch (SQLException ex) {
                 throw new RuntimeException(ex);
             }
@@ -86,13 +107,13 @@ public class AccountDetailBox extends JPanel {
         nameEditButton.setBorderPainted(false);
         add(nameEditButton);
 
-        passwordEditButton.setLocation((int) (Math.round(xSize * 0.3)), 35);
+        passwordEditButton.setLocation((int) (Math.round(xSize * 0.4)), 35);
         passwordEditButton.setSize((int) (Math.round(xSize * 0.15)), 70);
         passwordEditButton.setForeground(new Color(0, 128, 255));
         passwordEditButton.setFont(new Font("Merriweather", Font.BOLD, 40));
         passwordEditButton.addActionListener(e -> {
                     try {
-                        editPassButton_Click(userId);
+                        editPassButton_Click(userId,account,isStaff);
                     } catch (SQLException ex) {
                         throw new RuntimeException(ex);
                     }
@@ -106,13 +127,13 @@ public class AccountDetailBox extends JPanel {
         passwordEditButton.setBorderPainted(false);
         add(passwordEditButton);
 
-        emailEditButton.setLocation((int) (Math.round(xSize * 0.3)), 90);
+        emailEditButton.setLocation((int) (Math.round(xSize * 0.4)), 90);
         emailEditButton.setSize((int) (Math.round(xSize * 0.15)), 70);
         emailEditButton.setForeground(new Color(0, 128, 255));
         emailEditButton.setFont(new Font("Merriweather", Font.BOLD, 40));
         emailEditButton.addActionListener(e -> {
                     try {
-                        editEmailButton_Click(userId);
+                        editEmailButton_Click(userId,account,isStaff);
                     } catch (SQLException ex) {
                         throw new RuntimeException(ex);
                     }
@@ -127,13 +148,13 @@ public class AccountDetailBox extends JPanel {
         emailEditButton.setBorderPainted(false);
         add(emailEditButton);
 
-        addressEditButton.setLocation((int) (Math.round(xSize * 0.3)), 155);
+        addressEditButton.setLocation((int) (Math.round(xSize * 0.4)), 155);
         addressEditButton.setSize((int) (Math.round(xSize * 0.15)), 70);
         addressEditButton.setForeground(new Color(0, 128, 255));
         addressEditButton.setFont(new Font("Merriweather", Font.BOLD, 40));
         addressEditButton.addActionListener(e -> {
                     try {
-                        editAddressButton_Click(userId);
+                        editAddressButton_Click(userId,account,isStaff);
                     } catch (SQLException ex) {
                         throw new RuntimeException(ex);
                     }
@@ -147,13 +168,13 @@ public class AccountDetailBox extends JPanel {
         addressEditButton.setBorderPainted(false);
         add(addressEditButton);
 
-        bankEditButton.setLocation((int) (Math.round(xSize * 0.3)), 215);
+        bankEditButton.setLocation((int) (Math.round(xSize * 0.4)), 215);
         bankEditButton.setSize((int) (Math.round(xSize * 0.15)), 70);
         bankEditButton.setForeground(new Color(0, 128, 255));
         bankEditButton.setFont(new Font("Merriweather", Font.BOLD, 40));
         bankEditButton.addActionListener(e -> {
             try {
-                editButton_Click(userId);
+                editButton_Click(userId,account,isStaff);
             } catch (SQLException ex) {
                 throw new RuntimeException(ex);
             }
@@ -167,30 +188,31 @@ public class AccountDetailBox extends JPanel {
         add(bankEditButton);
 
 
+
     }
 
-    public void editNameButton_Click(int userId) throws SQLException {
+    public void editNameButton_Click(int userId,JFrame account,boolean isStaff ) throws SQLException {
         EditButtonUI edit = new EditButtonUI();
-        edit.initFrame((int) (xSize * .25), (int) (ySize * .075), "Name", userId);
+        edit.initFrame((int) (xSize * .25), (int) (ySize * .075), "Name", userId,account,isStaff);
     }
 
-    public void editPassButton_Click(int userId) throws SQLException {
+    public void editPassButton_Click(int userId,JFrame account,boolean isStaff) throws SQLException {
         EditButtonUI edit = new EditButtonUI();
-        edit.initFrame((int) (xSize * .25), (int) (ySize * .075), "Pass", userId);
+        edit.initFrame((int) (xSize * .25), (int) (ySize * .075), "Pass", userId,account,isStaff);
     }
 
-    public void editEmailButton_Click(int userId) throws SQLException {
+    public void editEmailButton_Click(int userId,JFrame account,boolean isStaff) throws SQLException {
         EditButtonUI edit = new EditButtonUI();
-        edit.initFrame((int) (xSize * .25), (int) (ySize * .075), "Email", userId);
+        edit.initFrame((int) (xSize * .25), (int) (ySize * .075), "Email", userId, account,isStaff);
     }
 
-    public void editAddressButton_Click(int userId) throws SQLException {
+    public void editAddressButton_Click(int userId,JFrame account,boolean isStaff) throws SQLException {
         EditButtonUI edit = new EditButtonUI();
-        edit.initFrame((int) (xSize * .25), (int) (ySize * .075), "Address", userId);
+        edit.initFrame((int) (xSize * .25), (int) (ySize * .075), "Address", userId,account,isStaff);
     }
 
-    public void editButton_Click(int userId) throws SQLException {
+    public void editButton_Click(int userId, JFrame account,boolean isStaff) throws SQLException {
         EditButtonUI edit = new EditButtonUI();
-        edit.initFrame((int) (xSize * .25), (int) (ySize * .15), "Name", userId);
+        edit.initFrame((int) (xSize * .25), (int) (ySize * .15), "Name", userId,account,isStaff);
     }
 }

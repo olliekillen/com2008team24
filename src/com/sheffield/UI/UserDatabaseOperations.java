@@ -11,7 +11,8 @@ public class UserDatabaseOperations {
             DatabaseConnectionHandler handler = new DatabaseConnectionHandler();
             handler.openConnection();
             Connection con = handler.getConnection();
-
+            
+        try {
             String sql = "INSERT INTO Address (postcode, houseNumber, roadName, city) VALUES (?, ?, ?, ?)";
             PreparedStatement statement = con.prepareStatement(sql);
             statement.setString(1, newUser.getPostcode());
@@ -21,16 +22,20 @@ public class UserDatabaseOperations {
 
             statement.executeUpdate();
 
-            String sql2 = "INSERT INTO Users (emailAddress, forename, surname, postcode, houseNumber, pass) VALUES (?, ?, ?, ?, ?, ?)";
-            PreparedStatement statement2 = con.prepareStatement(sql2);
-            statement2.setString(1, newUser.getEmail());
-            statement2.setString(2, newUser.getForename());
-            statement2.setString(3, newUser.getSurname());
-            statement2.setString(4, newUser.getPostcode());
-            statement2.setInt(5, newUser.getHouseNumber());
-            statement2.setString(6, PasswordHasher.hashPassword(newUser.getPassword()));
+        }catch(SQLException e){
+            System.out.println("Already in DB");
+        }
 
-            statement2.executeUpdate();
+                String sql2 = "INSERT INTO Users (emailAddress, forename, surname, postcode, houseNumber, pass) VALUES (?, ?, ?, ?, ?, ?)";
+                PreparedStatement statement2 = con.prepareStatement(sql2);
+                statement2.setString(1, newUser.getEmail());
+                statement2.setString(2, newUser.getForename());
+                statement2.setString(3, newUser.getSurname());
+                statement2.setString(4, newUser.getPostcode());
+                statement2.setInt(5, newUser.getHouseNumber());
+                statement2.setString(6, PasswordHasher.hashPassword(newUser.getPassword()));
+
+                statement2.executeUpdate();
 
             handler.closeConnection();
     }
@@ -61,6 +66,25 @@ public class UserDatabaseOperations {
           handler.closeConnection();
 
           System.out.println("There does not exist an account with this email");
+
+        return false;
+
+    }
+
+    public static boolean checkIfEmailIsInUse(String emailEntered) throws SQLException{
+        DatabaseConnectionHandler handler = new DatabaseConnectionHandler();
+        handler.openConnection();
+        Connection con = handler.getConnection();
+
+        ResultSet emailsAndPasswords = getLoginInfoFromDB(con);
+
+        while (emailsAndPasswords.next()) {
+            if (emailEntered.equals(emailsAndPasswords.getString("emailAddress"))){
+                return true;
+            }
+        }
+
+        handler.closeConnection();
 
         return false;
 

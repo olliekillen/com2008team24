@@ -6,6 +6,12 @@ import java.awt.*;
 import java.math.BigDecimal;
 import java.sql.SQLException;
 
+/**
+ * This class is the JFrame that holds all of the edit product page UI components. The edit page allows a product
+ * to be edited by updating the values in the database with data that the user provides
+ *
+ * @author Luke Parry
+ */
 public class EditProductUI extends JFrame {
 
     Toolkit tk = Toolkit.getDefaultToolkit();
@@ -340,7 +346,7 @@ public class EditProductUI extends JFrame {
     {
         //takes the user to the account page
         AccountPage accountPage = new AccountPage();
-        accountPage.initFrame(getIsStaffPage(), 5);
+        accountPage.initFrame( isStaffPage, 5);
         this.dispose();
     }
     public void singleProductBasketButton_Click()
