@@ -350,7 +350,7 @@ public class ProductPageUI extends JFrame {
             //a product box is added in the position specified only if there is a valid product to be represented inside
             ProductBox productBox = new ProductBox();
             productBox.setLocation(x, y);
-            productBox.setSize((int) (Math.round(xSize * 0.24)), 195);
+            productBox.setSize((int) (Math.round(xSize * 0.24)), (int) (Math.round(ySize * 0.271)));
             productBox.setOpaque(true);
             productBox.setBackground(new Color(-1));
             productAreaBorder.add(productBox);
