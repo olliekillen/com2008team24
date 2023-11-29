@@ -4,6 +4,12 @@ import java.sql.SQLException;
 import java.util.*;
 
 public class ValidateUserInputs {
+    /**
+     * A Class designed to validate the users inputs. This class also has methods to validate inputted data before it
+     * is added to the db.
+     *
+     * @author Daniel Vousden
+     */
 
     private String forename;
     private String surname;
@@ -15,7 +21,19 @@ public class ValidateUserInputs {
     private String roadName;
     private String cityName;
 
-
+    /**
+     * Constructor - Stores the user inputs to be validated.
+     *
+     * @param forename inputted forename.
+     * @param surname inputted surname.
+     * @param email inputted email.
+     * @param password inputted password.
+     * @param confirmPassword inputted confirm password.
+     * @param postcode inputted postcode.
+     * @param houseNumber inputted house number.
+     * @param roadName inputted roadName.
+     * @param cityName inputted cityName.
+     */
     public ValidateUserInputs(String forename, String surname, String email, char[] password, char[] confirmPassword,
                               String postcode, String houseNumber, String roadName, String cityName){
         this.forename = forename;
@@ -30,12 +48,23 @@ public class ValidateUserInputs {
 
     }
 
+    /**
+     * Checks if all inputs are valid.
+     *
+     * @return a boolean indicating if all inputs are valid.
+     */
     public boolean isValid(){
         return this.validateForename().isEmpty() && this.validateSurname().isEmpty() && this.validateEmail().isEmpty()
                 && this.validatePassword().isEmpty() && this.validatePostcode().isEmpty()
                 && this.validateHouseNumber().isEmpty() && this.validateRoadName().isEmpty()
                 && this.validateCityName().isEmpty();
     }
+
+    /**
+     * Validates the users forename.
+     *
+     * @return an array list containing error messages for what is incorrect in the forename.
+     */
     public ArrayList<String> validateForename(){
         ArrayList<String> forenameErrorMessages = new ArrayList<>();
 
@@ -46,7 +75,11 @@ public class ValidateUserInputs {
 
         return forenameErrorMessages;
     }
-
+    /**
+     * Validates the users surname.
+     *
+     * @return an array list containing error messages for what is incorrect in the surname.
+     */
     public ArrayList<String> validateSurname(){
         ArrayList<String> surnameErrorMessages = new ArrayList<>();
 
@@ -202,7 +235,11 @@ public class ValidateUserInputs {
         return passwordErrorMessages;
 
     }
-
+    /**
+     * Validates the users postcode.
+     *
+     * @return an array list containing error messages for what is incorrect in the postcode.
+     */
     public ArrayList<String> validatePostcode(){
         ArrayList<String> postcodeErrorMessages = new ArrayList<>();
 
@@ -213,7 +250,11 @@ public class ValidateUserInputs {
 
         return postcodeErrorMessages;
     }
-
+    /**
+     * Validates the users house number.
+     *
+     * @return an array list containing error messages for what is incorrect in the house number.
+     */
     public ArrayList<String> validateHouseNumber(){
         ArrayList<String> houseNumberErrorMessages = new ArrayList<>();
 
@@ -226,7 +267,11 @@ public class ValidateUserInputs {
 
         return houseNumberErrorMessages;
     }
-
+    /**
+     * Validates the users road name.
+     *
+     * @return an array list containing error messages for what is incorrect in the road name.
+     */
     public ArrayList<String> validateRoadName(){
         ArrayList<String> roadNameErrorMessages = new ArrayList<>();
 
@@ -237,7 +282,11 @@ public class ValidateUserInputs {
 
         return roadNameErrorMessages;
     }
-
+    /**
+     * Validates the users city name.
+     *
+     * @return an array list containing error messages for what is incorrect in the city name.
+     */
     public ArrayList<String> validateCityName(){
         ArrayList<String> cityNameErrorMessages = new ArrayList<>();
 
@@ -248,22 +297,47 @@ public class ValidateUserInputs {
 
         return cityNameErrorMessages;
     }
+    /**
+     * Gets the users email.
+     *
+     * @return the email
+     */
     public String getEmail(){
         return this.email;
     }
 
+    /**
+     * Gets the users forename.
+     *
+     * @return the forename
+     */
     public String getForename(){
         return this.forename;
     }
 
+    /**
+     * Gets the users surname.
+     *
+     * @return the surname
+     */
     public String getSurname(){
         return this.surname;
     }
 
+    /**
+     * Gets the users postcode.
+     *
+     * @return the postcode
+     */
     public String getPostcode(){
         return this.postcode;
     }
 
+    /**
+     * Gets the users house number.
+     *
+     * @return the house number
+     */
     public int getHouseNumber(){
         return Integer.parseInt(this.houseNumber);
     }
@@ -272,10 +346,20 @@ public class ValidateUserInputs {
         return this.password;
     }
 
+    /**
+     * Gets the users password.
+     *
+     * @return the password
+     */
     public String getCity(){
         return this.cityName;
     }
 
+    /**
+     * Gets the users road name.
+     *
+     * @return the road name
+     */
     public String getRoadName(){
         return this.roadName;
     }

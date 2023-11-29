@@ -3,6 +3,15 @@ package com.sheffield.UI;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * A Class that extends JEditorPane to create the pane to contain the welcome page text paragraphs.
+ *
+ * @author Daniel Vousden
+ */
+
+/**
+ * Constructor - sets the text and layout for the CustomJEditorPanes.
+ */
 public class CustomJEditorPane extends JEditorPane {
     public CustomJEditorPane(String text, int fontSize){
         setContentType("text/html");
@@ -11,14 +20,6 @@ public class CustomJEditorPane extends JEditorPane {
         setMaximumSize(new Dimension(1000, 120));
         setFont(new Font("Arial", Font.PLAIN, fontSize));
         setAlignmentX(JLabel.CENTER_ALIGNMENT);
-    }
-
-    public JPanel getTextAreaInPanel(){
-        JPanel panel = new JPanel();
-        panel.add(this);
-        panel.setLayout(new FlowLayout());
-        panel.setBackground(Color.green);
-        return panel;
     }
 
 }

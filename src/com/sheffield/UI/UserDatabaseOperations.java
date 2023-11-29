@@ -5,8 +5,19 @@ import com.sheffield.User;
 
 import java.sql.*;
 
+/**
+ * A Class designed to handle user db operations. This class has methods to add new users and get user info.
+ *
+ * @author Daniel Vousden
+ */
 public class UserDatabaseOperations {
 
+    /**
+     * Adds users details to the user db table and address table.
+     *
+     * @param newUser the object container all the valid user info.
+     * @throws SQLException exception thrown if the address already exists in the address table.
+     */
     public static void addNewUser(ValidateUserInputs newUser) throws SQLException{
             DatabaseConnectionHandler handler = new DatabaseConnectionHandler();
             handler.openConnection();
@@ -40,6 +51,14 @@ public class UserDatabaseOperations {
             handler.closeConnection();
     }
 
+    /**
+     * Checks if the users login info is valid and the user can proceed further into the program/
+     *
+     * @param emailEntered the email entered into the login email field.
+     * @param passwordEntered the password entered into the login password field.
+     * @return a boolean representing whether the login info was correct.
+     * @throws SQLException thrown if db cannot be connected to.
+     */
     public static boolean checkLoginInfoIsValid(String emailEntered, char[] passwordEntered) throws SQLException{
           DatabaseConnectionHandler handler = new DatabaseConnectionHandler();
           handler.openConnection();
@@ -71,6 +90,13 @@ public class UserDatabaseOperations {
 
     }
 
+    /**
+     * Checks if a user is already signed up with the inputted email.
+     *
+     * @param emailEntered the email entered into the sign-up email form.
+     * @return a boolean representing whether the email is in use already.
+     * @throws SQLException thrown if db cannot be connected to.
+     */
     public static boolean checkIfEmailIsInUse(String emailEntered) throws SQLException{
         DatabaseConnectionHandler handler = new DatabaseConnectionHandler();
         handler.openConnection();
@@ -90,6 +116,12 @@ public class UserDatabaseOperations {
 
     }
 
+    /**
+     * Gets all the emails and passwords form the db.
+     *
+     * @param con the Connection object for connecting to the db.
+     * @return the ResultSet of all the emails and their corresponding passwords.
+     */
     public static ResultSet getLoginInfoFromDB(Connection con){
         try {
 
