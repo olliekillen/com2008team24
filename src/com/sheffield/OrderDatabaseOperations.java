@@ -76,19 +76,21 @@ public class OrderDatabaseOperations {
 
     public static User GetUser (Integer userId, Connection con) throws SQLException {
         User user = null;
-        Statement stmt = null;
         try {
-            stmt = con.createStatement();
+            String query = "SELECT * FROM Users WHERE userID = ?";
+            PreparedStatement pstmt = con.prepareStatement(query);
+            pstmt.setInt(1, userId);
+
             ResultSet res = 
-                stmt.executeQuery("SELECT * FROM Users WHERE userID = userId");
+                pstmt.executeQuery();
             while (res.next()) {
                 Integer id = res.getInt(1);
                 String email = res.getString(2);
-                String pass = res.getString(3);
-                String forename = res.getString(4);
-                String surname = res.getString(5);
-                String postcode = res.getString(6);
-                Integer houseNum = res.getInt(7);
+                String pass = res.getString(7);
+                String forename = res.getString(3);
+                String surname = res.getString(4);
+                String postcode = res.getString(5);
+                Integer houseNum = res.getInt(6);
 
                 user = new User(id, email, pass, forename, surname, postcode, houseNum);
             }
@@ -97,44 +99,43 @@ public class OrderDatabaseOperations {
         catch (SQLException ex) {
             ex.printStackTrace();
         }
-        finally {
-            if (stmt != null) 
-            stmt.close();
-        }
         return user;
     }
 
     public static void FulfilOrder (Order order, Connection con) throws SQLException {
-            Statement stmt = null;
             try {
-                stmt = con.createStatement();
-                int count = stmt.executeUpdate(
-                "UPDATE com.sheffield.orders SET statusField = \"fulfilled\""
-                + " WHERE orderNumber = order.orderNumber");
+                String updateSQL = "UPDATE Orders SET statusField = \"fulfilled\" WHERE orderNumber=?";
+                PreparedStatement preparedStatement = con.prepareStatement(updateSQL);
+                preparedStatement.setInt(1, order.orderNumber);
+                int count = preparedStatement.executeUpdate();
             }
             catch (SQLException ex) {
                 ex.printStackTrace();
             }
-            finally {
-                if (stmt != null) 
-                stmt.close();
+    }
+
+    public static void ConfirmOrder (Order order, Connection con) throws SQLException {
+            
+            try {
+                String updateSQL = "UPDATE Orders SET statusField = \"confirmed\" WHERE orderNumber=?";
+                PreparedStatement preparedStatement = con.prepareStatement(updateSQL);
+                preparedStatement.setInt(1, order.orderNumber);
+                int count = preparedStatement.executeUpdate();
+            }
+            catch (SQLException ex) {
+                ex.printStackTrace();
             }
     }
 
     public static void DeleteOrder (Order order, Connection con) throws SQLException {
-            Statement stmt = null;
             try {
-                stmt = con.createStatement();
-                int count = stmt.executeUpdate(
-                "DELETE FROM com.sheffield.orders"
-                + " WHERE orderNumber = order.orderNumber");
+                String updateSQL = "DELETE FROM Orders WHERE orderNumber=?";
+                PreparedStatement preparedStatement = con.prepareStatement(updateSQL);
+                preparedStatement.setInt(1, order.orderNumber);
+                int count = preparedStatement.executeUpdate();
             }
             catch (SQLException ex) {
                 ex.printStackTrace();
-            }
-            finally {
-                if (stmt != null) 
-                stmt.close();
             }
     }
 
