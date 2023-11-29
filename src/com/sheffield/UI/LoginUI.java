@@ -32,6 +32,15 @@ public class LoginUI extends JPanel {
 
 	}
 
+	/**
+	 * Constructor - Creates the LoginUI panel adding the navBar and the LoginForm. This LoginForm displays the error
+	 * text is an incorrect input is used.
+	 *
+	 * @param myFrame passed to the NavBar to allow MyFrame method calls.
+	 * @param errorMessage the input error messages to be displayed to the user.
+	 * @param emailText the text in the email field
+	 * @param passwordText the text in the password field.
+	 */
 	public LoginUI(MyFrame myFrame, String errorMessage, String emailText, String passwordText){
 		setLayout(new BorderLayout());
 		add(new NavBar(myFrame), BorderLayout.NORTH);

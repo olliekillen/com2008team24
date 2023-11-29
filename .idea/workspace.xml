@@ -30,8 +30,16 @@
   <component name="ChangeListManager">
     <list default="true" id="d8c3e42c-1391-466e-bdbd-038550dee454" name="Changes" comment="Commit before pull.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sheffield/UI/CustomJTextArea.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/UI/CustomJEditorPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sheffield/UI/CustomJEditorPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/UI/CustomJEditorPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sheffield/UI/CustomLabel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/UI/CustomLabel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/sheffield/UI/HomePagePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/UI/HomePagePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sheffield/UI/LoginForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/UI/LoginForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sheffield/UI/LoginUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/UI/LoginUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sheffield/UI/PasswordHasher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/UI/PasswordHasher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sheffield/UI/SignUpForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/UI/SignUpForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sheffield/UI/SignUpUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/UI/SignUpUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sheffield/UI/UserDatabaseOperations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/UI/UserDatabaseOperations.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sheffield/UI/ValidateUserInputs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/UI/ValidateUserInputs.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,7 +70,8 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "git-widget-placeholder": "main",
-    "node.js.selected.package.tslint": "(autodetect)"
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -303,105 +312,6 @@
     <MESSAGE value="More changes to account page to make it work on all screens." />
     <MESSAGE value="Commit before pull." />
     <option name="LAST_COMMIT_MESSAGE" value="Commit before pull." />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="471" y="47" key="#com.intellij.openapi.roots.ui.configuration.libraryEditor.LibraryEditorDialog" timestamp="1700670802312">
-      <screen x="0" y="0" width="1280" height="672" />
-    </state>
-    <state x="471" y="47" key="#com.intellij.openapi.roots.ui.configuration.libraryEditor.LibraryEditorDialog/0.0.1280.672@0.0.1280.672" timestamp="1700670802312" />
-    <state x="424" y="227" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1700674979020">
-      <screen x="0" y="0" width="1280" height="672" />
-    </state>
-    <state x="424" y="227" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1280.672@0.0.1280.672" timestamp="1700674979020" />
-    <state x="21" y="0" key="CommitChangelistDialog2" timestamp="1701261879139">
-      <screen x="0" y="0" width="1280" height="672" />
-    </state>
-    <state x="21" y="0" key="CommitChangelistDialog2/0.0.1280.672@0.0.1280.672" timestamp="1701261879139" />
-    <state x="438" y="206" key="DetectedRootsChooserDialog" timestamp="1700671067365">
-      <screen x="0" y="0" width="1280" height="672" />
-    </state>
-    <state x="438" y="206" key="DetectedRootsChooserDialog/0.0.1280.672@0.0.1280.672" timestamp="1700671067365" />
-    <state x="93" y="93" width="1095" height="487" key="DiffContextDialog" timestamp="1700675333673">
-      <screen x="0" y="0" width="1280" height="672" />
-    </state>
-    <state x="93" y="93" width="1095" height="487" key="DiffContextDialog/0.0.1280.672@0.0.1280.672" timestamp="1700675333673" />
-    <state x="348" y="77" key="FileChooserDialogImpl" timestamp="1700671065646">
-      <screen x="0" y="0" width="1280" height="672" />
-    </state>
-    <state x="348" y="77" key="FileChooserDialogImpl/0.0.1280.672@0.0.1280.672" timestamp="1700671065646" />
-    <state width="1237" height="134" key="GridCell.Tab.0.bottom" timestamp="1701262174080">
-      <screen x="0" y="0" width="1280" height="672" />
-    </state>
-    <state width="1237" height="134" key="GridCell.Tab.0.bottom/0.0.1280.672@0.0.1280.672" timestamp="1701262174080" />
-    <state width="1237" height="134" key="GridCell.Tab.0.center" timestamp="1701262174080">
-      <screen x="0" y="0" width="1280" height="672" />
-    </state>
-    <state width="1237" height="134" key="GridCell.Tab.0.center/0.0.1280.672@0.0.1280.672" timestamp="1701262174080" />
-    <state width="1237" height="134" key="GridCell.Tab.0.left" timestamp="1701262174080">
-      <screen x="0" y="0" width="1280" height="672" />
-    </state>
-    <state width="1237" height="134" key="GridCell.Tab.0.left/0.0.1280.672@0.0.1280.672" timestamp="1701262174080" />
-    <state width="1237" height="134" key="GridCell.Tab.0.right" timestamp="1701262174080">
-      <screen x="0" y="0" width="1280" height="672" />
-    </state>
-    <state width="1237" height="134" key="GridCell.Tab.0.right/0.0.1280.672@0.0.1280.672" timestamp="1701262174080" />
-    <state width="1237" height="204" key="GridCell.Tab.1.bottom" timestamp="1701025651715">
-      <screen x="0" y="0" width="1280" height="672" />
-    </state>
-    <state width="1237" height="204" key="GridCell.Tab.1.bottom/0.0.1280.672@0.0.1280.672" timestamp="1701025651715" />
-    <state width="1237" height="204" key="GridCell.Tab.1.center" timestamp="1701025651715">
-      <screen x="0" y="0" width="1280" height="672" />
-    </state>
-    <state width="1237" height="204" key="GridCell.Tab.1.center/0.0.1280.672@0.0.1280.672" timestamp="1701025651715" />
-    <state width="1237" height="204" key="GridCell.Tab.1.left" timestamp="1701025651715">
-      <screen x="0" y="0" width="1280" height="672" />
-    </state>
-    <state width="1237" height="204" key="GridCell.Tab.1.left/0.0.1280.672@0.0.1280.672" timestamp="1701025651715" />
-    <state width="1237" height="204" key="GridCell.Tab.1.right" timestamp="1701025651715">
-      <screen x="0" y="0" width="1280" height="672" />
-    </state>
-    <state width="1237" height="204" key="GridCell.Tab.1.right/0.0.1280.672@0.0.1280.672" timestamp="1701025651715" />
-    <state x="30" y="38" width="1250" height="535" key="MergeDialog" timestamp="1701258091744">
-      <screen x="0" y="0" width="1280" height="672" />
-    </state>
-    <state x="30" y="38" width="1250" height="535" key="MergeDialog/0.0.1280.672@0.0.1280.672" timestamp="1701258091744" />
-    <state x="280" y="98" key="MultipleFileMergeDialog" timestamp="1701023652286">
-      <screen x="0" y="0" width="1280" height="672" />
-    </state>
-    <state x="280" y="98" key="MultipleFileMergeDialog/0.0.1280.672@0.0.1280.672" timestamp="1701023652286" />
-    <state x="121" y="0" key="SettingsEditor" timestamp="1701255171378">
-      <screen x="0" y="0" width="1280" height="672" />
-    </state>
-    <state x="121" y="0" key="SettingsEditor/0.0.1280.672@0.0.1280.672" timestamp="1701255171378" />
-    <state x="233" y="69" key="Vcs.Push.Dialog.v2" timestamp="1701261894286">
-      <screen x="0" y="0" width="1280" height="672" />
-    </state>
-    <state x="233" y="69" key="Vcs.Push.Dialog.v2/0.0.1280.672@0.0.1280.672" timestamp="1701261894286" />
-    <state x="179" y="65" width="1095" height="487" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1700675333673">
-      <screen x="0" y="0" width="1280" height="672" />
-    </state>
-    <state x="179" y="65" width="1095" height="487" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.0.1280.672@0.0.1280.672" timestamp="1700675333673" />
-    <state x="93" y="93" width="1095" height="519" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1701260849652">
-      <screen x="0" y="0" width="1280" height="672" />
-    </state>
-    <state x="93" y="93" width="1095" height="519" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1280.672@0.0.1280.672" timestamp="1701260849652" />
-    <state x="458" y="250" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1701261885171">
-      <screen x="0" y="0" width="1280" height="672" />
-    </state>
-    <state x="458" y="250" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.672@0.0.1280.672" timestamp="1701261885171" />
-    <state x="208" y="43" width="864" height="629" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1700679084405">
-      <screen x="0" y="0" width="1280" height="672" />
-    </state>
-    <state x="208" y="43" width="864" height="629" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1280.672@0.0.1280.672" timestamp="1700679084405" />
-    <state x="259" y="185" width="910" height="476" key="dock-window-2" timestamp="1700656829530">
-      <screen x="0" y="0" width="1280" height="672" />
-    </state>
-    <state x="259" y="185" width="910" height="476" key="dock-window-2/0.0.1280.672@0.0.1280.672" timestamp="1700656829530" />
-    <state x="303" y="0" width="672" height="678" key="search.everywhere.popup" timestamp="1701008604224">
-      <screen x="0" y="0" width="1280" height="672" />
-    </state>
-    <state x="303" y="0" width="672" height="678" key="search.everywhere.popup/0.0.1280.672@0.0.1280.672" timestamp="1701008604224" />
-    &gt;&gt;&gt;&gt;&gt;&gt;&gt; 27403453972a4664b91ffb710e479b17e77feb20
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

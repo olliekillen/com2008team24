@@ -36,15 +36,39 @@ public class SignUpUI extends JPanel {
         add(new SignUpForm(myFrame), BorderLayout.CENTER);
     }
 
+    /**
+     * Constructor - Creates the SignUpUI panel adding the NavBar and SignUpForm with any informational outputs for the
+     * users benefit. e.g. errors or success notes.
+     *
+     * @param myFrame the main frame.
+     * @param forenameErrors error list for forename.
+     * @param surnameErrors error list for surname.
+     * @param emailErrors error list for email.
+     * @param passwordErrors error list for password.
+     * @param postcodeErrors error list for postcode.
+     * @param houseNumberErrors error list for house number.
+     * @param roadNameErrors error list for road name.
+     * @param cityNameErrors error list for city name.
+     * @param forenameText the forename field text.
+     * @param surnameText the surname field text.
+     * @param emailText the email field text.
+     * @param passwordText the password field text.
+     * @param confirmPasswordText the confirm password field text.
+     * @param postcodeText the postcode field text.
+     * @param houseNumberText the house number field text.
+     * @param roadNameText the road name field text.
+     * @param cityNameText the city name field text.
+     * @param message the message displayed for successful registration or db issues.
+     */
     public SignUpUI(MyFrame myFrame, ArrayList<String> forenameErrors,ArrayList<String> surnameErrors,
-                    ArrayList<String> emailErrors,ArrayList<String> password,ArrayList<String> postcodeErrors,
+                    ArrayList<String> emailErrors,ArrayList<String> passwordErrors,ArrayList<String> postcodeErrors,
                     ArrayList<String> houseNumberErrors,ArrayList<String> roadNameErrors,
                     ArrayList<String> cityNameErrors, String forenameText, String surnameText, String emailText,
                     String passwordText, String confirmPasswordText,String postcodeText,String houseNumberText,
                     String roadNameText, String cityNameText, String message) {
         setLayout(new BorderLayout());
         add(new NavBar(myFrame), BorderLayout.NORTH);
-        add(new SignUpForm(myFrame, forenameErrors, surnameErrors, emailErrors, password, postcodeErrors,
+        add(new SignUpForm(myFrame, forenameErrors, surnameErrors, emailErrors, passwordErrors, postcodeErrors,
                 houseNumberErrors, roadNameErrors, cityNameErrors, forenameText, surnameText, emailText, passwordText,
                 confirmPasswordText, postcodeText, houseNumberText, roadNameText, cityNameText, message), BorderLayout.CENTER);
     }
