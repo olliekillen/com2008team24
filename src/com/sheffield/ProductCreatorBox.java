@@ -126,6 +126,14 @@ public class ProductCreatorBox extends JPanel {
         String retailPriceData = retailPrice.getText();
         String modellingScaleData = modellingScale.getText();
         String stockCountData = stockCount.getText();
+
+        productCode.setText("");
+        brandName.setText("");
+        productName.setText("");
+        retailPrice.setText("");
+        modellingScale.setText("");
+        stockCount.setText("");
+        
         PreparedStatement stmt = null;
         String update = "INSERT INTO Product VALUES (?, ?, ?, ?, ?, ?)";
 
