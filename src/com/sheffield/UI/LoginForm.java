@@ -76,6 +76,8 @@ public class LoginForm extends JPanel {
                         if (emailField.getText().equals(results.getString("emailAddress"))) {
                             emailFound = true;
                             myFrame.showPanel(new LoginUI(myFrame, "Incorrect Password", emailField.getText(), new String(passwordField.getPassword())));
+                            incorrectPasswordCount++;
+
                         }
                     }
 

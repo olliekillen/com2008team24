@@ -127,6 +127,9 @@ public class SignUpForm extends JPanel {
 
     }
 
+    /**
+     * Creates the layout of the sign-up form using a grid bag layout. This layout also displays any error messages.
+     */
     public SignUpForm(MyFrame myFrame, ArrayList<String> forenameErrors,ArrayList<String> surnameErrors,
                       ArrayList<String> emailErrors,ArrayList<String> passwordErrors,ArrayList<String> postcodeErrors,
                       ArrayList<String> houseNumberErrors,ArrayList<String> roadNameErrors,
@@ -274,6 +277,12 @@ public class SignUpForm extends JPanel {
 
     }
 
+    /**
+     * Creates the JPanel to hold the error messages that will be placed in the GridBagLayout.
+     *
+     * @param errorMessageList the list of error messages related to the input field.
+     * @return the panel holding the error messages as JLabels.
+     */
     private JPanel createErrorMessagePanel(ArrayList<String> errorMessageList){
         JPanel errorMessagesPanel = new JPanel();
         errorMessagesPanel.setLayout(new BoxLayout(errorMessagesPanel, BoxLayout.Y_AXIS));
@@ -309,6 +318,7 @@ public class SignUpForm extends JPanel {
                     postcodeField.getText(), houseNumberField.getText(), roadNameField.getText(),
                     cityNameField.getText());
 
+            // Outputs a form saying registration is valid.
             if (userSignUpInfo.isValid()){
                 try {
                     myFrame.showPanel(new SignUpUI(myFrame, userSignUpInfo.validateForename(),
@@ -320,6 +330,7 @@ public class SignUpForm extends JPanel {
                             new String(confirmPassword.getPassword()), postcodeField.getText(), houseNumberField.getText(),
                             roadNameField.getText(), cityNameField.getText(), "Successful Registration"));
                     UserDatabaseOperations.addNewUser(userSignUpInfo);
+                    // Outputs a form saying the db couldn't be connected to.
                 }catch(SQLException exception){
                         myFrame.showPanel(new SignUpUI(myFrame, userSignUpInfo.validateForename(),
                                 userSignUpInfo.validateSurname(), userSignUpInfo.validateEmail(),
@@ -331,6 +342,7 @@ public class SignUpForm extends JPanel {
                                 roadNameField.getText(), cityNameField.getText(), "Can't Connect To Database"));
                 }
             }
+            // Outputs a form with input error messages but the db can be connected to.
             else {
                 myFrame.showPanel(new SignUpUI(myFrame, userSignUpInfo.validateForename(),
                         userSignUpInfo.validateSurname(),userSignUpInfo.validateEmail(),

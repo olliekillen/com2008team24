@@ -41,6 +41,13 @@ public class CustomLabel extends JLabel {
         setAlignmentX(JLabel.CENTER_ALIGNMENT);
     }
 
+    /**
+     * Constructor - Used to create custom labels for the UI that doesn't require padding and can be coloured.
+     *
+     * @param text the text to be displayed in the label.
+     * @param fontSize the font size of the text in the label.
+     * @param color the colour of the text in the label.
+     */
     public CustomLabel(String text, int fontSize, Color color){
         super(text);
         setFont(new Font("Arial", Font.PLAIN, fontSize));

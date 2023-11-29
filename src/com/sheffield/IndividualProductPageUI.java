@@ -334,6 +334,19 @@ public class IndividualProductPageUI extends JFrame {
             e.printStackTrace();
         }
     }
+    public void createProductButton_Click() {
+        try {
+            ProductCreatorPage productCreatorPage = new ProductCreatorPage();
+            DatabaseConnectionHandler dch = new DatabaseConnectionHandler();
+            dch.openConnection();
+            productCreatorPage.initFrame(getIsStaffPage(), getCurrentUserId());
+            productCreatorPage.initPanel(dch.getConnection());
+            this.dispose();
+            dch.closeConnection();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
     public void singleProductStaffPageButton_Click() {
         IndividualProductPageUI singleProductPage = new IndividualProductPageUI();
         String productCodeText = singleProductCode.getText().substring(14);

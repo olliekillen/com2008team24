@@ -4,9 +4,13 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.util.Arrays;
-
+/**
+ * A Class designed to hash passwords using a salt and pepper. This class also has methods to extract already hashed
+ * passwords and compare them.
+ *
+ * @author Daniel Vousden
+ */
 public class PasswordHasher {
-// 32 byte salt which is 64 hex characters
     private static final int SALT_LENGTH = 16;
     private static final byte[] PEPPER = "ab564GHIO@][=./m".getBytes();
 
@@ -26,6 +30,13 @@ public class PasswordHasher {
         return concatenateSaltToHexPassword(salt, hexPassword);
     }
 
+    /**
+     * Constructor - Used when hashing a password for comparison with an already hashed password.
+     *
+     * @param password the password to be hashed.
+     * @param salt the form the hashed password in db.
+     * @return the hex version of the password.
+     */
     public static String hashPassword(char[] password, String salt) {
 
         byte[] saltAndPepperPassword = concatenateSaltAndPepperToPassword(password, hexStringToByteArray(salt));

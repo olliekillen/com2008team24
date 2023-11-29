@@ -354,6 +354,19 @@ public class EditProductUI extends JFrame {
     public void singleProductViewOrdersButton_Click() {
         System.out.println("Placeholder");
     }
+    public void createProductButton_Click() {
+        try {
+            ProductCreatorPage productCreatorPage = new ProductCreatorPage();
+            DatabaseConnectionHandler dch = new DatabaseConnectionHandler();
+            dch.openConnection();
+            productCreatorPage.initFrame(getIsStaffPage(), getCurrentUserId());
+            productCreatorPage.initPanel(dch.getConnection());
+            this.dispose();
+            dch.closeConnection();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
     public void singleProductLeaveStaffPageButton_Click() {
         // takes the user back to the individual product page as they should not be able to
         // access this page as a customer
