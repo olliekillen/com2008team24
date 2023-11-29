@@ -122,12 +122,11 @@ public class IndividualProductPageUI extends JFrame {
         singleProductBasketButton.setBackground( new Color(-2743738) );
         singleProductBasketButton.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));
         singleProductBasketButton.setHorizontalAlignment(SwingConstants.LEFT);
+        singleProductBasketButton.addActionListener(e->singleProductViewOrdersButton_Click());
         if (isStaffPage) {
             singleProductBasketButton.setText("   View Orders");
-            singleProductBasketButton.addActionListener(e->singleProductViewOrdersButton_Click());
         } else {
             singleProductBasketButton.setText("   Basket");
-            singleProductBasketButton.addActionListener(e->singleProductBasketButton_Click());
         }
         singleProductPagePanel.add(singleProductBasketButton);
 
@@ -323,8 +322,6 @@ public class IndividualProductPageUI extends JFrame {
         accountPage.initFrame(getIsStaffPage(), 5);
         this.dispose();
     }
-    public void singleProductBasketButton_Click()
-    { System.out.println("singleProductBasketButton_Click() has been pressed "); }
     public void singleProductViewOrdersButton_Click() {
         try {
             DatabaseConnectionHandler dch = new DatabaseConnectionHandler();

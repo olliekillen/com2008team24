@@ -163,11 +163,11 @@ public class ProductPageUI extends JFrame {
         productBasketButton.setSize((int) (Math.round(xSize * 0.16)),(int) (Math.round(ySize * 0.12)));
         productBasketButton.setForeground( new Color(-1) );
         productBasketButton.setFont(new Font("Merriweather", Font.BOLD, 17));
-        productBasketButton.addActionListener(e->productViewOrdersButton_Click());
         productBasketButton.setBackground( new Color(-2743738) );
         productBasketButton.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));
         productBasketButton.setText("   Basket");
         productBasketButton.setHorizontalAlignment(SwingConstants.LEFT);
+        productBasketButton.addActionListener(e->productViewOrdersButton_Click());
         if (isStaffPage) {
             productBasketButton.setText("   View Orders");
         }
@@ -422,7 +422,6 @@ public class ProductPageUI extends JFrame {
         accountPage.initFrame(getIsStaffPage(),5);
         this.dispose();
     }
-    public void productBasketButton_Click() { System.out.println("productBasketButton_Click() has been pressed "); }
     public void productViewOrdersButton_Click() {
         try {
             DatabaseConnectionHandler dch = new DatabaseConnectionHandler();

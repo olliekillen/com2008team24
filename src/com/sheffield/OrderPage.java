@@ -75,11 +75,15 @@ public class OrderPage extends JFrame {
 		 */
 
 		this.orders = OrderDatabaseOperations.GetOrders(con);
+		ArrayList<Order> confirmedOrders = new ArrayList<>();
 		for (Order order:orders) {
-			if (order.orderStatus != "confirmed") {
-				this.orders.remove(order);
+			if (order.orderStatus == "confirmed") {
+				confirmedOrders.add(order);
 			}
 		}
+
+		this.orders = confirmedOrders;
+		
 		this.setCurrentUserId(userId);
 		this.setIsManager(false);
 		try {

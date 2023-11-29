@@ -216,7 +216,6 @@ public class AccountPage extends JFrame {
 		productPage.initFrame(getIsStaffPage(), 5);
 		this.dispose();
 	}
-	public void basketButton_Click() { System.out.println("Placeholder"); }
 	public void viewOrdersButton_Click() {
 		try {
 			DatabaseConnectionHandler dch = new DatabaseConnectionHandler();

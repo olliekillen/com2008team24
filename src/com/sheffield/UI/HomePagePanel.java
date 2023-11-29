@@ -18,7 +18,7 @@ public class HomePagePanel extends JPanel {
      */
     public HomePagePanel(MyFrame myFrame){
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        setBackground(Color.white);
+        setBackground(new Color(-8741250));
         add(new CustomLabel("Trains of Sheffield", 40));
         add(new CustomLabel("Welcome", 25));
         String paragraph = "Welcome to Trains of Sheffield, where the enchanting world of model railways comes to life!" +

@@ -24,6 +24,8 @@ public class CustomButton extends JButton {
     public CustomButton(String text, int top, int left, int bottom, int right){
         super(text);
         setBorder(new EmptyBorder(top,left,bottom,right));
+        setBackground(new Color(-2743738));
+        setForeground(Color.white);
 
     }
 
@@ -35,6 +37,7 @@ public class CustomButton extends JButton {
      */
     public JPanel getButtonInPanel(JPanel panel){
         panel.add(this);
+        panel.setBackground(new Color(-8741250));
         panel.setMaximumSize(new Dimension(500, 200));
         return panel;
     }

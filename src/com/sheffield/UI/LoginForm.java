@@ -27,7 +27,7 @@ public class LoginForm extends JPanel {
      */
     public LoginForm(MyFrame myFrame, String errorMessage, String emailText, String passwordText) {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-
+        setBackground(new Color(-8741250));
         add(Box.createVerticalGlue());
 
         add(new CustomLabel("Login", 30, 0, 0, 30, 0));
