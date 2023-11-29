@@ -78,13 +78,21 @@ public class AccountDetailBox extends JPanel {
         bankNumberText.setLocation((int) (Math.round(xSize * 0.25)), (int) (Math.round(ySize * 0.345)));
         bankNumberText.setSize((int) (Math.round(xSize * 0.5)), (int) (Math.round(ySize * 0.04)));
         bankNumberText.setFont(new Font("Merriweather", Font.BOLD, 28));
-        bankNumberText.setText(card.getCardNumberHidden());
+        if (card != null) {
+            bankNumberText.setText(card.getCardNumberHidden());
+        }
+        else {
+            bankNumberText.setText("No Card");
+        }
         add(bankNumberText);
 
         bankExpireText.setLocation((int) (Math.round(xSize * 0.4)), (int) (Math.round(ySize * 0.345)));
         bankExpireText.setSize((int) (Math.round(xSize * 0.5)), (int) (Math.round(ySize * 0.04)));
         bankExpireText.setFont(new Font("Merriweather", Font.BOLD, 28));
-        bankExpireText.setText("expire: " + card.getExpiryDate());
+
+        if (card != null) {
+            bankExpireText.setText("expire: " + card.getExpiryDate());
+        }
         add(bankExpireText);
 
         nameEditButton.setLocation((int) (Math.round(xSize * 0.6)), -10);

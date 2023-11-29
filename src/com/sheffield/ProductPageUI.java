@@ -419,7 +419,7 @@ public class ProductPageUI extends JFrame {
     {
         //takes the user to the account page
         AccountPage accountPage = new AccountPage();
-        accountPage.initFrame(getIsStaffPage(),5);
+        accountPage.initFrame(getIsStaffPage(),18);
         this.dispose();
     }
     public void productViewOrdersButton_Click() {

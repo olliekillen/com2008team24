@@ -68,11 +68,15 @@ public class OrderTable extends JPanel {
         // Create a couple of columns 
         model.addColumn("Line Number"); 
         model.addColumn("Product Code");
+        model.addColumn("Quantity");
+        model.addColumn("Line Cost");
 
         // Append a row 
         for (OrderLine orderLine : orderLines) {
             model.addRow(new Object[]{orderLine.orderLineNumber, 
-                                      orderLine.productCode});
+                                      orderLine.productCode,
+                                      orderLine.quantity,
+                                      orderLine.lineCost});
         }
 
         JScrollPane scrollPane = new JScrollPane(table);

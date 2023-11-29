@@ -18,7 +18,7 @@ public class BankDetails {
     public String getBankCardNumber(){return bankCardNumber;}
     public String getCardNumberHidden(){
         String s = "";
-
+        
         s = "*".repeat(bankCardNumber.length()-2) + bankCardNumber.substring(bankCardNumber.length()-2);
         return s;
     }
