@@ -20,6 +20,7 @@ public class HomePagePanel extends JPanel {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         setBackground(Color.white);
         add(new CustomLabel("Trains of Sheffield", 40));
+        add(new CustomLabel("Welcome", 25));
         String paragraph = "Welcome to Trains of Sheffield, where the enchanting world of model railways comes to life!" +
                 " Dive into a rich collection of locomotives, rolling stock, and intricate track setups that cater to " +
                 "both seasoned collectors and newcomers alike. Our in-store computer system is your ticket to an " +
