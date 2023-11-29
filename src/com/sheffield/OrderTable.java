@@ -24,14 +24,16 @@ public class OrderTable extends JPanel {
         model.addColumn("User");  
 
         // Append a row 
-        for (Order order : orders) {
-            model.addRow(new Object[]{order.orderNumber, 
+        if (orders != null) {
+            for (Order order : orders) {
+                model.addRow(new Object[]{order.orderNumber, 
                                       order.orderDate, 
                                       order.orderStatus, 
                                       order.orderCost, 
                                       order.orderBlocked, 
                                       order.dateBlocked, 
                                       order.userId});
+            }
         }
 
         table.setSize(750,750);

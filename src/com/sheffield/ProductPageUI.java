@@ -410,7 +410,18 @@ public class ProductPageUI extends JFrame {
         this.dispose();
     }
     public void productBasketButton_Click() { System.out.println("productBasketButton_Click() has been pressed "); }
-    public void productViewOrdersButton_Click() { System.out.println("Placeholder"); }
+    public void productViewOrdersButton_Click() {
+        try {
+            DatabaseConnectionHandler dch = new DatabaseConnectionHandler();
+            dch.openConnection();
+            OrderPage orderPage = new OrderPage();
+            orderPage.initFrame(isStaffPage, currentUserId, dch);
+            this.dispose();
+            dch.closeConnection();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
     public void productStaffPageButton_Click() {
         ProductPageUI productPage = new ProductPageUI();
         productPage.initFrame(true, 10);
@@ -498,7 +509,7 @@ public class ProductPageUI extends JFrame {
         } else { setButtonImg(rightArrow, "src/com/sheffield/Images/rightArrowInactive.png"); }
         productAreaBorder.removeAll();
         ProductBoxData productBoxData = new ProductBoxData();
-        productBoxData.initProductBoxData(this, productTypeFilterCombo, n, "Other", productSearch.getText());
+        productBoxData.initProductBoxData(this, productTypeFilterCombo, n, "Search", productSearch.getText());
         generateProductAreaComponents();
         productPagePanel.validate();
         productPagePanel.repaint();

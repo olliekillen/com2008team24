@@ -1,13 +1,13 @@
 package com.sheffield;
 
 public class BankDetails {
-    private Integer bankCardNumber;
+    private String bankCardNumber;
     private String expiryDate;
     private Integer securityCode;
     private String cardHolderName;
     private Integer userId;
 
-    public BankDetails(int BankCardNumber, String ExpiryDate, int SecurityCode, String CardHolderName, Integer id){
+    public BankDetails(String BankCardNumber, String ExpiryDate, int SecurityCode, String CardHolderName, Integer id){
     this.bankCardNumber = BankCardNumber;
     this.expiryDate = ExpiryDate;
     this.securityCode = SecurityCode;
@@ -15,7 +15,13 @@ public class BankDetails {
     this.userId = id;
     }
 
-    public Integer getBankCardNumber(){return bankCardNumber;}
+    public String getBankCardNumber(){return bankCardNumber;}
+    public String getCardNumberHidden(){
+        String s = "";
+
+        s = "*".repeat(bankCardNumber.length()-2) + bankCardNumber.substring(bankCardNumber.length()-2);
+        return s;
+    }
     public String getExpiryDate(){return expiryDate;}
     public Integer getSecurityCode(){return securityCode;}
     public String getCardHolderName(){return cardHolderName;}

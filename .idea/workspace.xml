@@ -3,13 +3,45 @@
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </select>
+  </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="d8c3e42c-1391-466e-bdbd-038550dee454" name="Changes" comment="Designed Home Page">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/sheffield/UI/CustomJTextArea.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/UI/CustomJTextArea.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/sheffield/UI/CustomLabel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/UI/CustomLabel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/sheffield/UI/HomePagePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/UI/HomePagePanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/sheffield/UI/HomePageUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/UI/HomePageUI.java" afterDir="false" />
+=======
+    <list default="true" id="d8c3e42c-1391-466e-bdbd-038550dee454" name="Changes" comment="Commit before pull.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sheffield/AccountPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/AccountPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sheffield/IndividualProductPageUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/IndividualProductPageUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sheffield/ProductPageUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/ProductPageUI.java" afterDir="false" />
+>>>>>>> 27403453972a4664b91ffb710e479b17e77feb20
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,14 +57,10 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 5
-}</component>
   <component name="ProjectId" id="2XwtE29gaUggz0A9IKHhsPxseRW" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -41,6 +69,7 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+<<<<<<< HEAD
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
@@ -64,6 +93,20 @@
     </key>
   </component>
   <component name="RunManager" selected="Application.MyFrame">
+=======
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/mysql-connector-j-8.2.0" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.sheffield" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.ProductPageLauncher">
+>>>>>>> 27403453972a4664b91ffb710e479b17e77feb20
     <configuration name="AccountPage" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.sheffield.AccountPage" />
       <module name="Team_24_Security_And_Design" />
@@ -105,9 +148,9 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.MyFrame" />
-        <item itemvalue="Application.AccountPage" />
         <item itemvalue="Application.ProductPageLauncher" />
+        <item itemvalue="Application.AccountPage" />
+        <item itemvalue="Application.MyFrame" />
       </list>
     </recent_temporary>
   </component>
@@ -129,6 +172,7 @@
       <workItem from="1699831076779" duration="3455000" />
       <workItem from="1699878780488" duration="8339000" />
       <workItem from="1700484139830" duration="1489000" />
+<<<<<<< HEAD
       <workItem from="1700485926657" duration="1799000" />
       <workItem from="1700490434514" duration="746000" />
       <workItem from="1700492800892" duration="4244000" />
@@ -145,6 +189,8 @@
       <workItem from="1700841851194" duration="4226000" />
       <workItem from="1701101370333" duration="632000" />
       <workItem from="1701255813746" duration="8003000" />
+=======
+>>>>>>> 27403453972a4664b91ffb710e479b17e77feb20
     </task>
     <task id="LOCAL-00001" summary="Fixed product and account pages, which couldn't display due to changes in the last commit.">
       <created>1700236292159</created>
@@ -160,7 +206,105 @@
       <option name="project" value="LOCAL" />
       <updated>1700479593262</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Fixed problem where when exiting the individual product staff page, all nav buttons disappear.">
+      <created>1700730130310</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1700730130310</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Fixed problem where correct product details don't appear when pressing 'More Information' button in product box.">
+      <created>1700730823011</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1700730823011</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Add to basket button now removed from product page when in staff mode.">
+      <created>1700736222956</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1700736222956</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Staff button now works on all pages, made changes to how other buttons work.">
+      <created>1700751323156</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1700751323156</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Edit product page completed and is accessible from the staff individual product page.">
+      <created>1700848824243</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1700848824243</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Add to basket buttons on product and individual product page now add an order and related order lines to the database.">
+      <created>1700919775175</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1700919775175</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Manager Page completely finished.">
+      <created>1700997737985</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1700997737985</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Arrows now have the correct colours when tabbing through product boxes.">
+      <created>1700998523383</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1700998523383</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Search function on product page now works.">
+      <created>1701005572431</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1701005572431</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Commit before changing product database operations a lot in case something goes wrong.">
+      <created>1701007368725</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1701007368727</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Search and filter functionality is now present in the homepage.">
+      <created>1701023292012</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1701023292013</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Working version of project with getIsStaffPage().">
+      <created>1701103038746</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1701103038746</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Account page changed to adapt to screen size.">
+      <created>1701258074447</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1701258074447</updated>
+    </task>
+    <task id="LOCAL-00016" summary="More changes to account page to make it work on all screens.">
+      <created>1701261879847</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1701261879847</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -176,23 +320,168 @@
         </entry>
       </map>
     </option>
+<<<<<<< HEAD
+=======
+    <option name="oldMeFiltersMigrated" value="true" />
+>>>>>>> 27403453972a4664b91ffb710e479b17e77feb20
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Fixed product and account pages, which couldn't display due to changes in the last commit." />
     <MESSAGE value="Individual product page is accessible from product page - data from the database doesn't appear on this page yet." />
+<<<<<<< HEAD
     <MESSAGE value="merging xml" />
     <MESSAGE value="Designed Home Page" />
     <option name="LAST_COMMIT_MESSAGE" value="Designed Home Page" />
+=======
+    <MESSAGE value="Fixed problem where when exiting the individual product staff page, all nav buttons disappear." />
+    <MESSAGE value="Fixed problem where correct product details don't appear when pressing 'More Information' button in product box." />
+    <MESSAGE value="Add to basket button now removed from product page when in staff mode." />
+    <MESSAGE value="Staff button now works on all pages, made changes to how other buttons work." />
+    <MESSAGE value="Edit product page completed and is accessible from the staff individual product page." />
+    <MESSAGE value="Add to basket buttons on product and individual product page now add an order and related order lines to the database." />
+    <MESSAGE value="Manager Page completely finished." />
+    <MESSAGE value="Arrows now have the correct colours when tabbing through product boxes." />
+    <MESSAGE value="Search function on product page now works." />
+    <MESSAGE value="Commit before changing product database operations a lot in case something goes wrong." />
+    <MESSAGE value="Search and filter functionality is now present in the homepage." />
+    <MESSAGE value="Working version of project with getIsStaffPage()." />
+    <MESSAGE value="Account page changed to adapt to screen size." />
+    <MESSAGE value="More changes to account page to make it work on all screens." />
+    <option name="LAST_COMMIT_MESSAGE" value="More changes to account page to make it work on all screens." />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="471" y="47" key="#com.intellij.openapi.roots.ui.configuration.libraryEditor.LibraryEditorDialog" timestamp="1700670802312">
+      <screen x="0" y="0" width="1280" height="672" />
+    </state>
+    <state x="471" y="47" key="#com.intellij.openapi.roots.ui.configuration.libraryEditor.LibraryEditorDialog/0.0.1280.672@0.0.1280.672" timestamp="1700670802312" />
+    <state x="424" y="227" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1700674979020">
+      <screen x="0" y="0" width="1280" height="672" />
+    </state>
+    <state x="424" y="227" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1280.672@0.0.1280.672" timestamp="1700674979020" />
+    <state x="21" y="0" key="CommitChangelistDialog2" timestamp="1701261879139">
+      <screen x="0" y="0" width="1280" height="672" />
+    </state>
+    <state x="21" y="0" key="CommitChangelistDialog2/0.0.1280.672@0.0.1280.672" timestamp="1701261879139" />
+    <state x="438" y="206" key="DetectedRootsChooserDialog" timestamp="1700671067365">
+      <screen x="0" y="0" width="1280" height="672" />
+    </state>
+    <state x="438" y="206" key="DetectedRootsChooserDialog/0.0.1280.672@0.0.1280.672" timestamp="1700671067365" />
+    <state x="93" y="93" width="1095" height="487" key="DiffContextDialog" timestamp="1700675333673">
+      <screen x="0" y="0" width="1280" height="672" />
+    </state>
+    <state x="93" y="93" width="1095" height="487" key="DiffContextDialog/0.0.1280.672@0.0.1280.672" timestamp="1700675333673" />
+    <state x="348" y="77" key="FileChooserDialogImpl" timestamp="1700671065646">
+      <screen x="0" y="0" width="1280" height="672" />
+    </state>
+    <state x="348" y="77" key="FileChooserDialogImpl/0.0.1280.672@0.0.1280.672" timestamp="1700671065646" />
+    <state width="1237" height="134" key="GridCell.Tab.0.bottom" timestamp="1701262174080">
+      <screen x="0" y="0" width="1280" height="672" />
+    </state>
+    <state width="1237" height="134" key="GridCell.Tab.0.bottom/0.0.1280.672@0.0.1280.672" timestamp="1701262174080" />
+    <state width="1237" height="134" key="GridCell.Tab.0.center" timestamp="1701262174080">
+      <screen x="0" y="0" width="1280" height="672" />
+    </state>
+    <state width="1237" height="134" key="GridCell.Tab.0.center/0.0.1280.672@0.0.1280.672" timestamp="1701262174080" />
+    <state width="1237" height="134" key="GridCell.Tab.0.left" timestamp="1701262174080">
+      <screen x="0" y="0" width="1280" height="672" />
+    </state>
+    <state width="1237" height="134" key="GridCell.Tab.0.left/0.0.1280.672@0.0.1280.672" timestamp="1701262174080" />
+    <state width="1237" height="134" key="GridCell.Tab.0.right" timestamp="1701262174080">
+      <screen x="0" y="0" width="1280" height="672" />
+    </state>
+    <state width="1237" height="134" key="GridCell.Tab.0.right/0.0.1280.672@0.0.1280.672" timestamp="1701262174080" />
+    <state width="1237" height="204" key="GridCell.Tab.1.bottom" timestamp="1701025651715">
+      <screen x="0" y="0" width="1280" height="672" />
+    </state>
+    <state width="1237" height="204" key="GridCell.Tab.1.bottom/0.0.1280.672@0.0.1280.672" timestamp="1701025651715" />
+    <state width="1237" height="204" key="GridCell.Tab.1.center" timestamp="1701025651715">
+      <screen x="0" y="0" width="1280" height="672" />
+    </state>
+    <state width="1237" height="204" key="GridCell.Tab.1.center/0.0.1280.672@0.0.1280.672" timestamp="1701025651715" />
+    <state width="1237" height="204" key="GridCell.Tab.1.left" timestamp="1701025651715">
+      <screen x="0" y="0" width="1280" height="672" />
+    </state>
+    <state width="1237" height="204" key="GridCell.Tab.1.left/0.0.1280.672@0.0.1280.672" timestamp="1701025651715" />
+    <state width="1237" height="204" key="GridCell.Tab.1.right" timestamp="1701025651715">
+      <screen x="0" y="0" width="1280" height="672" />
+    </state>
+    <state width="1237" height="204" key="GridCell.Tab.1.right/0.0.1280.672@0.0.1280.672" timestamp="1701025651715" />
+    <state x="30" y="38" width="1250" height="535" key="MergeDialog" timestamp="1701258091744">
+      <screen x="0" y="0" width="1280" height="672" />
+    </state>
+    <state x="30" y="38" width="1250" height="535" key="MergeDialog/0.0.1280.672@0.0.1280.672" timestamp="1701258091744" />
+    <state x="280" y="98" key="MultipleFileMergeDialog" timestamp="1701023652286">
+      <screen x="0" y="0" width="1280" height="672" />
+    </state>
+    <state x="280" y="98" key="MultipleFileMergeDialog/0.0.1280.672@0.0.1280.672" timestamp="1701023652286" />
+    <state x="121" y="0" key="SettingsEditor" timestamp="1701255171378">
+      <screen x="0" y="0" width="1280" height="672" />
+    </state>
+    <state x="121" y="0" key="SettingsEditor/0.0.1280.672@0.0.1280.672" timestamp="1701255171378" />
+    <state x="233" y="69" key="Vcs.Push.Dialog.v2" timestamp="1701261894286">
+      <screen x="0" y="0" width="1280" height="672" />
+    </state>
+    <state x="233" y="69" key="Vcs.Push.Dialog.v2/0.0.1280.672@0.0.1280.672" timestamp="1701261894286" />
+    <state x="179" y="65" width="1095" height="487" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1700675333673">
+      <screen x="0" y="0" width="1280" height="672" />
+    </state>
+    <state x="179" y="65" width="1095" height="487" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.0.1280.672@0.0.1280.672" timestamp="1700675333673" />
+    <state x="93" y="93" width="1095" height="519" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1701260849652">
+      <screen x="0" y="0" width="1280" height="672" />
+    </state>
+    <state x="93" y="93" width="1095" height="519" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1280.672@0.0.1280.672" timestamp="1701260849652" />
+    <state x="458" y="250" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1701261885171">
+      <screen x="0" y="0" width="1280" height="672" />
+    </state>
+    <state x="458" y="250" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.672@0.0.1280.672" timestamp="1701261885171" />
+    <state x="208" y="43" width="864" height="629" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1700679084405">
+      <screen x="0" y="0" width="1280" height="672" />
+    </state>
+    <state x="208" y="43" width="864" height="629" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1280.672@0.0.1280.672" timestamp="1700679084405" />
+    <state x="259" y="185" width="910" height="476" key="dock-window-2" timestamp="1700656829530">
+      <screen x="0" y="0" width="1280" height="672" />
+    </state>
+    <state x="259" y="185" width="910" height="476" key="dock-window-2/0.0.1280.672@0.0.1280.672" timestamp="1700656829530" />
+    <state x="303" y="0" width="672" height="678" key="search.everywhere.popup" timestamp="1701008604224">
+      <screen x="0" y="0" width="1280" height="672" />
+    </state>
+    <state x="303" y="0" width="672" height="678" key="search.everywhere.popup/0.0.1280.672@0.0.1280.672" timestamp="1701008604224" />
+>>>>>>> 27403453972a4664b91ffb710e479b17e77feb20
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.sql.SQLException" package="java.sql" />
+          <option name="timeStamp" value="3" />
+        </breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/sheffield/AccountPage.java</url>
-          <line>9</line>
-          <option name="timeStamp" value="2" />
+          <url>file://$PROJECT_DIR$/src/com/sheffield/EditProductUI.java</url>
+          <line>275</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/sheffield/EditProductUI.java</url>
+          <line>297</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/sheffield/ProductDatabaseOperations.java</url>
+          <line>148</line>
+          <option name="timeStamp" value="24" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="com.mysql.cj.jdbc.result.ResultSetImpl" memberName="db" />
+      </pinned-members>
+    </pin-to-top-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="((ResultSetImpl)resultSet).db" custom="com.mysql.cj.jdbc.result.ResultSetImpl" />
+        <watch expression="((ResultSetImpl)resultSet).db" custom="com.mysql.cj.jdbc.result.ResultSetImpl" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

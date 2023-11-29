@@ -5,7 +5,12 @@ import com.sheffield.Products.Product;
 import javax.swing.*;
 import java.awt.*;
 import java.sql.*;
-
+/**
+ * This class is the JFrame that holds all of User's account details and allows the details to be edited
+ * by the account owner
+ *
+ * @author Nguyen Anh Le
+ */
 public class AccountPage extends JFrame {
 
 	Toolkit tk = Toolkit.getDefaultToolkit();
@@ -25,7 +30,6 @@ public class AccountPage extends JFrame {
 	JButton staffButton = new JButton();
 	JLabel accountSidebar = new JLabel();
 	JLabel accountDetailTitleText = new JLabel();
-
 
 	JLabel accountDetailBackGround = new JLabel();
 	JLabel acountPageBackground = new JLabel();
@@ -85,7 +89,7 @@ public class AccountPage extends JFrame {
 		accountPagePanel.add(pageTitle);
 
 		productButton.setLocation(0,(int) (Math.round(ySize * 0.1)));
-		productButton.setSize((int) (Math.round(xSize * 0.16)),87);
+		productButton.setSize((int) (Math.round(xSize * 0.16)),(int) (Math.round(ySize * 0.12)));
 		productButton.setForeground( new Color(-1) );
 		productButton.setFont(new Font("Merriweather", Font.BOLD, 17));
 		productButton.addActionListener(e->productButton_Click());
@@ -95,8 +99,10 @@ public class AccountPage extends JFrame {
 		productButton.setHorizontalAlignment(SwingConstants.LEFT);
 		accountPagePanel.add(productButton);
 
+
+
 		accountBasketButton.setLocation(0,(int) (Math.round(ySize * 0.22)));
-		accountBasketButton.setSize((int) (Math.round(xSize * 0.16)),87);
+		accountBasketButton.setSize((int) (Math.round(xSize * 0.16)),(int) (Math.round(ySize * 0.12)));
 		accountBasketButton.setForeground( new Color(-1) );
 		accountBasketButton.setFont(new Font("Merriweather", Font.BOLD, 17));
 		accountBasketButton.setBackground( new Color(-2743738) );
@@ -113,7 +119,7 @@ public class AccountPage extends JFrame {
 		accountPagePanel.add(accountBasketButton);
 
 		staffButton.setLocation(0,(int) (Math.round(ySize * 0.338)));
-		staffButton.setSize((int) (Math.round(xSize * 0.16)),87);
+		staffButton.setSize((int) (Math.round(xSize * 0.16)),(int) (Math.round(ySize * 0.12)));
 		staffButton.setForeground( new Color(-1) );
 		staffButton.setFont(new Font("Merriweather", Font.BOLD, 17));
 		staffButton.setBackground( new Color(-15440650) );
@@ -132,56 +138,62 @@ public class AccountPage extends JFrame {
 		}
 		if (getIsStaff()) { accountPagePanel.add(staffButton); }
 
-		accountSidebar.setLocation(0,70);
-		accountSidebar.setSize((int) (Math.round(xSize * 0.16)),1930);
+		accountSidebar.setLocation(0,(int) (Math.round(ySize * 0.1)));
+		accountSidebar.setSize((int) (Math.round(xSize * 0.16)),(int) (Math.round(ySize * 0.9)));
 		accountSidebar.setOpaque(true);
 		accountSidebar.setBackground( new Color(-11854529) );
 		accountPagePanel.add(accountSidebar);
 
 
-		accountDetailTitleText.setLocation((int) (Math.round(xSize * 0.20)),179);
-		accountDetailTitleText.setSize((int) (Math.round(xSize * 0.22)),44);
+		accountDetailTitleText.setLocation((int) (Math.round(xSize * 0.20)),(int) (Math.round(ySize * 0.113)));
+		accountDetailTitleText.setSize((int) (Math.round(xSize * 0.22)),(int) (Math.round(ySize * 0.09)));
 		accountDetailTitleText.setForeground( new Color(-1) );
 		accountDetailTitleText.setFont(new Font("Merriweather", Font.BOLD, 35));
 		accountDetailTitleText.setBackground( new Color(-14995422) );
 		accountDetailTitleText.setText("Acount Details ");
 		accountPagePanel.add(accountDetailTitleText);
 
-
 		//DISPLAYING ACCOUNT DETAILS
 		AccountDataOperations accountData = new AccountDataOperations();
 
-		User user = accountData.GetUserData(userId,con);
-		Address address = accountData.GetUserAddress(userId,con);
-		accountDetailBoxConstructor( user,address,"TODO");
+		User user = accountData.getUserData(userId,con);
+		Address address = accountData.getUserAddress(userId,con);
+		BankDetails card = accountData.getBankDetails(userId,con);
+		accountDetailBoxConstructor( user,address, card,this, this.getIsStaff());
 
 
-		accountDetailBackGround.setLocation((int) (Math.round(xSize * 0.19)),175);
-		accountDetailBackGround.setSize((int) (Math.round(xSize * 0.75)),850); // Green background
+
+		accountDetailBackGround.setLocation((int) (Math.round(xSize * 0.19)),(int) (Math.round(ySize * 0.12)));
+		accountDetailBackGround.setSize((int) (Math.round(xSize * 0.75)),(int) (Math.round(ySize * 0.77))); // Green background
 		accountDetailBackGround.setForeground( new Color(-1) );
 		accountDetailBackGround.setOpaque(true);
 		accountDetailBackGround.setBackground( new Color(-14995422) );
 		accountPagePanel.add(accountDetailBackGround);
 
 		acountPageBackground.setLocation(0,0);
-		acountPageBackground.setSize((Math.round(xSize)),9000);
+		acountPageBackground.setSize((Math.round(xSize)),(Math.round(ySize)));
 		acountPageBackground.setOpaque(true);
 		acountPageBackground.setBackground( new Color(-8741250) );
 		accountPagePanel.add(acountPageBackground);
 
+
+
 		accountPagePanel.setVisible(true);
+
+
 	}
-	public void accountDetailBoxConstructor(User user , Address address,String cardNum ){
+	public void accountDetailBoxConstructor(User user , Address address,BankDetails card, JFrame account, boolean isStaff){
 		AccountDetailBox box = new AccountDetailBox();
-		box.initAccountDetail(user,address,cardNum);
+		box.initAccountDetail(user,address,card,account, isStaff);
 		box.setOpaque(true);
-		box.setLocation((int) (Math.round(xSize * 0.20)),230);
-		box.setSize((int) (Math.round(xSize * 0.72)),750);
+		box.setLocation((int) (Math.round(xSize * 0.20)),(int) (Math.round(ySize * 0.19)));
+		box.setSize((int) (Math.round(xSize * 0.72)),(int) (Math.round(ySize * 0.67)));
 		box.setBackground(Color.white);
 		accountPagePanel.add(box);
 		box.validate();
 		box.repaint();
 	}
+	public void refreshButton_Click(){}
 
 	public Boolean getIsStaffPage() { return this.isStaffPage; }
 
@@ -207,9 +219,16 @@ public class AccountPage extends JFrame {
 	}
 	public void basketButton_Click() { System.out.println("Placeholder"); }
 	public void viewOrdersButton_Click() {
-		AccountPage accountPage = new AccountPage();
-		accountPage.initFrame(getIsStaffPage(), 5);
-		this.dispose();
+		try {
+			DatabaseConnectionHandler dch = new DatabaseConnectionHandler();
+			dch.openConnection();
+			OrderPage orderPage = new OrderPage();
+			orderPage.initFrame(isStaffPage, currentUserId, dch);
+			this.dispose();
+			dch.closeConnection();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 	public void staffButton_Click() {
 		AccountPage accountPage = new AccountPage();
