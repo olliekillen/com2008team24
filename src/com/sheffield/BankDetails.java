@@ -3,11 +3,11 @@ package com.sheffield;
 public class BankDetails {
     private String bankCardNumber;
     private String expiryDate;
-    private Integer securityCode;
+    private String securityCode;
     private String cardHolderName;
     private Integer userId;
 
-    public BankDetails(String BankCardNumber, String ExpiryDate, int SecurityCode, String CardHolderName, Integer id){
+    public BankDetails(String BankCardNumber, String ExpiryDate, String SecurityCode, String CardHolderName, Integer id){
     this.bankCardNumber = BankCardNumber;
     this.expiryDate = ExpiryDate;
     this.securityCode = SecurityCode;
@@ -23,7 +23,7 @@ public class BankDetails {
         return s;
     }
     public String getExpiryDate(){return expiryDate;}
-    public Integer getSecurityCode(){return securityCode;}
+    public String getSecurityCode(){return securityCode;}
     public String getCardHolderName(){return cardHolderName;}
     public Integer getUserId(){return userId;}
 }

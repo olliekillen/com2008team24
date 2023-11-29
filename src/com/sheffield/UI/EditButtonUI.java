@@ -24,22 +24,27 @@ public class EditButtonUI extends JFrame {
 	private JButton confirmButton;
 	private JButton cancelButton;
 	private JTextField textBox;
+	private JTextField nameText;
+	private JTextField expireText;
+	private JTextField securityText;
+
 
 	public void initFrame(int x, int y, String field, int userId, JFrame account,boolean isStaff) throws SQLException {
 		String text = "";
 		AccountDataOperations accountData = new AccountDataOperations();
 		DatabaseConnectionHandler con = new DatabaseConnectionHandler();
 		con.openConnection();
+		Connection connection = con.getConnection();
 		switch (field.toLowerCase()){
 			case "name":
 			case "password":
 			case"email":
-				User user = accountData.getUserData(userId,con.getConnection());
+				User user = accountData.getUserData(userId,connection);
 				switch(field.toLowerCase()){
 					case "name":
 						text = user.getFullName();
 						break;
-					case "pass":
+					case "password":
 						text = "Please enter new password";
 						break;
 					case "email":
@@ -49,6 +54,11 @@ public class EditButtonUI extends JFrame {
 				break;
 			case"address":
 				text = "housenumber   roadname  city postcode";
+				break;
+			case"bank details":
+				BankDetails card = accountData.getBankDetails(userId,connection);
+				text = card.getBankCardNumber();
+				break;
 			default: System.out.println("No Field found");
 				break;
 
@@ -56,6 +66,7 @@ public class EditButtonUI extends JFrame {
 		con.closeConnection();
 		setLayout(new GridLayout(1, 1));
 		add(editPanel);
+
 		setTitle("Edit "+field);
 
 		initPanel(text,userId, field , account,isStaff);
@@ -66,10 +77,11 @@ public class EditButtonUI extends JFrame {
 		setVisible(true);
 	}
 
-	public void initPanel(String text, int userId , String field, JFrame account,boolean isStaff ) {
+	public void initPanel(String text, int userId , String field, JFrame account,boolean isStaff ) throws SQLException {
 		textBox = new JTextField(text);
 		textBox.setFont(new Font("Merriweather", Font.BOLD, 15));
 		textBox.setBounds(15, 8, (int)(xSize * .12), 25);
+
 
 
 		confirmButton = new JButton("Confirm");
@@ -78,7 +90,7 @@ public class EditButtonUI extends JFrame {
 		confirmButton.addActionListener(e-> {
 			try {
 				confirmButton_Click(userId,field,account,isStaff);
-				System.out.println(userId);
+
 			} catch (SQLException ex) {
 				throw new RuntimeException(ex);
 			}
@@ -90,6 +102,32 @@ public class EditButtonUI extends JFrame {
 		cancelButton.setBackground(new Color(255, 26, 26));
 		cancelButton.setBounds((int)(xSize*0.27), 8, (int)(xSize*.09), 25);
 		cancelButton.addActionListener(e->cancelButton_Click());
+
+		if(field.equalsIgnoreCase("bank details")) {
+
+			DatabaseConnectionHandler con = new DatabaseConnectionHandler();
+			AccountDataOperations accountData = new AccountDataOperations();
+			con.openConnection();
+			BankDetails card = accountData.getBankDetails(userId,con.getConnection());
+
+			nameText = new JTextField(card.getCardHolderName()+" (Name on card)");
+			nameText.setFont(new Font("Merriweather", Font.BOLD, 15));
+			nameText.setBounds(15, 38, (int) (xSize * .12), 25);
+
+
+			expireText = new JTextField(card.getExpiryDate()+" (Expirydate)");
+			expireText.setFont(new Font("Merriweather", Font.BOLD, 15));
+			expireText.setBounds(15, 68, (int) (xSize * .12), 25);
+
+			securityText = new JTextField(card.getSecurityCode() + " (Securitycode)");
+			securityText.setFont(new Font("Merriweather", Font.BOLD, 15));
+			securityText.setBounds(15, 98, (int) (xSize * .12), 25);
+			con.closeConnection();
+			editPanel.add(nameText);
+			editPanel.add(expireText);
+			editPanel.add(securityText);
+
+		}
 
 		editPanel.add(confirmButton);
 		editPanel.add(textBox);
@@ -114,7 +152,11 @@ public class EditButtonUI extends JFrame {
 				acc.updateEmail(textBox.getText(),userId,connect);
 				break;
 			case"address":
-				acc.updateAddress(textBox.getText(),userId,connect);
+				acc.updateUserAddress(textBox.getText(),userId,connect);
+				break;
+			case"bank details":
+				String[]bankDetails = {textBox.getText(),expireText.getText(),securityText.getText(),nameText.getText()};
+				acc.updateBankDetails(bankDetails,userId,connect);
 				break;
 		}
 		con.closeConnection();

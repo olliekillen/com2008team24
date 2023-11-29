@@ -181,7 +181,7 @@ public class AccountDetailBox extends JPanel {
         bankEditButton.setFont(new Font("Merriweather", Font.BOLD, 40));
         bankEditButton.addActionListener(e -> {
             try {
-                editButton_Click(userId,account,isStaff);
+                editBankButton_Click(userId,account,isStaff);
             } catch (SQLException ex) {
                 throw new RuntimeException(ex);
             }
@@ -205,7 +205,7 @@ public class AccountDetailBox extends JPanel {
 
     public void editPassButton_Click(int userId,JFrame account,boolean isStaff) throws SQLException {
         EditButtonUI edit = new EditButtonUI();
-        edit.initFrame((int) (xSize * .4), (int) (ySize * .15), "Pass", userId,account,isStaff);
+        edit.initFrame((int) (xSize * .4), (int) (ySize * .15), "Password", userId,account,isStaff);
     }
 
     public void editEmailButton_Click(int userId,JFrame account,boolean isStaff) throws SQLException {
@@ -218,8 +218,8 @@ public class AccountDetailBox extends JPanel {
         edit.initFrame((int) (xSize * .4), (int) (ySize * .15), "Address", userId,account,isStaff);
     }
 
-    public void editButton_Click(int userId, JFrame account,boolean isStaff) throws SQLException {
+    public void editBankButton_Click(int userId, JFrame account,boolean isStaff) throws SQLException {
         EditButtonUI edit = new EditButtonUI();
-        edit.initFrame((int) (xSize * .4), (int) (ySize * .15), "Name", userId,account,isStaff);
+        edit.initFrame((int) (xSize * .4), (int) (ySize * .2), "Bank Details", userId,account,isStaff);
     }
 }
