@@ -326,7 +326,16 @@ public class IndividualProductPageUI extends JFrame {
     public void singleProductBasketButton_Click()
     { System.out.println("singleProductBasketButton_Click() has been pressed "); }
     public void singleProductViewOrdersButton_Click() {
-        System.out.println("Placeholder");
+        try {
+            DatabaseConnectionHandler dch = new DatabaseConnectionHandler();
+            dch.openConnection();
+            OrderPage orderPage = new OrderPage();
+            orderPage.initFrame(isStaffPage, currentUserId, dch);
+            this.dispose();
+            dch.closeConnection();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
     public void singleProductStaffPageButton_Click() {
         IndividualProductPageUI singleProductPage = new IndividualProductPageUI();

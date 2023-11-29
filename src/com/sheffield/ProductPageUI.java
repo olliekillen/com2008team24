@@ -411,9 +411,16 @@ public class ProductPageUI extends JFrame {
     }
     public void productBasketButton_Click() { System.out.println("productBasketButton_Click() has been pressed "); }
     public void productViewOrdersButton_Click() {
-        OrderPage orderPage = new OrderPage();
-        orderPage.initFrame(isStaffPage, currentUserId, new DatabaseConnectionHandler());
-        this.dispose();
+        try {
+            DatabaseConnectionHandler dch = new DatabaseConnectionHandler();
+            dch.openConnection();
+            OrderPage orderPage = new OrderPage();
+            orderPage.initFrame(isStaffPage, currentUserId, dch);
+            this.dispose();
+            dch.closeConnection();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
     public void productStaffPageButton_Click() {
         ProductPageUI productPage = new ProductPageUI();

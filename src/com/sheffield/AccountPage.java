@@ -89,7 +89,7 @@ public class AccountPage extends JFrame {
 		accountPagePanel.add(pageTitle);
 
 		productButton.setLocation(0,(int) (Math.round(ySize * 0.1)));
-		productButton.setSize((int) (Math.round(xSize * 0.16)),87);
+		productButton.setSize((int) (Math.round(xSize * 0.16)),(int) (Math.round(ySize * 0.12)));
 		productButton.setForeground( new Color(-1) );
 		productButton.setFont(new Font("Merriweather", Font.BOLD, 17));
 		productButton.addActionListener(e->productButton_Click());
@@ -102,7 +102,7 @@ public class AccountPage extends JFrame {
 
 
 		accountBasketButton.setLocation(0,(int) (Math.round(ySize * 0.22)));
-		accountBasketButton.setSize((int) (Math.round(xSize * 0.16)),87);
+		accountBasketButton.setSize((int) (Math.round(xSize * 0.16)),(int) (Math.round(ySize * 0.12)));
 		accountBasketButton.setForeground( new Color(-1) );
 		accountBasketButton.setFont(new Font("Merriweather", Font.BOLD, 17));
 		accountBasketButton.setBackground( new Color(-2743738) );
@@ -119,7 +119,7 @@ public class AccountPage extends JFrame {
 		accountPagePanel.add(accountBasketButton);
 
 		staffButton.setLocation(0,(int) (Math.round(ySize * 0.338)));
-		staffButton.setSize((int) (Math.round(xSize * 0.16)),87);
+		staffButton.setSize((int) (Math.round(xSize * 0.16)),(int) (Math.round(ySize * 0.12)));
 		staffButton.setForeground( new Color(-1) );
 		staffButton.setFont(new Font("Merriweather", Font.BOLD, 17));
 		staffButton.setBackground( new Color(-15440650) );
@@ -219,9 +219,16 @@ public class AccountPage extends JFrame {
 	}
 	public void basketButton_Click() { System.out.println("Placeholder"); }
 	public void viewOrdersButton_Click() {
-		AccountPage accountPage = new AccountPage();
-		accountPage.initFrame(getIsStaffPage(), 5);
-		this.dispose();
+		try {
+			DatabaseConnectionHandler dch = new DatabaseConnectionHandler();
+			dch.openConnection();
+			OrderPage orderPage = new OrderPage();
+			orderPage.initFrame(isStaffPage, currentUserId, dch);
+			this.dispose();
+			dch.closeConnection();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 	public void staffButton_Click() {
 		AccountPage accountPage = new AccountPage();
