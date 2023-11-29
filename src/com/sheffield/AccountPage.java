@@ -109,12 +109,11 @@ public class AccountPage extends JFrame {
 		accountBasketButton.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));
 		accountBasketButton.setText("   Basket");
 		accountBasketButton.setHorizontalAlignment(SwingConstants.LEFT);
+		accountBasketButton.addActionListener(e->viewOrdersButton_Click());
 		if (isStaffPage) {
 			accountBasketButton.setText("   View Orders");
-			accountBasketButton.addActionListener(e->viewOrdersButton_Click());
 		} else {
 			accountBasketButton.setText("   Basket");
-			accountBasketButton.addActionListener(e->basketButton_Click());
 		}
 		accountPagePanel.add(accountBasketButton);
 

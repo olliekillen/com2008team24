@@ -65,7 +65,7 @@ public class ProductCreatorPage extends JFrame {
 		// Row indentation
 
 		pageTitle.setLocation(0,0);
-		pageTitle.setSize((Math.round(xSize)),70);
+		pageTitle.setSize((Math.round(xSize)),(int) (Math.round(ySize * 0.1)));
 		pageTitle.setForeground( new Color(-1) );
 		pageTitle.setFont(new Font("Merryweather", Font.BOLD, 50));
 		pageTitle.setOpaque(true);
@@ -76,7 +76,7 @@ public class ProductCreatorPage extends JFrame {
 		productCreatorPagePanel.add(pageTitle);
 
 		customerButton.setLocation(0,70);
-		customerButton.setSize((int) (Math.round(xSize * 0.16)),87);
+		customerButton.setSize((int) (Math.round(xSize * 0.16)),(int) (Math.round(ySize * 0.1)));
 		customerButton.setForeground( new Color(-1) );
 		customerButton.setFont(new Font("Merriweather", Font.BOLD, 21));
 		customerButton.addActionListener(e->customerButton_Click());
@@ -86,39 +86,39 @@ public class ProductCreatorPage extends JFrame {
 		customerButton.setHorizontalAlignment(SwingConstants.LEFT);
 		productCreatorPagePanel.add(customerButton);
 
-		productCreatorSidebar.setLocation(0,70);
+		productCreatorSidebar.setLocation(0,(int) (Math.round(ySize * 0.1)));
 		productCreatorSidebar.setSize((int) (Math.round(xSize * 0.16)),1930);
 		productCreatorSidebar.setOpaque(true);
 		productCreatorSidebar.setBackground( new Color(-11854529) );
 		productCreatorPagePanel.add(productCreatorSidebar);
 
 
-		productCreatorTitleText.setLocation((int) (Math.round(xSize * 0.20)),179);
-		productCreatorTitleText.setSize((int) (Math.round(xSize * 0.22)),44);
+		productCreatorTitleText.setLocation((int) (Math.round(xSize * 0.20)),(int) (Math.round(ySize * 0.145)));
+		productCreatorTitleText.setSize((int) (Math.round(xSize * 0.22)),(int) (Math.round(ySize * 0.09)));
 		productCreatorTitleText.setForeground( new Color(-1) );
 		productCreatorTitleText.setFont(new Font("Merriweather", Font.BOLD, 35));
 		productCreatorTitleText.setBackground( new Color(-14995422) );
-		productCreatorTitleText.setText("Orders ");
+		productCreatorTitleText.setText("Add a Product");
 		productCreatorPagePanel.add(productCreatorTitleText);
 
 
 		// Setting location of panel of class productCreatorBox which contains the product form
-        productDetails.setLocation((int) (Math.round(xSize * 0.20)),230);
-        productDetails.setSize((int) (Math.round(xSize * 0.72)),750);
+        productDetails.setLocation((int) (Math.round(xSize * 0.20)),(int) (Math.round(ySize * 0.22)));
+        productDetails.setSize((int) (Math.round(xSize * 0.72)),(int) (Math.round(ySize * 0.67)));
 		productDetails.setFont(new Font("Merriweather", Font.BOLD, 32));
         productDetails.setOpaque(true);
 		productDetails.setBackground( new Color(-1) );
         productCreatorPagePanel.add(productDetails);
 
-		productCreatorDetailBackGround.setLocation((int) (Math.round(xSize * 0.19)),175);
-		productCreatorDetailBackGround.setSize((int) (Math.round(xSize * 0.75)),850); // Green background
+		productCreatorDetailBackGround.setLocation((int) (Math.round(xSize * 0.19)),(int) (Math.round(ySize * 0.14)));
+		productCreatorDetailBackGround.setSize((int) (Math.round(xSize * 0.75)),(int) (Math.round(ySize * 0.76))); // Green background
 		productCreatorDetailBackGround.setForeground( new Color(-1) );
 		productCreatorDetailBackGround.setOpaque(true);
 		productCreatorDetailBackGround.setBackground( new Color(-14995422) );
 		productCreatorPagePanel.add(productCreatorDetailBackGround);
 
 		acountPageBackground.setLocation(0,0);
-		acountPageBackground.setSize((Math.round(xSize)),9000);
+		acountPageBackground.setSize((Math.round(xSize)),(Math.round(xSize)));
 		acountPageBackground.setOpaque(true);
 		acountPageBackground.setBackground( new Color(-8741250) );
 		productCreatorPagePanel.add(acountPageBackground);
