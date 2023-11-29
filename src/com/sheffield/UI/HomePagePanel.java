@@ -19,7 +19,9 @@ public class HomePagePanel extends JPanel {
     public HomePagePanel(MyFrame myFrame){
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         setBackground(new Color(-8741250));
+        add(Box.createVerticalGlue());
         add(new CustomLabel("Trains of Sheffield", 40));
+        add(Box.createVerticalGlue());
         add(new CustomLabel("Welcome", 25));
         String paragraph = "Welcome to Trains of Sheffield, where the enchanting world of model railways comes to life!" +
                 " Dive into a rich collection of locomotives, rolling stock, and intricate track setups that cater to " +
@@ -27,7 +29,7 @@ public class HomePagePanel extends JPanel {
                 "immersive experience, offering a seamless journey through the fascinating realm of miniature trains.";
         CustomJEditorPane welcomePara1 = new CustomJEditorPane(paragraph, 15);
         add(welcomePara1);
-
+        add(Box.createVerticalGlue());
         add(new CustomLabel("Discover Authenticity and Quality", 25));
         paragraph ="Step into a world where authenticity meets quality at Trains of Sheffield. Explore renowned brands " +
                 "such as Hornby, Bachmann, Graham Farish, Peco, and Dapol, ensuring that every purchase reflects the " +
@@ -37,7 +39,7 @@ public class HomePagePanel extends JPanel {
 
         CustomJEditorPane welcomePara2 = new CustomJEditorPane(paragraph, 15);
         add(welcomePara2);
-
+        add(Box.createVerticalGlue());
         add(new CustomLabel("Seamless Shopping, Secure Experience", 25));
         paragraph = "Embrace the joy of model railway shopping with Trains of Sheffield's user-friendly system. As a " +
                 "customer, you have the freedom to browse our extensive product range, create orders, and witness the " +
@@ -48,7 +50,7 @@ public class HomePagePanel extends JPanel {
 
         CustomJEditorPane welcomePara3 = new CustomJEditorPane(paragraph, 15);
         add(welcomePara3);
-
+        add(Box.createVerticalGlue());
         // Gets and resizes images.
         ImageIcon trainSetImage = new ImageIcon("src/com/sheffield/Images/TrainSet.jpg");
         Image trainSet = trainSetImage.getImage().getScaledInstance(500,300, Image.SCALE_DEFAULT);
@@ -56,6 +58,8 @@ public class HomePagePanel extends JPanel {
         JLabel trainImage = new JLabel(resized);
         trainImage.setAlignmentX(JLabel.CENTER_ALIGNMENT);
         add(trainImage);
+
+        add(Box.createVerticalGlue());
 
     }
 }
