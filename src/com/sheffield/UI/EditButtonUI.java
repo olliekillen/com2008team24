@@ -74,7 +74,7 @@ public class EditButtonUI extends JFrame {
 
 		confirmButton = new JButton("Confirm");
 		confirmButton.setFont(new Font("Merriweather", Font.BOLD, 15));
-		confirmButton.setBounds(250, 8, (int)(xSize*.05), 25);
+		confirmButton.setBounds((int)(xSize*0.15), 8, (int)(xSize*.09), 25);
 		confirmButton.addActionListener(e-> {
 			try {
 				confirmButton_Click(userId,field,account,isStaff);
@@ -88,7 +88,7 @@ public class EditButtonUI extends JFrame {
 		cancelButton = new JButton("Cancel");
 		cancelButton.setFont(new Font("Merriweather", Font.BOLD, 15));
 		cancelButton.setBackground(new Color(255, 26, 26));
-		cancelButton.setBounds(350, 8, (int)(xSize*.05), 25);
+		cancelButton.setBounds((int)(xSize*0.27), 8, (int)(xSize*.09), 25);
 		cancelButton.addActionListener(e->cancelButton_Click());
 
 		editPanel.add(confirmButton);
