@@ -27,6 +27,9 @@ public class EditButtonUI extends JFrame {
 	private JTextField nameText;
 	private JTextField expireText;
 	private JTextField securityText;
+	private JTextField houseNumText;
+	private JTextField roadText;
+	private JTextField cityText;
 
 
 	public void initFrame(int x, int y, String field, int userId, JFrame account,boolean isStaff) throws SQLException {
@@ -35,6 +38,7 @@ public class EditButtonUI extends JFrame {
 		DatabaseConnectionHandler con = new DatabaseConnectionHandler();
 		con.openConnection();
 		Connection connection = con.getConnection();
+		//Displaying the current user info based on the field thats being edited
 		switch (field.toLowerCase()){
 			case "name":
 			case "password":
@@ -53,11 +57,12 @@ public class EditButtonUI extends JFrame {
 				}
 				break;
 			case"address":
-				text = "housenumber   roadname  city postcode";
+				Address address = accountData.getUserAddress(userId,connection);
+				text = address.getPostCode() ;
 				break;
 			case"bank details":
 				BankDetails card = accountData.getBankDetails(userId,connection);
-				text = card.getBankCardNumber();
+				text = card.getBankCardNumber()+ " (Cardnumber)";
 				break;
 			default: System.out.println("No Field found");
 				break;
@@ -96,14 +101,42 @@ public class EditButtonUI extends JFrame {
 			}
 		});
 
-
 		cancelButton = new JButton("Cancel");
 		cancelButton.setFont(new Font("Merriweather", Font.BOLD, 15));
 		cancelButton.setBackground(new Color(255, 26, 26));
 		cancelButton.setBounds((int)(xSize*0.27), 8, (int)(xSize*.09), 25);
 		cancelButton.addActionListener(e->cancelButton_Click());
 
-		if(field.equalsIgnoreCase("bank details")) {
+		// display special text field if Address or Bank Details needs to be updated
+		switch(field.toLowerCase()){
+			case "address":{
+				DatabaseConnectionHandler con = new DatabaseConnectionHandler();
+				AccountDataOperations accountData = new AccountDataOperations();
+				con.openConnection();
+				Address address = accountData.getUserAddress(userId,con.getConnection());
+
+
+				houseNumText = new JTextField(String.valueOf(address.getHouseNumber()));
+				houseNumText.setFont(new Font("Merriweather", Font.BOLD, 15));
+				houseNumText.setBounds(15, 38, (int) (xSize * .12), 25);
+
+				roadText = new JTextField( address.getRoadName() );
+				roadText.setFont(new Font("Merriweather", Font.BOLD, 15));
+				roadText.setBounds(15, 68, (int) (xSize * .12), 25);
+
+				cityText = new JTextField( address.getCity());
+				cityText.setFont(new Font("Merriweather", Font.BOLD, 15));
+				cityText.setBounds(15, 98, (int) (xSize * .12), 25);
+
+				editPanel.add(houseNumText);
+				editPanel.add(roadText);
+				editPanel.add(cityText);
+				con.closeConnection();
+				break;
+			}
+
+			case"bank details":
+			{
 
 			DatabaseConnectionHandler con = new DatabaseConnectionHandler();
 			AccountDataOperations accountData = new AccountDataOperations();
@@ -126,7 +159,8 @@ public class EditButtonUI extends JFrame {
 			editPanel.add(nameText);
 			editPanel.add(expireText);
 			editPanel.add(securityText);
-
+			break;
+		}
 		}
 
 		editPanel.add(confirmButton);
@@ -140,6 +174,8 @@ public class EditButtonUI extends JFrame {
 
 		con.openConnection();
 		Connection connect = con.getConnection();
+		// Takes user inputed data and push the changes to the database and then refreshed the
+		// accountpage to reflect new changes
 		switch(field.toLowerCase()){
 			case"name":
 				String[] changes = textBox.getText().trim().split("\\s+");
@@ -152,10 +188,14 @@ public class EditButtonUI extends JFrame {
 				acc.updateEmail(textBox.getText(),userId,connect);
 				break;
 			case"address":
-				acc.updateUserAddress(textBox.getText(),userId,connect);
+				String[]addressDetails = {textBox.getText().trim(),houseNumText.getText().trim(),
+						roadText.getText().trim(),cityText.getText().trim(),cityText.getText()};
+
+				acc.updateUserAddress(addressDetails,userId,connect);
 				break;
 			case"bank details":
-				String[]bankDetails = {textBox.getText(),expireText.getText(),securityText.getText(),nameText.getText()};
+				String[]bankDetails = {textBox.getText().trim(),expireText.getText().trim(),
+						securityText.getText().trim(),nameText.getText().trim()};
 				acc.updateBankDetails(bankDetails,userId,connect);
 				break;
 		}

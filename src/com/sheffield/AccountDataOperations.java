@@ -58,36 +58,19 @@ public class AccountDataOperations {
         }
     }
 
-    public void updateUserAddress (String address,int userId,Connection con) throws SQLException {
-        List<String> addressList = Arrays.stream(address.split("\\s+"))
-                .map(s -> s.replaceAll(",", ""))
-                .collect(Collectors.toList());
-        String postCode = addressList.get(3);
-        String postCodeSep = "";
-        switch (postCode.length()) {
-            case 4:
-                postCodeSep = postCode.substring(0, 2) + " " + postCode.substring(2);
-                break;
-            case 5:
-            case 6:
-                postCodeSep = postCode.substring(0, 3) + " " + postCode.substring(3);
-                break;
-            default:
-                postCodeSep = postCode;
-        }
+    public void updateUserAddress (String[] address,int userId,Connection con) throws SQLException {
 
 
-
-        int houseNumber = Integer.valueOf(addressList.get(0));
+        int houseNumber = Integer.valueOf(address[1]);
         try {
             PreparedStatement stmt2 = con.prepareStatement("SELECT * FROM Address");
             ResultSet res = stmt2.executeQuery();
             while (res.next()) {
-                if (postCodeSep.equalsIgnoreCase(res.getString(1))
+                if (address[0].equalsIgnoreCase(res.getString(1))
                         && houseNumber == res.getInt(2)) {
                     break;
                 } else {
-                    this.updateAddressAdding(addressList, postCodeSep, houseNumber, con);
+                    this.updateAddressAdding(address , houseNumber, con);
                     break;
                 }
             }
@@ -102,7 +85,7 @@ public class AccountDataOperations {
         try {
             PreparedStatement stmt = con.prepareStatement("UPDATE Users SET postcode=?,houseNumber=?  WHERE userID= " + userId);
 
-            stmt.setString(1, postCodeSep);
+            stmt.setString(1, address[0]);
             stmt.setInt(2, houseNumber);
             stmt.executeUpdate();
             stmt.close();
@@ -115,17 +98,17 @@ public class AccountDataOperations {
     }
 
 
-    public void updateAddressAdding (List<String> addressList,String postCode,int houseNumber,Connection con) throws SQLException {
+    public void updateAddressAdding (String[] address ,int houseNumber,Connection con) throws SQLException {
 
         String preparedStatment ="INSERT INTO Address (postcode, houseNumber,roadName,city) VALUES (?, ?,?,?)";
 
         try{
 
             PreparedStatement stmt = con.prepareStatement(preparedStatment);
-            stmt.setString(1,postCode.toUpperCase());
+            stmt.setString(1,address[0].toUpperCase());
             stmt.setInt(2,houseNumber);
-            stmt.setString(3,addressList.get(1));
-            stmt.setString(4,addressList.get(2));
+            stmt.setString(3,address[2]);
+            stmt.setString(4,address[3]);
             stmt.executeUpdate();
 
 
