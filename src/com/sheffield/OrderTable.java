@@ -1,15 +1,20 @@
+/**
+ * A Class that extends JPanel to create the tables for viewing all orders and order lines
+ *
+ * @author Ollie Killen
+ */
+
 package com.sheffield;
 
 import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-
-import java.awt.event.*;
 import java.sql.*;
 
 
 public class OrderTable extends JPanel {
 
+    //When given multiple orders, create a table showing each order and their status.
     public OrderTable(ArrayList<Order> orders) {
         DefaultTableModel model = new DefaultTableModel(); 
         JTable table = new JTable(model); 
@@ -42,6 +47,7 @@ public class OrderTable extends JPanel {
         add (scrollPane);
     }
 
+    //when given one order, create a table showing that order’s order lines as well as the address of the customer
     public OrderTable(Order order, Connection con) {
         User user = null;
         try {
