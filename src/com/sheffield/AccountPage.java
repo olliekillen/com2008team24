@@ -213,7 +213,7 @@ public class AccountPage extends JFrame {
 	public void productButton_Click()
 	{
 		ProductPageUI productPage = new ProductPageUI();
-		productPage.initFrame(getIsStaffPage(), 5);
+		productPage.initFrame(getIsStaffPage(), currentUserId);
 		this.dispose();
 	}
 	public void viewOrdersButton_Click() {
@@ -243,12 +243,12 @@ public class AccountPage extends JFrame {
 	}
 	public void staffButton_Click() {
 		AccountPage accountPage = new AccountPage();
-		accountPage.initFrame(true, 5);
+		accountPage.initFrame(true, currentUserId);
 		this.dispose();
 	}
 	public void leaveStaffPageButton_Click() {
 		AccountPage accountPage = new AccountPage();
-		accountPage.initFrame(false, 5);
+		accountPage.initFrame(false, currentUserId);
 		this.dispose();
 	}
 

@@ -11,6 +11,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This class is the JFrame that holds all of the product page UI components. This page shows all
+ * products in the database and allows the user to filter the products, search through them, or access a page describing
+ * them in greater detail. It also allows them to be added to an order.
+ *
+ * @author Luke Parry
+ */
 public class ProductPageUI extends JFrame {
 
     Toolkit tk = Toolkit.getDefaultToolkit();

@@ -24,9 +24,7 @@ public class Order {
     }
 
     public void setOrderNumber(int orderNumber) {
-        //if (isValidHistoricalEra(historicalEra)) {
             this.orderNumber = orderNumber;
-        //} else { throw new IllegalArgumentException("Historical era is not valid."); }
     }
 
     public String getOrderDate() {
@@ -34,9 +32,7 @@ public class Order {
     }
 
     public void setOrderDate(int orderNumber) {
-        //if (isValidHistoricalEra(historicalEra)) {
         this.orderDate = orderDate;
-        //} else { throw new IllegalArgumentException("Historical era is not valid."); }
     }
 
     public String getOrderStatus() {
@@ -44,9 +40,7 @@ public class Order {
     }
 
     public void setOrderStatus(String orderStatus) {
-        //if (isValidHistoricalEra(historicalEra)) {
         this.orderStatus = orderStatus;
-        //} else { throw new IllegalArgumentException("Historical era is not valid."); }
     }
 
     public Float getOrderCost() {
@@ -54,9 +48,7 @@ public class Order {
     }
 
     public void setOrderCost(Float orderCost) {
-        //if (isValidHistoricalEra(historicalEra)) {
         this.orderCost = orderCost;
-        //} else { throw new IllegalArgumentException("Historical era is not valid."); }
     }
 
     public Boolean getOrderBlocked() {
@@ -64,16 +56,12 @@ public class Order {
     }
 
     public void setOrderBlocked(Boolean orderBlocked) {
-        //if (isValidHistoricalEra(historicalEra)) {
         this.orderBlocked = orderBlocked;
-        //} else { throw new IllegalArgumentException("Historical era is not valid."); }
     }
 
     public int getUserId() { return userId; }
 
     public void setUserId(int userId) {
-        //if (isValidHistoricalEra(historicalEra)) {
         this.userId = userId;
-        //} else { throw new IllegalArgumentException("Historical era is not valid."); }
     }
 }

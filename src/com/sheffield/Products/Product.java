@@ -2,6 +2,12 @@ package com.sheffield.Products;
 
 import java.math.BigDecimal;
 
+/**
+ * This class represents a product object, and is inherited from by all other products, which all share many common
+ * variables.
+ *
+ * @author Luke Parry
+ */
 public class Product {
 
     protected String productCode;

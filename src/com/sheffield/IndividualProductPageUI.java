@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * This class is the JFrame that holds all of the individual product page UI components. This page shows the product
  * details more in-depth than is displayed on the product page, and allows the product to be edited or deleted when a
- * staff member accesses this page in staff mode
+ * staff member accesses this page in staff mode.
  *
  * @author Luke Parry
  */
