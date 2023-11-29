@@ -30,8 +30,8 @@
   <component name="ChangeListManager">
     <list default="true" id="d8c3e42c-1391-466e-bdbd-038550dee454" name="Changes" comment="Commit before pull.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Team_24_Security_And_Design.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Team_24_Security_And_Design.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sheffield/UI/SignUpForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/UI/SignUpForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sheffield/UI/LoginForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/UI/LoginForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sheffield/UI/ValidateUserInputs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/UI/ValidateUserInputs.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

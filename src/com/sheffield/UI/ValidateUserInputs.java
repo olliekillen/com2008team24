@@ -200,6 +200,10 @@ public class ValidateUserInputs {
                 break;
             }
         }
+        // Checks password is at least 6 characters long.
+        if (password.length < 6){
+            passwordErrorMessages.add("Must Have At Least 6 Characters");
+        }
 
         if(!containsANumber){
             passwordErrorMessages.add("At least one number.");
