@@ -17,7 +17,6 @@ public class ProductCreatorBox extends JPanel {
     int xSize = ((int) tk.getScreenSize().getWidth());
     int ySize = ((int) tk.getScreenSize().getHeight());
 
-    JLabel title;
     JLabel productCodeLabel;
     JLabel brandNameLabel;
     JLabel productNameLabel;
@@ -36,88 +35,82 @@ public class ProductCreatorBox extends JPanel {
     public ProductCreatorBox() {
         this.setLayout(null);
 
-        title = new JLabel("Add a Product");
-        title.setLocation((int) (Math.round(xSize * 0.01)), 10);
-        title.setSize((int) (Math.round(xSize * 0.35)), 40);
-        title.setFont(new Font("Merriweather", Font.PLAIN, 30));
-        add (title);
-
         productCodeLabel = new JLabel("Product Code");
-        productCodeLabel.setLocation((int) (Math.round(xSize * 0.01)), 55);
-        productCodeLabel.setSize((int) (Math.round(xSize * 0.35)), 40);
-        productCodeLabel.setFont(new Font("Merriweather", Font.PLAIN, 30));
+        productCodeLabel.setLocation((int) (Math.round(xSize * 0.01)), (int) (Math.round(ySize * 0.02)));
+        productCodeLabel.setSize((int) (Math.round(xSize * 0.35)), (int) (Math.round(ySize * 0.05)));
+        productCodeLabel.setFont(new Font("Merriweather", Font.PLAIN, 22));
         add (productCodeLabel);
 
         productCode = new JTextField();
-        productCode.setLocation((int) (Math.round(xSize * 0.01)), 110);
-        productCode.setSize(190, 40);
-        productCode.setFont(new Font("Merriweather", Font.PLAIN, 30));
+        productCode.setLocation((int) (Math.round(xSize * 0.01)), (int) (Math.round(ySize * 0.07)));
+        productCode.setSize(190, (int) (Math.round(ySize * 0.05)));
+        productCode.setFont(new Font("Merriweather", Font.PLAIN, 22));
         add (productCode);
 
         brandNameLabel = new JLabel("Brand Name");
-        brandNameLabel.setLocation((int) (Math.round(xSize * 0.01)), 155);
+        brandNameLabel.setLocation((int) (Math.round(xSize * 0.01)), (int) (Math.round(ySize * 0.12)));
         brandNameLabel.setSize((int) (Math.round(xSize * 0.35)), 40);
-        brandNameLabel.setFont(new Font("Merriweather", Font.PLAIN, 30));
+        brandNameLabel.setFont(new Font("Merriweather", Font.PLAIN, 22));
         add (brandNameLabel);
 
         brandName = new JTextField();
-        brandName.setLocation((int) (Math.round(xSize * 0.01)), 200);
+        brandName.setLocation((int) (Math.round(xSize * 0.01)), (int) (Math.round(ySize * 0.17)));
         brandName.setSize(190, 40);
-        brandName.setFont(new Font("Merriweather", Font.PLAIN, 30));
+        brandName.setFont(new Font("Merriweather", Font.PLAIN, 22));
         add (brandName);
 
         productNameLabel = new JLabel("Product Name");
-        productNameLabel.setLocation((int) (Math.round(xSize * 0.01)), 245);
+        productNameLabel.setLocation((int) (Math.round(xSize * 0.01)), (int) (Math.round(ySize * 0.22)));
         productNameLabel.setSize((int) (Math.round(xSize * 0.35)), 40);
-        productNameLabel.setFont(new Font("Merriweather", Font.PLAIN, 30));
+        productNameLabel.setFont(new Font("Merriweather", Font.PLAIN, 22));
         add (productNameLabel);
 
         productName = new JTextField();
-        productName.setLocation((int) (Math.round(xSize * 0.01)), 290);
+        productName.setLocation((int) (Math.round(xSize * 0.01)), (int) (Math.round(ySize * 0.27)));
         productName.setSize(190, 40);
-        productName.setFont(new Font("Merriweather", Font.PLAIN, 30));
+        productName.setFont(new Font("Merriweather", Font.PLAIN, 22));
         add (productName);
 
         retailPriceLabel = new JLabel("Retail Price");
-        retailPriceLabel.setLocation((int) (Math.round(xSize * 0.01)), 335);
+        retailPriceLabel.setLocation((int) (Math.round(xSize * 0.01)), (int) (Math.round(ySize * 0.32)));
         retailPriceLabel.setSize((int) (Math.round(xSize * 0.35)), 40);
-        retailPriceLabel.setFont(new Font("Merriweather", Font.PLAIN, 30));
+        retailPriceLabel.setFont(new Font("Merriweather", Font.PLAIN, 22));
         add (retailPriceLabel);
 
         retailPrice = new JTextField();
-        retailPrice.setLocation((int) (Math.round(xSize * 0.01)), 380);
+        retailPrice.setLocation((int) (Math.round(xSize * 0.01)), (int) (Math.round(ySize * 0.37)));
         retailPrice.setSize(190, 40);
-        retailPrice.setFont(new Font("Merriweather", Font.PLAIN, 30));
+        retailPrice.setFont(new Font("Merriweather", Font.PLAIN, 22));
         add (retailPrice);
 
         modellingScaleLabel = new JLabel("Modelling Scale");
-        modellingScaleLabel.setLocation((int) (Math.round(xSize * 0.01)), 425);
+        modellingScaleLabel.setLocation((int) (Math.round(xSize * 0.01)), (int) (Math.round(ySize * 0.42)));
         modellingScaleLabel.setSize((int) (Math.round(xSize * 0.35)), 40);
-        modellingScaleLabel.setFont(new Font("Merriweather", Font.PLAIN, 30));
+        modellingScaleLabel.setFont(new Font("Merriweather", Font.PLAIN, 22));
         add (modellingScaleLabel);
 
         modellingScale = new JTextField();
-        modellingScale.setLocation((int) (Math.round(xSize * 0.01)), 470);
+        modellingScale.setLocation((int) (Math.round(xSize * 0.01)), (int) (Math.round(ySize * 0.47)));
         modellingScale.setSize(190, 40);
-        modellingScale.setFont(new Font("Merriweather", Font.PLAIN, 30));
+        modellingScale.setFont(new Font("Merriweather", Font.PLAIN, 22));
         add (modellingScale);
 
         stockCountLabel = new JLabel("Stock Count");
-        stockCountLabel.setLocation((int) (Math.round(xSize * 0.01)), 515);
+        stockCountLabel.setLocation((int) (Math.round(xSize * 0.01)), (int) (Math.round(ySize * 0.52)));
         stockCountLabel.setSize((int) (Math.round(xSize * 0.35)), 40);
-        stockCountLabel.setFont(new Font("Merriweather", Font.PLAIN, 30));
+        stockCountLabel.setFont(new Font("Merriweather", Font.PLAIN, 22));
         add (stockCountLabel);
 
         stockCount = new JTextField();
-        stockCount.setLocation((int) (Math.round(xSize * 0.01)), 560);
+        stockCount.setLocation((int) (Math.round(xSize * 0.01)), (int) (Math.round(ySize * 0.57)));
         stockCount.setSize(190, 40);
-        stockCount.setFont(new Font("Merriweather", Font.PLAIN, 30));
+        stockCount.setFont(new Font("Merriweather", Font.PLAIN, 22));
         add (stockCount);
 
         addProduct = new JButton("Submit");
         addProduct.setFont(new Font("Merriweather", Font.PLAIN, 15));
         addProduct.setSize(100, 40);
-        addProduct.setLocation((int) (Math.round(xSize * 0.01)), 605);
+        addProduct.setLocation((int) (Math.round(xSize * 0.2)), (int) (Math.round(ySize * 0.57)));
         addProduct.addActionListener(e->addProductButton_click());
         add(addProduct);
     }
