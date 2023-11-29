@@ -494,7 +494,9 @@ public class OrderPage extends JFrame {
 
 	public void customerButton_Click()
 	{
-		System.out.println("Customer button has been pressed ");
+		ProductPageUI productPage = new ProductPageUI();
+		productPage.initFrame(isStaffPage, currentUserId);
+		this.dispose();
 	}
 	public void orderButton_Click()
 	{	

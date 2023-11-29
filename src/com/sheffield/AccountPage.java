@@ -219,9 +219,16 @@ public class AccountPage extends JFrame {
 	}
 	public void basketButton_Click() { System.out.println("Placeholder"); }
 	public void viewOrdersButton_Click() {
-		AccountPage accountPage = new AccountPage();
-		accountPage.initFrame(getIsStaffPage(), 5);
-		this.dispose();
+		try {
+			DatabaseConnectionHandler dch = new DatabaseConnectionHandler();
+			dch.openConnection();
+			OrderPage orderPage = new OrderPage();
+			orderPage.initFrame(isStaffPage, currentUserId, dch);
+			this.dispose();
+			dch.closeConnection();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 	public void staffButton_Click() {
 		AccountPage accountPage = new AccountPage();
