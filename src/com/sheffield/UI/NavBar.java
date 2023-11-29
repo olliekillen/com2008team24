@@ -28,6 +28,14 @@ public class NavBar extends JToolBar {
         loginButton.setBorder(new EmptyBorder(10,30,10,30));
         signUpButton.setBorder(new EmptyBorder(10,30,10,30));
 
+        homeButton.setBackground(new Color(-2743738));
+        loginButton.setBackground(new Color(-2743738));
+        signUpButton.setBackground(new Color(-2743738));
+
+        homeButton.setForeground(Color.white);
+        loginButton.setForeground(Color.white);
+        signUpButton.setForeground(Color.white);
+
         addListeners(myFrame);
 
         setBorder(new EmptyBorder(10,10,10,10));
@@ -39,7 +47,7 @@ public class NavBar extends JToolBar {
         addSeparator();
         add(signUpButton);
 
-        setBackground(Color.blue);
+        setBackground(new Color(-11854529));
 
     }
 

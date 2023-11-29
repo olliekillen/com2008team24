@@ -19,6 +19,7 @@ public class CustomJEditorPane extends JEditorPane {
         setEditable(false);
         setMaximumSize(new Dimension(1000, 120));
         setFont(new Font("Arial", Font.PLAIN, fontSize));
+        setBackground(new Color(-8741250));
         setAlignmentX(JLabel.CENTER_ALIGNMENT);
     }
 

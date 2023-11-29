@@ -21,6 +21,7 @@ public class SignUpForm extends JPanel {
      */
     public SignUpForm(MyFrame myFrame){
         setLayout(new GridBagLayout());
+        setBackground(new Color(-8741250));
         GridBagConstraints constraints = new GridBagConstraints();
         // Spaces the form vertically so it is centred.
         add(Box.createVerticalGlue());
@@ -137,6 +138,7 @@ public class SignUpForm extends JPanel {
                       String passwordText, String confirmPasswordText,String postcodeText,String houseNumberText,
                       String roadNameText, String cityNameText, String message ){
         setLayout(new GridBagLayout());
+        setBackground(new Color(-8741250));
         GridBagConstraints constraints = new GridBagConstraints();
         // Spaces the form vertically so it is centred.
         add(Box.createVerticalGlue());

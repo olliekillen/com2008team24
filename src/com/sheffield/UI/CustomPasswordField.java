@@ -33,6 +33,7 @@ public class CustomPasswordField extends JPasswordField {
     public JPanel getFieldInPanel(JPanel panel){
         panel.setMinimumSize(new Dimension(1000, 40));
         panel.setMaximumSize(new Dimension(1000, 40));
+        panel.setBackground(new Color(-8741250));
         panel.add(this);
         return panel;
     }
