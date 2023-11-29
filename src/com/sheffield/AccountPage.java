@@ -5,7 +5,12 @@ import com.sheffield.Products.Product;
 import javax.swing.*;
 import java.awt.*;
 import java.sql.*;
-
+/**
+ * This class is the JFrame that holds all of User's account details and allows the details to be edited
+ * by the account owner
+ *
+ * @author Nguyen Anh Le
+ */
 public class AccountPage extends JFrame {
 
 	Toolkit tk = Toolkit.getDefaultToolkit();
@@ -23,9 +28,9 @@ public class AccountPage extends JFrame {
 	JButton productButton = new JButton();
 	JButton accountBasketButton = new JButton();
 	JButton staffButton = new JButton();
+	JButton refreshButton = new JButton();
 	JLabel accountSidebar = new JLabel();
 	JLabel accountDetailTitleText = new JLabel();
-
 
 	JLabel accountDetailBackGround = new JLabel();
 	JLabel acountPageBackground = new JLabel();
@@ -95,6 +100,8 @@ public class AccountPage extends JFrame {
 		productButton.setHorizontalAlignment(SwingConstants.LEFT);
 		accountPagePanel.add(productButton);
 
+
+
 		accountBasketButton.setLocation(0,(int) (Math.round(ySize * 0.22)));
 		accountBasketButton.setSize((int) (Math.round(xSize * 0.16)),87);
 		accountBasketButton.setForeground( new Color(-1) );
@@ -147,13 +154,23 @@ public class AccountPage extends JFrame {
 		accountDetailTitleText.setText("Acount Details ");
 		accountPagePanel.add(accountDetailTitleText);
 
+		refreshButton.setLocation((int)(xSize * 0.75),(int) (ySize*0.22));
+		refreshButton.setSize((int) (Math.round(xSize * 0.16)),87);
+		refreshButton.setForeground( Color.black );
+		refreshButton.setFont(new Font("Merriweather", Font.BOLD, 17));
+		refreshButton.addActionListener(e->refreshButton_Click());
+		refreshButton.setBackground( new Color(211,211,211) );
+		refreshButton.setText("Refresh page");
+		accountPagePanel.add(refreshButton);
 
 		//DISPLAYING ACCOUNT DETAILS
 		AccountDataOperations accountData = new AccountDataOperations();
 
-		User user = accountData.GetUserData(userId,con);
-		Address address = accountData.GetUserAddress(userId,con);
-		accountDetailBoxConstructor( user,address,"TODO");
+		User user = accountData.getUserData(userId,con);
+		Address address = accountData.getUserAddress(userId,con);
+		BankDetails card = accountData.getBankDetails(userId,con);
+		accountDetailBoxConstructor( user,address, card);
+
 
 
 		accountDetailBackGround.setLocation((int) (Math.round(xSize * 0.19)),175);
@@ -169,11 +186,15 @@ public class AccountPage extends JFrame {
 		acountPageBackground.setBackground( new Color(-8741250) );
 		accountPagePanel.add(acountPageBackground);
 
+
+
 		accountPagePanel.setVisible(true);
+
+
 	}
-	public void accountDetailBoxConstructor(User user , Address address,String cardNum ){
+	public void accountDetailBoxConstructor(User user , Address address,BankDetails card ){
 		AccountDetailBox box = new AccountDetailBox();
-		box.initAccountDetail(user,address,cardNum);
+		box.initAccountDetail(user,address,card);
 		box.setOpaque(true);
 		box.setLocation((int) (Math.round(xSize * 0.20)),230);
 		box.setSize((int) (Math.round(xSize * 0.72)),750);
@@ -182,6 +203,7 @@ public class AccountPage extends JFrame {
 		box.validate();
 		box.repaint();
 	}
+	public void refreshButton_Click(){}
 
 	public Boolean getIsStaffPage() { return this.isStaffPage; }
 

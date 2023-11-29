@@ -1,20 +1,19 @@
 package com.sheffield;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
 import java.sql.*;
+import java.util.*;
+import java.util.stream.Collectors;
+import com.sheffield.UI.PasswordHasher;
 
 public class AccountDataOperations {
-    public static User GetUserData (Integer userId, Connection con) throws SQLException {
+    public static User getUserData (Integer userId, Connection con) throws SQLException {
         User user = null;
+
         Statement stmt = null;
         try {
             stmt = con.createStatement();
             ResultSet res =
-                    stmt.executeQuery("SELECT * FROM Users WHERE userID = userId");
+                    stmt.executeQuery("SELECT * FROM Users WHERE userID ="+userId);
             res.next();
             Integer id = res.getInt(1);
             String email = res.getString(2);
@@ -37,8 +36,82 @@ public class AccountDataOperations {
         }
         return user;
     }
+    public void updateName (String foreName,String surName,int userId,Connection con) throws SQLException{
 
-    public static Address GetUserAddress(Integer userId, Connection con) throws SQLException {
+        String preparedStatment ="UPDATE Users SET forename=?,surname=? WHERE userID =" + userId; // TODO TELL OLLIE
+
+        try{
+            PreparedStatement stmt = con.prepareStatement(preparedStatment);
+            stmt.setString(1,foreName);
+            stmt.setString(2,surName);
+            stmt.executeUpdate();
+
+
+
+        }catch (SQLException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+    public void updatePass (String pass,int userId,Connection con) throws SQLException{
+        char[] charArray = pass.toCharArray();
+        String preparedStatment ="UPDATE Users SET pass=? WHERE userID =" + userId;
+
+        try{
+            PreparedStatement stmt = con.prepareStatement(preparedStatment);
+            stmt.setString(1,PasswordHasher.hashPassword(charArray));
+            stmt.executeUpdate();
+
+
+
+        }catch (SQLException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+    public void updateEmail (String email,int userId,Connection con) throws SQLException{
+
+        String preparedStatment ="UPDATE Users SET emailAddress=? WHERE userID =" + userId;
+
+        try{
+            PreparedStatement stmt = con.prepareStatement(preparedStatment);
+            stmt.setString(1,email);
+            stmt.executeUpdate();
+
+
+
+        }catch (SQLException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    public void updateAddress (String address,int userId,Connection con) throws SQLException{
+        List<String> addressList = Arrays.stream(address.split("\\s+"))
+                .map(s -> s.replaceAll(",", ""))
+                .collect(Collectors.toList());
+
+        String preparedStatment ="UPDATE Address SET postcode=?,houseNumber=?," +
+                "roadName=?,city=? ";//WHERE userID =" + userId;  //TODO!!
+
+        try{
+            PreparedStatement stmt = con.prepareStatement(preparedStatment);
+            stmt.setString(1,addressList.get(3));
+            stmt.setString(2,addressList.get(0));
+            stmt.setString(3,addressList.get(1));
+            stmt.setString(4,addressList.get(2));
+            stmt.executeUpdate();
+
+
+
+        }catch (SQLException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+
+    public static Address getUserAddress(Integer userId, Connection con) throws SQLException {
         Address address = null;
         PreparedStatement stmt = con.prepareStatement("SELECT * FROM Users ");
         try {
@@ -81,9 +154,9 @@ public class AccountDataOperations {
         try {
             stmt = con.createStatement();
             ResultSet res =
-                    stmt.executeQuery("SELECT * FROM Bank_Account_Details WHERE userID = userId");
+                    stmt.executeQuery("SELECT * FROM Bank_Account_Details WHERE userID = "+userId);
             while(res.next()) {
-                Integer cardNum = res.getInt(1);
+                String cardNum = res.getString(1);
                 String expiryDate = res.getString(2);
                 Integer securityCode = res.getInt(3);
                 String cardHolderName = res.getString(4);

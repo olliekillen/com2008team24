@@ -34,13 +34,13 @@ public class EditButtonUI extends JFrame {
 			case "name":
 			case "password":
 			case"email":
-				User user = accountData.GetUserData(userId,con.getConnection());
+				User user = accountData.getUserData(userId,con.getConnection());
 				switch(field.toLowerCase()){
 					case "name":
 						text = user.getFullName();
 						break;
-					case "password":
-						text = user.getpass();
+					case "pass":
+						text = "Please enter new password";
 						break;
 					case "email":
 						text = user.getEmail();
@@ -48,8 +48,8 @@ public class EditButtonUI extends JFrame {
 				}
 				break;
 			case"address":
-				Address address = accountData.GetUserAddress(userId,con.getConnection());
-				text = address.getAddress();
+				text = "housenumber   roadname  city postcode";
+			default: System.out.println("No Field found");
 				break;
 
 		}
@@ -58,7 +58,7 @@ public class EditButtonUI extends JFrame {
 		add(editPanel);
 		setTitle("Edit "+field);
 
-		initPanel(text);
+		initPanel(text,userId, field);
 
 		setSize(x,y);
 		setResizable(true);
@@ -66,7 +66,7 @@ public class EditButtonUI extends JFrame {
 		setVisible(true);
 	}
 
-	public void initPanel(String text ) {
+	public void initPanel(String text, int userId , String field ) {
 		textBox = new JTextField(text);
 		textBox.setFont(new Font("Merriweather", Font.BOLD, 15));
 		textBox.setBounds(15, 8, (int)(xSize * .12), 25);
@@ -75,7 +75,14 @@ public class EditButtonUI extends JFrame {
 		confirmButton = new JButton("Confirm");
 		confirmButton.setFont(new Font("Merriweather", Font.BOLD, 15));
 		confirmButton.setBounds(250, 8, (int)(xSize*.05), 25);
-		confirmButton.addActionListener(e->confirmButton_Click());
+		confirmButton.addActionListener(e-> {
+			try {
+				confirmButton_Click(userId,field);
+				System.out.println(userId);
+			} catch (SQLException ex) {
+				throw new RuntimeException(ex);
+			}
+		});
 
 
 		cancelButton = new JButton("Cancel");
@@ -88,7 +95,29 @@ public class EditButtonUI extends JFrame {
 		editPanel.add(textBox);
 		editPanel.add(cancelButton);
 	}
-	public void confirmButton_Click(){
+	public void confirmButton_Click(int userId , String field) throws SQLException {
+		AccountDataOperations acc = new AccountDataOperations();
+		DatabaseConnectionHandler con = new DatabaseConnectionHandler();
+
+
+		con.openConnection();
+		Connection connect = con.getConnection();
+		switch(field.toLowerCase()){
+			case"name":
+				String[] changes = textBox.getText().trim().split("\\s+");
+				acc.updateName(changes[0],changes[1],userId,connect);
+				break;
+			case"pass":
+				acc.updatePass(textBox.getText(),userId,connect);
+				break;
+			case"email":
+				acc.updateEmail(textBox.getText(),userId,connect);
+				break;
+			case"address":
+				acc.updateAddress(textBox.getText(),userId,connect);
+				break;
+		}
+		con.closeConnection();
 
 		this.dispose();
 	}

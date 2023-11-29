@@ -7,7 +7,12 @@
     <list default="true" id="d8c3e42c-1391-466e-bdbd-038550dee454" name="Changes" comment="merging xml">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Team_24_Security_And_Design.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Team_24_Security_And_Design.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sheffield/UI/UserDatabaseOperations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/UI/UserDatabaseOperations.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sheffield/AccountDataOperations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/AccountDataOperations.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sheffield/AccountDetailBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/AccountDetailBox.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sheffield/AccountPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/AccountPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sheffield/BankDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/BankDetails.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sheffield/EditProductUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/EditProductUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sheffield/UI/EditButtonUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/UI/EditButtonUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,24 +44,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/dvous/Documents/mysql-connector-j-8.2.0/mysql-connector-j-8.2.0/mysql-connector-j-8.2.0.jar&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/Admin/Downloads/mysql-connector-j-8.2.0/mysql-connector-j-8.2.0.jar",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
-  <component name="RunManager" selected="Application.MyFrame">
+}]]></component>
+  <component name="RunManager" selected="Application.AccountPage">
     <configuration name="AccountPage" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.sheffield.AccountPage" />
       <module name="Team_24_Security_And_Design" />
@@ -98,8 +104,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.MyFrame" />
         <item itemvalue="Application.AccountPage" />
+        <item itemvalue="Application.MyFrame" />
         <item itemvalue="Application.ProductPageLauncher" />
       </list>
     </recent_temporary>
@@ -165,14 +171,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="merging xml" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/sheffield/AccountPage.java</url>
-          <line>9</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="com.mysql.cj.jdbc.result.ResultSetImpl" memberName="db" />
+      </pinned-members>
+    </pin-to-top-manager>
   </component>
 </project>
