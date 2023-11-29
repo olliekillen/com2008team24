@@ -346,7 +346,7 @@ public class EditProductUI extends JFrame {
     {
         //takes the user to the account page
         AccountPage accountPage = new AccountPage();
-        accountPage.initFrame(getIsStaffPage(), 5);
+        accountPage.initFrame( isStaffPage, 5);
         this.dispose();
     }
     public void singleProductBasketButton_Click()

@@ -159,7 +159,7 @@ public class AccountPage extends JFrame {
 		User user = accountData.getUserData(userId,con);
 		Address address = accountData.getUserAddress(userId,con);
 		BankDetails card = accountData.getBankDetails(userId,con);
-		accountDetailBoxConstructor( user,address, card);
+		accountDetailBoxConstructor( user,address, card,this, this.getIsStaff());
 
 
 
@@ -182,9 +182,9 @@ public class AccountPage extends JFrame {
 
 
 	}
-	public void accountDetailBoxConstructor(User user , Address address,BankDetails card ){
+	public void accountDetailBoxConstructor(User user , Address address,BankDetails card, JFrame account, boolean isStaff){
 		AccountDetailBox box = new AccountDetailBox();
-		box.initAccountDetail(user,address,card);
+		box.initAccountDetail(user,address,card,account, isStaff);
 		box.setOpaque(true);
 		box.setLocation((int) (Math.round(xSize * 0.20)),(int) (Math.round(ySize * 0.19)));
 		box.setSize((int) (Math.round(xSize * 0.72)),(int) (Math.round(ySize * 0.67)));
