@@ -1,11 +1,15 @@
+/**
+ * A Class that extends JPanel to create the form for adding products
+ *
+ * @author Ollie Killen
+ */
+
 package com.sheffield;
 
 import javax.swing.*;
 
 import java.awt.*;
-import java.awt.event.*;
 import java.sql.*;
-import java.util.ArrayList;
 
 
 public class ProductCreatorBox extends JPanel {
@@ -28,7 +32,7 @@ public class ProductCreatorBox extends JPanel {
     JTextField stockCount;
     JButton addProduct;
 
-
+    // Constructor for form
     public ProductCreatorBox() {
         this.setLayout(null);
 
@@ -118,6 +122,9 @@ public class ProductCreatorBox extends JPanel {
         add(addProduct);
     }
 
+
+    //Method for when submit button is pressed. 
+    //Takes user input and adds it to and SQL Statement to add the product to the database, then clears the input fields.
     public void addProductButton_click()
     {
         String productCodeData = productCode.getText();
@@ -133,7 +140,7 @@ public class ProductCreatorBox extends JPanel {
         retailPrice.setText("");
         modellingScale.setText("");
         stockCount.setText("");
-        
+
         PreparedStatement stmt = null;
         String update = "INSERT INTO Product VALUES (?, ?, ?, ?, ?, ?)";
 

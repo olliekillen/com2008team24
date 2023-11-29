@@ -1,3 +1,9 @@
+/**
+ * A Class that extends JFrame to create the order page
+ *
+ * @author Ollie Killen
+ */
+
 package com.sheffield;
 
 import java.util.ArrayList;
@@ -35,6 +41,7 @@ public class OrderPage extends JFrame {
     ArrayList<Order> orders = null;
 	OrderTable orderDetails = null;
 
+	//Sets layout and invisibility, sets whether the page is a staff or user page
 	public void initFrame(Boolean isStaffPage, int userId, DatabaseConnectionHandler con)
 	{
 		this.setLayout(new GridLayout(1,1));
@@ -52,6 +59,7 @@ public class OrderPage extends JFrame {
 		this.setVisible(true);
 	}
 
+	//Initialises the view of all orders, staff page
 	public void initPanel(Connection con, int userId) throws SQLException
 
 	{
@@ -67,6 +75,11 @@ public class OrderPage extends JFrame {
 		 */
 
 		this.orders = OrderDatabaseOperations.GetOrders(con);
+		for (Order order:orders) {
+			if (order.orderStatus != "confirmed") {
+				this.orders.remove(order);
+			}
+		}
 		this.setCurrentUserId(userId);
 		this.setIsManager(false);
 		try {
@@ -106,7 +119,8 @@ public class OrderPage extends JFrame {
 		customerButton.setHorizontalAlignment(SwingConstants.LEFT);
 		orderPagePanel.add(customerButton);
 
-		if (this.orders.size() > 0) {
+		//Adds button to view top order if there are any orders
+		if (this.orders != null) {
 			orderButton.setLocation(0,157);
 			orderButton.setSize((int) (Math.round(xSize * 0.16)),87);
 			orderButton.setForeground( new Color(-1) );
@@ -162,6 +176,7 @@ public class OrderPage extends JFrame {
 		orderPagePanel.setVisible(true);
 	}
 
+	//Initialises view of one order’s order lines, for staff view
 	public void initPanel(Order order, Connection con)
 	{
 		/* For colours of each of the components:
@@ -277,6 +292,8 @@ public class OrderPage extends JFrame {
 		orderPagePanel.setVisible(true);
 	}
 
+
+	//Initialises view of one order’s order lines, for customer view
 	public void initPanel(String ignore, Order order, Connection con)
 	{
 		/* For colours of each of the components:
@@ -318,6 +335,7 @@ public class OrderPage extends JFrame {
 		customerButton.setHorizontalAlignment(SwingConstants.LEFT);
 		orderPagePanel.add(customerButton);
 
+		//If there are orders, adds a button to view them which opens a popup window asking for the order id
 		if (this.orders.size() > 0) {
 			orderButton.setLocation(0,157);
 			orderButton.setSize((int) (Math.round(xSize * 0.16)),87);
@@ -394,6 +412,7 @@ public class OrderPage extends JFrame {
 		orderPagePanel.setVisible(true);
 	}
 
+	//Initialises view of all orders, for customer view
 	public void initPanel(Integer userId, Connection con) throws SQLException
 	{
 		/* For colours of each of the components:
@@ -498,12 +517,14 @@ public class OrderPage extends JFrame {
 		orderPagePanel.setVisible(true);
 	}
 
+	//When customer button is clicked, redirect to product page
 	public void customerButton_Click()
 	{
 		ProductPageUI productPage = new ProductPageUI();
 		productPage.initFrame(isStaffPage, currentUserId);
 		this.dispose();
 	}
+	//When the view top order button on the staff page is clicked, opens a new window with that order’s order lines
 	public void orderButton_Click()
 	{	
 		try {
@@ -523,6 +544,8 @@ public class OrderPage extends JFrame {
 
 	}
 
+	//When the view orders button is pressed on the customer page,
+	// open a popup window asking which order they would like to view, then opens a new window with taht order’s order lines.
 	public void userButton_Click() {
 		Integer orderIds[] = new Integer[orders.size()];
 		Integer i = 0;
@@ -558,6 +581,8 @@ public class OrderPage extends JFrame {
 		dispose();
 		
 	}
+
+	//When the view all orders button is pressed on the staff page for viewing one order, opens a new window showing all orders
 	public void orderTableButton_Click()
 	{	
 		try {
@@ -574,7 +599,7 @@ public class OrderPage extends JFrame {
         }
 		dispose();
 	}
-
+	//when the view all orders button is pressed on the user page for viewing one order, opens a new window showing all of that user’s orders
 	public void userOrderTableButton_Click(Integer userId)
 	{	
 		try {
@@ -610,6 +635,7 @@ public class OrderPage extends JFrame {
 
 	public void setCurrentUserId(int currentUserId) { this.currentUserId = currentUserId; }
 
+	//When staff fulfill an order, mark as fulfilled in the database
 	public void fulfilButton_Click(Order order)
 	{	
 		try {
@@ -626,6 +652,7 @@ public class OrderPage extends JFrame {
 
 	}
 
+	//WHen customer confirms an order, mark as confirmed in the database
 	public void confirmButton_Click(Order order)
 	{	
 		try {
@@ -642,6 +669,8 @@ public class OrderPage extends JFrame {
 
 	}
 
+
+	//When staff or customers delete an order, mark as deleted in the database
 	public void deleteButton_Click(Order order)
 	{	
 		try {
@@ -654,6 +683,7 @@ public class OrderPage extends JFrame {
 			window.initPanel(con.getConnection(), currentUserId);
 			window.initFrame(isStaffPage, currentUserId, con);
 			con.closeConnection();
+
 			dispose();
 
 
@@ -663,23 +693,5 @@ public class OrderPage extends JFrame {
             e.printStackTrace();
         }
 	}
-
-
-	public static void main(String args[]) {
-        try {
-            final OrderPage window = new OrderPage();
-            DatabaseConnectionHandler con = new DatabaseConnectionHandler();
-            con.openConnection();
-
-            //window.initPanel(5, con.getConnection());
-            window.initFrame(true, 5, con);
-            con.closeConnection();
-        } 
-
-        catch (SQLException e) {
-            e.printStackTrace();
-        }
-	}
-
 
 }

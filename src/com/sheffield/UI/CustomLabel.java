@@ -24,7 +24,7 @@ public class CustomLabel extends JLabel {
      */
     public CustomLabel(String text, int fontSize, int top, int left, int bottom, int right){
         super(text);
-        setFont(new Font("Arial", Font.PLAIN, fontSize));
+        setFont(new Font("Arial", Font.BOLD, fontSize));
         setBorder(new EmptyBorder(top, left, bottom, right));
         setAlignmentX(JLabel.CENTER_ALIGNMENT);
     }
@@ -37,7 +37,7 @@ public class CustomLabel extends JLabel {
      */
     public CustomLabel(String text, int fontSize){
         super(text);
-        setFont(new Font("Arial", Font.PLAIN, fontSize));
+        setFont(new Font("Arial", Font.BOLD, fontSize));
         setAlignmentX(JLabel.CENTER_ALIGNMENT);
     }
 

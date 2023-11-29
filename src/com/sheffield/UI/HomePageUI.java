@@ -22,6 +22,7 @@ public class HomePageUI extends JPanel {
 	public HomePageUI(MyFrame myFrame) {
 		setLayout(new BorderLayout());
 		add(new NavBar(myFrame), BorderLayout.NORTH);
+		add(new HomePagePanel(myFrame), BorderLayout.CENTER);
 	}
 
 }

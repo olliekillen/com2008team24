@@ -30,9 +30,8 @@
   <component name="ChangeListManager">
     <list default="true" id="d8c3e42c-1391-466e-bdbd-038550dee454" name="Changes" comment="Commit before pull.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sheffield/AccountPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/AccountPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sheffield/IndividualProductPageUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/IndividualProductPageUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sheffield/ProductPageUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/ProductPageUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sheffield/UI/CustomJTextArea.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/UI/CustomJEditorPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sheffield/UI/HomePagePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/UI/HomePagePanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,18 +59,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/mysql-connector-j-8.2.0" />
-    <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.2" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "git-widget-placeholder": "main",
+    "node.js.selected.package.tslint": "(autodetect)"
+  }
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.sheffield" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ProductPageLauncher">
+  <component name="RunManager" selected="Application.MyFrame">
     <configuration name="AccountPage" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.sheffield.AccountPage" />
       <module name="Team_24_Security_And_Design" />
@@ -113,9 +112,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.MyFrame" />
         <item itemvalue="Application.ProductPageLauncher" />
         <item itemvalue="Application.AccountPage" />
-        <item itemvalue="Application.MyFrame" />
       </list>
     </recent_temporary>
   </component>
@@ -137,6 +136,22 @@
       <workItem from="1699831076779" duration="3455000" />
       <workItem from="1699878780488" duration="8339000" />
       <workItem from="1700484139830" duration="1489000" />
+      <workItem from="1700485926657" duration="1799000" />
+      <workItem from="1700490434514" duration="746000" />
+      <workItem from="1700492800892" duration="4244000" />
+      <workItem from="1700561688537" duration="2443000" />
+      <workItem from="1700567333002" duration="795000" />
+      <workItem from="1700649845585" duration="4833000" />
+      <workItem from="1700665935830" duration="5107000" />
+      <workItem from="1700684692026" duration="645000" />
+      <workItem from="1700751689435" duration="342000" />
+      <workItem from="1700754444442" duration="670000" />
+      <workItem from="1700827077011" duration="1616000" />
+      <workItem from="1700835453296" duration="2613000" />
+      <workItem from="1700840086139" duration="1536000" />
+      <workItem from="1700841851194" duration="4226000" />
+      <workItem from="1701101370333" duration="632000" />
+      <workItem from="1701255813746" duration="8003000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed product and account pages, which couldn't display due to changes in the last commit.">
       <created>1700236292159</created>
@@ -266,11 +281,12 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Fixed product and account pages, which couldn't display due to changes in the last commit." />
     <MESSAGE value="Individual product page is accessible from product page - data from the database doesn't appear on this page yet." />
+    <MESSAGE value="merging xml" />
+    <MESSAGE value="Designed Home Page" />
     <MESSAGE value="Fixed problem where when exiting the individual product staff page, all nav buttons disappear." />
     <MESSAGE value="Fixed problem where correct product details don't appear when pressing 'More Information' button in product box." />
     <MESSAGE value="Add to basket button now removed from product page when in staff mode." />
@@ -285,7 +301,8 @@
     <MESSAGE value="Working version of project with getIsStaffPage()." />
     <MESSAGE value="Account page changed to adapt to screen size." />
     <MESSAGE value="More changes to account page to make it work on all screens." />
-    <option name="LAST_COMMIT_MESSAGE" value="More changes to account page to make it work on all screens." />
+    <MESSAGE value="Commit before pull." />
+    <option name="LAST_COMMIT_MESSAGE" value="Commit before pull." />
   </component>
   <component name="WindowStateProjectService">
     <state x="471" y="47" key="#com.intellij.openapi.roots.ui.configuration.libraryEditor.LibraryEditorDialog" timestamp="1700670802312">
@@ -384,6 +401,7 @@
       <screen x="0" y="0" width="1280" height="672" />
     </state>
     <state x="303" y="0" width="672" height="678" key="search.everywhere.popup/0.0.1280.672@0.0.1280.672" timestamp="1701008604224" />
+    &gt;&gt;&gt;&gt;&gt;&gt;&gt; 27403453972a4664b91ffb710e479b17e77feb20
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
