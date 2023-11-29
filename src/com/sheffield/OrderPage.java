@@ -106,16 +106,20 @@ public class OrderPage extends JFrame {
 		customerButton.setHorizontalAlignment(SwingConstants.LEFT);
 		orderPagePanel.add(customerButton);
 
-        orderButton.setLocation(0,157);
-		orderButton.setSize((int) (Math.round(xSize * 0.16)),87);
-		orderButton.setForeground( new Color(-1) );
-		orderButton.setFont(new Font("Merriweather", Font.BOLD, 21));
-        orderButton.addActionListener(e->orderButton_Click());
-		orderButton.setBackground( new Color(-2743738) );
-		orderButton.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));
-		orderButton.setText("   View Top Order");
-		orderButton.setHorizontalAlignment(SwingConstants.LEFT);
-		orderPagePanel.add(orderButton);
+		if (this.orders.size() > 0) {
+			orderButton.setLocation(0,157);
+			orderButton.setSize((int) (Math.round(xSize * 0.16)),87);
+			orderButton.setForeground( new Color(-1) );
+			orderButton.setFont(new Font("Merriweather", Font.BOLD, 21));
+        	orderButton.addActionListener(e->orderButton_Click());
+			orderButton.setBackground( new Color(-2743738) );
+			orderButton.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));
+			orderButton.setText("   View Top Order");
+			orderButton.setHorizontalAlignment(SwingConstants.LEFT);
+			orderPagePanel.add(orderButton);
+		}
+
+        
 
 		orderSidebar.setLocation(0,70);
 		orderSidebar.setSize((int) (Math.round(xSize * 0.16)),1930);
@@ -314,17 +318,19 @@ public class OrderPage extends JFrame {
 		customerButton.setHorizontalAlignment(SwingConstants.LEFT);
 		orderPagePanel.add(customerButton);
 
-        orderButton.setLocation(0,157);
-		orderButton.setSize((int) (Math.round(xSize * 0.16)),87);
-		orderButton.setForeground( new Color(-1) );
-		orderButton.setFont(new Font("Merriweather", Font.BOLD, 21));
-        orderButton.addActionListener(e->userOrderTableButton_Click(order.userId));
-		orderButton.setBackground( new Color(-2743738) );
-		orderButton.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));
-		orderButton.setText("   View All Orders");
-		orderButton.setHorizontalAlignment(SwingConstants.LEFT);
-		orderPagePanel.add(orderButton);
-
+		if (this.orders.size() > 0) {
+			orderButton.setLocation(0,157);
+			orderButton.setSize((int) (Math.round(xSize * 0.16)),87);
+			orderButton.setForeground( new Color(-1) );
+			orderButton.setFont(new Font("Merriweather", Font.BOLD, 21));
+			orderButton.addActionListener(e->userOrderTableButton_Click(order.userId));
+			orderButton.setBackground( new Color(-2743738) );
+			orderButton.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));
+			orderButton.setText("   View All Orders");
+			orderButton.setHorizontalAlignment(SwingConstants.LEFT);
+			orderPagePanel.add(orderButton);
+		}
+    
 		fulfilButton.setLocation(0,244);
 		fulfilButton.setSize((int) (Math.round(xSize * 0.16)),87);
 		fulfilButton.setForeground( new Color(-1) );
@@ -514,6 +520,7 @@ public class OrderPage extends JFrame {
 		dispose();
 
 	}
+
 	public void userButton_Click() {
 		Integer orderIds[] = new Integer[orders.size()];
 		Integer i = 0;
@@ -640,7 +647,14 @@ public class OrderPage extends JFrame {
             con.openConnection();
             System.out.println("Connection Successful");
             OrderDatabaseOperations.DeleteOrder(order, con.getConnection());
-            con.closeConnection();
+			final OrderPage window = new OrderPage();
+			System.out.println("Connection Successful");
+			window.initPanel(con.getConnection(), currentUserId);
+			window.initFrame(isStaffPage, currentUserId, con);
+			con.closeConnection();
+			dispose();
+
+
         } 
 
         catch (SQLException e) {
@@ -654,17 +668,8 @@ public class OrderPage extends JFrame {
             final OrderPage window = new OrderPage();
             DatabaseConnectionHandler con = new DatabaseConnectionHandler();
             con.openConnection();
-            System.out.println("Connection Successful");
-			ArrayList<Order> orders = null;
-			try {
-				orders = OrderDatabaseOperations.GetOrders(con.getConnection());
-			} 
-			catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
 
-            window.initPanel(5, con.getConnection());
+            //window.initPanel(5, con.getConnection());
             window.initFrame(true, 5, con);
             con.closeConnection();
         } 
