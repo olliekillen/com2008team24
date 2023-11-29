@@ -290,6 +290,7 @@ public class SignUpForm extends JPanel {
         errorMessagesPanel.setLayout(new BoxLayout(errorMessagesPanel, BoxLayout.Y_AXIS));
         for (String s : errorMessageList) {
             errorMessagesPanel.add(new CustomLabel(s, 12, new Color(255, 0, 0)));
+            errorMessagesPanel.setBackground(new Color(-8741250));
         }
 
         return errorMessagesPanel;
