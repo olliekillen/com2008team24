@@ -28,7 +28,6 @@ public class AccountPage extends JFrame {
 	JButton productButton = new JButton();
 	JButton accountBasketButton = new JButton();
 	JButton staffButton = new JButton();
-	JButton refreshButton = new JButton();
 	JLabel accountSidebar = new JLabel();
 	JLabel accountDetailTitleText = new JLabel();
 
@@ -154,22 +153,13 @@ public class AccountPage extends JFrame {
 		accountDetailTitleText.setText("Acount Details ");
 		accountPagePanel.add(accountDetailTitleText);
 
-		refreshButton.setLocation((int)(xSize * 0.75),(int) (ySize*0.22));
-		refreshButton.setSize((int) (Math.round(xSize * 0.16)),87);
-		refreshButton.setForeground( Color.black );
-		refreshButton.setFont(new Font("Merriweather", Font.BOLD, 17));
-		refreshButton.addActionListener(e->refreshButton_Click());
-		refreshButton.setBackground( new Color(211,211,211) );
-		refreshButton.setText("Refresh page");
-		accountPagePanel.add(refreshButton);
-
 		//DISPLAYING ACCOUNT DETAILS
 		AccountDataOperations accountData = new AccountDataOperations();
 
 		User user = accountData.getUserData(userId,con);
 		Address address = accountData.getUserAddress(userId,con);
 		BankDetails card = accountData.getBankDetails(userId,con);
-		accountDetailBoxConstructor( user,address, card);
+		accountDetailBoxConstructor( user,address, card,this, this.getIsStaff());
 
 
 
@@ -192,9 +182,9 @@ public class AccountPage extends JFrame {
 
 
 	}
-	public void accountDetailBoxConstructor(User user , Address address,BankDetails card ){
+	public void accountDetailBoxConstructor(User user , Address address,BankDetails card, JFrame account, boolean isStaff){
 		AccountDetailBox box = new AccountDetailBox();
-		box.initAccountDetail(user,address,card);
+		box.initAccountDetail(user,address,card,account, isStaff);
 		box.setOpaque(true);
 		box.setLocation((int) (Math.round(xSize * 0.20)),230);
 		box.setSize((int) (Math.round(xSize * 0.72)),750);

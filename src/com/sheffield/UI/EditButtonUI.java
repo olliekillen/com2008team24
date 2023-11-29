@@ -25,7 +25,7 @@ public class EditButtonUI extends JFrame {
 	private JButton cancelButton;
 	private JTextField textBox;
 
-	public void initFrame(int x, int y, String field, int userId) throws SQLException {
+	public void initFrame(int x, int y, String field, int userId, JFrame account,boolean isStaff) throws SQLException {
 		String text = "";
 		AccountDataOperations accountData = new AccountDataOperations();
 		DatabaseConnectionHandler con = new DatabaseConnectionHandler();
@@ -58,7 +58,7 @@ public class EditButtonUI extends JFrame {
 		add(editPanel);
 		setTitle("Edit "+field);
 
-		initPanel(text,userId, field);
+		initPanel(text,userId, field , account,isStaff);
 
 		setSize(x,y);
 		setResizable(true);
@@ -66,7 +66,7 @@ public class EditButtonUI extends JFrame {
 		setVisible(true);
 	}
 
-	public void initPanel(String text, int userId , String field ) {
+	public void initPanel(String text, int userId , String field, JFrame account,boolean isStaff ) {
 		textBox = new JTextField(text);
 		textBox.setFont(new Font("Merriweather", Font.BOLD, 15));
 		textBox.setBounds(15, 8, (int)(xSize * .12), 25);
@@ -77,7 +77,7 @@ public class EditButtonUI extends JFrame {
 		confirmButton.setBounds(250, 8, (int)(xSize*.05), 25);
 		confirmButton.addActionListener(e-> {
 			try {
-				confirmButton_Click(userId,field);
+				confirmButton_Click(userId,field,account,isStaff);
 				System.out.println(userId);
 			} catch (SQLException ex) {
 				throw new RuntimeException(ex);
@@ -95,7 +95,7 @@ public class EditButtonUI extends JFrame {
 		editPanel.add(textBox);
 		editPanel.add(cancelButton);
 	}
-	public void confirmButton_Click(int userId , String field) throws SQLException {
+	public void confirmButton_Click(int userId , String field,JFrame account,boolean isStaff) throws SQLException {
 		AccountDataOperations acc = new AccountDataOperations();
 		DatabaseConnectionHandler con = new DatabaseConnectionHandler();
 
@@ -118,8 +118,11 @@ public class EditButtonUI extends JFrame {
 				break;
 		}
 		con.closeConnection();
-
+		account.dispose();
+		AccountPage accountPage = new AccountPage();
+		accountPage.initFrame(isStaff,userId);
 		this.dispose();
+
 	}
 	public void cancelButton_Click(){ this.dispose();}
 
