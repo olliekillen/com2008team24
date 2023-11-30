@@ -201,6 +201,7 @@ public class OrderDatabaseOperations {
         try {
             ResultSet resultSet = currentOrder(connection, userId);
             while (resultSet.next()) {
+                //if()
                 orderList.add(new Order(resultSet.getInt("orderNumber"),
                 resultSet.getString("orderDate"), resultSet.getString("statusField"),
                 resultSet.getFloat("totalCost"), resultSet.getBoolean("blockedStatus"),
@@ -296,10 +297,10 @@ public class OrderDatabaseOperations {
             preparedStatement.setString(1, product.getProductCode());
             preparedStatement.setInt(2, order.getOrderNumber());
             preparedStatement.setInt(3, orderLineNumber);
-            preparedStatement.setInt(4, getOrderLineCount(connection,product.getProductCode()) + 1);
+            preparedStatement.setInt(4, getOrderLineCount(connection,product.getProductCode(), order.getOrderNumber()) + 1);
             preparedStatement.setBigDecimal(5, new BigDecimal(product.getRetailPrice().floatValue()
-            * (getOrderLineCount(connection, product.getProductCode()) + 1.0)));
-            int rowsAffected = preparedStatement.executeUpdate();
+            * (getOrderLineCount(connection, product.getProductCode(), order.getOrderNumber()) + 1.0)));
+            preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
             throw e;
@@ -324,11 +325,12 @@ public class OrderDatabaseOperations {
         }
     }
 
-    public int getOrderLineCount(Connection connection, String productCode) throws SQLException {
+    public int getOrderLineCount(Connection connection, String productCode, int orderNumber) throws SQLException {
         try {
-            String selectSQL = "SELECT * FROM Order_Lines WHERE productCode=?";
+            String selectSQL = "SELECT * FROM Order_Lines WHERE productCode=? && orderNumber=?";
             PreparedStatement preparedStatement = connection.prepareStatement(selectSQL);
             preparedStatement.setString(1, productCode);
+            preparedStatement.setInt(2, orderNumber);
             ResultSet resultSet = preparedStatement.executeQuery();
             int count = 0;
             while (resultSet.next()) { count++; }

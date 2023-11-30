@@ -561,8 +561,7 @@ public class OrderPage extends JFrame {
 				"your order. Please try again when stocks refill, or start a new order.");
 			}
             con.closeConnection();
-        } 
-
+        }
         catch (SQLException e) {
             e.printStackTrace();
         }
@@ -575,16 +574,25 @@ public class OrderPage extends JFrame {
 		try {
             DatabaseConnectionHandler con = new DatabaseConnectionHandler();
             OrderDatabaseOperations dop = new OrderDatabaseOperations();
+            AccountDataOperations dop2 = new AccountDataOperations();
             con.openConnection();
-            if (dop.canOrderBeConfirmed(order, con.getConnection())) {
-				OrderDatabaseOperations.ConfirmOrder(order, con.getConnection());
-				OrderPage window = new OrderPage();
-				window.initFrame(getIsStaffPage(), getCurrentUserId(), con);
-				window.initPanel(con.getConnection(), getCurrentUserId());
-				dispose();
+            if (dop2.doBankDetailsExist(getCurrentUserId(), con.getConnection())) {
+				if (dop.canOrderBeConfirmed(order, con.getConnection())) {
+					OrderDatabaseOperations.ConfirmOrder(order, con.getConnection());
+					OrderPage window = new OrderPage();
+					window.initFrame(getIsStaffPage(), getCurrentUserId(), con);
+					window.initPanel(con.getConnection(), getCurrentUserId());
+					dispose();
+				} else {
+					JOptionPane.showMessageDialog(this, "There is not enough stock to complete " +
+					"your order. Please try again when stocks refill, or start a new order.");
+				}
 			} else {
-				JOptionPane.showMessageDialog(this, "There is not enough stock to complete " +
-				"your order. Please try again when stocks refill, or start a new order.");
+				JOptionPane.showMessageDialog(this, "You have not currently registered a bank " +
+				"card to your account. Please do so before you confirm your order.");
+				AccountPage accountPage = new AccountPage();
+				accountPage.initFrame(getIsStaffPage(),getCurrentUserId());
+				this.dispose();
 			}
 			con.closeConnection();
         } 

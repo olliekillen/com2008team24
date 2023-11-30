@@ -252,7 +252,7 @@ public class AccountDataOperations {
         }
         return address;
     }
-    /** This method retrieve User's Bankdetails data from the database
+    /** This method retrieves User's Bankdetails data from the database
      * @param userId user ID
      * @param con Connection to database
      * @return card of type BankDetails
@@ -284,6 +284,22 @@ public class AccountDataOperations {
                 stmt.close();
         }
         return card;
+    }
+
+    public Boolean doBankDetailsExist (Integer userId, Connection connection) throws SQLException {
+        try {
+            String selectSQL = "SELECT * FROM Bank_Account_Details WHERE userID=?";
+            PreparedStatement preparedStatement = connection.prepareStatement(selectSQL);
+            ResultSet resultSet = preparedStatement.getResultSet();
+            int count = 0;
+            while(resultSet.next()) { count++; }
+            return (! (count == 0));
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw e;
+        } catch (NullPointerException ex) {
+            return false;
+        }
     }
 
     public Boolean getStaffByUserID(Connection connection, int userID) throws SQLException {
