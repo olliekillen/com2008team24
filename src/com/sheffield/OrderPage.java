@@ -89,7 +89,14 @@ public class OrderPage extends JFrame {
 		this.orders = confirmedOrders;
 
 		this.setCurrentUserId(userId);
-		this.setIsManager(false);
+		try {
+			DatabaseConnectionHandler dch = new DatabaseConnectionHandler();
+			AccountDataOperations dop = new AccountDataOperations();
+			dch.openConnection();
+			isManager = dop.getManagerByUserID(dch.getConnection(), currentUserId);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		try {
 			DatabaseConnectionHandler dch = new DatabaseConnectionHandler();
 			AccountDataOperations dop = new AccountDataOperations();
@@ -435,6 +442,24 @@ public class OrderPage extends JFrame {
 		 * Transparent?: 15658734
 		 */
 
+		this.setCurrentUserId(userId);
+		try {
+			DatabaseConnectionHandler dch = new DatabaseConnectionHandler();
+			AccountDataOperations dop = new AccountDataOperations();
+			dch.openConnection();
+			isManager = dop.getManagerByUserID(dch.getConnection(), currentUserId);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		try {
+			DatabaseConnectionHandler dch = new DatabaseConnectionHandler();
+			AccountDataOperations dop = new AccountDataOperations();
+			dch.openConnection();
+			isStaff = dop.getStaffByUserID(dch.getConnection(), currentUserId);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
 		this.orders = OrderDatabaseOperations.GetOrders(con);
 
 		ArrayList<Order> userOrders = new ArrayList<Order>();
@@ -582,8 +607,7 @@ public class OrderPage extends JFrame {
             window.initPanel("user’s order", selectedOrder, con.getConnection());
             window.initFrame(isStaffPage, currentUserId, con);
             con.closeConnection();
-        } 
-
+        }
         catch (SQLException e) {
             e.printStackTrace();
         }
@@ -649,7 +673,6 @@ public class OrderPage extends JFrame {
 		try {
             DatabaseConnectionHandler con = new DatabaseConnectionHandler();
             con.openConnection();
-            System.out.println("Connection Successful");
             OrderDatabaseOperations.FulfilOrder(order, con.getConnection());
             con.closeConnection();
         } 
@@ -666,7 +689,6 @@ public class OrderPage extends JFrame {
 		try {
             DatabaseConnectionHandler con = new DatabaseConnectionHandler();
             con.openConnection();
-            System.out.println("Connection Successful");
             OrderDatabaseOperations.ConfirmOrder(order, con.getConnection());
             con.closeConnection();
         } 

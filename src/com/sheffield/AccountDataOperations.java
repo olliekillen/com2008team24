@@ -190,8 +190,7 @@ public class AccountDataOperations {
         Address address = null;
         PreparedStatement stmt = con.prepareStatement("SELECT * FROM Users WHERE userID =  "+ userId);
         try {
-
-            String postCode =null ;
+            String postCode = null ;
             Integer houseNumber = null;
             ResultSet res = stmt.executeQuery();
             while(res.next()) {
