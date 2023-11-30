@@ -443,17 +443,17 @@ public class OrderPage extends JFrame {
             DatabaseConnectionHandler con = new DatabaseConnectionHandler();
             OrderDatabaseOperations dop = new OrderDatabaseOperations();
             con.openConnection();
-			Order order = dop.getCurrentOrderByUserID(con.getConnection(), currentUserId);
-            window.initPanel(order, con.getConnection());
-            window.initFrame(isStaffPage, currentUserId, con);
-            con.closeConnection();
-        } 
-
+            if(dop.doesCurrentOrderExist(con.getConnection(), currentUserId)) {
+				Order order = dop.getCurrentOrderByUserID(con.getConnection(), currentUserId);
+				window.initPanel(order, con.getConnection());
+				window.initFrame(isStaffPage, currentUserId, con);
+				con.closeConnection();
+				dispose();
+			} else { JOptionPane.showInputDialog("There is no top order to view."); }
+        }
         catch (SQLException e) {
             e.printStackTrace();
         }
-		dispose();
-
 	}
 
 	//When the view orders button is pressed on the customer page,
