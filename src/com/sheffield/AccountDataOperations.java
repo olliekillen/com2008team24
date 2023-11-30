@@ -3,11 +3,17 @@ package com.sheffield;
 import java.sql.*;
 import com.sheffield.UI.PasswordHasher;
 
+/**
+ * This class contains some of the operations to do with users (the rest contained in UserDatabaseOperations), with
+ * these ones mainly being used to do with the account page
+ *
+ * @author Nguyen Anh Le, Luke Parry
+ */
 public class AccountDataOperations {
 
     public void updateName (String foreName,String surName,int userId,Connection con) throws SQLException{
 
-        String preparedStatment ="UPDATE Users SET forename=?,surname=? WHERE userID =" + userId; // TODO TELL OLLIE
+        String preparedStatment ="UPDATE Users SET forename=?,surname=? WHERE userID =" + userId;
 
         try{
             PreparedStatement stmt = con.prepareStatement(preparedStatment);

@@ -6,8 +6,8 @@ import java.awt.*;
 import java.sql.SQLException;
 
 /**
- * This class is the JFrame that houses all of User's account details display  functionallities , to display account informations
- * and calls to the EditButton UI to allow the user to update their details
+ * This class is the JFrame that houses all of the user's account details display functionalities, to display account
+ * information and calls to the EditButton UI to allow the user to update their details
  *
  * @author Nguyen Anh Le
  */

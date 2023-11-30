@@ -6,6 +6,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This class retrieves the data for each, determining which database method to run based on
+ * which product type is being retrieved
+ *
+ * @author Luke Parry
+ */
 public class ProductRetriever {
     public List<Product> getProductsFromDatabase(JComboBox<String> productTypeFilterCombo) {
         try {

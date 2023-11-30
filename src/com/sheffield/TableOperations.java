@@ -11,6 +11,11 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * This class contains all the methods used to retrieve data from the database for the table on the manager's page
+ *
+ * @author Luke Parry
+ */
 public class TableOperations {
     public void addCustomersToTable(DefaultTableModel tableModel, Connection connection) throws SQLException {
         String selectSQL = "SELECT * FROM Users NATURAL JOIN Customers";

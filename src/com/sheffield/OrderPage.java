@@ -551,7 +551,7 @@ public class OrderPage extends JFrame {
 			OrderDatabaseOperations dop = new OrderDatabaseOperations();
             con.openConnection();
 			if (dop.canOrderBeConfirmed(order, con.getConnection())) {
-				OrderDatabaseOperations.FulfilOrder(order, con.getConnection());
+				OrderDatabaseOperations.fulfilOrder(order, con.getConnection());
 				OrderPage window = new OrderPage();
 				window.initFrame(getIsStaffPage(), getCurrentUserId(), con);
 				window.initPanel(con.getConnection(), getCurrentUserId());

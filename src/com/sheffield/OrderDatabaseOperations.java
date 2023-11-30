@@ -8,6 +8,11 @@ import java.sql.*;
 import java.util.List;
 import java.math.BigDecimal;
 
+/**
+ * This class holds all of the database operations to do with orders throughout the system
+ *
+ * @author Oliver Killen, Luke Parry
+ */
 public class OrderDatabaseOperations {
     public static ArrayList<Order> GetOrders (Connection con) throws SQLException {
         ArrayList<Order> orders = new ArrayList<Order>();
@@ -99,7 +104,7 @@ public class OrderDatabaseOperations {
         return user;
     }
 
-    public static void FulfilOrder (Order order, Connection con) throws SQLException {
+    public static void fulfilOrder (Order order, Connection con) throws SQLException {
             try {
                 ProductDatabaseOperations dop = new ProductDatabaseOperations();
                 String updateSQL = "UPDATE Orders SET statusField = \"fulfilled\" WHERE orderNumber=?";

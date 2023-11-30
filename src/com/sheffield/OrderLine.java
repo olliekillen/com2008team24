@@ -1,5 +1,10 @@
 package com.sheffield;
 
+/**
+ * This class represents an order line and stores its data
+ *
+ * @author Oliver Killen
+ */
 public class OrderLine {
     String productCode;
     Integer orderLineNumber;
