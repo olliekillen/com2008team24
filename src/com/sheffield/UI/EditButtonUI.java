@@ -91,8 +91,6 @@ public class EditButtonUI extends JFrame {
 		textBox.setFont(new Font("Merriweather", Font.BOLD, 15));
 		textBox.setBounds(15, 8, (int)(xSize * .12), 25);
 
-
-
 		confirmButton = new JButton("Confirm");
 		confirmButton.setFont(new Font("Merriweather", Font.BOLD, 15));
 		confirmButton.setBounds((int)(xSize*0.15), 8, (int)(xSize*.09), 25);
@@ -217,6 +215,8 @@ public class EditButtonUI extends JFrame {
 		editPanel.add(textBox);
 		editPanel.add(cancelButton);
 	}
+
+	//Adding events when Each button is clicked
 	public void confirmButton_Click(int userId , String field,JFrame account,boolean isStaff) throws SQLException {
 		AccountDataOperations acc = new AccountDataOperations();
 		DatabaseConnectionHandler con = new DatabaseConnectionHandler();

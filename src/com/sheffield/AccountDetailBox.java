@@ -3,8 +3,6 @@ package com.sheffield;
 import com.sheffield.UI.EditButtonUI;
 import javax.swing.*;
 import java.awt.*;
-import java.io.File;
-import java.sql.Connection;
 import java.sql.SQLException;
 
 /**
@@ -94,6 +92,8 @@ public class AccountDetailBox extends JPanel {
             bankExpireText.setText("expire: " + card.getExpiryDate());
         }
         add(bankExpireText);
+
+        //Adding Edit buttons
 
         nameEditButton.setLocation((int) (Math.round(xSize * 0.6)), -10);
         nameEditButton.setSize((int) (Math.round(xSize * 0.15)), (int) (Math.round(ySize * 0.08)));
@@ -197,6 +197,7 @@ public class AccountDetailBox extends JPanel {
 
 
     }
+    // Adding Methods to when for each type of Edit button is clicked
 
     public void editNameButton_Click(int userId,JFrame account,boolean isStaff ) throws SQLException {
         EditButtonUI edit = new EditButtonUI();
