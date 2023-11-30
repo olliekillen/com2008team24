@@ -422,6 +422,7 @@ public class ProductPageUI extends JFrame {
             dch.openConnection();
             OrderPage orderPage = new OrderPage();
             orderPage.initFrame(getIsStaffPage(), getCurrentUserId(), dch);
+            orderPage.initPanel(dch.getConnection(), getCurrentUserId());
             this.dispose();
             dch.closeConnection();
         } catch (SQLException e) {

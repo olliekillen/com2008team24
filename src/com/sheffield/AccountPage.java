@@ -219,17 +219,18 @@ public class AccountPage extends JFrame {
 		this.dispose();
 	}
 	public void viewOrdersButton_Click() {
-		try {
-			DatabaseConnectionHandler dch = new DatabaseConnectionHandler();
-			dch.openConnection();
-			OrderPage orderPage = new OrderPage();
-			orderPage.initFrame(getIsStaffPage(), getCurrentUserId(), dch);
-			this.dispose();
-			dch.closeConnection();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
+        try {
+            DatabaseConnectionHandler dch = new DatabaseConnectionHandler();
+            dch.openConnection();
+            OrderPage orderPage = new OrderPage();
+            orderPage.initFrame(getIsStaffPage(), getCurrentUserId(), dch);
+            orderPage.initPanel(dch.getConnection(), getCurrentUserId());
+            this.dispose();
+            dch.closeConnection();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 	public void createProductButton_Click() {
 		try {
 			ProductCreatorPage productCreatorPage = new ProductCreatorPage();
