@@ -3,8 +3,6 @@ package com.sheffield;
 import com.sheffield.UI.EditButtonUI;
 import javax.swing.*;
 import java.awt.*;
-import java.io.File;
-import java.sql.Connection;
 import java.sql.SQLException;
 
 /**
@@ -78,14 +76,24 @@ public class AccountDetailBox extends JPanel {
         bankNumberText.setLocation((int) (Math.round(xSize * 0.25)), (int) (Math.round(ySize * 0.345)));
         bankNumberText.setSize((int) (Math.round(xSize * 0.5)), (int) (Math.round(ySize * 0.04)));
         bankNumberText.setFont(new Font("Merriweather", Font.BOLD, 28));
-        bankNumberText.setText(card.getCardNumberHidden());
+        if (card != null) {
+            bankNumberText.setText(card.getCardNumberHidden());
+        }
+        else {
+            bankNumberText.setText("No Card");
+        }
         add(bankNumberText);
 
         bankExpireText.setLocation((int) (Math.round(xSize * 0.4)), (int) (Math.round(ySize * 0.345)));
         bankExpireText.setSize((int) (Math.round(xSize * 0.5)), (int) (Math.round(ySize * 0.04)));
         bankExpireText.setFont(new Font("Merriweather", Font.BOLD, 28));
-        bankExpireText.setText("expire: " + card.getExpiryDate());
+
+        if (card != null) {
+            bankExpireText.setText("expire: " + card.getExpiryDate());
+        }
         add(bankExpireText);
+
+        //Adding Edit buttons
 
         nameEditButton.setLocation((int) (Math.round(xSize * 0.6)), -10);
         nameEditButton.setSize((int) (Math.round(xSize * 0.15)), (int) (Math.round(ySize * 0.08)));
@@ -173,7 +181,7 @@ public class AccountDetailBox extends JPanel {
         bankEditButton.setFont(new Font("Merriweather", Font.BOLD, 40));
         bankEditButton.addActionListener(e -> {
             try {
-                editButton_Click(userId,account,isStaff);
+                editBankButton_Click(userId,account,isStaff);
             } catch (SQLException ex) {
                 throw new RuntimeException(ex);
             }
@@ -189,6 +197,7 @@ public class AccountDetailBox extends JPanel {
 
 
     }
+    // Adding Methods to when for each type of Edit button is clicked
 
     public void editNameButton_Click(int userId,JFrame account,boolean isStaff ) throws SQLException {
         EditButtonUI edit = new EditButtonUI();
@@ -197,7 +206,7 @@ public class AccountDetailBox extends JPanel {
 
     public void editPassButton_Click(int userId,JFrame account,boolean isStaff) throws SQLException {
         EditButtonUI edit = new EditButtonUI();
-        edit.initFrame((int) (xSize * .4), (int) (ySize * .15), "Pass", userId,account,isStaff);
+        edit.initFrame((int) (xSize * .4), (int) (ySize * .15), "Password", userId,account,isStaff);
     }
 
     public void editEmailButton_Click(int userId,JFrame account,boolean isStaff) throws SQLException {
@@ -207,11 +216,11 @@ public class AccountDetailBox extends JPanel {
 
     public void editAddressButton_Click(int userId,JFrame account,boolean isStaff) throws SQLException {
         EditButtonUI edit = new EditButtonUI();
-        edit.initFrame((int) (xSize * .4), (int) (ySize * .15), "Address", userId,account,isStaff);
+        edit.initFrame((int) (xSize * .4), (int) (ySize * .25), "Address", userId,account,isStaff);
     }
 
-    public void editButton_Click(int userId, JFrame account,boolean isStaff) throws SQLException {
+    public void editBankButton_Click(int userId, JFrame account,boolean isStaff) throws SQLException {
         EditButtonUI edit = new EditButtonUI();
-        edit.initFrame((int) (xSize * .4), (int) (ySize * .15), "Name", userId,account,isStaff);
+        edit.initFrame((int) (xSize * .4), (int) (ySize * .25), "Bank Details", userId,account,isStaff);
     }
 }

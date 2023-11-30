@@ -9,6 +9,7 @@ import java.awt.*;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Arrays;
 
 /**
  * A Class that extends JPanel to create the panel for the login form.
@@ -53,7 +54,9 @@ public class LoginForm extends JPanel {
     private void addListener(StartupFrame startupFrame, JTextField emailField, JPasswordField passwordField) {
         loginButton.addActionListener(event -> {
             try {
-                if (UserDatabaseOperations.checkLoginInfoIsValid(emailField.getText(), passwordField.getPassword())) {
+                char[] password = passwordField.getPassword();
+                if (UserDatabaseOperations.checkLoginInfoIsValid(emailField.getText(), password)) {
+                    Arrays.fill(password, '\0');
                     //the database connection can be removed as long as no more data needs to be added
                     DatabaseConnectionHandler dch = new DatabaseConnectionHandler();
                     ProductDatabaseOperations dop = new ProductDatabaseOperations();

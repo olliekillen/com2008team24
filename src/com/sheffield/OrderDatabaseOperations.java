@@ -45,17 +45,19 @@ public class OrderDatabaseOperations {
 
     public static ArrayList<OrderLine> GetOrderLine (Order order, Connection con) throws SQLException {
         ArrayList<OrderLine> orderLines = new ArrayList<OrderLine>();
-        Statement stmt = null;
         try {
-            stmt = con.createStatement();
+            String query = "SELECT * FROM Order_Lines WHERE orderNumber = ?";
+            PreparedStatement pstmt = con.prepareStatement(query);
+            pstmt.setInt(1, order.orderNumber);
+
             ResultSet res = 
-                stmt.executeQuery("SELECT * FROM Order_Lines WHERE orderNumber = " + order.orderNumber.toString());
+                pstmt.executeQuery();
             while (res.next()) {
-                String productCode = res.getString(0);
-                Integer lineNum = res.getInt(1);
+                String productCode = res.getString(1);
+                Integer lineNum = res.getInt(3);
                 Integer orderNum = res.getInt(2);
-                Integer quantity = res.getInt(3);
-                Double lineCost = res.getDouble(4);
+                Integer quantity = res.getInt(4);
+                Double lineCost = res.getDouble(5);
 
                 OrderLine orderLine = new OrderLine(productCode, lineNum, orderNum, quantity, lineCost);
                 orderLines.add(orderLine);
@@ -65,10 +67,7 @@ public class OrderDatabaseOperations {
         catch (SQLException ex) {
             ex.printStackTrace();
         }
-        finally {
-            if (stmt != null) 
-            stmt.close();
-        }
+
         return orderLines;
     }
 

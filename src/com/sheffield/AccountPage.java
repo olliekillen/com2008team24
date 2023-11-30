@@ -181,6 +181,8 @@ public class AccountPage extends JFrame {
 
 
 	}
+	//This method allows the page to Construct the account details area which creating a new instance of class AccountDetailBox
+	//And add it to the main Jframe
 	public void accountDetailBoxConstructor(User user , Address address,BankDetails card, JFrame account, boolean isStaff){
 		AccountDetailBox box = new AccountDetailBox();
 		box.initAccountDetail(user,address,card,account, isStaff);

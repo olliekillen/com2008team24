@@ -50,11 +50,21 @@ public class OrderPage extends JFrame {
 		this.setIsStaffPage(isStaffPage);
 		//initPanel(con);
 		this.add(orderPagePanel);
-		try {
-			this.initPanel(con.getConnection(), userId);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		if (isStaffPage) {
+			try {
+				this.initPanel(con.getConnection(), userId);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		else {
+			try {
+				this.initPanel(userId, con.getConnection());
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		this.setVisible(true);
 	}
@@ -75,9 +85,10 @@ public class OrderPage extends JFrame {
 		 */
 
 		this.orders = OrderDatabaseOperations.GetOrders(con);
+		
 		ArrayList<Order> confirmedOrders = new ArrayList<>();
 		for (Order order:orders) {
-			if (order.orderStatus == "confirmed") {
+			if (order.orderStatus.equals("confirmed")) {
 				confirmedOrders.add(order);
 			}
 		}
@@ -340,7 +351,7 @@ public class OrderPage extends JFrame {
 		orderPagePanel.add(customerButton);
 
 		//If there are orders, adds a button to view them which opens a popup window asking for the order id
-		if (this.orders.size() > 0) {
+		if (this.orders != null) {
 			orderButton.setLocation(0,157);
 			orderButton.setSize((int) (Math.round(xSize * 0.16)),87);
 			orderButton.setForeground( new Color(-1) );

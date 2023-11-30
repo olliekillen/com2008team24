@@ -1,41 +1,10 @@
 package com.sheffield;
 
 import java.sql.*;
-import java.util.*;
-import java.util.stream.Collectors;
 import com.sheffield.UI.PasswordHasher;
 
 public class AccountDataOperations {
-    public static User getUserData (Integer userId, Connection con) throws SQLException {
-        User user = null;
 
-        Statement stmt = null;
-        try {
-            stmt = con.createStatement();
-            ResultSet res =
-                    stmt.executeQuery("SELECT * FROM Users WHERE userID ="+userId);
-            res.next();
-            Integer id = res.getInt(1);
-            String email = res.getString(2);
-            String forename = res.getString(3);
-            String surname = res.getString(4);
-            String postcode = res.getString(5);
-            Integer houseNum = res.getInt(6);
-            String pass = res.getString(7);
-
-            user = new User(id, email, pass, forename, surname, postcode, houseNum);
-
-            res.close();
-        }
-        catch (SQLException ex) {
-            ex.printStackTrace();
-        }
-        finally {
-            if (stmt != null)
-                stmt.close();
-        }
-        return user;
-    }
     public void updateName (String foreName,String surName,int userId,Connection con) throws SQLException{
 
         String preparedStatment ="UPDATE Users SET forename=?,surname=? WHERE userID =" + userId; // TODO TELL OLLIE
@@ -52,6 +21,7 @@ public class AccountDataOperations {
             e.printStackTrace();
             throw e;
         }
+
     }
     public void updatePass (String pass,int userId,Connection con) throws SQLException{
         char[] charArray = pass.toCharArray();
@@ -85,21 +55,63 @@ public class AccountDataOperations {
             throw e;
         }
     }
+    /** This method takes address details and update the User's Address Details in the database
+    * @param address  Array of address details
+     * @param userId user ID
+     * @param con Connection to database
+     */
+    public void updateUserAddress (String[] address,int userId,Connection con) throws SQLException {
 
-    public void updateAddress (String address,int userId,Connection con) throws SQLException{
-        List<String> addressList = Arrays.stream(address.split("\\s+"))
-                .map(s -> s.replaceAll(",", ""))
-                .collect(Collectors.toList());
 
-        String preparedStatment ="UPDATE Address SET postcode=?,houseNumber=?," +
-                "roadName=?,city=? ";//WHERE userID =" + userId;  //TODO!!
+        int houseNumber = Integer.valueOf(address[1]);
+        try {
+            PreparedStatement stmt2 = con.prepareStatement("SELECT * FROM Address");
+            ResultSet res = stmt2.executeQuery();
+            while (res.next()) {
+                if (address[0].equalsIgnoreCase(res.getString(1))
+                        && houseNumber == res.getInt(2)) {
+                    break;
+                } else {
+                    this.updateAddressAdding(address , houseNumber, con);
+                    break;
+                }
+            }
+
+            res.close();
+            stmt2.close();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+
+        }
+        try {
+            PreparedStatement stmt = con.prepareStatement("UPDATE Users SET postcode=?,houseNumber=?  WHERE userID= " + userId);
+
+            stmt.setString(1, address[0]);
+            stmt.setInt(2, houseNumber);
+            stmt.executeUpdate();
+            stmt.close();
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex);
+        }
+
+
+
+    }
+
+    // This method is invoked from the updateUserAddress() method if  the address is new to the database, and add a
+    // entry to the database
+    public void updateAddressAdding (String[] address ,int houseNumber,Connection con) throws SQLException {
+
+        String preparedStatment ="INSERT INTO Address (postcode, houseNumber,roadName,city) VALUES (?, ?,?,?)";
 
         try{
+
             PreparedStatement stmt = con.prepareStatement(preparedStatment);
-            stmt.setString(1,addressList.get(3));
-            stmt.setString(2,addressList.get(0));
-            stmt.setString(3,addressList.get(1));
-            stmt.setString(4,addressList.get(2));
+            stmt.setString(1,address[0].toUpperCase());
+            stmt.setInt(2,houseNumber);
+            stmt.setString(3,address[2]);
+            stmt.setString(4,address[3]);
             stmt.executeUpdate();
 
 
@@ -109,28 +121,89 @@ public class AccountDataOperations {
             throw e;
         }
     }
+    /** This method takes address details and update the User's Bank Details in the database
+     * @param bankDetails  Array of Bank details
+     * @param userId user ID
+     * @param con Connection to database
+     */
+    public void updateBankDetails(String[]bankDetails , Integer userId, Connection con) throws SQLException {
+        String preparedStatment ="UPDATE Bank_Account_Details SET bankCardNumber=?,expiryDate=?,securityCode=?,cardHolderName=?  WHERE userID= " + userId;
+
+        try{
+
+            PreparedStatement stmt = con.prepareStatement(preparedStatment);
+            stmt.setString(1,bankDetails[0]);
+            stmt.setString(2,bankDetails[1]);
+            stmt.setString(3,bankDetails[2]);
+            stmt.setString(4,bankDetails[3]);
+            stmt.executeUpdate();
 
 
+
+        }catch (SQLException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+    /** This method retrieve User data from the database
+     * @param userId user ID
+     * @param con Connection to database
+     * @return user of Type User
+     */
+    public static User getUserData (Integer userId, Connection con) throws SQLException {
+        User user = null;
+
+        Statement stmt = null;
+        try {
+            stmt = con.createStatement();
+            ResultSet res =
+                    stmt.executeQuery("SELECT * FROM Users WHERE userID ="+userId);
+            res.next();
+            Integer id = res.getInt(1);
+            String email = res.getString(2);
+            String forename = res.getString(3);
+            String surname = res.getString(4);
+            String postcode = res.getString(5);
+            Integer houseNum = res.getInt(6);
+            String pass = res.getString(7);
+
+            user = new User(id, email, pass, forename, surname, postcode, houseNum);
+
+            res.close();
+        }
+        catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        finally {
+            if (stmt != null)
+                stmt.close();
+        }
+        return user;
+    }
+
+    /** This method retrieve User's Address data from the database
+     * @param userId user ID
+     * @param con Connection to database
+     * @return address of type Address
+     */
     public static Address getUserAddress(Integer userId, Connection con) throws SQLException {
         Address address = null;
-        PreparedStatement stmt = con.prepareStatement("SELECT * FROM Users ");
+        PreparedStatement stmt = con.prepareStatement("SELECT * FROM Users WHERE userID =  "+ userId);
         try {
-            int position = 0;
+
             String postCode =null ;
             Integer houseNumber = null;
             ResultSet res = stmt.executeQuery();
-
             while(res.next()) {
-                if(userId == res.getInt(1)){
-                    postCode = res.getString(5);
-                    houseNumber = res.getInt(6);
-                }
-
+                postCode = res.getString(5);
+                houseNumber = res.getInt(6);
             }
+            res.close();
+
             PreparedStatement stmt2 = con.prepareStatement("SELECT * FROM Address");
             ResultSet res2 = stmt2.executeQuery();
             while(res2.next()) {
-                if(postCode.equals(res2.getString(1))
+                if(postCode.equalsIgnoreCase(res2.getString(1))
                         && houseNumber == res2.getInt(2)) {
                     String roadName = res2.getString(3);
                     String city = res2.getString(4);
@@ -148,6 +221,11 @@ public class AccountDataOperations {
         }
         return address;
     }
+    /** This method retrieve User's Bankdetails data from the database
+     * @param userId user ID
+     * @param con Connection to database
+     * @return card of type BankDetails
+     */
     public static BankDetails getBankDetails (Integer userId, Connection con) throws SQLException {
         BankDetails card = null;
         Statement stmt = null;
@@ -158,7 +236,7 @@ public class AccountDataOperations {
             while(res.next()) {
                 String cardNum = res.getString(1);
                 String expiryDate = res.getString(2);
-                Integer securityCode = res.getInt(3);
+                String securityCode = res.getString(3);
                 String cardHolderName = res.getString(4);
                 Integer id = res.getInt(5);
 

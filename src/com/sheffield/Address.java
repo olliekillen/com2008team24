@@ -15,4 +15,9 @@ public class Address {
     public String getAddress(){
         return (houseNumber + " " + roadName + ", " + city + " " + postCode);
     }
+
+    public String getPostCode(){return postCode;}
+    public int getHouseNumber(){return houseNumber;}
+    public String getRoadName(){return roadName;}
+    public String getCity(){return city;}
 }
