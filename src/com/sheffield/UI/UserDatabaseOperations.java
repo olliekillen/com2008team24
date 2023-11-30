@@ -1,14 +1,16 @@
 package com.sheffield.UI;
 
 import com.sheffield.DatabaseConnectionHandler;
+import com.sheffield.OrderLine;
 import com.sheffield.User;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 /**
  * A Class designed to handle user db operations. This class has methods to add new users and get user info.
  *
- * @author Daniel Vousden
+ * @author Daniel Vousden, Luke Parry
  */
 public class UserDatabaseOperations {
 
@@ -136,5 +138,46 @@ public class UserDatabaseOperations {
 
         }
         return null;
+    }
+
+    /**
+     * Uses an email to get the user's user ID
+     *
+     * @param email the user's email address
+     * @param connection the connection to the database
+     * @return the userID of the user who has just logged in
+     * @throws SQLException if there is an issue with the database
+     */
+    public int getUserIDFromEmail(String email, Connection connection)  throws SQLException {
+        try {
+            String selectSQL = "SELECT * FROM Users WHERE emailAddress=?";
+            PreparedStatement preparedStatement = connection.prepareStatement(selectSQL);
+            preparedStatement.setString(1, email);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            resultSet.next();
+            return resultSet.getInt("userID");
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    /**
+     * Uses an email to get the user's user ID
+     *
+     * @param userID the user's id and primary key
+     * @param connection the connection to the database
+     * @throws SQLException if there is an issue with the database
+     */
+    public void setUserAsCustomer(int userID, Connection connection) throws SQLException {
+        try {
+            String insertSQL = "INSERT INTO Customers (userID) VALUES (?)";
+            PreparedStatement preparedStatement = connection.prepareStatement(insertSQL);
+            preparedStatement.setInt(1, userID);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw e;
+        }
     }
 }

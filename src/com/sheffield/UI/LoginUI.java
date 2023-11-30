@@ -1,16 +1,8 @@
 package com.sheffield.UI;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.FlowLayout;
 
-import javax.swing.Box;
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.border.EmptyBorder;
 
 /**
  * A Class that extends JPanel to create the panel for the login UI.
@@ -23,12 +15,12 @@ public class LoginUI extends JPanel {
 	/**
 	 * Constructor - Creates the LoginUI panel adding the NavBar and LoginForm.
 	 *
-	 * @param myFrame passed to the NavBar to allow MyFrame method calls.
+	 * @param startupFrame passed to the NavBar to allow StartupFrame method calls.
 	 */
-	public LoginUI(MyFrame myFrame){
+	public LoginUI(StartupFrame startupFrame){
 		setLayout(new BorderLayout());
-		add(new NavBar(myFrame), BorderLayout.NORTH);
-		add(new LoginForm(myFrame, "", "", ""), BorderLayout.CENTER);
+		add(new NavBar(startupFrame), BorderLayout.NORTH);
+		add(new LoginForm(startupFrame, "", "", ""), BorderLayout.CENTER);
 
 	}
 
@@ -36,15 +28,15 @@ public class LoginUI extends JPanel {
 	 * Constructor - Creates the LoginUI panel adding the navBar and the LoginForm. This LoginForm displays the error
 	 * text is an incorrect input is used.
 	 *
-	 * @param myFrame passed to the NavBar to allow MyFrame method calls.
+	 * @param startupFrame passed to the NavBar to allow StartupFrame method calls.
 	 * @param errorMessage the input error messages to be displayed to the user.
 	 * @param emailText the text in the email field
 	 * @param passwordText the text in the password field.
 	 */
-	public LoginUI(MyFrame myFrame, String errorMessage, String emailText, String passwordText){
+	public LoginUI(StartupFrame startupFrame, String errorMessage, String emailText, String passwordText){
 		setLayout(new BorderLayout());
-		add(new NavBar(myFrame), BorderLayout.NORTH);
-		add(new LoginForm(myFrame, errorMessage, emailText, passwordText), BorderLayout.CENTER);
+		add(new NavBar(startupFrame), BorderLayout.NORTH);
+		add(new LoginForm(startupFrame, errorMessage, emailText, passwordText), BorderLayout.CENTER);
 
 	}
 

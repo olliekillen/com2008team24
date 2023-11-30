@@ -31,6 +31,7 @@ public class EditProductUI extends JFrame {
     JButton basketButton = new JButton();
     JButton staffPageButton = new JButton();
     JButton managerPageButton = new JButton();
+    JButton createPageButton = new JButton();
     JLabel sidebar = new JLabel();
     JLabel productCodeLabel = new JLabel();
     JTextField enterProductCode = new JTextField();
@@ -99,54 +100,64 @@ public class EditProductUI extends JFrame {
         header.setHorizontalAlignment(SwingConstants.CENTER);
         editProductPagePanel.add(header);
 
-        accountButton.setLocation(0, (int) (Math.round(ySize * 0.1)));
-        accountButton.setSize((int) (Math.round(xSize * 0.16)), (int) (Math.round(ySize * 0.12)));
-        accountButton.setForeground(new Color(-1));
+        accountButton.setLocation(0,(int) (Math.round(ySize * 0.1)));
+        accountButton.setSize((int) (Math.round(xSize * 0.16)),(int) (Math.round(ySize * 0.12)));
+        accountButton.setForeground( new Color(-1) );
         accountButton.setFont(new Font("Merriweather", Font.BOLD, 17));
-        accountButton.addActionListener(e -> {
-            try {
-                singleProductAccountButton_Click();
-            } catch (SQLException ex) {
-                ex.printStackTrace();
-            }
-        });
-        accountButton.setBackground(new Color(-2743738));
+        accountButton.addActionListener(e->singleProductAccountButton_Click());
+        accountButton.setBackground( new Color(-2743738) );
         accountButton.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));
         accountButton.setText("   Account");
         accountButton.setHorizontalAlignment(SwingConstants.LEFT);
         editProductPagePanel.add(accountButton);
 
-        basketButton.setLocation(0, (int) (Math.round(ySize * 0.22)));
-        basketButton.setSize((int) (Math.round(xSize * 0.16)), (int) (Math.round(ySize * 0.12)));
-        basketButton.setForeground(new Color(-1));
+        basketButton.setLocation(0,(int) (Math.round(ySize * 0.22)));
+        basketButton.setSize((int) (Math.round(xSize * 0.16)),(int) (Math.round(ySize * 0.12)));
+        basketButton.setForeground( new Color(-1) );
         basketButton.setFont(new Font("Merriweather", Font.BOLD, 17));
-        basketButton.setBackground(new Color(-2743738));
+        basketButton.setBackground( new Color(-2743738) );
         basketButton.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));
+        basketButton.setText("   Basket");
         basketButton.setHorizontalAlignment(SwingConstants.LEFT);
+        basketButton.addActionListener(e->singleProductViewOrdersButton_Click());
         if (isStaffPage) {
             basketButton.setText("   View Orders");
-            basketButton.addActionListener(e -> singleProductViewOrdersButton_Click());
-        } else {
-            basketButton.setText("   Basket");
-            basketButton.addActionListener(e -> singleProductBasketButton_Click());
         }
         editProductPagePanel.add(basketButton);
 
-        staffPageButton.setLocation(0, (int) (Math.round(ySize * 0.338)));
-        staffPageButton.setSize((int) (Math.round(xSize * 0.16)), (int) (Math.round(ySize * 0.12)));
-        staffPageButton.setForeground(new Color(-1));
+        staffPageButton.setLocation(0,(int) (Math.round(ySize * 0.455)));
+        staffPageButton.setSize((int) (Math.round(xSize * 0.16)),(int) (Math.round(ySize * 0.12)));
+        staffPageButton.setForeground( new Color(-1) );
         staffPageButton.setFont(new Font("Merriweather", Font.BOLD, 17));
-        staffPageButton.setBackground(new Color(-15440650));
+        staffPageButton.setBackground( new Color(-15440650) );
         staffPageButton.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));
-        if (isManager) {
-            staffPageButton.setLocation(0, (int) (Math.round(ySize * 0.458)));
-        }
+        if(isManager) { staffPageButton.setLocation(0,(int) (Math.round(ySize * 0.572))); }
         staffPageButton.setText("   To Customer Page");
-        staffPageButton.addActionListener(e -> singleProductLeaveStaffPageButton_Click());
+        staffPageButton.addActionListener(e->singleProductLeaveStaffPageButton_Click());
         staffPageButton.setHorizontalAlignment(SwingConstants.LEFT);
-        if (getIsStaff()) {
-            editProductPagePanel.add(staffPageButton);
-        }
+        if(isStaff || isManager) { editProductPagePanel.add(staffPageButton); }
+
+        managerPageButton.setLocation(0,(int) (Math.round(ySize * 0.455)));
+        managerPageButton.setSize((int) (Math.round(xSize * 0.16)),(int) (Math.round(ySize * 0.12)));
+        managerPageButton.setForeground( new Color(-1) );
+        managerPageButton.setFont(new Font("Merriweather", Font.BOLD, 17));
+        managerPageButton.setBackground( new Color(-15440650) );
+        managerPageButton.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));
+        managerPageButton.setText("   To Manager Page");
+        managerPageButton.addActionListener(e->singleProductManagerPageButton_Click());
+        managerPageButton.setHorizontalAlignment(SwingConstants.LEFT);
+        if (isStaffPage && isManager) { editProductPagePanel.add(managerPageButton); }
+
+        createPageButton.setLocation(0,(int) (Math.round(ySize * 0.338)));
+        createPageButton.setSize((int) (Math.round(xSize * 0.16)),(int) (Math.round(ySize * 0.12)));
+        createPageButton.setForeground( new Color(-1) );
+        createPageButton.setFont(new Font("Merriweather", Font.BOLD, 17));
+        createPageButton.setBackground( new Color(-2743738) );
+        createPageButton.setBorder(BorderFactory.createLineBorder(new Color(0xFFFFFF), 6));
+        createPageButton.setText("   Create Product");
+        createPageButton.addActionListener(e->createProductButton_Click());
+        createPageButton.setHorizontalAlignment(SwingConstants.LEFT);
+        if (isStaffPage) { editProductPagePanel.add(createPageButton); }
 
         sidebar.setLocation(0, (int) (Math.round(ySize * 0.1)));
         sidebar.setSize((int) (Math.round(xSize * 0.16)), (int) (Math.round(ySize * 0.9)));
@@ -342,11 +353,11 @@ public class EditProductUI extends JFrame {
     public String getProductID() { return this.productID; }
     public void setProductID(String productID) { this.productID = productID; }
 
-    public void singleProductAccountButton_Click() throws SQLException
+    public void singleProductAccountButton_Click()
     {
         //takes the user to the account page
         AccountPage accountPage = new AccountPage();
-        accountPage.initFrame( isStaffPage, 5);
+        accountPage.initFrame( isStaffPage, getCurrentUserId());
         this.dispose();
     }
     public void singleProductBasketButton_Click()
@@ -373,12 +384,12 @@ public class EditProductUI extends JFrame {
         IndividualProductPageUI singleProductPage = new IndividualProductPageUI();
         ProductRetriever productRetriever = new ProductRetriever();
         Product product = productRetriever.getProductFromDatabase(getProductID());
-        singleProductPage.initFrame(product, false, 5);
+        singleProductPage.initFrame(product, false, getCurrentUserId());
         this.dispose();
     }
     public void singleProductManagerPageButton_Click() {
-        EditProductUI editProductPage = new EditProductUI();
-        editProductPage.initFrame(getIsStaffPage(), 5, getProductID());
+        ManagerPageUI managerPage = new ManagerPageUI();
+        managerPage.initFrame(getIsStaffPage(), getCurrentUserId());
         this.dispose();
     }
     public void confirmEdit_Click() {
@@ -415,7 +426,7 @@ public class EditProductUI extends JFrame {
             dch.closeConnection();
             IndividualProductPageUI singleProductPage = new IndividualProductPageUI();
             Product product = productRetriever.getProductFromDatabase(productID);
-            singleProductPage.initFrame(product, isStaffPage, 5);
+            singleProductPage.initFrame(product, getIsStaffPage(), getCurrentUserId());
             this.dispose();
         } catch (SQLException e) {
                 e.printStackTrace();

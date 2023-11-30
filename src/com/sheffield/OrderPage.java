@@ -534,9 +534,11 @@ public class OrderPage extends JFrame {
 		try {
             final OrderPage window = new OrderPage();
             DatabaseConnectionHandler con = new DatabaseConnectionHandler();
+            OrderDatabaseOperations dop = new OrderDatabaseOperations();
             con.openConnection();
             System.out.println("Connection Successful");
-            window.initPanel(orders.get(0), con.getConnection());
+			Order order = dop.getCurrentOrderByUserID(con.getConnection(), currentUserId);
+            window.initPanel(order, con.getConnection());
             window.initFrame(isStaffPage, currentUserId, con);
             con.closeConnection();
         } 

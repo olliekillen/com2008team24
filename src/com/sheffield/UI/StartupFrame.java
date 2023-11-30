@@ -9,20 +9,19 @@ import java.awt.*;
  *
  * @author Daniel Vousden
  */
-
-public class MyFrame extends JFrame {
+public class StartupFrame extends JFrame {
 	private GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 	private GraphicsDevice gd = ge.getDefaultScreenDevice();
 	private int screenWidth = gd.getDisplayMode().getWidth();
 	private int screenHeight = gd.getDisplayMode().getHeight();
 
 	/**
-	 * Constructor - Sets the title, size and position of the created MyFrame.
+	 * Constructor - Sets the title, size and position of the created StartupFrame.
 	 * It also loads the first panel HomePageUI.
 	 *
 	 * @param title The String to be used as the title of the Frame.
 	 */
-	public MyFrame(String title){
+	public StartupFrame(String title){
 		super(title);
 		setMinimumSize(new Dimension(screenWidth / 3, (int) (screenHeight / 1.5)));
 		setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -38,7 +37,7 @@ public class MyFrame extends JFrame {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		new MyFrame("Home Page");
+		new StartupFrame("Home Page");
 	}
 
 	/**

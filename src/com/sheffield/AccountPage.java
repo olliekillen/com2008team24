@@ -213,7 +213,7 @@ public class AccountPage extends JFrame {
 	public void productButton_Click()
 	{
 		ProductPageUI productPage = new ProductPageUI();
-		productPage.initFrame(getIsStaffPage(), currentUserId);
+		productPage.initFrame(getIsStaffPage(), getCurrentUserId());
 		this.dispose();
 	}
 	public void viewOrdersButton_Click() {
@@ -221,7 +221,7 @@ public class AccountPage extends JFrame {
 			DatabaseConnectionHandler dch = new DatabaseConnectionHandler();
 			dch.openConnection();
 			OrderPage orderPage = new OrderPage();
-			orderPage.initFrame(isStaffPage, currentUserId, dch);
+			orderPage.initFrame(getIsStaffPage(), getCurrentUserId(), dch);
 			this.dispose();
 			dch.closeConnection();
 		} catch (SQLException e) {
@@ -251,13 +251,4 @@ public class AccountPage extends JFrame {
 		accountPage.initFrame(false, currentUserId);
 		this.dispose();
 	}
-
-
-
-	public static void main(String args[]) {
-		final AccountPage window = new AccountPage();
-			window.initFrame(false, 5);
-	}
-
-
 }
