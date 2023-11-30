@@ -229,7 +229,7 @@ public class ManagerPageUI extends JFrame {
 
     public void leaveButton_Click() {
         ProductPageUI productPageUI = new ProductPageUI();
-        productPageUI.initFrame(getIsStaffPage(), currentUserId);
+        productPageUI.initFrame(getIsStaffPage(), getCurrentUserId());
         this.dispose();
     }
     public void searchButton_Click() {

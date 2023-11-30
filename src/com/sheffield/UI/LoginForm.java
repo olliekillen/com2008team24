@@ -5,7 +5,6 @@ import com.sheffield.ProductDatabaseOperations;
 import com.sheffield.ProductPageUI;
 
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -26,7 +25,7 @@ public class LoginForm extends JPanel {
     /**
      * Creates the layout of the sign-up form using a box layout oriented on the y-axis.
      */
-    public LoginForm(MyFrame myFrame, String errorMessage, String emailText, String passwordText) {
+    public LoginForm(StartupFrame startupFrame, String errorMessage, String emailText, String passwordText) {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         setBackground(new Color(-8741250));
         add(Box.createVerticalGlue());
@@ -45,14 +44,14 @@ public class LoginForm extends JPanel {
 
         add(new CustomLabel("", 0, 20, 0, 0, 0));
 
-        addListener(myFrame, loginEmailField, loginPasswordField);
+        addListener(startupFrame, loginEmailField, loginPasswordField);
         add(loginButton.getButtonInPanel(new JPanel()), Component.CENTER_ALIGNMENT);
         add(new CustomLabel(errorMessage, 12, new Color(255, 0, 0)));
 
         add(Box.createVerticalGlue());
     }
 
-    private void addListener(MyFrame myFrame, JTextField emailField, JPasswordField passwordField) {
+    private void addListener(StartupFrame startupFrame, JTextField emailField, JPasswordField passwordField) {
         loginButton.addActionListener(event -> {
             try {
                 char[] password = passwordField.getPassword();
@@ -61,9 +60,12 @@ public class LoginForm extends JPanel {
                     //the database connection can be removed as long as no more data needs to be added
                     DatabaseConnectionHandler dch = new DatabaseConnectionHandler();
                     ProductDatabaseOperations dop = new ProductDatabaseOperations();
+                    UserDatabaseOperations dop2 = new UserDatabaseOperations();
                     dch.openConnection();
+                    int userID = dop2.getUserIDFromEmail(emailField.getText(), dch.getConnection());
                     ProductPageUI window = new ProductPageUI();
-                    window.initFrame(true, 2);
+                    window.initFrame(false, userID);
+                    startupFrame.dispose();
                     dch.closeConnection();
                 }
 
@@ -78,20 +80,20 @@ public class LoginForm extends JPanel {
                     while (results.next()) {
                         if (emailField.getText().equals(results.getString("emailAddress"))) {
                             emailFound = true;
-                            myFrame.showPanel(new LoginUI(myFrame, "Incorrect Password", emailField.getText(), new String(passwordField.getPassword())));
+                            startupFrame.showPanel(new LoginUI(startupFrame, "Incorrect Password", emailField.getText(), new String(passwordField.getPassword())));
                             incorrectPasswordCount++;
 
                         }
                     }
 
                     if (!emailFound) {
-                        myFrame.showPanel(new LoginUI(myFrame, "There does not exist an account with this email", emailField.getText(), new String(passwordField.getPassword())));
+                        startupFrame.showPanel(new LoginUI(startupFrame, "There does not exist an account with this email", emailField.getText(), new String(passwordField.getPassword())));
                     }
 
                     handler.closeConnection();
                 }
                 } catch(SQLException e){
-                    myFrame.showPanel(new LoginUI(myFrame, "Can't establish a connection to the database", emailField.getText(), new String(passwordField.getPassword())));
+                    startupFrame.showPanel(new LoginUI(startupFrame, "Can't establish a connection to the database", emailField.getText(), new String(passwordField.getPassword())));
                 }
         });
     }

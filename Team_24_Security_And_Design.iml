@@ -7,13 +7,29 @@
     </content>
     <orderEntry type="jdk" jdkName="15" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module-library" exported="">
+    <orderEntry type="module-library">
       <library>
         <CLASSES>
+
           <root url="jar://$MODULE_DIR$/../../mysql-connector-j-8.2.0/mysql-connector-j-8.2.0/mysql-connector-j-8.2.0.jar!/" />
+
+          <root url="file://$USER_HOME$/Downloads/mysql-connector-j-8.2.0" />
+s
         </CLASSES>
         <JAVADOC />
-        <SOURCES />
+        <SOURCES>
+          <root url="file://$USER_HOME$/Downloads/mysql-connector-j-8.2.0/src/build/java" />
+          <root url="file://$USER_HOME$/Downloads/mysql-connector-j-8.2.0/src/demo/java" />
+          <root url="file://$USER_HOME$/Downloads/mysql-connector-j-8.2.0/src/generated/java" />
+          <root url="file://$USER_HOME$/Downloads/mysql-connector-j-8.2.0/src/legacy/java" />
+          <root url="file://$USER_HOME$/Downloads/mysql-connector-j-8.2.0/src/main/core-api/java" />
+          <root url="file://$USER_HOME$/Downloads/mysql-connector-j-8.2.0/src/main/core-impl/java" />
+          <root url="file://$USER_HOME$/Downloads/mysql-connector-j-8.2.0/src/main/protocol-impl/java" />
+          <root url="file://$USER_HOME$/Downloads/mysql-connector-j-8.2.0/src/main/user-api/java" />
+          <root url="file://$USER_HOME$/Downloads/mysql-connector-j-8.2.0/src/main/user-impl/java" />
+          <root url="file://$USER_HOME$/Downloads/mysql-connector-j-8.2.0/src/test/java" />
+        </SOURCES>
+        <jarDirectory url="file://$USER_HOME$/Downloads/mysql-connector-j-8.2.0" recursive="false" />
       </library>
     </orderEntry>
   </component>

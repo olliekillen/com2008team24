@@ -1,9 +1,7 @@
 package com.sheffield.UI;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 
-import javax.swing.Box;
 import javax.swing.JPanel;
 
 /**
@@ -17,12 +15,12 @@ public class HomePageUI extends JPanel {
 	/**
 	 * Constructor - Creates the HomePageUI panel adding the NavBar.
 	 *
-	 * @param myFrame passed to the NavBar to allow MyFrame method calls.
+	 * @param startupFrame passed to the NavBar to allow StartupFrame method calls.
 	 */
-	public HomePageUI(MyFrame myFrame) {
+	public HomePageUI(StartupFrame startupFrame) {
 		setLayout(new BorderLayout());
-		add(new NavBar(myFrame), BorderLayout.NORTH);
-		add(new HomePagePanel(myFrame), BorderLayout.CENTER);
+		add(new NavBar(startupFrame), BorderLayout.NORTH);
+		add(new HomePagePanel(startupFrame), BorderLayout.CENTER);
 	}
 
 }

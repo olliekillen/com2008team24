@@ -2,7 +2,6 @@ package com.sheffield;
 
 import com.sheffield.Products.Product;
 
-import javax.xml.transform.Result;
 import java.util.ArrayList;
 import java.sql.*;
 import java.util.List;
@@ -14,7 +13,7 @@ public class OrderDatabaseOperations {
         Statement stmt = null;
         try {
             stmt = con.createStatement();
-            ResultSet res = 
+            ResultSet res =
                 stmt.executeQuery("SELECT * FROM Orders");
             while (res.next()) {
                 Integer number = res.getInt(1);
@@ -23,7 +22,7 @@ public class OrderDatabaseOperations {
                 Float cost = res.getFloat(4);
                 Boolean blocked = res.getBoolean(5);
                 String blockedDate = null;
-                if (res.getDate(6) != null) { 
+                if (res.getDate(6) != null) {
                     blockedDate = res.getDate(6).toString();
                 }
                 Integer userId = res.getInt(7);
@@ -31,13 +30,13 @@ public class OrderDatabaseOperations {
                 Order order = new Order(number, date, status, cost, blocked, blockedDate, userId);
                 orders.add(order);
             }
-            res.close(); 
+            res.close();
         }
         catch (SQLException ex) {
             ex.printStackTrace();
         }
         finally {
-            if (stmt != null) 
+            if (stmt != null)
             stmt.close();
         }
     
@@ -68,7 +67,7 @@ public class OrderDatabaseOperations {
         catch (SQLException ex) {
             ex.printStackTrace();
         }
-        
+
         return orderLines;
     }
 
@@ -151,6 +150,24 @@ public class OrderDatabaseOperations {
         }
     }
 
+    public Order getCurrentOrderByUserID(Connection connection, int userId) throws SQLException {
+        try {
+            String selectSQL = "SELECT * FROM Orders WHERE userId=?";
+            PreparedStatement preparedStatement = connection.prepareStatement(selectSQL);
+            preparedStatement.setInt(1, userId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            resultSet.next();
+            Order order = new Order(resultSet.getInt("orderNumber"), resultSet.getString("orderDate")
+            , resultSet.getString("statusField"), resultSet.getFloat("totalCost"),
+            resultSet.getBoolean("blockedStatus"), resultSet.getString("dateBlocked"),
+            resultSet.getInt("userID"));
+            return order;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
     public Boolean doesCurrentOrderExist(Connection connection, int userId) throws SQLException {
         try {
             ResultSet resultSet = currentOrder(connection, userId);
@@ -181,15 +198,14 @@ public class OrderDatabaseOperations {
 
     public void insertOrder(Order order, Connection connection) throws SQLException {
         try {
-            String insertSQL = "INSERT INTO Orders (orderNumber, orderDate, statusField, "+
-            "totalCost, blockedStatus, userID) VALUES (?, ?, ?, ?, ?, ?)";
+            String insertSQL = "INSERT INTO Orders (orderDate, statusField, "+
+            "totalCost, blockedStatus, userID) VALUES (?, ?, ?, ?, ?)";
             PreparedStatement preparedStatement = connection.prepareStatement(insertSQL);
-            preparedStatement.setInt(1, order.getOrderNumber());
-            preparedStatement.setString(2, order.getOrderDate());
-            preparedStatement.setString(3, order.getOrderStatus());
-            preparedStatement.setFloat(4, order.getOrderCost());
-            preparedStatement.setBoolean(5, order.getOrderBlocked());
-            preparedStatement.setInt(6, order.getUserId());
+            preparedStatement.setString(1, order.getOrderDate());
+            preparedStatement.setString(2, order.getOrderStatus());
+            preparedStatement.setFloat(3, order.getOrderCost());
+            preparedStatement.setBoolean(4, order.getOrderBlocked());
+            preparedStatement.setInt(5, order.getUserId());
             int rowsAffected = preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

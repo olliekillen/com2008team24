@@ -1,5 +1,7 @@
 package com.sheffield.UI;
 
+import com.sheffield.DatabaseConnectionHandler;
+
 import javax.swing.*;
 import java.awt.*;
 import java.sql.SQLException;
@@ -19,7 +21,7 @@ public class SignUpForm extends JPanel {
     /**
      * Creates the layout of the sign-up form using a grid bag layout.
      */
-    public SignUpForm(MyFrame myFrame){
+    public SignUpForm(StartupFrame startupFrame){
         setLayout(new GridBagLayout());
         setBackground(new Color(-8741250));
         GridBagConstraints constraints = new GridBagConstraints();
@@ -120,7 +122,7 @@ public class SignUpForm extends JPanel {
         constraints.gridy = 11;
         constraints.gridwidth = 2;
         // Creates and places button at bottom of form.
-        addListener(myFrame, forenameField, surnameField, emailField, passwordField,
+        addListener(startupFrame, forenameField, surnameField, emailField, passwordField,
                 confirmPasswordField, postcodeField, houseNumberField, roadNameField, cityNameField);
         add(signUpButton.getButtonInPanel(new JPanel()), constraints);
         // Spaces the form vertically so it is centred.
@@ -131,11 +133,11 @@ public class SignUpForm extends JPanel {
     /**
      * Creates the layout of the sign-up form using a grid bag layout. This layout also displays any error messages.
      */
-    public SignUpForm(MyFrame myFrame, ArrayList<String> forenameErrors,ArrayList<String> surnameErrors,
-                      ArrayList<String> emailErrors,ArrayList<String> passwordErrors,ArrayList<String> postcodeErrors,
-                      ArrayList<String> houseNumberErrors,ArrayList<String> roadNameErrors,
+    public SignUpForm(StartupFrame startupFrame, ArrayList<String> forenameErrors, ArrayList<String> surnameErrors,
+                      ArrayList<String> emailErrors, ArrayList<String> passwordErrors, ArrayList<String> postcodeErrors,
+                      ArrayList<String> houseNumberErrors, ArrayList<String> roadNameErrors,
                       ArrayList<String> cityNameErrors, String forenameText, String surnameText, String emailText,
-                      String passwordText, String confirmPasswordText,String postcodeText,String houseNumberText,
+                      String passwordText, String confirmPasswordText, String postcodeText, String houseNumberText,
                       String roadNameText, String cityNameText, String message ){
         setLayout(new GridBagLayout());
         setBackground(new Color(-8741250));
@@ -262,7 +264,7 @@ public class SignUpForm extends JPanel {
         constraints.gridy = 15;
         constraints.gridwidth = 2;
         // Creates and places button at bottom of form.
-        addListener(myFrame, forenameField, surnameField, emailField, passwordField,
+        addListener(startupFrame, forenameField, surnameField, emailField, passwordField,
                 confirmPasswordField, postcodeField, houseNumberField, roadNameField, cityNameField);
         add(signUpButton.getButtonInPanel(new JPanel()), constraints);
         // Spaces the form vertically so it is centred.
@@ -311,7 +313,7 @@ public class SignUpForm extends JPanel {
      * @param roadNameField Field for the road name
      * @param cityNameField Field for the city name
      */
-    private void addListener(MyFrame myFrame, JTextField forenameField, JTextField surnameField,
+    private void addListener(StartupFrame startupFrame, JTextField forenameField, JTextField surnameField,
                              JTextField emailField, JPasswordField passwordField, JPasswordField confirmPassword,
                              JTextField postcodeField, JTextField houseNumberField, JTextField roadNameField,
                              JTextField cityNameField) {
@@ -324,7 +326,10 @@ public class SignUpForm extends JPanel {
             // Outputs a form saying registration is valid.
             if (userSignUpInfo.isValid()){
                 try {
-                    myFrame.showPanel(new SignUpUI(myFrame, userSignUpInfo.validateForename(),
+                    DatabaseConnectionHandler dch = new DatabaseConnectionHandler();
+                    UserDatabaseOperations dop = new UserDatabaseOperations();
+                    dch.openConnection();
+                    startupFrame.showPanel(new SignUpUI(startupFrame, userSignUpInfo.validateForename(),
                             userSignUpInfo.validateSurname(), userSignUpInfo.validateEmail(),
                             userSignUpInfo.validatePassword(), userSignUpInfo.validatePostcode(),
                             userSignUpInfo.validateHouseNumber(), userSignUpInfo.validateRoadName(),
@@ -333,9 +338,12 @@ public class SignUpForm extends JPanel {
                             new String(confirmPassword.getPassword()), postcodeField.getText(), houseNumberField.getText(),
                             roadNameField.getText(), cityNameField.getText(), "Successful Registration"));
                     UserDatabaseOperations.addNewUser(userSignUpInfo);
+                    int userID = dop.getUserIDFromEmail(emailField.getText(), dch.getConnection());
+                    dop.setUserAsCustomer(userID, dch.getConnection());
+                    dch.closeConnection();
                     // Outputs a form saying the db couldn't be connected to.
                 }catch(SQLException exception){
-                        myFrame.showPanel(new SignUpUI(myFrame, userSignUpInfo.validateForename(),
+                        startupFrame.showPanel(new SignUpUI(startupFrame, userSignUpInfo.validateForename(),
                                 userSignUpInfo.validateSurname(), userSignUpInfo.validateEmail(),
                                 userSignUpInfo.validatePassword(), userSignUpInfo.validatePostcode(),
                                 userSignUpInfo.validateHouseNumber(), userSignUpInfo.validateRoadName(),
@@ -347,7 +355,7 @@ public class SignUpForm extends JPanel {
             }
             // Outputs a form with input error messages but the db can be connected to.
             else {
-                myFrame.showPanel(new SignUpUI(myFrame, userSignUpInfo.validateForename(),
+                startupFrame.showPanel(new SignUpUI(startupFrame, userSignUpInfo.validateForename(),
                         userSignUpInfo.validateSurname(),userSignUpInfo.validateEmail(),
                         userSignUpInfo.validatePassword(),userSignUpInfo.validatePostcode(),
                         userSignUpInfo.validateHouseNumber(),userSignUpInfo.validateRoadName(),

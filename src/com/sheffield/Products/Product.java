@@ -2,6 +2,12 @@ package com.sheffield.Products;
 
 import java.math.BigDecimal;
 
+/**
+ * This class represents a product object, and is inherited from by all other products, which all share many common
+ * variables.
+ *
+ * @author Luke Parry
+ */
 public class Product {
 
     protected String productCode;
@@ -11,6 +17,10 @@ public class Product {
     protected String modellingScale;
     protected Integer stockCount;
 
+    /**
+     * A constructor that sets default values to all product attributes if no input is provided
+     *
+     */
     public Product() {
         this.setProductCode("M58392");
         this.setBrandName("Peco");
@@ -20,6 +30,12 @@ public class Product {
         this.setStockCount(0);
     }
 
+    /**
+     * A constructor that sets the product attributes to the values provided
+     *
+     * @param productCode the product primary key, represents a unique product
+     * 
+     */
     public Product(String productCode, String brandName, String productName, BigDecimal retailPrice,
     String modellingScale, Integer stockCount) {
         this.setProductCode(productCode);

@@ -181,6 +181,8 @@ public class AccountPage extends JFrame {
 
 
 	}
+	//This method allows the page to Construct the account details area which creating a new instance of class AccountDetailBox
+	//And add it to the main Jframe
 	public void accountDetailBoxConstructor(User user , Address address,BankDetails card, JFrame account, boolean isStaff){
 		AccountDetailBox box = new AccountDetailBox();
 		box.initAccountDetail(user,address,card,account, isStaff);
@@ -213,21 +215,22 @@ public class AccountPage extends JFrame {
 	public void productButton_Click()
 	{
 		ProductPageUI productPage = new ProductPageUI();
-		productPage.initFrame(getIsStaffPage(), 5);
+		productPage.initFrame(getIsStaffPage(), getCurrentUserId());
 		this.dispose();
 	}
 	public void viewOrdersButton_Click() {
-		try {
-			DatabaseConnectionHandler dch = new DatabaseConnectionHandler();
-			dch.openConnection();
-			OrderPage orderPage = new OrderPage();
-			orderPage.initFrame(isStaffPage, currentUserId, dch);
-			this.dispose();
-			dch.closeConnection();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
+        try {
+            DatabaseConnectionHandler dch = new DatabaseConnectionHandler();
+            dch.openConnection();
+            OrderPage orderPage = new OrderPage();
+            orderPage.initFrame(getIsStaffPage(), getCurrentUserId(), dch);
+            orderPage.initPanel(dch.getConnection(), getCurrentUserId());
+            this.dispose();
+            dch.closeConnection();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 	public void createProductButton_Click() {
 		try {
 			ProductCreatorPage productCreatorPage = new ProductCreatorPage();
@@ -243,21 +246,12 @@ public class AccountPage extends JFrame {
 	}
 	public void staffButton_Click() {
 		AccountPage accountPage = new AccountPage();
-		accountPage.initFrame(true, 5);
+		accountPage.initFrame(true, currentUserId);
 		this.dispose();
 	}
 	public void leaveStaffPageButton_Click() {
 		AccountPage accountPage = new AccountPage();
-		accountPage.initFrame(false, 5);
+		accountPage.initFrame(false, currentUserId);
 		this.dispose();
 	}
-
-
-
-	public static void main(String args[]) {
-		final AccountPage window = new AccountPage();
-			window.initFrame(false, 5);
-	}
-
-
 }

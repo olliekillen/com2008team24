@@ -20,9 +20,9 @@ public class NavBar extends JToolBar {
      * Constructor - Used to create the navigation bar for the UI. It formats the three navigation buttons and adds
      * their listeners.
      *
-     * @param myFrame passed to the addListeners method, so it can be used to call for panel changes.
+     * @param startupFrame passed to the addListeners method, so it can be used to call for panel changes.
      */
-    public NavBar(MyFrame myFrame){
+    public NavBar(StartupFrame startupFrame){
 
         homeButton.setBorder(new EmptyBorder(10,30,10,30));
         loginButton.setBorder(new EmptyBorder(10,30,10,30));
@@ -36,7 +36,7 @@ public class NavBar extends JToolBar {
         loginButton.setForeground(Color.white);
         signUpButton.setForeground(Color.white);
 
-        addListeners(myFrame);
+        addListeners(startupFrame);
 
         setBorder(new EmptyBorder(10,10,10,10));
         setFloatable(false);
@@ -55,21 +55,21 @@ public class NavBar extends JToolBar {
      * Adds action listeners to each button and defines their functions. The button presses cause their corresponding
      * panel to be displayed in the frame.
      *
-     * @param myFrame the object used to call the showPanel method  in MyFrame.
+     * @param startupFrame the object used to call the showPanel method  in StartupFrame.
      */
-    private void addListeners(MyFrame myFrame) {
+    private void addListeners(StartupFrame startupFrame) {
         homeButton.addActionListener(e -> {
-            myFrame.showPanel(new HomePageUI(myFrame));
+            startupFrame.showPanel(new HomePageUI(startupFrame));
 
         });
 
         loginButton.addActionListener(e -> {
-            myFrame.showPanel(new LoginUI(myFrame));
+            startupFrame.showPanel(new LoginUI(startupFrame));
 
         });
 
         signUpButton.addActionListener(e -> {
-            myFrame.showPanel(new SignUpUI(myFrame));
+            startupFrame.showPanel(new SignUpUI(startupFrame));
 
         });
     }

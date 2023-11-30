@@ -1,8 +1,6 @@
 package com.sheffield;
 
 import java.sql.*;
-import java.util.*;
-import java.util.stream.Collectors;
 import com.sheffield.UI.PasswordHasher;
 
 public class AccountDataOperations {
@@ -57,7 +55,11 @@ public class AccountDataOperations {
             throw e;
         }
     }
-
+    /** This method takes address details and update the User's Address Details in the database
+    * @param address  Array of address details
+     * @param userId user ID
+     * @param con Connection to database
+     */
     public void updateUserAddress (String[] address,int userId,Connection con) throws SQLException {
 
 
@@ -97,7 +99,8 @@ public class AccountDataOperations {
 
     }
 
-
+    // This method is invoked from the updateUserAddress() method if  the address is new to the database, and add a
+    // entry to the database
     public void updateAddressAdding (String[] address ,int houseNumber,Connection con) throws SQLException {
 
         String preparedStatment ="INSERT INTO Address (postcode, houseNumber,roadName,city) VALUES (?, ?,?,?)";
@@ -118,6 +121,11 @@ public class AccountDataOperations {
             throw e;
         }
     }
+    /** This method takes address details and update the User's Bank Details in the database
+     * @param bankDetails  Array of Bank details
+     * @param userId user ID
+     * @param con Connection to database
+     */
     public void updateBankDetails(String[]bankDetails , Integer userId, Connection con) throws SQLException {
         String preparedStatment ="UPDATE Bank_Account_Details SET bankCardNumber=?,expiryDate=?,securityCode=?,cardHolderName=?  WHERE userID= " + userId;
 
@@ -137,6 +145,11 @@ public class AccountDataOperations {
             throw e;
         }
     }
+    /** This method retrieve User data from the database
+     * @param userId user ID
+     * @param con Connection to database
+     * @return user of Type User
+     */
     public static User getUserData (Integer userId, Connection con) throws SQLException {
         User user = null;
 
@@ -168,13 +181,16 @@ public class AccountDataOperations {
         return user;
     }
 
-
+    /** This method retrieve User's Address data from the database
+     * @param userId user ID
+     * @param con Connection to database
+     * @return address of type Address
+     */
     public static Address getUserAddress(Integer userId, Connection con) throws SQLException {
         Address address = null;
         PreparedStatement stmt = con.prepareStatement("SELECT * FROM Users WHERE userID =  "+ userId);
         try {
-
-            String postCode =null ;
+            String postCode = null ;
             Integer houseNumber = null;
             ResultSet res = stmt.executeQuery();
             while(res.next()) {
@@ -204,6 +220,11 @@ public class AccountDataOperations {
         }
         return address;
     }
+    /** This method retrieve User's Bankdetails data from the database
+     * @param userId user ID
+     * @param con Connection to database
+     * @return card of type BankDetails
+     */
     public static BankDetails getBankDetails (Integer userId, Connection con) throws SQLException {
         BankDetails card = null;
         Statement stmt = null;

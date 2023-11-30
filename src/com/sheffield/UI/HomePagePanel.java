@@ -14,9 +14,9 @@ public class HomePagePanel extends JPanel {
      * Creates the layout of the home page using a box layout oriented on the y-axis.
      * Adds three paragraphs and an image to the home page.
      *
-     * @param myFrame the frame used as the main container.
+     * @param startupFrame the frame used as the main container.
      */
-    public HomePagePanel(MyFrame myFrame){
+    public HomePagePanel(StartupFrame startupFrame){
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         setBackground(new Color(-8741250));
         add(Box.createVerticalGlue());

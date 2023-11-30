@@ -30,6 +30,10 @@ public class EditButtonUI extends JFrame {
 	private JTextField houseNumText;
 	private JTextField roadText;
 	private JTextField cityText;
+	private JLabel firstTextField = new JLabel();
+	private JLabel secondTextField = new JLabel();
+	private JLabel thirdTextField = new JLabel();
+	private JLabel fourthTextField = new JLabel();
 
 
 	public void initFrame(int x, int y, String field, int userId, JFrame account,boolean isStaff) throws SQLException {
@@ -62,7 +66,7 @@ public class EditButtonUI extends JFrame {
 				break;
 			case"bank details":
 				BankDetails card = accountData.getBankDetails(userId,connection);
-				text = card.getBankCardNumber()+ " (Cardnumber)";
+				text = card.getBankCardNumber();
 				break;
 			default: System.out.println("No Field found");
 				break;
@@ -87,8 +91,6 @@ public class EditButtonUI extends JFrame {
 		textBox.setFont(new Font("Merriweather", Font.BOLD, 15));
 		textBox.setBounds(15, 8, (int)(xSize * .12), 25);
 
-
-
 		confirmButton = new JButton("Confirm");
 		confirmButton.setFont(new Font("Merriweather", Font.BOLD, 15));
 		confirmButton.setBounds((int)(xSize*0.15), 8, (int)(xSize*.09), 25);
@@ -107,6 +109,32 @@ public class EditButtonUI extends JFrame {
 		cancelButton.setBounds((int)(xSize*0.27), 8, (int)(xSize*.09), 25);
 		cancelButton.addActionListener(e->cancelButton_Click());
 
+		//Add Extra title labels if Field is either Address or Bank
+		if(field.equalsIgnoreCase("address") || field.equalsIgnoreCase("bank details")){
+
+			textBox.setBounds(15, 18, (int)(xSize * .12), 25);
+
+			firstTextField.setLocation((int) (Math.round(xSize * 0.01)), -15);
+			firstTextField.setSize((int) (Math.round(xSize * 0.5)), (int) (Math.round(ySize * 0.05)));
+			firstTextField.setFont(new Font("Merriweather", Font.BOLD, 14));
+
+
+			secondTextField.setLocation((int) (Math.round(xSize * 0.01)), 20);
+			secondTextField.setSize((int) (Math.round(xSize * 0.5)), (int) (Math.round(ySize * 0.05)));
+			secondTextField.setFont(new Font("Merriweather", Font.BOLD, 14));
+
+
+			thirdTextField.setLocation((int) (Math.round(xSize * 0.01)), 62);
+			thirdTextField.setSize((int) (Math.round(xSize * 0.5)), (int) (Math.round(ySize * 0.05)));
+			thirdTextField.setFont(new Font("Merriweather", Font.BOLD, 14));
+
+
+			fourthTextField.setLocation((int) (Math.round(xSize * 0.01)), 102);
+			fourthTextField.setSize((int) (Math.round(xSize * 0.5)), (int) (Math.round(ySize * 0.05)));
+			fourthTextField.setFont(new Font("Merriweather", Font.BOLD, 14));
+
+
+		}
 		// display special text field if Address or Bank Details needs to be updated
 		switch(field.toLowerCase()){
 			case "address":{
@@ -118,16 +146,25 @@ public class EditButtonUI extends JFrame {
 
 				houseNumText = new JTextField(String.valueOf(address.getHouseNumber()));
 				houseNumText.setFont(new Font("Merriweather", Font.BOLD, 15));
-				houseNumText.setBounds(15, 38, (int) (xSize * .12), 25);
+				houseNumText.setBounds(15, 58, (int) (xSize * .12), 25);
 
 				roadText = new JTextField( address.getRoadName() );
 				roadText.setFont(new Font("Merriweather", Font.BOLD, 15));
-				roadText.setBounds(15, 68, (int) (xSize * .12), 25);
+				roadText.setBounds(15, 98, (int) (xSize * .12), 25);
 
 				cityText = new JTextField( address.getCity());
 				cityText.setFont(new Font("Merriweather", Font.BOLD, 15));
-				cityText.setBounds(15, 98, (int) (xSize * .12), 25);
+				cityText.setBounds(15, 138, (int) (xSize * .12), 25);
 
+				firstTextField.setText("Post Code");
+				secondTextField.setText("House Number");
+				thirdTextField.setText("Road Name");
+				fourthTextField.setText("City");
+
+				editPanel.add(firstTextField);
+				editPanel.add(secondTextField);
+				editPanel.add(thirdTextField);
+				editPanel.add(fourthTextField);
 				editPanel.add(houseNumText);
 				editPanel.add(roadText);
 				editPanel.add(cityText);
@@ -143,19 +180,30 @@ public class EditButtonUI extends JFrame {
 			con.openConnection();
 			BankDetails card = accountData.getBankDetails(userId,con.getConnection());
 
-			nameText = new JTextField(card.getCardHolderName()+" (Name on card)");
+			nameText = new JTextField(card.getCardHolderName());
 			nameText.setFont(new Font("Merriweather", Font.BOLD, 15));
-			nameText.setBounds(15, 38, (int) (xSize * .12), 25);
+			nameText.setBounds(15, 58, (int) (xSize * .12), 25);
 
 
-			expireText = new JTextField(card.getExpiryDate()+" (Expirydate)");
+			expireText = new JTextField(card.getExpiryDate());
 			expireText.setFont(new Font("Merriweather", Font.BOLD, 15));
-			expireText.setBounds(15, 68, (int) (xSize * .12), 25);
+			expireText.setBounds(15, 98, (int) (xSize * .12), 25);
 
-			securityText = new JTextField(card.getSecurityCode() + " (Securitycode)");
+			securityText = new JTextField(card.getSecurityCode() );
 			securityText.setFont(new Font("Merriweather", Font.BOLD, 15));
-			securityText.setBounds(15, 98, (int) (xSize * .12), 25);
+			securityText.setBounds(15, 138, (int) (xSize * .12), 25);
 			con.closeConnection();
+
+
+			firstTextField.setText("Card Number");
+			secondTextField.setText("Name on card");
+			thirdTextField.setText("Expirydate");
+			fourthTextField.setText("Securitycode");
+
+			editPanel.add(firstTextField);
+			editPanel.add(secondTextField);
+			editPanel.add(thirdTextField);
+			editPanel.add(fourthTextField);
 			editPanel.add(nameText);
 			editPanel.add(expireText);
 			editPanel.add(securityText);
@@ -167,6 +215,8 @@ public class EditButtonUI extends JFrame {
 		editPanel.add(textBox);
 		editPanel.add(cancelButton);
 	}
+
+	//Adding events when Each button is clicked
 	public void confirmButton_Click(int userId , String field,JFrame account,boolean isStaff) throws SQLException {
 		AccountDataOperations acc = new AccountDataOperations();
 		DatabaseConnectionHandler con = new DatabaseConnectionHandler();
