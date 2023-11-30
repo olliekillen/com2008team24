@@ -248,9 +248,12 @@ public class EditButtonUI extends JFrame {
 				acc.updateUserAddress(addressDetails,userId,connect);
 				break;
 			case"bank details":
+				BankDetails card  = AccountDataOperations.getBankDetails(userId,connect);
 				String[]bankDetails = {textBox.getText().trim(),expireText.getText().trim(),
 						securityText.getText().trim(),nameText.getText().trim()};
-				acc.updateBankDetails(bankDetails,userId,connect);
+				if (card !=null){
+				acc.updateBankDetails(bankDetails,userId,connect);}
+				else{} acc.insertBankDetails(bankDetails,userId,connect);
 				break;
 		}
 		con.closeConnection();

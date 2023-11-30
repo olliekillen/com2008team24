@@ -78,7 +78,7 @@ public class AccountDataOperations {
                         && houseNumber == res.getInt(2)) {
                     break;
                 } else {
-                    this.updateAddressAdding(address , houseNumber, con);
+                    this.insertAddress(address , houseNumber, con);
                     break;
                 }
             }
@@ -107,7 +107,7 @@ public class AccountDataOperations {
 
     // This method is invoked from the updateUserAddress() method if  the address is new to the database, and add a
     // entry to the database
-    public void updateAddressAdding (String[] address ,int houseNumber,Connection con) throws SQLException {
+    public void insertAddress (String[] address ,int houseNumber,Connection con) throws SQLException {
 
         String preparedStatment ="INSERT INTO Address (postcode, houseNumber,roadName,city) VALUES (?, ?,?,?)";
 
@@ -127,7 +127,33 @@ public class AccountDataOperations {
             throw e;
         }
     }
-    /** This method takes address details and update the User's Bank Details in the database
+    /** This method takes Bankdetails and add new  User Bank Details in the database
+     * @param bankDetails  Array of Bank details
+     * @param userId user ID
+     * @param con Connection to database
+     */
+    public void insertBankDetails(String[] bankDetails,int userId ,Connection con) throws SQLException {
+
+        String preparedStatment ="INSERT INTO Bank_Account_Details (bankCardNumber, expireDate,securityCode,cardholderName,userID) VALUES (?, ?,?,?,?)";
+
+        try{
+
+            PreparedStatement stmt = con.prepareStatement(preparedStatment);
+            stmt.setString(1,bankDetails[0]);
+            stmt.setString(2,bankDetails[1]);
+            stmt.setString(3,bankDetails[2]);
+            stmt.setString(4,bankDetails[3]);
+            stmt.setInt(5,userId);
+            stmt.executeUpdate();
+
+
+
+        }catch (SQLException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+    /** This method takes Bankdetails and updates  User Bank Details in the database
      * @param bankDetails  Array of Bank details
      * @param userId user ID
      * @param con Connection to database
