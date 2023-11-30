@@ -38,7 +38,7 @@ public class OrderPage extends JFrame {
 	JLabel padding = new JLabel("");
 	JTextArea textArea = new JTextArea(100, 100);
 
-    ArrayList<Order> orders = null;
+    ArrayList<Order> orders = new ArrayList<Order>();
 	OrderTable orderDetails = null;
 
 	//Sets layout and invisibility, sets whether the page is a staff or user page
@@ -50,21 +50,15 @@ public class OrderPage extends JFrame {
 		this.setIsStaffPage(isStaffPage);
 		//initPanel(con);
 		this.add(orderPagePanel);
-		if (isStaffPage) {
-			try {
+		try {
+			if (getIsStaffPage()) {
 				this.initPanel(con.getConnection(), userId);
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		else {
-			try {
+			} else {
 				this.initPanel(userId, con.getConnection());
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
 			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		this.setVisible(true);
 	}
@@ -85,16 +79,15 @@ public class OrderPage extends JFrame {
 		 */
 
 		this.orders = OrderDatabaseOperations.GetOrders(con);
-		
 		ArrayList<Order> confirmedOrders = new ArrayList<>();
 		for (Order order:orders) {
-			if (order.orderStatus.equals("confirmed")) {
+			if (order.orderStatus == "confirmed") {
 				confirmedOrders.add(order);
 			}
 		}
 
 		this.orders = confirmedOrders;
-		
+
 		this.setCurrentUserId(userId);
 		this.setIsManager(false);
 		try {
@@ -148,7 +141,7 @@ public class OrderPage extends JFrame {
 			orderPagePanel.add(orderButton);
 		}
 
-        
+
 
 		orderSidebar.setLocation(0,70);
 		orderSidebar.setSize((int) (Math.round(xSize * 0.16)),1930);
@@ -321,6 +314,7 @@ public class OrderPage extends JFrame {
 		 * Black: Don't enter anything (default).
 		 * Transparent?: 15658734
 		 */
+		orders.add(order);
 
 		// Row indentation
 		textArea.setFont(new Font("SansSerif", Font.PLAIN, 12) );
@@ -351,7 +345,7 @@ public class OrderPage extends JFrame {
 		orderPagePanel.add(customerButton);
 
 		//If there are orders, adds a button to view them which opens a popup window asking for the order id
-		if (this.orders != null) {
+		if (this.orders.size() > 0) {
 			orderButton.setLocation(0,157);
 			orderButton.setSize((int) (Math.round(xSize * 0.16)),87);
 			orderButton.setForeground( new Color(-1) );
@@ -547,7 +541,6 @@ public class OrderPage extends JFrame {
             DatabaseConnectionHandler con = new DatabaseConnectionHandler();
             OrderDatabaseOperations dop = new OrderDatabaseOperations();
             con.openConnection();
-            System.out.println("Connection Successful");
 			Order order = dop.getCurrentOrderByUserID(con.getConnection(), currentUserId);
             window.initPanel(order, con.getConnection());
             window.initFrame(isStaffPage, currentUserId, con);
@@ -562,7 +555,7 @@ public class OrderPage extends JFrame {
 	}
 
 	//When the view orders button is pressed on the customer page,
-	// open a popup window asking which order they would like to view, then opens a new window with taht order’s order lines.
+	// open a popup window asking which order they would like to view, then opens a new window with that order’s order lines.
 	public void userButton_Click() {
 		Integer orderIds[] = new Integer[orders.size()];
 		Integer i = 0;
@@ -586,7 +579,6 @@ public class OrderPage extends JFrame {
             final OrderPage window = new OrderPage();
             DatabaseConnectionHandler con = new DatabaseConnectionHandler();
             con.openConnection();
-            System.out.println("Connection Successful");
             window.initPanel("user’s order", selectedOrder, con.getConnection());
             window.initFrame(isStaffPage, currentUserId, con);
             con.closeConnection();
@@ -623,7 +615,6 @@ public class OrderPage extends JFrame {
             final OrderPage window = new OrderPage();
             DatabaseConnectionHandler con = new DatabaseConnectionHandler();
             con.openConnection();
-            System.out.println("Connection Successful");
             window.initPanel(con.getConnection(), currentUserId);
             window.initFrame(isStaffPage, currentUserId, con);
             con.closeConnection();
@@ -693,10 +684,8 @@ public class OrderPage extends JFrame {
 		try {
             DatabaseConnectionHandler con = new DatabaseConnectionHandler();
             con.openConnection();
-            System.out.println("Connection Successful");
             OrderDatabaseOperations.DeleteOrder(order, con.getConnection());
 			final OrderPage window = new OrderPage();
-			System.out.println("Connection Successful");
 			window.initPanel(con.getConnection(), currentUserId);
 			window.initFrame(isStaffPage, currentUserId, con);
 			con.closeConnection();
