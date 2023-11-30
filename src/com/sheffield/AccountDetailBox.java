@@ -215,11 +215,11 @@ public class AccountDetailBox extends JPanel {
 
     public void editAddressButton_Click(int userId,JFrame account,boolean isStaff) throws SQLException {
         EditButtonUI edit = new EditButtonUI();
-        edit.initFrame((int) (xSize * .4), (int) (ySize * .17), "Address", userId,account,isStaff);
+        edit.initFrame((int) (xSize * .4), (int) (ySize * .25), "Address", userId,account,isStaff);
     }
 
     public void editBankButton_Click(int userId, JFrame account,boolean isStaff) throws SQLException {
         EditButtonUI edit = new EditButtonUI();
-        edit.initFrame((int) (xSize * .4), (int) (ySize * .2), "Bank Details", userId,account,isStaff);
+        edit.initFrame((int) (xSize * .4), (int) (ySize * .25), "Bank Details", userId,account,isStaff);
     }
 }

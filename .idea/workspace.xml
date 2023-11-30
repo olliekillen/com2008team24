@@ -28,10 +28,10 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d8c3e42c-1391-466e-bdbd-038550dee454" name="Changes" comment="Commit before pull.">
+    <list default="true" id="d8c3e42c-1391-466e-bdbd-038550dee454" name="Changes" comment="Updated Address edit button &amp; Bank details edit button">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Team_24_Security_And_Design.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Team_24_Security_And_Design.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sheffield/UI/SignUpForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/UI/SignUpForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sheffield/AccountDetailBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/AccountDetailBox.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sheffield/UI/EditButtonUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/UI/EditButtonUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,6 +51,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 2
+}]]></component>
   <component name="ProjectId" id="2XwtE29gaUggz0A9IKHhsPxseRW" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -61,13 +64,17 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "main",
     "last_opened_file_path": "C:/Users/dvous/Documents/mysql-connector-j-8.2.0/mysql-connector-j-8.2.0/mysql-connector-j-8.2.0.jar",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2"
+    "project.structure.side.proportion": "0.2",
+    "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -75,7 +82,7 @@
       <recent name="com.sheffield" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.MyFrame">
+  <component name="RunManager" selected="Application.AccountPage">
     <configuration name="AccountPage" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.sheffield.AccountPage" />
       <module name="Team_24_Security_And_Design" />
@@ -117,9 +124,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.AccountPage" />
         <item itemvalue="Application.MyFrame" />
         <item itemvalue="Application.ProductPageLauncher" />
-        <item itemvalue="Application.AccountPage" />
       </list>
     </recent_temporary>
   </component>
@@ -157,6 +164,7 @@
       <workItem from="1700841851194" duration="4226000" />
       <workItem from="1701101370333" duration="632000" />
       <workItem from="1701255813746" duration="8003000" />
+      <workItem from="1701276594886" duration="4922000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed product and account pages, which couldn't display due to changes in the last commit.">
       <created>1700236292159</created>
