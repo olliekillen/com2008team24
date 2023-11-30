@@ -66,7 +66,7 @@ public class EditButtonUI extends JFrame {
 				break;
 			case"bank details":
 				BankDetails card = accountData.getBankDetails(userId,connection);
-				text = card.getBankCardNumber();
+				if( card  != null) {text = card.getBankCardNumber();}
 				break;
 			default: System.out.println("No Field found");
 				break;
@@ -179,17 +179,21 @@ public class EditButtonUI extends JFrame {
 			AccountDataOperations accountData = new AccountDataOperations();
 			con.openConnection();
 			BankDetails card = accountData.getBankDetails(userId,con.getConnection());
+			String name= "";
+			String expireDate= "";
+			String securityCode= "";
 
-			nameText = new JTextField(card.getCardHolderName());
+			if (card != null){name = card.getCardHolderName();};
+			nameText = new JTextField(name);
 			nameText.setFont(new Font("Merriweather", Font.BOLD, 15));
 			nameText.setBounds(15, 58, (int) (xSize * .12), 25);
 
-
-			expireText = new JTextField(card.getExpiryDate());
+			if (card != null){expireDate =card.getExpiryDate();};
+			expireText = new JTextField(expireDate);
 			expireText.setFont(new Font("Merriweather", Font.BOLD, 15));
 			expireText.setBounds(15, 98, (int) (xSize * .12), 25);
-
-			securityText = new JTextField(card.getSecurityCode() );
+			if (card != null){securityCode=card.getSecurityCode();};
+			securityText = new JTextField(securityCode );
 			securityText.setFont(new Font("Merriweather", Font.BOLD, 15));
 			securityText.setBounds(15, 138, (int) (xSize * .12), 25);
 			con.closeConnection();
