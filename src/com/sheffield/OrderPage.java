@@ -548,8 +548,18 @@ public class OrderPage extends JFrame {
 	{	
 		try {
             DatabaseConnectionHandler con = new DatabaseConnectionHandler();
+			OrderDatabaseOperations dop = new OrderDatabaseOperations();
             con.openConnection();
-            OrderDatabaseOperations.FulfilOrder(order, con.getConnection());
+			if (dop.canOrderBeConfirmed(order, con.getConnection())) {
+				OrderDatabaseOperations.FulfilOrder(order, con.getConnection());
+				OrderPage window = new OrderPage();
+				window.initFrame(getIsStaffPage(), getCurrentUserId(), con);
+				window.initPanel(con.getConnection(), getCurrentUserId());
+				dispose();
+			} else {
+				JOptionPane.showMessageDialog(this, "There is not enough stock to complete " +
+				"your order. Please try again when stocks refill, or start a new order.");
+			}
             con.closeConnection();
         } 
 
@@ -568,7 +578,7 @@ public class OrderPage extends JFrame {
             con.openConnection();
             if (dop.canOrderBeConfirmed(order, con.getConnection())) {
 				OrderDatabaseOperations.ConfirmOrder(order, con.getConnection());
-				final OrderPage window = new OrderPage();
+				OrderPage window = new OrderPage();
 				window.initFrame(getIsStaffPage(), getCurrentUserId(), con);
 				window.initPanel(con.getConnection(), getCurrentUserId());
 				dispose();

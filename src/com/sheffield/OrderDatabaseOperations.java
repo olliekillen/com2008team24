@@ -101,10 +101,23 @@ public class OrderDatabaseOperations {
 
     public static void FulfilOrder (Order order, Connection con) throws SQLException {
             try {
+                ProductDatabaseOperations dop = new ProductDatabaseOperations();
                 String updateSQL = "UPDATE Orders SET statusField = \"fulfilled\" WHERE orderNumber=?";
                 PreparedStatement preparedStatement = con.prepareStatement(updateSQL);
-                preparedStatement.setInt(1, order.orderNumber);
-                int count = preparedStatement.executeUpdate();
+                preparedStatement.setInt(1, order.getOrderNumber());
+                preparedStatement.executeUpdate();
+                String selectSQL = "SELECT * FROM Order_Lines WHERE orderNumber=?";
+                PreparedStatement preparedStatement3 = con.prepareStatement(selectSQL);
+                preparedStatement3.setInt(1, order.getOrderNumber());
+                ResultSet resultSet = preparedStatement3.executeQuery();
+                while (resultSet.next()) {
+                    Product product = dop.getProductByProductCode(con, resultSet.getString("productCode"));
+                    String updateSQL2 = "UPDATE Product SET stockCount = ? WHERE productCode=?";
+                    PreparedStatement preparedStatement2 = con.prepareStatement(updateSQL2);
+                    preparedStatement2.setInt(1, product.getStockCount() - resultSet.getInt("quantity"));
+                    preparedStatement2.setInt(2, resultSet.getInt("productCode"));
+                    preparedStatement2.executeUpdate();
+                }
             }
             catch (SQLException ex) {
                 ex.printStackTrace();
