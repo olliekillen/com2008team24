@@ -27,7 +27,6 @@ public class OrderDatabaseOperations {
                     blockedDate = res.getDate(6).toString();
                 }
                 Integer userId = res.getInt(7);
-
                 Order order = new Order(number, date, status, cost, blocked, blockedDate, userId);
                 orders.add(order);
             }
@@ -113,7 +112,6 @@ public class OrderDatabaseOperations {
     }
 
     public static void ConfirmOrder (Order order, Connection con) throws SQLException {
-            
             try {
                 String updateSQL = "UPDATE Orders SET statusField = \"confirmed\" WHERE orderNumber=?";
                 PreparedStatement preparedStatement = con.prepareStatement(updateSQL);
@@ -321,6 +319,26 @@ public class OrderDatabaseOperations {
             e.printStackTrace();
             return 0;
             //throw e;
+        }
+    }
+
+    public boolean canOrderBeConfirmed(Order order, Connection connection) throws SQLException {
+        try {
+            ProductDatabaseOperations dop = new ProductDatabaseOperations();
+            String selectSQL = "SELECT * FROM Order_Lines WHERE orderNumber=?";
+            PreparedStatement preparedStatement = connection.prepareStatement(selectSQL);
+            preparedStatement.setInt(1, order.getOrderNumber());
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                Product product = dop.getProductByProductCode(connection, resultSet.getString("productCode"));
+                if (resultSet.getInt("quantity") > product.getStockCount()) {
+                    return false;
+                }
+            }
+        return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw e;
         }
     }
 }

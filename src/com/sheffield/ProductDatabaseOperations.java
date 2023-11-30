@@ -9,6 +9,23 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class ProductDatabaseOperations {
+    public Product getProductByProductCode(Connection connection, String productCode) throws SQLException {
+        try {
+            String selectSQL = "SELECT * FROM Product WHERE productCode=?";
+            PreparedStatement preparedStatement = connection.prepareStatement(selectSQL);
+            preparedStatement.setString(1, productCode);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            resultSet.next();
+            return new Product(resultSet.getString("productCode"),
+            resultSet.getString("brandName"), resultSet.getString("productName"),
+            resultSet.getBigDecimal("retailPrice"), resultSet.getString("modellingScale"),
+            resultSet.getInt("stockCount"));
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
     public void insertProduct(Product product, Connection connection) throws SQLException {
         try {
             String insertSQL = "INSERT INTO Product (productCode, brandName, productName,"+

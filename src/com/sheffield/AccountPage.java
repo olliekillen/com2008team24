@@ -40,10 +40,11 @@ public class AccountPage extends JFrame {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize((Math.round(xSize)),9000);
 		this.setIsStaffPage(isStaffPage);
+		this.setCurrentUserId(userId);
 		DatabaseConnectionHandler con = new DatabaseConnectionHandler();
 		try {
 			con.openConnection();
-			initPanel(userId, con.getConnection()); //TODO
+			initPanel(userId, con.getConnection());
 			con.closeConnection();
 		}
 		catch (SQLException e) {

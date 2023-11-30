@@ -21,6 +21,8 @@ public class ProductBox extends JPanel {
     int xSize = ((int) tk.getScreenSize().getWidth());
     int ySize = ((int) tk.getScreenSize().getHeight());
 
+    private int currentUserID;
+
     JLabel productBackground = new JLabel();
     JLabel productName = new JLabel();
     JLabel productPrice = new JLabel();
@@ -33,6 +35,7 @@ public class ProductBox extends JPanel {
     public void initBox(String productCodeInput, String brandName, String productNameInput, BigDecimal retailPrice,
     String modellingScale, Boolean isStaffPage, int userID, String productID) {
         this.setLayout(null);
+        this.setCurrentUserID(userID);
 
         productName.setLocation((int) (Math.round(xSize * 0.005)), 0);
         productName.setSize((int) (Math.round(xSize * 0.22)), (int) (Math.round(ySize * 0.03)));
@@ -95,7 +98,7 @@ public class ProductBox extends JPanel {
         String productCodeText = productCode.getText().substring(14);
         ProductRetriever productRetriever = new ProductRetriever();
         Product product = productRetriever.getProductFromDatabase(productCodeText);
-        singleProductPagePanel.initFrame(product, isStaffPage, 5);
+        singleProductPagePanel.initFrame(product, isStaffPage, getCurrentUserID());
         singleProductPagePanel.setVisible(true);
         JFrame jframe = (JFrame) SwingUtilities.getWindowAncestor(this);
         jframe.dispose();
@@ -132,4 +135,8 @@ public class ProductBox extends JPanel {
             e.printStackTrace();
         }
     }
+
+    public int getCurrentUserID() { return this.currentUserID; }
+
+    public void setCurrentUserID(int currentUserID) { this.currentUserID = currentUserID; }
 }

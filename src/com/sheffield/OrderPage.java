@@ -445,13 +445,11 @@ public class OrderPage extends JFrame {
             DatabaseConnectionHandler con = new DatabaseConnectionHandler();
             OrderDatabaseOperations dop = new OrderDatabaseOperations();
             con.openConnection();
-            if(dop.doesCurrentOrderExist(con.getConnection(), currentUserId)) {
-				Order order = dop.getCurrentOrderByUserID(con.getConnection(), currentUserId);
-				window.initFrame(getIsStaffPage(), getCurrentUserId(), con);
-				window.initPanel(order, con.getConnection());
-				con.closeConnection();
-				dispose();
-			} else { JOptionPane.showInputDialog("There is no top order to view."); }
+            Order order = dop.getCurrentOrderByUserID(con.getConnection(), orders.get(0).getUserId());
+            window.initFrame(getIsStaffPage(), getCurrentUserId(), con);
+            window.initPanel(order, con.getConnection());
+            con.closeConnection();
+            dispose();
         }
         catch (SQLException e) {
             e.printStackTrace();
@@ -467,31 +465,32 @@ public class OrderPage extends JFrame {
 			orderIds[i] = order.orderNumber;
 			i++;
 		}
-		int orderId = (Integer)JOptionPane.showInputDialog(this, "Select an Order ID", "Input", JOptionPane.QUESTION_MESSAGE, null , orderIds, orderIds[0]);
-		
-		
-		 
-		Order selectedOrder = null;
-		for (Order order:this.orders) {
-			if (order.orderNumber == orderId) {
-				selectedOrder = order;	
+		if (orderIds.length == 0) {
+			JOptionPane.showMessageDialog(this, "There are no orders to view.");
+		} else {
+			int orderId = (Integer) JOptionPane.showInputDialog(this, "Select an Order ID", "Input", JOptionPane.QUESTION_MESSAGE, null, orderIds, orderIds[0]);
+
+
+			Order selectedOrder = null;
+			for (Order order : this.orders) {
+				if (order.orderNumber == orderId) {
+					selectedOrder = order;
+				}
 			}
+			System.out.println(selectedOrder.orderNumber);
+
+			try {
+				final OrderPage window = new OrderPage();
+				DatabaseConnectionHandler con = new DatabaseConnectionHandler();
+				con.openConnection();
+				window.initFrame(getIsStaffPage(), getCurrentUserId(), con);
+				window.initPanel(selectedOrder, con.getConnection());
+				con.closeConnection();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			dispose();
 		}
-		System.out.println(selectedOrder.orderNumber);
-		
-		try {
-            final OrderPage window = new OrderPage();
-            DatabaseConnectionHandler con = new DatabaseConnectionHandler();
-            con.openConnection();
-            window.initFrame(getIsStaffPage(), getCurrentUserId(), con);
-            window.initPanel(selectedOrder, con.getConnection());
-            con.closeConnection();
-        }
-        catch (SQLException e) {
-            e.printStackTrace();
-        }
-		dispose();
-		
 	}
 
 	//When the view all orders button is pressed on the staff page for viewing one order, opens a new window showing all orders
@@ -560,21 +559,24 @@ public class OrderPage extends JFrame {
 
 	}
 
-	//WHen customer confirms an order, mark as confirmed in the database
+	//When customer confirms an order, mark as confirmed in the database
 	public void confirmButton_Click(Order order)
 	{	
 		try {
             DatabaseConnectionHandler con = new DatabaseConnectionHandler();
+            OrderDatabaseOperations dop = new OrderDatabaseOperations();
             con.openConnection();
-            OrderDatabaseOperations.ConfirmOrder(order, con.getConnection());
-			final OrderPage window = new OrderPage();
-			window.initFrame(getIsStaffPage(), getCurrentUserId(), con);
-			window.initPanel(con.getConnection(), getCurrentUserId());
+            if (dop.canOrderBeConfirmed(order, con.getConnection())) {
+				OrderDatabaseOperations.ConfirmOrder(order, con.getConnection());
+				final OrderPage window = new OrderPage();
+				window.initFrame(getIsStaffPage(), getCurrentUserId(), con);
+				window.initPanel(con.getConnection(), getCurrentUserId());
+				dispose();
+			} else {
+				JOptionPane.showMessageDialog(this, "There is not enough stock to complete " +
+				"your order. Please try again when stocks refill, or start a new order.");
+			}
 			con.closeConnection();
-
-			dispose();
-
-
         } 
 
         catch (SQLException e) {
