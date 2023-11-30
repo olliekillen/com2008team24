@@ -78,7 +78,7 @@ public class OrderPage extends JFrame {
 
 			ArrayList<Order> confirmedOrders = new ArrayList<>();
 			for (Order order:orders) {
-				if (order.orderStatus == "confirmed") {
+				if (order.orderStatus.equals("confirmed")) {
 					confirmedOrders.add(order);
 				}
 			}
