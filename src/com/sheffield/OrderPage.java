@@ -49,6 +49,7 @@ public class OrderPage extends JFrame {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize((Math.round(xSize)),9000);
 		this.setIsStaffPage(isStaffPage);
+		this.setCurrentUserId(userId);
 		//initPanel(con);
 		this.add(orderPagePanel);
 		this.setVisible(true);
@@ -77,7 +78,7 @@ public class OrderPage extends JFrame {
 
 			ArrayList<Order> confirmedOrders = new ArrayList<>();
 			for (Order order:orders) {
-				if (order.orderStatus == "confirmed") {
+				if (order.orderStatus.equals("confirmed")) {
 					confirmedOrders.add(order);
 				}
 			}
@@ -433,6 +434,7 @@ public class OrderPage extends JFrame {
 	{
 		ProductPageUI productPage = new ProductPageUI();
 		productPage.initFrame(isStaffPage, currentUserId);
+		System.out.println(currentUserId);
 		this.dispose();
 	}
 	//When the view top order button on the staff page is clicked, opens a new window with that order’s order lines
@@ -445,8 +447,8 @@ public class OrderPage extends JFrame {
             con.openConnection();
             if(dop.doesCurrentOrderExist(con.getConnection(), currentUserId)) {
 				Order order = dop.getCurrentOrderByUserID(con.getConnection(), currentUserId);
+				window.initFrame(getIsStaffPage(), getCurrentUserId(), con);
 				window.initPanel(order, con.getConnection());
-				window.initFrame(isStaffPage, currentUserId, con);
 				con.closeConnection();
 				dispose();
 			} else { JOptionPane.showInputDialog("There is no top order to view."); }
@@ -481,7 +483,7 @@ public class OrderPage extends JFrame {
             final OrderPage window = new OrderPage();
             DatabaseConnectionHandler con = new DatabaseConnectionHandler();
             con.openConnection();
-            window.initFrame(isStaffPage, currentUserId, con);
+            window.initFrame(getIsStaffPage(), getCurrentUserId(), con);
             window.initPanel(selectedOrder, con.getConnection());
             con.closeConnection();
         }
@@ -499,8 +501,8 @@ public class OrderPage extends JFrame {
             final OrderPage window = new OrderPage();
             DatabaseConnectionHandler con = new DatabaseConnectionHandler();
             con.openConnection();
-            window.initPanel(con.getConnection(), currentUserId);
-            window.initFrame(isStaffPage, currentUserId, con);
+			window.initFrame(getIsStaffPage(), getCurrentUserId(), con);
+            window.initPanel(con.getConnection(), getCurrentUserId());
             con.closeConnection();
         } 
 
@@ -516,8 +518,8 @@ public class OrderPage extends JFrame {
             DatabaseConnectionHandler dch = new DatabaseConnectionHandler();
             dch.openConnection();
             OrderPage orderPage = new OrderPage();
-            orderPage.initFrame(getIsStaffPage(), userId, dch);
-            orderPage.initPanel(dch.getConnection(), userId);
+            orderPage.initFrame(getIsStaffPage(), getCurrentUserId(), dch);
+            orderPage.initPanel(dch.getConnection(), getCurrentUserId());
             this.dispose();
             dch.closeConnection();
         } catch (SQLException e) {
@@ -565,7 +567,14 @@ public class OrderPage extends JFrame {
             DatabaseConnectionHandler con = new DatabaseConnectionHandler();
             con.openConnection();
             OrderDatabaseOperations.ConfirmOrder(order, con.getConnection());
-            con.closeConnection();
+			final OrderPage window = new OrderPage();
+			window.initFrame(getIsStaffPage(), getCurrentUserId(), con);
+			window.initPanel(con.getConnection(), getCurrentUserId());
+			con.closeConnection();
+
+			dispose();
+
+
         } 
 
         catch (SQLException e) {
@@ -583,8 +592,8 @@ public class OrderPage extends JFrame {
             con.openConnection();
             OrderDatabaseOperations.DeleteOrder(order, con.getConnection());
 			final OrderPage window = new OrderPage();
-			window.initPanel(con.getConnection(), currentUserId);
-			window.initFrame(isStaffPage, currentUserId, con);
+			window.initFrame(getIsStaffPage(), getCurrentUserId(), con);
+			window.initPanel(con.getConnection(), getCurrentUserId());
 			con.closeConnection();
 
 			dispose();
