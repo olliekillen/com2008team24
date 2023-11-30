@@ -54,7 +54,7 @@ public class OrderPage extends JFrame {
 		this.setVisible(true);
 	}
 
-	//Initialises the view of all orders, staff page
+	//Initialises the view of all orders
 	public void initPanel(Connection con, int userId) throws SQLException
 
 	{
@@ -84,16 +84,23 @@ public class OrderPage extends JFrame {
 
 			this.orders = confirmedOrders;
 
-			this.setCurrentUserId(userId);
-			this.setIsManager(false);
-			try {
-				DatabaseConnectionHandler dch = new DatabaseConnectionHandler();
-				AccountDataOperations dop = new AccountDataOperations();
-				dch.openConnection();
-				isStaff = dop.getStaffByUserID(dch.getConnection(), currentUserId);
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+		this.setCurrentUserId(userId);
+		try {
+			DatabaseConnectionHandler dch = new DatabaseConnectionHandler();
+			AccountDataOperations dop = new AccountDataOperations();
+			dch.openConnection();
+			isManager = dop.getManagerByUserID(dch.getConnection(), currentUserId);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		try {
+			DatabaseConnectionHandler dch = new DatabaseConnectionHandler();
+			AccountDataOperations dop = new AccountDataOperations();
+			dch.openConnection();
+			isStaff = dop.getStaffByUserID(dch.getConnection(), currentUserId);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 
 			// Row indentation
 			textArea.setFont(new Font("SansSerif", Font.PLAIN, 12) );
@@ -267,7 +274,7 @@ public class OrderPage extends JFrame {
 		}
 	}
 
-	//Initialises view of one order’s order lines, for staff view
+	//Initialises view of one order’s order lines
 	public void initPanel(Order order, Connection con)
 	{
 		/* For colours of each of the components:
@@ -477,8 +484,7 @@ public class OrderPage extends JFrame {
             window.initFrame(isStaffPage, currentUserId, con);
             window.initPanel(selectedOrder, con.getConnection());
             con.closeConnection();
-        } 
-
+        }
         catch (SQLException e) {
             e.printStackTrace();
         }
@@ -542,7 +548,6 @@ public class OrderPage extends JFrame {
 		try {
             DatabaseConnectionHandler con = new DatabaseConnectionHandler();
             con.openConnection();
-            System.out.println("Connection Successful");
             OrderDatabaseOperations.FulfilOrder(order, con.getConnection());
             con.closeConnection();
         } 
@@ -559,7 +564,6 @@ public class OrderPage extends JFrame {
 		try {
             DatabaseConnectionHandler con = new DatabaseConnectionHandler();
             con.openConnection();
-            System.out.println("Connection Successful");
             OrderDatabaseOperations.ConfirmOrder(order, con.getConnection());
             con.closeConnection();
         } 
