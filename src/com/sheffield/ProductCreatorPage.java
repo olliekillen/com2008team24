@@ -39,15 +39,14 @@ public class ProductCreatorPage extends JFrame {
 		this.setLayout(new GridLayout(1,1));
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize((Math.round(xSize)),9000);
-
-		//initPanel(con);
 		this.add(productCreatorPagePanel);
 		this.setVisible(true);
 	}
 
 
 	// Method to set location and colours of buttons, panels etc
-	public void initPanel(Connection con, boolean isController, boolean isLocomotive, boolean isRollingStock)
+	public void initPanel(Connection con, boolean isController, boolean isLocomotive, boolean isRollingStock, String
+	selectedItem)
 	{
 		/* For colours of each of the components:
 		 * Purple: 11854529
@@ -60,9 +59,6 @@ public class ProductCreatorPage extends JFrame {
 		 * Transparent?: 15658734
 		 */
 
-
-		// Row indentation
-
 		pageTitle.setLocation(0,0);
 		pageTitle.setSize((Math.round(xSize)),(int) (Math.round(ySize * 0.1)));
 		pageTitle.setForeground( new Color(-1) );
@@ -74,7 +70,7 @@ public class ProductCreatorPage extends JFrame {
 		pageTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		productCreatorPagePanel.add(pageTitle);
 
-		customerButton.setLocation(0,70);
+		customerButton.setLocation(0,(int) (Math.round(ySize * 0.1)));
 		customerButton.setSize((int) (Math.round(xSize * 0.16)),(int) (Math.round(ySize * 0.1)));
 		customerButton.setForeground( new Color(-1) );
 		customerButton.setFont(new Font("Merriweather", Font.BOLD, 21));
@@ -100,7 +96,8 @@ public class ProductCreatorPage extends JFrame {
 		productCreatorTitleText.setText("Add a Product");
 		productCreatorPagePanel.add(productCreatorTitleText);
 
-		ProductCreatorBox productDetails = new ProductCreatorBox(isController, isLocomotive, isRollingStock);
+		ProductCreatorBox productDetails = new ProductCreatorBox(isController, isLocomotive, isRollingStock,
+		this, isStaffPage, currentUserId, selectedItem);
 		System.out.println("Here!");
 		// Setting location of panel of class productCreatorBox which contains the product form
         productDetails.setLocation((int) (Math.round(xSize * 0.20)),(int) (Math.round(ySize * 0.22)));

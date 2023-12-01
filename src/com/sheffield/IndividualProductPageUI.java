@@ -357,7 +357,7 @@ public class IndividualProductPageUI extends JFrame {
             DatabaseConnectionHandler dch = new DatabaseConnectionHandler();
             dch.openConnection();
             productCreatorPage.initFrame(getIsStaffPage(), getCurrentUserId());
-            productCreatorPage.initPanel(dch.getConnection(), false, false, false);
+            productCreatorPage.initPanel(dch.getConnection(), false, false, false, "Track");
             this.dispose();
             dch.closeConnection();
         } catch (SQLException e) {
