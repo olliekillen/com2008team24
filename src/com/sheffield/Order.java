@@ -1,5 +1,10 @@
 package com.sheffield;
 
+/**
+ * This class represents an order object
+ *
+ * @author Oliver Killen
+ */
 public class Order {
     Integer orderNumber;
     String orderDate;

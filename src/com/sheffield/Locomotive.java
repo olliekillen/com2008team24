@@ -4,6 +4,12 @@ import com.sheffield.Products.Product;
 
 import java.math.BigDecimal;
 
+/**
+ * This class represents a locomotive object - it has two more attributes than the normal product object, determining
+ * the era the locomotive is from and its price bracket (extra features, higher price)
+ *
+ * @author Luke Parry
+ */
 public class Locomotive extends Product {
 
     private String historicalEra;

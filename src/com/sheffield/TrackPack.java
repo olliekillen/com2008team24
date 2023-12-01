@@ -4,6 +4,11 @@ import com.sheffield.Products.Product;
 
 import java.math.BigDecimal;
 
+/**
+ * This class represents a track pack object
+ *
+ * @author Luke Parry
+ */
 public class TrackPack extends Product {
 
     public TrackPack(String productCode, String brandName, String productName, BigDecimal retailPrice,

@@ -3,11 +3,17 @@ package com.sheffield;
 import java.sql.*;
 import com.sheffield.UI.PasswordHasher;
 
+/**
+ * This class contains some of the operations to do with users (the rest contained in UserDatabaseOperations), with
+ * these ones mainly being used to do with the account page
+ *
+ * @author Nguyen Anh Le, Luke Parry
+ */
 public class AccountDataOperations {
 
     public void updateName (String foreName,String surName,int userId,Connection con) throws SQLException{
 
-        String preparedStatment ="UPDATE Users SET forename=?,surname=? WHERE userID =" + userId; // TODO TELL OLLIE
+        String preparedStatment ="UPDATE Users SET forename=?,surname=? WHERE userID =" + userId;
 
         try{
             PreparedStatement stmt = con.prepareStatement(preparedStatment);
@@ -246,7 +252,7 @@ public class AccountDataOperations {
         }
         return address;
     }
-    /** This method retrieve User's Bankdetails data from the database
+    /** This method retrieves User's Bankdetails data from the database
      * @param userId user ID
      * @param con Connection to database
      * @return card of type BankDetails
@@ -278,6 +284,22 @@ public class AccountDataOperations {
                 stmt.close();
         }
         return card;
+    }
+
+    public Boolean doBankDetailsExist (Integer userId, Connection connection) throws SQLException {
+        try {
+            String selectSQL = "SELECT * FROM Bank_Account_Details WHERE userID=?";
+            PreparedStatement preparedStatement = connection.prepareStatement(selectSQL);
+            ResultSet resultSet = preparedStatement.getResultSet();
+            int count = 0;
+            while(resultSet.next()) { count++; }
+            return (! (count == 0));
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw e;
+        } catch (NullPointerException ex) {
+            return false;
+        }
     }
 
     public Boolean getStaffByUserID(Connection connection, int userID) throws SQLException {

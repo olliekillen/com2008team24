@@ -1,5 +1,10 @@
 package com.sheffield;
 
+/**
+ * This class represents an address object
+ *
+ * @author Nguyen Anh Le
+ */
 public class Address {
     private String postCode;
     private Integer houseNumber;

@@ -1,5 +1,11 @@
 package com.sheffield;
 
+/**
+ * This class represents a bank details object, in that it holds the details of a bank card and the user associated with
+ * it
+ *
+ * @author Nguyen Anh Le
+ */
 public class BankDetails {
     private String bankCardNumber;
     private String expiryDate;

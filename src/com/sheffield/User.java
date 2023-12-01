@@ -1,5 +1,10 @@
 package com.sheffield;
 
+/**
+ * This class represents a user object
+ *
+ * @author Luke Parry
+ */
 public class User {
     Integer userId;
     String email;

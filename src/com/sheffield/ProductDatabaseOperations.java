@@ -8,6 +8,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
+/**
+ * This class holds all of the database operations to do with products (adding, updating, retrieving or deleting data
+ * from the tables).
+ *
+ * @author Luke Parry
+ */
 public class ProductDatabaseOperations {
     public Product getProductByProductCode(Connection connection, String productCode) throws SQLException {
         try {

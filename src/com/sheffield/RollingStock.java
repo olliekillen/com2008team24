@@ -4,6 +4,12 @@ import com.sheffield.Products.Product;
 
 import java.math.BigDecimal;
 
+/**
+ * This class represents a rolling stock object - it has one more attributes than the normal product object, determining
+ * the era the rolling stock is from
+ *
+ * @author Luke Parry
+ */
 public class RollingStock extends Product {
 
     private String historicalEra;

@@ -8,9 +8,8 @@ import java.awt.event.MouseListener;
 import java.sql.SQLException;
 
 /**
- * This class is the JFrame that holds all of the manager page UI components. This page allows a man
- * details more in-depth than is displayed on the product page, and allows the product to be edited or deleted when a
- * staff member accesses this page in staff mode
+ * This class is the JFrame that holds all of the manager page UI components. This page allows a mananger to promote
+ * or demote users depending on if they are a staff or customer user. The manager user cannot demote themselves
  *
  * @author Luke Parry
  */

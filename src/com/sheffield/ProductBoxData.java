@@ -7,6 +7,12 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This class determines how to filter the data provided to the product box (if at all), then calls the product box
+ * constructor to generate the box in the right place
+ *
+ * @author Luke Parry
+ */
 public class ProductBoxData {
 
     Toolkit tk = Toolkit.getDefaultToolkit();

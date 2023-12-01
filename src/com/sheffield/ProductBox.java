@@ -11,12 +11,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Date;
 
+/**
+ * This class represents one of the boxes in the middle of the product page holding all of a single product's
+ * information. It also contains buttons leading to a more detailed individual product page, and one that adds the
+ * product to an order.
+ *
+ * @author Luke Parry
+ */
 public class ProductBox extends JPanel {
-
-//    public com.sheffield.ProductBox(LayoutManager layout) {
-//        super(layout);
-//    }
-
     Toolkit tk = Toolkit.getDefaultToolkit();
     int xSize = ((int) tk.getScreenSize().getWidth());
     int ySize = ((int) tk.getScreenSize().getHeight());
