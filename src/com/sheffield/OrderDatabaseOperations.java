@@ -312,7 +312,7 @@ public class OrderDatabaseOperations {
             List<OrderLine> orderLineList = new ArrayList<OrderLine>();
             orderLineList = getOrderLine(order, product, orderLineList, connection);
             String insertSQL = "UPDATE Order_Lines SET quantity=?, lineCost=? WHERE productCode=? AND orderNumber=?";
-            PreparedStatement preparedStatement = connection .prepareStatement(insertSQL);
+            PreparedStatement preparedStatement = connection.prepareStatement(insertSQL);
             preparedStatement.setInt(1, orderLineList.get(0).quantity + 1);
             preparedStatement.setBigDecimal(2, new BigDecimal(product.getRetailPrice().floatValue()
             * (orderLineList.get(0).quantity + 1.0)));

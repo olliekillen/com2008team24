@@ -134,7 +134,7 @@ public class AccountDataOperations {
      */
     public void insertBankDetails(String[] bankDetails,int userId ,Connection con) throws SQLException {
 
-        String preparedStatment ="INSERT INTO Bank_Account_Details (bankCardNumber, expireDate,securityCode,cardholderName,userID) VALUES (?, ?,?,?,?)";
+        String preparedStatment ="INSERT INTO Bank_Account_Details (bankCardNumber, expiryDate,securityCode,cardholderName,userID) VALUES (?, ?,?,?,?)";
 
         try{
 
@@ -270,8 +270,6 @@ public class AccountDataOperations {
                 String securityCode = res.getString(3);
                 String cardHolderName = res.getString(4);
                 Integer id = res.getInt(5);
-
-
                 card = new BankDetails(cardNum, expiryDate, securityCode, cardHolderName, id);
             }
             res.close();
@@ -290,7 +288,8 @@ public class AccountDataOperations {
         try {
             String selectSQL = "SELECT * FROM Bank_Account_Details WHERE userID=?";
             PreparedStatement preparedStatement = connection.prepareStatement(selectSQL);
-            ResultSet resultSet = preparedStatement.getResultSet();
+            preparedStatement.setInt(1, userId);
+            ResultSet resultSet = preparedStatement.executeQuery();
             int count = 0;
             while(resultSet.next()) { count++; }
             return (! (count == 0));

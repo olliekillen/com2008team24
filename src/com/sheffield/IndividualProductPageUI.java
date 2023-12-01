@@ -411,7 +411,19 @@ public class IndividualProductPageUI extends JFrame {
             e.printStackTrace();
         }
     }
-    public void singleProductOrder_Click() {}
+    public void singleProductOrder_Click() {
+        try {
+            DatabaseConnectionHandler dch = new DatabaseConnectionHandler();
+            dch.openConnection();
+            OrderPage orderPage = new OrderPage();
+            orderPage.initFrame(getIsStaffPage(), getCurrentUserId(), dch);
+            orderPage.initPanel(dch.getConnection(), getCurrentUserId());
+            this.dispose();
+            dch.closeConnection();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
     public void singleProductBrowse_Click() {
         ProductPageUI productPage = new ProductPageUI();
         productPage.initFrame(isStaffPage, getCurrentUserId());
