@@ -28,18 +28,15 @@
     </select>
   </component>
   <component name="ChangeListManager">
-<<<<<<< HEAD
-    <list default="true" id="d8c3e42c-1391-466e-bdbd-038550dee454" name="Changes" comment="Changed HomePage Formatting">
+    <list default="true" id="81358b62-bc15-4d40-9121-c15a6a4d4a73" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Team_24_Security_And_Design.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Team_24_Security_And_Design.iml" afterDir="false" />
-=======
-    <list default="true" id="d8c3e42c-1391-466e-bdbd-038550dee454" name="Changes" comment="Updated Edit prompt UI for Address and BankDetails &#10;now displaying a label for all field required">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sheffield/AccountDataOperations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/AccountDataOperations.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sheffield/AccountDetailBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/AccountDetailBox.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/sheffield/AccountPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/AccountPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/sheffield/UI/EditButtonUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/UI/EditButtonUI.java" afterDir="false" />
->>>>>>> 843a34490717bc0f71004f8e4455c1342bbb67af
+      <change beforePath="$PROJECT_DIR$/src/com/sheffield/EditProductUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/EditProductUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sheffield/IndividualProductPageUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/IndividualProductPageUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sheffield/ProductCreatorBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/ProductCreatorBox.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sheffield/ProductCreatorPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/ProductCreatorPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/sheffield/ProductPageUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/sheffield/ProductPageUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,13 +57,13 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-<<<<<<< HEAD
-  "associatedIndex": 6
+  <component name="ProjectColorInfo">{
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+  &quot;associatedIndex&quot;: 6
 =======
-  "associatedIndex": 2
->>>>>>> 843a34490717bc0f71004f8e4455c1342bbb67af
-}]]></component>
+  &quot;associatedIndex&quot;: 2
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; 843a34490717bc0f71004f8e4455c1342bbb67af
+}</component>
   <component name="ProjectId" id="2XwtE29gaUggz0A9IKHhsPxseRW" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -75,27 +72,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/dvous/Documents/mysql-connector-j-8.2.0/mysql-connector-j-8.2.0/mysql-connector-j-8.2.0.jar",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.sheffield" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.AccountPage">
+  <component name="RunManager" selected="Application.StartupFrame">
     <configuration name="AccountPage" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.sheffield.AccountPage" />
       <module name="Team_24_Security_And_Design" />
@@ -135,10 +127,24 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="StartupFrame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.sheffield.UI.StartupFrame" />
+      <module name="Team_24_Security_And_Design" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.sheffield.UI.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.AccountPage" />
+        <item itemvalue="Application.StartupFrame" />
         <item itemvalue="Application.MyFrame" />
+        <item itemvalue="Application.AccountPage" />
         <item itemvalue="Application.ProductPageLauncher" />
       </list>
     </recent_temporary>
@@ -146,7 +152,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="d8c3e42c-1391-466e-bdbd-038550dee454" name="Changes" comment="" />
+      <changelist id="81358b62-bc15-4d40-9121-c15a6a4d4a73" name="Changes" comment="" />
       <created>1699551856451</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -177,11 +183,10 @@
       <workItem from="1700841851194" duration="4226000" />
       <workItem from="1701101370333" duration="632000" />
       <workItem from="1701255813746" duration="8003000" />
-<<<<<<< HEAD
       <workItem from="1701359613372" duration="818000" />
-=======
       <workItem from="1701276594886" duration="5827000" />
->>>>>>> 843a34490717bc0f71004f8e4455c1342bbb67af
+      <workItem from="1701366370136" duration="1428000" />
+      <workItem from="1701386682331" duration="4281000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed product and account pages, which couldn't display due to changes in the last commit.">
       <created>1700236292159</created>
@@ -362,7 +367,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/sheffield/ProductDatabaseOperations.java</url>
-          <line>148</line>
+          <line>165</line>
           <option name="timeStamp" value="24" />
         </line-breakpoint>
       </breakpoints>

@@ -32,8 +32,16 @@ public class ProductCreatorBox extends JPanel {
     JButton addProduct;
 
     // Constructor for form
-    public ProductCreatorBox() {
+    public ProductCreatorBox(boolean isController, boolean isLocomotive, boolean isRollingStock) {
         this.setLayout(null);
+
+        String[] products = {"Track", "Locomotive", "Train Set", "Track Pack", "Controller", "Rolling Stock"};
+        JComboBox<String> productSelection = new JComboBox<>(products);
+        productSelection.addItemListener(e -> reloadPanel(productSelection.getSelectedItem().toString()));
+        productSelection.setLocation((int) (Math.round(xSize * 0.05)), (int) (Math.round(ySize * 0.05)));
+        productSelection.setSize((int) (Math.round(xSize * 0.1)), (int) (Math.round(ySize * 0.05)));
+        productSelection.setFont(new Font("Merriweather", Font.PLAIN, 22));
+        add (productSelection);
 
         productCodeLabel = new JLabel("Product Code");
         productCodeLabel.setLocation((int) (Math.round(xSize * 0.01)), (int) (Math.round(ySize * 0.02)));
@@ -107,6 +115,61 @@ public class ProductCreatorBox extends JPanel {
         stockCount.setFont(new Font("Merriweather", Font.PLAIN, 22));
         add (stockCount);
 
+        if(isController){
+            JLabel isDigitalLabel = new JLabel("Is Digital?");
+            isDigitalLabel.setLocation((int) (Math.round(xSize * 0.01)), (int) (Math.round(ySize * 0.52)));
+            isDigitalLabel.setSize((int) (Math.round(xSize * 0.35)), 40);
+            isDigitalLabel.setFont(new Font("Merriweather", Font.PLAIN, 22));
+            add (isDigitalLabel);
+
+            String[] controller = {"Not Digital", "Digital"};
+            JComboBox<String> isDigitalComboBox = new JComboBox<>(controller);
+            isDigitalComboBox.setLocation((int) (Math.round(xSize * 0.01)), (int) (Math.round(ySize * 0.57)));
+            isDigitalComboBox.setSize(190, 40);
+            isDigitalComboBox.setFont(new Font("Merriweather", Font.PLAIN, 22));
+            add (isDigitalComboBox);
+        }
+
+        else if(isLocomotive){
+            JLabel historicalEraLabel = new JLabel("Historical Era");
+            historicalEraLabel.setLocation((int) (Math.round(xSize * 0.01)), (int) (Math.round(ySize * 0.52)));
+            historicalEraLabel.setSize((int) (Math.round(xSize * 0.35)), 40);
+            historicalEraLabel.setFont(new Font("Merriweather", Font.PLAIN, 22));
+            add (historicalEraLabel);
+
+            JTextField historicalEraField = new JTextField();
+            historicalEraField.setLocation((int) (Math.round(xSize * 0.01)), (int) (Math.round(ySize * 0.57)));
+            historicalEraField.setSize(190, 40);
+            historicalEraField.setFont(new Font("Merriweather", Font.PLAIN, 22));
+            add (historicalEraField);
+
+            JLabel priceBracketLabel = new JLabel("Price Bracket");
+            priceBracketLabel.setLocation((int) (Math.round(xSize * 0.01)), (int) (Math.round(ySize * 0.52)));
+            priceBracketLabel.setSize((int) (Math.round(xSize * 0.35)), 40);
+            priceBracketLabel.setFont(new Font("Merriweather", Font.PLAIN, 22));
+            add (priceBracketLabel);
+
+            JTextField priceBracketField = new JTextField();
+            priceBracketField.setLocation((int) (Math.round(xSize * 0.01)), (int) (Math.round(ySize * 0.57)));
+            priceBracketField.setSize(190, 40);
+            priceBracketField.setFont(new Font("Merriweather", Font.PLAIN, 22));
+            add (priceBracketField);
+        }
+
+        else if (isRollingStock){
+            JLabel historicalEraLabel = new JLabel("Historical Era");
+            historicalEraLabel.setLocation((int) (Math.round(xSize * 0.01)), (int) (Math.round(ySize * 0.52)));
+            historicalEraLabel.setSize((int) (Math.round(xSize * 0.35)), 40);
+            historicalEraLabel.setFont(new Font("Merriweather", Font.PLAIN, 22));
+            add (historicalEraLabel);
+
+            JTextField historicalEraField = new JTextField();
+            historicalEraField.setLocation((int) (Math.round(xSize * 0.01)), (int) (Math.round(ySize * 0.57)));
+            historicalEraField.setSize(190, 40);
+            historicalEraField.setFont(new Font("Merriweather", Font.PLAIN, 22));
+            add (historicalEraField);
+        }
+
         addProduct = new JButton("Submit");
         addProduct.setFont(new Font("Merriweather", Font.PLAIN, 15));
         addProduct.setSize(100, 40);
@@ -157,5 +220,14 @@ public class ProductCreatorBox extends JPanel {
         catch (SQLException exception) {
             exception.printStackTrace();
         }
+    }
+
+    private void reloadPanel(String selectedItem){
+        ProductCreatorPage reload = new ProductCreatorPage();
+        DatabaseConnectionHandler db = new DatabaseConnectionHandler();
+
+        reload.initPanel(db.getConnection(), selectedItem.equals("Controller"), selectedItem.equals("Locomotive"),
+                selectedItem.equals("Rolling Stock"));
+
     }
 }
