@@ -26,7 +26,6 @@ public class ProductCreatorPage extends JFrame {
     JButton productCreatorButton = new JButton();
 	JLabel productCreatorSidebar = new JLabel();
 	JLabel productCreatorTitleText = new JLabel();
-    ProductCreatorBox productDetails = new ProductCreatorBox();
 
 
 	JLabel productCreatorDetailBackGround = new JLabel();
@@ -48,7 +47,7 @@ public class ProductCreatorPage extends JFrame {
 
 
 	// Method to set location and colours of buttons, panels etc
-	public void initPanel(Connection con)
+	public void initPanel(Connection con, boolean isController, boolean isLocomotive, boolean isRollingStock)
 	{
 		/* For colours of each of the components:
 		 * Purple: 11854529
@@ -101,7 +100,8 @@ public class ProductCreatorPage extends JFrame {
 		productCreatorTitleText.setText("Add a Product");
 		productCreatorPagePanel.add(productCreatorTitleText);
 
-
+		ProductCreatorBox productDetails = new ProductCreatorBox(isController, isLocomotive, isRollingStock);
+		System.out.println("Here!");
 		// Setting location of panel of class productCreatorBox which contains the product form
         productDetails.setLocation((int) (Math.round(xSize * 0.20)),(int) (Math.round(ySize * 0.22)));
         productDetails.setSize((int) (Math.round(xSize * 0.72)),(int) (Math.round(ySize * 0.67)));
